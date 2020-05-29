@@ -1,0 +1,11 @@
+# Default ignored files
+/.idea/workspace.xml
+/.idea/.name
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/compiler.xml
+/.idea/artifacts
+
+#Ignoring target folder
+/target/

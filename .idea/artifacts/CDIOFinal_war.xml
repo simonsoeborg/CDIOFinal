@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="CDIOFinal:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>CDIOFinal</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="CDIOFinal-1.0.0.war">
+      <element id="artifact" artifact-name="CDIOFinal:war exploded" />
+    </root>
+  </artifact>
+</component>
