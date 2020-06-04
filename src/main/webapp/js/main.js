@@ -12,7 +12,7 @@ function includeMainHeader() {
 
 // Load footer code functionality:
 function includeFooter() {
-    $("#globalFooter").load("globalFooter.html");
+    $("#globalFooter").load("globalVertMenu.html");
 }
 
 /* End of Site functionality */
