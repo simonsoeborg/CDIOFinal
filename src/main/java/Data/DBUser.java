@@ -47,7 +47,7 @@ public class DBUser implements IDataHandlerDAO {
         ArrayList<DBUser> data = new ArrayList<>();
         if (SQLConn != null) {
             try {
-                sqlQuery = "SELECT * FROM Users";
+                sqlQuery = "SELECT * FROM Brugere";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
@@ -68,7 +68,7 @@ public class DBUser implements IDataHandlerDAO {
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "DELETE FROM Users WHERE userID = ?";
+                sqlQuery = "DELETE FROM Brugere WHERE UserId = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setInt(1, id);
                 pstm.executeUpdate();
@@ -83,8 +83,8 @@ public class DBUser implements IDataHandlerDAO {
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "INSERT INTO Users (FirstName, LastName, Password, Role)" +
-                        "VALUES (?, ?, ?, ?)";
+                sqlQuery = "INSERT INTO Brugere (FirstName, LastName, Role)" +
+                        "VALUES (?, ?, ?)";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setString(1, firstName);
                 pstm.setString(2, lastName);
@@ -102,11 +102,11 @@ public class DBUser implements IDataHandlerDAO {
         try {
             SQLConn = MySQLConnector.createConnection();
             if(SQLConn != null) {
-                sqlQuery = "UPDATE Users " +
+                sqlQuery = "UPDATE Brugere " +
                         "SET FirstName=?, " +
                         "LastName=?, " +
                         "Role=? " +
-                        "WHERE userID = ?";
+                        "WHERE UserId = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setString(1, firstName);
                 pstm.setString(2, lastName);
@@ -120,6 +120,8 @@ public class DBUser implements IDataHandlerDAO {
             System.out.println(e);
         }
     }
+
+
     //__________________________________________setters and getters___________________________________________________//
     public int getId() {
         return id;
