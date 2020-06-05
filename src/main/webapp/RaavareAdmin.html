@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-heysan
-</body>
-</html>
+<!-- Attach global header (Nav Bar) -->
+<div id="globalHeader"><script>includeMainHeader();</script></div>
+
+<!-- Attach global footer -->
+<div id="globalFooter"><script>includeFooter();</script></div>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<div class="container" style="align-content: center; margin-left: 25%;">
+    <div class="row">
+        <div class="grid-item-2">
+            <h3>Task menu</h3>
+        </div>
+        <div class="grid-item-10">
+            <h3>User List</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="grid-item-10">
+            <table>
+                <thead>
+                <tr>
+                    <td>rbId</td>
+                    <td>RaavareID</td>
+                    <td>mængde</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody id="loadAllUsers"><script>loadRaavarer();</script></tbody>
+            </table>
+        </div>
+    </div>
+</div>
