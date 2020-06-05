@@ -11,11 +11,14 @@ Reference: https://www.youtube.com/watch?v=68O6eOGAGqA
   --grid-main-padding: 5px;
 }
 
+<<<<<<< HEAD
 .grid-wrapper {
   margin: 0 auto;
   padding: 20px;
 }
 
+=======
+>>>>>>> master
 .grid-container {
   display: grid;
   height: 100vh;
