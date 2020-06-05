@@ -9,27 +9,28 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DBUser implements IDataHandlerDAO {
-
     private int id;
     private String firstname;
     private String lastname;
-    private String password;
+    private String initial;
     private String role;
+    private String status;
+
     private Connection SQLConn;
     private String sqlQuery;
     private ArrayList<DBUser> userList;
-
     private DBConnector MySQLConnector = new DBConnector();
 
     public DBUser() {
     }
 
-    public DBUser(int id, String firstname, String lastname, String password, String role) {
+    public DBUser(int id, String firstname, String lastname, String initial, String role, String status) {
         this.id = id;
-        this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.initial = initial;
         this.role = role;
+        this.status=status;
     }
 
     public ArrayList<DBUser> listAllUsers() {
@@ -51,7 +52,7 @@ public class DBUser implements IDataHandlerDAO {
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new DBUser(resultSet.getInt("userID"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Password"), resultSet.getString("Role")));
+                    data.add(new DBUser(resultSet.getInt("UserId"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Initial"), resultSet.getString("Role"), resultSet.getString("Status")));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
@@ -62,6 +63,7 @@ public class DBUser implements IDataHandlerDAO {
         return data;
     }
 
+    //todo: Remake to deactivate
     public void deleteUser(int id) {
         try {
             SQLConn = MySQLConnector.createConnection();
@@ -77,7 +79,7 @@ public class DBUser implements IDataHandlerDAO {
         }
     }
 
-    public void createUser(String firstName, String lastName, String password, String role) {
+    public void createUser(String firstName, String lastName, String role) {
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
@@ -86,8 +88,7 @@ public class DBUser implements IDataHandlerDAO {
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setString(1, firstName);
                 pstm.setString(2, lastName);
-                pstm.setString(3, password);
-                pstm.setString(4, role);
+                pstm.setString(3, role);
 
                 pstm.executeUpdate();
                 SQLConn.close();
@@ -97,22 +98,20 @@ public class DBUser implements IDataHandlerDAO {
         }
     }
 
-    public void editUser(int userID, String CPR, String firstName, String lastName, String role, String password) {
+    public void editUser(int userID, String firstName, String lastName, String role) {
         try {
             SQLConn = MySQLConnector.createConnection();
             if(SQLConn != null) {
                 sqlQuery = "UPDATE Users " +
                         "SET FirstName=?, " +
                         "LastName=?, " +
-                        "Password=?, " +
                         "Role=? " +
                         "WHERE userID = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setString(1, firstName);
                 pstm.setString(2, lastName);
-                pstm.setString(3, password);
-                pstm.setString(4, role);
-                pstm.setInt(6, userID);
+                pstm.setString(3, role);
+                pstm.setInt(4, userID);
 
                 pstm.executeUpdate();
                 SQLConn.close();
@@ -121,8 +120,7 @@ public class DBUser implements IDataHandlerDAO {
             System.out.println(e);
         }
     }
-
-
+    //__________________________________________setters and getters___________________________________________________//
     public int getId() {
         return id;
     }
@@ -147,12 +145,12 @@ public class DBUser implements IDataHandlerDAO {
         this.lastname = lastname;
     }
 
-    public String getPassword() {
-        return password;
+    public String getInitial() {
+        return initial;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setInitial (String initial) {
+        this.initial = initial;
     }
 
     public String getRole() {
@@ -161,5 +159,13 @@ public class DBUser implements IDataHandlerDAO {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status=status;
     }
 }
