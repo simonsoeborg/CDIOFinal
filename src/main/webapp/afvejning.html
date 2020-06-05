@@ -1,75 +1,80 @@
-<!-- Attach global header (Nav Bar) -->
-<div id="globalHeader"><script>includeMainHeader();</script></div>
+<div class="grid-container">
 
-<div class="contentContainer">
-  <div class="contentPage">
+  <!-- Attach global header -->
+  <div class="grid-menu"><script>includeHeader();</script></div>
+  <!-- Attach global sideMenu -->
+  <div class="grid-sideMenu"><script>includeSideMenu();</script></div>
+
+  <div class="grid-contentHeader">
     <h1 id="afvejningsTitel">Afvejning</h1>
-    <div class="afvejningsContent">
-      <div id="afvejningStep1" class="row">
-        <div class="col-50">
-          <!-- Indtast laborant nr -->
-          <label>Indtast laborant nr:</label> <br />
-          <input id="labNr" type="text">
-        </div>
+  </div>
 
-        <div class="col-50">
-          <!-- Svar tilbage med Laborant navn som tilhører laborant nr.  -->
-          <label id="labNameResponse"></label> <!-- JS To return name of Laborant into this element. -->
-          <p> Hi I am Doctor Nick! </p>
-        </div>
+  <div class="grid-contentBody">
+    <div id="afvejningStep1" class="row">
+      <div class="col-50">
+        <!-- Indtast laborant nr -->
+        <label>Indtast laborant nr:</label> <br />
+        <input id="labNr" type="text">
       </div>
 
-      <div id="afvejningStep2" class="row">
-        <div class="col-50">
-          <!-- Indtast produktbatch nr -->
-          <label>Indtast Produktbatch nr:</label> <br />
-          <input id="produktbatchNr" type="text">
-        </div>
-        <div class="col-50">
-          <!-- Svar tilbage med navn på recept  -->
-          <label id="receptName"></label> <!-- JS To return name of recept into this element. -->
-
-          <!-- Systemet sætter produktbatch nummerets status til ”Under produktion”. -->
-
-          <!-- Run script to set pB with pB nr to: "Under Produktion" i Databasen. -->
-
-          <!-- Antallet af råvare materialer skal definere hvor mange gange steps der skal gentages. -->
-
-          <!-- JS skal læse antallet af materialer i recepten. Tallet skal bruges senere i proceduren. -->
-        </div>
+      <div class="col-50">
+        <!-- Svar tilbage med Laborant navn som tilhører laborant nr.  -->
+        <label id="labNameResponse"></label> <!-- JS To return name of Laborant into this element. -->
+        <p> Hi I am Doctor Nick! </p>
       </div>
+    </div>
 
-      <div id="afvejningStep3" class="row">
-        <div class="col-50">
-          <!-- Indtast første tara beholder. -->
-          <label>Indtast tara-belastningen</label> <br />
-          <input id="taraBelastning" type="text">
-          <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
-        </div>
+    <div id="afvejningStep2" class="row">
+      <div class="col-50">
+        <!-- Indtast produktbatch nr -->
+        <label>Indtast Produktbatch nr:</label> <br />
+        <input id="produktbatchNr" type="text">
       </div>
+      <div class="col-50">
+        <!-- Svar tilbage med navn på recept  -->
+        <label id="receptName"></label> <!-- JS To return name of recept into this element. -->
 
-      <div id="afvejningStep4" class="row">
-        <div class="col-50">
-          <!-- System beder om raavarebatch nummer på første råvare. -->
-          <div class="small_Container">
-            <label>Råvare 1: </label> <br>
-            <input id="raavare1" style="margin-bottom: 1%;" type="text" placeholder="Produktbatch nummer">
-            <!-- Laboranten afvejer op til den ønskede mængde og indtaster værdierne i systemet. -->
-            <input id="maengde1" style="margin-bottom: 1%;" type="text" placeholder="Mængde">
-            <button type="button" name="button"><i id="1" class="material-icons" onclick="">add_circle_outline</i></button>
-          </div>
-        </div>
+        <!-- Systemet sætter produktbatch nummerets status til ”Under produktion”. -->
+
+        <!-- Run script to set pB with pB nr to: "Under Produktion" i Databasen. -->
+
+        <!-- Antallet af råvare materialer skal definere hvor mange gange steps der skal gentages. -->
+
+        <!-- JS skal læse antallet af materialer i recepten. Tallet skal bruges senere i proceduren. -->
       </div>
+    </div>
 
-      <div id="afvejningStep5" class="row">
-        <div class="col-50">
-          <!-- Systemet sætter produktbatch nummerets status til ”Afsluttet” -->
-          <!-- Script sætter produktbatch nummer status "Afsluttet" -->
+    <div id="afvejningStep3" class="row">
+      <div class="col-50">
+        <!-- Indtast første tara beholder. -->
+        <label>Indtast tara-belastningen</label> <br />
+        <input id="taraBelastning" type="text">
+        <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
+      </div>
+    </div>
+
+    <div id="afvejningStep4" class="row">
+      <div class="col-50">
+        <!-- System beder om raavarebatch nummer på første råvare. -->
+        <div class="small_Container">
+          <label>Råvare 1: </label> <br>
+          <input id="raavare1" style="margin-bottom: 1%;" type="text" placeholder="Produktbatch nummer">
+          <!-- Laboranten afvejer op til den ønskede mængde og indtaster værdierne i systemet. -->
+          <input id="maengde1" style="margin-bottom: 1%;" type="text" placeholder="Mængde">
+          <button type="button" name="button"><i id="1" class="material-icons" onclick="">add_circle_outline</i></button>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Attach global footer -->
-<div id="globalFooter"><script>includeFooter();</script></div>
+    <div id="afvejningStep5" class="row">
+      <div class="col-50">
+        <!-- Systemet sætter produktbatch nummerets status til ”Afsluttet” -->
+        <!-- Script sætter produktbatch nummer status "Afsluttet" -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Attach global footer -->
+  <div class="grid-contentFooter"><script>includeFooter();</script></div>
+
+</div>

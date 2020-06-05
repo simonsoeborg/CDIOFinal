@@ -1,42 +1,76 @@
 /*
 Author: Simon Søborg
-Date: 31/3-2020
+Date: 5/6-2020
 Github: simonsoeborg
+
+Reference: https://www.youtube.com/watch?v=68O6eOGAGqA
 */
+
+:root {
+  --grid-main-radius: 5px;
+  --grid-main-padding: 5px;
+}
+
+.grid-wrapper {
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .grid-container {
   display: grid;
-  width: 100%;
-  align-content: center;
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
-  background-color: transparent;
-  padding: 10px;
+  height: 100vh;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 0.5fr 2fr 0.5fr;
+  grid-template-areas:
+    "grid-menu grid-menu grid-menu grid-menu"
+    "sideMenu contentHeader contentHeader contentHeader"
+    "sideMenu contentBody contentBody contentBody"
+    "sideMenu contentFooter contentFooter contentFooter";
+  grid-gap: 0.2rem;
 }
 
-.row {
-  align-content: center;
+.grid-menu {
+  grid-area: grid-menu;
+  border-radius: var(--grid-main-radius);
+  padding-top: var(--grid-main-padding);
+  background: #E44E4E;
 }
 
-[class*="grid-item-"] {
-  float: left;
-  padding: 15px;
-  margin: auto;
+.grid-sideMenu {
+  grid-area: sideMenu;
+  border-radius: var(--grid-main-radius);
+  padding-top: var(--grid-main-padding);
+  background: #E44E4E;
 }
-.grid-item-1 {width: 8.33%;}
-.grid-item-2 {width: 16.66%;}
-.grid-item-3 {width: 25%;}
-.grid-item-4 {width: 33.33%;}
-.grid-item-5 {width: 41.66%;}
-.grid-item-6 {width: 50%;}
-.grid-item-7 {width: 58.33%;}
-.grid-item-8 {width: 66.66%;}
-.grid-item-9 {width: 75%;}
-.grid-item-10 {width: 83.33%;}
-.grid-item-11 {width: 91.66%;}
-.grid-item-12 {width: 100%;}
 
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
+.grid-contentHeader {
+  grid-area: contentHeader;
+  border-radius: var(--grid-main-radius);
+  padding: 16px;
+}
+
+.grid-contentBody {
+  grid-area: contentBody;
+  border-radius: var(--grid-main-radius);
+  padding: 16px;
+}
+
+.grid-contentFooter {
+  grid-area: contentFooter;
+  border-radius: var(--grid-main-radius);
+  padding-top: var(--grid-main-padding);
+}
+
+/* Responsive hvis skærmen er mindre end 600px */
+@media only screen and (max-width:600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.4fr 0.4fr 1fr 2.2fr 0.4fr;
+    grid-template-areas:
+      "grid-menu"
+      "sideMenu"
+      "contentHeader"
+      "contentBody"
+      "contentFooter"
+  }
 }
