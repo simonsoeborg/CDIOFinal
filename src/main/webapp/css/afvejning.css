@@ -1,0 +1,85 @@
+.row{
+  width: 100%;
+  padding: 16px;
+  height: auto;
+}
+
+.afvejningsContent {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#afvejningsTitel {
+  color: #E44E4E;
+
+}
+
+[class*="afvejningStep"] {
+  width: 100%;
+}
+
+[class*="col-"] {
+  padding-left: 16px;
+  padding-right: 16px;
+  align-content: center;
+}
+
+.small_Container {
+  border: 1px solid rgba(114, 85, 85, 0.29);
+  padding: 16px;
+  width: 100%;
+}
+
+.col-50 {
+  width: 50%;
+  float: left;
+}
+
+.col-25 {
+  width: 25%;
+}
+
+[class*="col-"] label {
+  width: 50%;
+  font-size: 22px;
+}
+
+[class*="col-"] input {
+  border-radius: 15px;
+  width: 50%;
+  text-align: center;
+  outline: none;
+}
+
+[class*="col-"] input:hover {
+  border: 1px solid #E44E4E;
+  border-radius: 15px;
+}
+
+[class*="col-"] input:active {
+  border: 1px solid #E44E4E;
+  border-radius: 15px;
+}
+
+[class*="col-"] button {
+  padding: 5px;
+  background-color: transparent;
+  border: 0px;
+  float: right;
+}
+
+[class*="col-"] button:hover {
+  border: 1px solid rgba(114, 85, 85, 0.29);
+  border-radius: 15px;
+  float: right;
+}
+
+.vLine {
+  border-left: 1px solid #E44E4E;
+  padding: 16px;
+  height: 50%;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  bottom: 25%;
+}

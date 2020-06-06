@@ -6,13 +6,18 @@ function displayContent(page) {
 }
 
 // Load header code functionality:
-function includeMainHeader() {
-    $("#globalHeader").load("globalHeader.html");
+function includeHeader() {
+    $(".grid-menu").load("globalHeader.html");
+}
+
+// Load header code functionality:
+function includeSideMenu() {
+    $(".grid-sideMenu").load("globalSideMenu.html");
 }
 
 // Load footer code functionality:
 function includeFooter() {
-    $("#globalFooter").load("globalVertMenu.html");
+    $(".grid-contentFooter").load("globalFooter.html");
 }
 
 /* End of Site functionality */
