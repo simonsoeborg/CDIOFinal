@@ -15,10 +15,11 @@ function repeatObject() {
 var hostURL = '/CDIOFinal_war_exploded/test/afvejning/';
 
 function findLaborant() {
+  var hostLabURL = '/CDIOFinal_war_exploded/test/afvejning/lab?labNr=';
   var labNr = document.getElementById('labNr').value;
   $.ajax({
     type: 'GET',
-    url: hostURL + labNr,
+    url: hostLabURL + labNr,
     dataType: "text",
     success: function (result) {
       document.getElementById('labNameResponse').innerHTML = "Laborant: " + result;
@@ -27,6 +28,22 @@ function findLaborant() {
     },
     error: function (jqXHR, textStatus, errorThrown) {
       alert("Unable to find laborant");
+    }
+  });
+}
+
+function findProduktBatch() {
+  var hostPBURL = '/CDIOFinal_war_exploded/test/afvejning/pb/';
+  var produktbatchNr = document.getElementById('produktbatchNr').value;
+  $.ajax({
+    type: 'GET',
+    url: hostPBURL + produktbatchNr,
+    dataType: "text",
+    success: function (result) {
+      document.getElementById('receptNameResponse').innerHTML = "Recept: " + result;
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      alert("Unable to find receipt");
     }
   });
 }
