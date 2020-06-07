@@ -7,24 +7,28 @@
 
   <div class="grid-contentHeader">
     <h1 id="afvejningsTitel">Afvejning</h1>
+    <label id="produktionStatus">Produktion Status: Pending</label>
+
   </div>
 
   <div class="grid-contentBody">
 
-    <div class="small_Container">
-      <form id="afvejningStep1">
+    <div id="afvejningStep1" class="small_Container">
+      <form>
             <!-- Indtast laborant nr -->
             <label>Indtast laborant nr:</label> <br />
             <input id="labNr" type="text">
             <button class="successbutton" type="button" name="button" onclick="findLaborant();">OK</button>
-
-            <!-- Svar tilbage med Laborant navn som tilhører laborant nr.  -->
-            <label id="labNameResponse"></label> <!-- JS To return name of Laborant into this element. -->
       </form>
+    </div>
+    <br>
+    <div class="Container_borderless">
+        <!-- Svar tilbage med Laborant navn som tilhører laborant nr.  -->
+        <label id="labNameResponse"></label> <!-- JS To return name of Laborant into this element. -->
     </div>
 
     <div id="produktBatchAndReceptName" class="small_Container">
-      <form id="afvejningStep2">
+      <form>
           <!-- Indtast produktbatch nr -->
           <label>Indtast Produktbatch nr:</label> <br />
           <input id="produktbatchNr" type="text">
@@ -40,21 +44,21 @@
           <!-- JS skal læse antallet af materialer i recepten. Tallet skal bruges senere i proceduren. -->
       </form>
 
-      <form id="afvejningStep3">
+      <form>
           <!-- Indtast første tara beholder. -->
-          <label>Indtast tara-belastningen</label> <br />
+          <label>Indtast tara-belastningen:</label> <br />
           <input id="taraBelastning" type="text">
           <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
       </form>
     </div>
 
-    <div class="small_Container_borderless">
+    <div id="repeatButtonContainer" class="small_Container_borderless">
       <label>Tilføj flere råvarebatches:</label> <br>
       <button id="repeatButton" type="button" name="button" onclick="repeatObject();" ><i class="material-icons" onclick="">add_circle_outline</i></button>
     </div>
 
     <div id="repeatableObject1" class="small_Container">
-      <form id="afvejningStep4">
+      <form>
           <!-- System beder om raavarebatch nummer på første råvare. -->
             <label id="raavareLabel1">Indtast Råvarebatch: </label> <br>
 
@@ -65,7 +69,7 @@
       </form>
     </div>
 
-    <form id="afvejningStep5">
+    <form id="afvejningStep6">
         <!-- Systemet sætter produktbatch nummerets status til ”Afsluttet” -->
         <!-- Script sætter produktbatch nummer status "Afsluttet" -->
     </form>

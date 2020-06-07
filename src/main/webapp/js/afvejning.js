@@ -16,14 +16,14 @@ var hostURL = '/CDIOFinal_war_exploded/test/afvejning/';
 
 function findLaborant() {
   var labNr = document.getElementById('labNr').value;
-  console.log(labNr);
   $.ajax({
     type: 'GET',
     url: hostURL + labNr,
-    dataType: "json",
+    dataType: "text",
     success: function (result) {
-      console.log(result);
-      document.getElementById('labNameResponse').innerHTML = "Hej " + result;
+      document.getElementById('labNameResponse').innerHTML = "Laborant: " + result;
+      document.getElementById('afvejningStep1').style.display = "none";
+      document.getElementById('produktionStatus').style.visibility = "visible";
     },
     error: function (jqXHR, textStatus, errorThrown) {
       alert("Unable to find laborant");

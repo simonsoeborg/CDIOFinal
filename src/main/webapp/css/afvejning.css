@@ -31,10 +31,33 @@
   margin-bottom: 10px;
 }
 
+
+#produktionStatus {
+  color: #E44E4E;
+  display: inline-block;
+  float: right;
+  visibility: hidden;
+}
+
+
+#afvejningStep1 {
+    display: block;
+}
+
+
 .small_Container_borderless {
   border: 0px;
   padding: 16px;
   width: auto;
+  margin-bottom: 10px;
+}
+
+
+
+.Container_borderless {
+  border: 0px;
+  padding: 16px;
+  width: 100%;
   margin-bottom: 10px;
 }
 
@@ -91,6 +114,10 @@ button:hover {
   left: 50%;
   top: 25%;
   bottom: 25%;
+}
+
+#labNameResponse {
+  color: #4CAF50;
 }
 
 .repeatButton {

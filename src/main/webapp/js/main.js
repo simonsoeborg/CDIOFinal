@@ -2,7 +2,13 @@
 
 // SinglePage functionality:
 function displayContent(page) {
-    $("body").load(page);
+
+    if(page == "afvejning.html") {
+        $("body").load(page);
+        loadAfvejningContent();
+    } else {
+        $("body").load(page);
+    }
 }
 
 // Load header code functionality:
