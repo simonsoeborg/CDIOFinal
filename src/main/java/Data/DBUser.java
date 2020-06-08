@@ -33,6 +33,8 @@ public class DBUser implements IDataHandlerDAO {
         this.status=status;
     }
 
+
+
     public ArrayList<DBUser> listAllUsers() {
         return userList;
     }
@@ -78,6 +80,30 @@ public class DBUser implements IDataHandlerDAO {
             System.out.println(e);
         }
     }
+
+
+    public DBUser searchUser(int userID) {
+        DBUser temp = null;
+        try {
+            if (SQLConn != null) {
+                sqlQuery = "SELECT * FROM Users WHERE userID = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, userID);
+                ResultSet resultSet = pstm.executeQuery();
+
+                while (resultSet.next()) {
+                    temp = new DBUser(resultSet.getInt("userID"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("CPR"), resultSet.getString("Password"), resultSet.getString("Role"));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return temp;
+    }
+
+
+
+
 
     public void createUser(String firstName, String lastName, String role) {
         try {
@@ -170,4 +196,5 @@ public class DBUser implements IDataHandlerDAO {
     public void setStatus(String status) {
         this.status=status;
     }
+
 }

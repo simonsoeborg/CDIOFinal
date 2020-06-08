@@ -4,6 +4,8 @@ import Data.DBUser;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DBConnector {
@@ -15,8 +17,7 @@ public class DBConnector {
     private String password = "2d4f6r3t";
     private List<DBUser> userList;
 
-    public DBConnector() {
-    }
+    public DBConnector(){ }
 
     public Connection createConnection() {
         Connection SQLConn;
@@ -30,4 +31,5 @@ public class DBConnector {
         }
         return null;
     }
+
 }
