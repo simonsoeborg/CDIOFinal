@@ -1,6 +1,6 @@
 package DB;
 
-import Data.DBRaavarer;
+import Data.DBRaavare;
 import Data.DBUser;
 
 import java.sql.Connection;
@@ -15,7 +15,7 @@ public class DBConnector {
     private String port = "3306";
     private String password = "2d4f6r3t";
     private List<DBUser> userList;
-    private List<DBRaavarer> Raavarer;
+    private List<DBRaavare> Raavarer;
 
     public DBConnector() {
     }

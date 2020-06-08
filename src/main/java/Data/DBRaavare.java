@@ -1,10 +1,8 @@
 package Data;
 
-import API.RaavarerServlet;
 import DB.DBConnector;
 import Data.DTO.Raavare;
 
-import javax.ws.rs.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBRaavarer {
+public class DBRaavare {
 DBConnector dbc = new DBConnector();
 private String sqlQuery;
 private Connection SQLConn = dbc.createConnection();

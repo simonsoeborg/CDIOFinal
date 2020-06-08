@@ -1,6 +1,6 @@
 package API;
 
-import Data.DBRaavarer;
+import Data.DBRaavare;
 import Data.DTO.Raavare;
 
 import javax.ws.rs.*;
@@ -10,13 +10,13 @@ import java.util.List;
 @Path("raavare")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class RaavarerServlet {
+public class RaavareServlet {
 
-    DBRaavarer DBRaavarer = new DBRaavarer();
+    DBRaavare DBRaavare = new DBRaavare();
 
     @GET
     public List<Raavare> GetRaavare() {
-        return DBRaavarer.listAllRaavare();
+        return DBRaavare.listAllRaavare();
     }
 
     // @GET
@@ -26,6 +26,6 @@ public class RaavarerServlet {
     @DELETE
     @Path("{raavareId}")
     public void deleteRaavare(@PathParam("raavareId") int raavareId) {
-        DBRaavarer.deleteRaavare(raavareId);
+        DBRaavare.deleteRaavare(raavareId);
     }
 }
