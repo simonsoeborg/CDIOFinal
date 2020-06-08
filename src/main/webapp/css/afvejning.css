@@ -27,8 +27,40 @@
 .small_Container {
   border: 1px solid rgba(114, 85, 85, 0.29);
   padding: 16px;
-  width: 100%;
+  width: auto;
+  margin-bottom: 10px;
 }
+
+
+#produktionStatus {
+  color: #E44E4E;
+  display: inline-block;
+  float: right;
+  visibility: hidden;
+}
+
+
+#afvejningStep1 {
+    display: block;
+}
+
+
+.small_Container_borderless {
+  border: 0px;
+  padding: 16px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+
+
+.Container_borderless {
+  border: 0px;
+  padding: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
 
 .col-50 {
   width: 50%;
@@ -39,39 +71,39 @@
   width: 25%;
 }
 
-[class*="col-"] label {
-  width: 50%;
+label {
+  width: 25%;
   font-size: 22px;
 }
 
-[class*="col-"] input {
-  border-radius: 15px;
-  width: 50%;
-  text-align: center;
+input {
+  border-radius: 5px;
+  width: auto;
+  padding: 10px;
   outline: none;
+  font-size: 22px;
 }
 
-[class*="col-"] input:hover {
+input:hover {
   border: 1px solid #E44E4E;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
-[class*="col-"] input:active {
+input:active {
   border: 1px solid #E44E4E;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
-[class*="col-"] button {
-  padding: 5px;
+button {
+  padding: 10px;
   background-color: transparent;
   border: 0px;
-  float: right;
+  font-size: 22px;
 }
 
-[class*="col-"] button:hover {
+button:hover {
   border: 1px solid rgba(114, 85, 85, 0.29);
-  border-radius: 15px;
-  float: right;
+  border-radius: 5px;
 }
 
 .vLine {
@@ -82,4 +114,19 @@
   left: 50%;
   top: 25%;
   bottom: 25%;
+}
+
+#labNameResponse {
+  color: #4CAF50;
+}
+
+.repeatButton {
+  margin: 10px;
+}
+
+.successbutton {
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  width: 100px;
 }
