@@ -1,66 +1,71 @@
 package Data;
 
 import DB.DBConnector;
+import Data.DTO.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DBUser implements IDataHandlerDAO {
-    private int id;
-    private String firstname;
-    private String lastname;
-    private String initial;
-    private String role;
-    private String status;
 
     private Connection SQLConn;
     private String sqlQuery;
-    private ArrayList<DBUser> userList;
+    private List<User> userList;
     private DBConnector MySQLConnector = new DBConnector();
 
-    public DBUser() {
-    }
 
-    public DBUser(int id, String firstname, String lastname, String initial, String role, String status) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.initial = initial;
-        this.role = role;
-        this.status=status;
-    }
-
-
-
-    public ArrayList<DBUser> listAllUsers() {
+    public List<User> listAllActivatedUsers() {
+        userList = new ArrayList<>();
+        userList = getAllActivatedUsers();
         return userList;
     }
 
-    public void fetchAllUsers() {
+    public List<User> listAllDeactivatedUsers() {
         userList = new ArrayList<>();
-        userList = addUsersFromResultSet();
+        userList = getAllDeactivatedUsers();
+        return userList;
     }
 
-    public ArrayList<DBUser> addUsersFromResultSet() {
+    public List<User> getAllActivatedUsers() {
         SQLConn = MySQLConnector.createConnection();
-        ArrayList<DBUser> data = new ArrayList<>();
+        ArrayList<User> data = new ArrayList<>();
         if (SQLConn != null) {
             try {
-                sqlQuery = "SELECT * FROM Brugere";
+                sqlQuery = "SELECT * FROM Brugere WHERE Status='Activated'";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new DBUser(resultSet.getInt("UserId"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Initial"), resultSet.getString("Role"), resultSet.getString("Status")));
+                    data.add(new User(resultSet.getInt("UserId"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Initial"), resultSet.getString("Role"), resultSet.getString("Status")));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
                 System.out.println(e);
             }
+        }
+        return data;
+    }
 
+    public List<User> getAllDeactivatedUsers() {
+        SQLConn = MySQLConnector.createConnection();
+        ArrayList<User> data = new ArrayList<>();
+        if (SQLConn != null) {
+            try {
+                sqlQuery = "SELECT * FROM Brugere WHERE Status='Deactivated'";
+                //prepared statement
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                ResultSet resultSet = pstm.executeQuery();
+                while (resultSet.next()) {
+                    data.add(new User(resultSet.getInt("UserId"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Initial"), resultSet.getString("Role"), resultSet.getString("Status")));
+                }
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
         return data;
     }
@@ -70,7 +75,7 @@ public class DBUser implements IDataHandlerDAO {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
                 sqlQuery = "UPDATE Brugere," +
-                        "SET Status=Deactivated," +
+                        "SET Status='Deactivated'," +
                         "WHERE UserId = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setInt(1, userID );
@@ -84,18 +89,18 @@ public class DBUser implements IDataHandlerDAO {
     }
 
 
-    public DBUser searchUser(int userID) {
-        DBUser temp = null;
+    public User searchUser(int userID) {
+        User temp = null;
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "SELECT * FROM Users WHERE userID = ?";
+                sqlQuery = "SELECT * FROM Users WHERE UserId = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setInt(1, userID);
                 ResultSet resultSet = pstm.executeQuery();
 
                 while (resultSet.next()) {
-                    temp = new DBUser(resultSet.getInt("userID"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("CPR"), resultSet.getString("Password"), resultSet.getString("Role"));
+                    temp = new User(resultSet.getInt("UserId"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Initial"), resultSet.getString("Role"), resultSet.getString("Status"));
                 }
             }
         } catch (SQLException e) {
@@ -103,10 +108,6 @@ public class DBUser implements IDataHandlerDAO {
         }
         return temp;
     }
-
-
-
-
 
     public void createUser(String firstName, String lastName, String role) {
         try {
@@ -150,54 +151,11 @@ public class DBUser implements IDataHandlerDAO {
         }
     }
 
-
-    //__________________________________________setters and getters___________________________________________________//
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getInitial() {
-        return initial;
-    }
-
-    public void setInitial (String initial) {
-        this.initial = initial;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status=status;
-    }
+  /*  // *todo Lav en mere fyldestgørende løsning:
+    public void setInitial (String firstname, String lastname) {
+        Character first = Character.toUpperCase(firstname.charAt(0));
+        Character second = Character.toUpperCase(lastname.charAt(0));
+        User.initial = String.valueOf(first+second);
+    }*/
 
 }
