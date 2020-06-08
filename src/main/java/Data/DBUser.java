@@ -65,14 +65,16 @@ public class DBUser implements IDataHandlerDAO {
         return data;
     }
 
-    //todo: Remake to deactivate
-    public void deleteUser(int id) {
+    public void deactivateUser(int userID) {
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "DELETE FROM Brugere WHERE UserId = ?";
+                sqlQuery = "UPDATE Brugere," +
+                        "SET Status=Deactivated," +
+                        "WHERE UserId = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-                pstm.setInt(1, id);
+                pstm.setInt(1, userID );
+
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -85,6 +87,7 @@ public class DBUser implements IDataHandlerDAO {
     public DBUser searchUser(int userID) {
         DBUser temp = null;
         try {
+            SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
                 sqlQuery = "SELECT * FROM Users WHERE userID = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);

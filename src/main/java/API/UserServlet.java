@@ -39,7 +39,7 @@ public class UserServlet {
     @DELETE
     @Path("{id}")
     public void deleteUser(@PathParam("id") int id) {
-        dbUser.deleteUser(id);
+        dbUser.deactivateUser(id);
     }
 
 
