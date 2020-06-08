@@ -17,7 +17,7 @@ public class afvejningServlet {
     @Path("lab")
     public String findLaborant(@QueryParam("labNr") int id) {return dba.findBruger(id);}
 
-    @GET
-    @Path("pb")
-    public List findRecept(@QueryParam("pbNr") int id) {return dba.findRecept(id)};
+    //@GET
+    //@Path("pb")
+    //public List findRecept(@QueryParam("pbNr") int id) {return dba.findRecept(id);};
 }

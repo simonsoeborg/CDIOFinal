@@ -1,12 +1,12 @@
 
-var hostURL = '/CDIOFinal_war_exploded/test/RaavarerServlet/';
+var hostURL = '/CDIOFinal_war_exploded/test/raavare/';
 
 function loadRaavarerList() {
     console.log("Loading raavarer");
     $.get(hostURL, function (data, textStatus, req) {
-        $("#loadAllRaavarer").empty();
+        $("#loadAllRaavarerList").empty();
         $.each(data, function (i, raavarer) {
-            $("#loadAllRaavarer").append(genTableHTMLForRaavarer(raavarer));
+            $("#loadAllRaavarerList").append(genTableHTMLForRaavarer(raavarer));
         });
     });
 }
@@ -27,7 +27,7 @@ function deleteRaavarer(raavarerId) {
         method: 'DELETE',
         success: function (data) {
             alert(' råvare med id: ' + raavarerId + ' er blevet slettet!')
-            loadUserList();
+            loadRaavarerList();
         }
     });
 }

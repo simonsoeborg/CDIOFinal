@@ -2,28 +2,63 @@ package Data;
 
 import API.RaavarerServlet;
 import DB.DBConnector;
+import Data.DTO.Raavare;
 
 import javax.ws.rs.*;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBRaavarer implements IDataHandlerDAO {
-
-private int raavareId;
-private String raavareNavn;
-private String leveradoer;
-private Connection SQLConn;
+public class DBRaavarer {
+DBConnector dbc = new DBConnector();
 private String sqlQuery;
-private ArrayList<DBRaavarer> raavarer;
+private Connection SQLConn = dbc.createConnection();
+private List<Raavare> raavare;
 
 private DBConnector MySQLConnector = new DBConnector();
 
-public DBRaavarer() {
-}
-
-public ArrayList<DBRaavarer> listAllRaavarer() {
-        return raavarer;
+    public void fetchAllRaavare() {
+        raavare = new ArrayList<>();
+        raavare = GetAllRaavare();
     }
 
+public List<Raavare> GetAllRaavare() {
+    ArrayList<Raavare> data = new ArrayList<>();
+    if (SQLConn != null) {
+        try {
+            sqlQuery = "SELECT * FROM Raavare";
+            //prepared statement
+            PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+            ResultSet resultSet = pstm.executeQuery();
+            while (resultSet.next()) {
+                data.add(new Raavare(resultSet.getInt("raavareId"), resultSet.getString("raavareNavn"), resultSet.getString("leverandoer")));
+            }
+            SQLConn.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    return data;
+}
+public List<Raavare> listAllRaavare() {
+        fetchAllRaavare();
+        return raavare; }
+
+    public void deleteRaavare(int raavareId) {
+        try {
+            SQLConn = MySQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "DELETE FROM Raavare WHERE raavareId= ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, raavareId);
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 }
