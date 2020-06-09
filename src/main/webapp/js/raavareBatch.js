@@ -11,11 +11,11 @@ function loadRaavareBatchList() {
 }
 
 function genTableHTMLForRaavareBatch(raavareBatch) {
-    return '<tr rbId="' + raavareBatch.rbId + '">' +
-        '<td>'+ raavareBatch.rbId + ' ' + raavareBatch.raavareId +'</td>' +
-        '<td>' + raavareBatch.maengde + '</td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
-        '</tr>'
+    return  '<tr><td>' + raavareBatch.rbId + '</td>' +
+            '<tr>' + raavareBatch.raavareId +'</td>' +
+            '<td>' + raavareBatch.maengde + '</td>' +
+            '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
+            '</tr>'
 }
 
 function deleteRaavareBatch(rbId) {
