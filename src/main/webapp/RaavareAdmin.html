@@ -1,0 +1,42 @@
+<div class="grid-container">
+
+    <!-- Attach global header -->
+    <div class="grid-menu"><script>includeHeader();</script></div>
+
+    <!-- Attach global sideMenu -->
+    <div class="grid-sideMenu"><script>includeSideMenu();</script></div>
+
+    <div class="grid-contentHeader">
+        <!-- Titel på siden såsom Afvejning -->
+        <h1 id="RaavareAdminTitel">Råvarer</h1>
+    </div>
+
+    <div class="grid-contentBody">
+        <!-- ------------------------------- Her sættes alt hvad der skal vises ---------------------------------- -->
+
+        <div class="container" style="align-content: center; margin-left: 25%;">
+            <div class="row">
+            </div>
+
+            <div class="row">
+                <div class="grid-item-10">
+                    <table>
+                        <thead>
+                        <tr>
+                            <td>RaavareId</td>
+                            <td>RaavareNavn</td>
+                            <td>leveradør</td>
+                            <td></td>
+                        </tr>
+                        </thead>
+                        <tbody id="loadAllRaavareList"><script>loadRaavareList();</script></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ----------------------------------------------------------------------------------------------------- -->
+    <!-- Attach global footer -->
+    <div class="grid-contentFooter"><script>includeFooter();</script></div>
+
+</div>
