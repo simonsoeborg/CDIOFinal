@@ -1,32 +1,35 @@
 
 var hostURL = '/CDIOFinal_war_exploded/test/raavare/';
 
-function loadRaavarerList() {
+$(document).ready(function () {
+    loadRaavareList();
+});
+
+function loadRaavareList() {
     console.log("Loading raavarer");
     $.get(hostURL, function (data, textStatus, req) {
-        $("#loadAllRaavarerList").empty();
-        $.each(data, function (i, raavarer) {
-            $("#loadAllRaavarerList").append(genTableHTMLForRaavarer(raavarer));
+        $("#loadAllRaavareList").empty();
+        $.each(data, function (i, raavare) {
+            $("#loadAllRaavareList").append(genTableHTMLForRaavare(raavare));
         });
     });
 }
 
-function genTableHTMLForRaavarer(raavarer) {
-    return '<tr ravareId="' + raavarer.raavareId + '">' +
-        '<td>'+ raavarer.raavareId + ' ' + raavarer.raavareNavn +'</td>' +
-        '<td>' + raavarer.leveradoer + '</td>' +
-        '<td><button class="btn-warning" type="submit" onclick="editRaavarer(' + raavarer.raavareId  + ');">Edit</button></td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteRaavarer(' + raavarer.raavareId + ');">Delete</button></td>' +
+function genTableHTMLForRaavare(raavare) {
+    return '<tr><td>'+ raavare.raavareId + '</td>'  +
+        '<td>' + raavare.raavareNavn +'</td>' +
+        '<td>' + raavare.leveradoer + '</td>' +
+        '<td><button class="btn-alert" type="submit" onclick="deleteRaavare(' + raavare.raavareId + ');">Delete</button></td>' +
         '</tr>'
 }
 
-function deleteRaavarer(raavarerId) {
+function deleteRaavarer(raavareId) {
     event.preventDefault();
     $.ajax({
-        url: hostURL + raavarerId,
+        url: hostURL + raavareId,
         method: 'DELETE',
         success: function (data) {
-            alert(' råvare med id: ' + raavarerId + ' er blevet slettet!')
+            alert(' råvare med id: ' + raavareId + ' er blevet slettet!');
             loadRaavarerList();
         }
     });

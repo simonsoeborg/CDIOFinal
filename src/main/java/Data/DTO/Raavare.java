@@ -10,4 +10,28 @@ public class Raavare {
         this.raavareNavn = raavareNavn;
         this.leveradoer = leveradoer;
     }
+
+    public int getRaavareId() {
+        return raavareId;
+    }
+
+    public void setRaavareId(int raavareId) {
+        this.raavareId = raavareId;
+    }
+
+    public String getRaavareNavn() {
+        return raavareNavn;
+    }
+
+    public void setRaavareNavn(String raavareNavn) {
+        this.raavareNavn = raavareNavn;
+    }
+
+    public String getLeveradoer() {
+        return leveradoer;
+    }
+
+    public void setLeveradoer(String leveradoer) {
+        this.leveradoer = leveradoer;
+    }
 }

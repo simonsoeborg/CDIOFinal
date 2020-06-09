@@ -25,6 +25,7 @@ private DBConnector MySQLConnector = new DBConnector();
 
 public List<Raavare> GetAllRaavare() {
     ArrayList<Raavare> data = new ArrayList<>();
+    SQLConn = MySQLConnector.createConnection();
     if (SQLConn != null) {
         try {
             sqlQuery = "SELECT * FROM Raavare";
