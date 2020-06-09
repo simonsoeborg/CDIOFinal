@@ -87,6 +87,26 @@ public class DBUser implements IDataHandlerDAO {
         }
     }
 
+    public void activateUser(int userID) {
+        try {
+            SQLConn = MySQLConnector.createConnection();
+            String parameter1 = "Activated";
+            if (SQLConn != null) {
+                sqlQuery = "UPDATE Brugere  SET Status=? WHERE UserId = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setString(1,parameter1);
+                pstm.setInt(2, userID );
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+
+
+
 
     public User searchUser(int userID) {
         User temp = null;

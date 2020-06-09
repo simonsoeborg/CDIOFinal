@@ -17,31 +17,45 @@ public class UserServlet {
 
     @GET
     @Path("activated")
-    public List<User> listAllActiveUsers() { return dbUser.listAllActivatedUsers(); }
+    public List<User> listAllActiveUsers() {
+        return dbUser.listAllActivatedUsers();
+    }
 
     @GET
     @Path("deactivated")
-    public List<User> listAllDeactivatedUsers() { return dbUser.listAllDeactivatedUsers(); }
+    public List<User> listAllDeactivatedUsers() {
+        return dbUser.listAllDeactivatedUsers();
+    }
 
     @GET
     @Path("search")
-    public User searchUser(@QueryParam("id") int id){return dbUser.searchUser(id);}
+    public User searchUser(@QueryParam("id") int id) {
+        return dbUser.searchUser(id);
+    }
 
-        //*Todo Implement auto generated initials.
+    //*Todo Implement auto generated initials.
     @POST
     public void createUser(User user) {
-        dbUser.createUser(user.getFirstname(), user.getLastname(), user.getInitial(), user.getRole()); }
+        dbUser.createUser(user.getFirstname(), user.getLastname(), user.getInitial(), user.getRole());
+    }
 
-        // *todo Test edit-user:
+    // *todo Test edit-user:
     @PUT
     @Path("{id}")
     public void editUser(@PathParam("id") int id, User user) {
-        dbUser.editUser(id, user.getFirstname(), user.getLastname(), user.getRole()); }
+        dbUser.editUser(id, user.getFirstname(), user.getLastname(), user.getRole());
+    }
 
     @PUT
-    @Path("deactivated")
+    @Path("deactivate")
     public void deactivateUser(@QueryParam("id") int id) {
         dbUser.deactivateUser(id);
     }
 
+    @PUT
+    @Path("activate")
+    public void activateUser(@QueryParam("id") int id) {
+        dbUser.activateUser(id);
+
+    }
 }
