@@ -11,40 +11,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBRaavare {
-DBConnector dbc = new DBConnector();
-private String sqlQuery;
-private Connection SQLConn = dbc.createConnection();
-private List<Raavare> raavare;
+    DBConnector dbc = new DBConnector();
+    private String sqlQuery;
+    private Connection SQLConn = dbc.createConnection();
+    private List<Raavare> raavare;
 
-private DBConnector MySQLConnector = new DBConnector();
+    private DBConnector MySQLConnector = new DBConnector();
 
     public void fetchAllRaavare() {
         raavare = new ArrayList<>();
         raavare = GetAllRaavare();
     }
 
-public List<Raavare> GetAllRaavare() {
-    ArrayList<Raavare> data = new ArrayList<>();
-    SQLConn = MySQLConnector.createConnection();
-    if (SQLConn != null) {
-        try {
-            sqlQuery = "SELECT * FROM Raavare";
-            //prepared statement
-            PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-            ResultSet resultSet = pstm.executeQuery();
-            while (resultSet.next()) {
-                data.add(new Raavare(resultSet.getInt("raavareId"), resultSet.getString("raavareNavn"), resultSet.getString("leverandoer")));
+    public List<Raavare> GetAllRaavare() {
+        ArrayList<Raavare> data = new ArrayList<>();
+        SQLConn = MySQLConnector.createConnection();
+        if (SQLConn != null) {
+            try {
+                sqlQuery = "SELECT * FROM Raavare";
+                //prepared statement
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                ResultSet resultSet = pstm.executeQuery();
+                while (resultSet.next()) {
+                    data.add(new Raavare(resultSet.getInt("raavareId"), resultSet.getString("raavareNavn"), resultSet.getString("leverandoer")));
+                }
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
             }
-            SQLConn.close();
-        } catch (SQLException e) {
-            System.out.println(e);
         }
+        return data;
     }
-    return data;
-}
-public List<Raavare> listAllRaavare() {
+
+    public List<Raavare> listAllRaavare() {
         fetchAllRaavare();
-        return raavare; }
+        return raavare;
+    }
 
     public void deleteRaavare(int raavareId) {
         try {

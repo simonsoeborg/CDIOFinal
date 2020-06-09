@@ -33,7 +33,7 @@ public class DBRaavareBatch {
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new raavareBatch(resultSet.getInt("rbId"), resultSet.getInt("raavareId"), resultSet.getDouble("maengde")));
+                    data.add(new raavareBatch(resultSet.getInt("rbId"), resultSet.getInt("raavareId"), resultSet.getInt("maengde")));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
@@ -42,9 +42,11 @@ public class DBRaavareBatch {
         }
         return data;
     }
+
     public List<raavareBatch> listAllRaavareBatch() {
         fetchAllRaavareBatch();
-        return raavarebatch; }
+        return raavarebatch;
+    }
 
     public void deleteRaavareBatch(int rbId) {
         try {
