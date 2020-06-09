@@ -14,7 +14,7 @@ public class ReceptServlet {
     private DBConnector DBC = new DBConnector("mysql30.unoeuro.com","3306", "uglyrage_com_db_cdio", "uglyrage_com", "2d4f6r3t");
 
     @GET
-    public List<User> listAllUsers() {
+    public List<DBRecept> listAllUsers() {
         return DBC.listAllUsers();
     }
 }
