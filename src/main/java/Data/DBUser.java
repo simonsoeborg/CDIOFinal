@@ -21,9 +21,6 @@ public class DBUser implements IDataHandlerDAO {
 
     private DBConnector MySQLConnector = new DBConnector();
 
-    public DBUser() {
-    }
-
     public DBUser(int id, String firstname, String lastname, String password, String role) {
         this.id = id;
         this.password = password;
