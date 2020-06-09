@@ -1,3 +1,7 @@
+/*
+Author: Simon Søborg
+Github: simonsoeborg
+*/
 .row{
   width: 100%;
   padding: 16px;
@@ -9,10 +13,6 @@
   margin-right: 25%;
 }
 
-#afvejningsTitel {
-  color: #E44E4E;
-
-}
 
 [class*="afvejningStep"] {
   width: 100%;
@@ -129,4 +129,15 @@ button:hover {
   background-color: #4CAF50;
   color: white;
   width: 100px;
+}
+
+.warningbutton {
+  border-radius: 5px;
+  background-color: #ffad00;
+  color: white;
+  width: 100px;
+}
+
+#runAllBatchesButton {
+  margin-right: 25%;
 }

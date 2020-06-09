@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DBUser implements IDataHandlerDAO {
+public class DBUser {
 
     private int id;
     private String firstname;

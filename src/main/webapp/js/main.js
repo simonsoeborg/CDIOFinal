@@ -1,14 +1,13 @@
+/* *********************************************************************** */
+/*
+Author: Simon Søborg
+Github: simonsoeborg
+*/
 /* Site functionality */
 
 // SinglePage functionality:
 function displayContent(page) {
-
-    if(page == "afvejning.html") {
-        $("body").load(page);
-        loadAfvejningContent();
-    } else {
-        $("body").load(page);
-    }
+    $("body").load(page);
 }
 
 // Load header code functionality:
@@ -27,3 +26,4 @@ function includeFooter() {
 }
 
 /* End of Site functionality */
+/* *********************************************************************** */
