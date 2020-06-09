@@ -4,6 +4,7 @@ import Data.DBRecept;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("receipts")
@@ -11,10 +12,11 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ReceptServlet {
 
-    private DBConnector DBC = new DBConnector("mysql30.unoeuro.com","3306", "uglyrage_com_db_cdio", "uglyrage_com", "2d4f6r3t");
+    DBRecept dbr = new DBRecept();
 
     @GET
-    public List<DBRecept> listAllUsers() {
-        return DBC.listAllUsers();
+    public ArrayList<DBRecept> getRecepts() {
+        return dbr.getRecepts();
     }
+
 }

@@ -18,10 +18,12 @@ public class DBRecept implements IDataHandlerDAO {
     private Connection SQLConn;
     private String sqlQuery;
     private PreparedStatement pstm;
-    private ResultSet rs;
+    private ResultSet ResultSet;
     private ArrayList<DBRecept> recepts;
 
     private DBConnector SQLConnector = new DBConnector();
+
+    public DBRecept(){}
 
     public DBRecept(int receptId, String receptNavn, int raavareID, double nonNetto, double tolerance) {
         this.receptId = receptId;
@@ -31,9 +33,39 @@ public class DBRecept implements IDataHandlerDAO {
         this.tolerance = tolerance;
     }
 
+    //-----------------------FETCH ALL RECEPTS------------------------------------------
+
+    // Fetch user list from MySQL database
+    public void fetchAllRecepts() {
+        try {
+            recepts = new ArrayList<>();
+            recepts = addReceptsFromResultSet();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
     public ArrayList<DBRecept> getRecepts() {
         return recepts;
     }
+
+    public ArrayList<DBRecept> addReceptsFromResultSet() throws SQLException {
+        SQLConnector.createConnection();
+        ArrayList<DBRecept> data = new ArrayList<>();
+        if (SQLConn != null) {
+            ResultSet = SQLConn.prepareStatement("SELECT * FROM Recept").executeQuery();
+            while (ResultSet.next()) {
+                data.add(new DBRecept(ResultSet.getInt("receptId"), ResultSet.getString("receptNavn"),
+                        ResultSet.getInt("raavareID"), ResultSet.getDouble("nonNetto"),
+                        ResultSet.getDouble("tolerance")));
+            }
+            SQLConn.close();
+        }
+        return data;
+    }
+
+    //-----------------------FETCH ALL RECEPTS------------------------------------------
+
 
     public void createRecept(int receptId, String receptNavn, int raavareID, double nonNetto, double tolerance) {
 
@@ -42,7 +74,7 @@ public class DBRecept implements IDataHandlerDAO {
             if (SQLConn != null) {
                 pstm = SQLConn.prepareStatement("INSERT INTO Recept (receptId, receptNavn, raavareID, nonNetto, tolerance)" +
                         "VALUES (?, ?, ?, ?, ?)");
-                rs = pstm.executeQuery();
+                ResultSet = pstm.executeQuery();
                 pstm.setInt(1, receptId);
                 pstm.setString(2, receptNavn);
                 pstm.setInt(3, raavareID);
