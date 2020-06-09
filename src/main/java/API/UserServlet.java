@@ -27,21 +27,20 @@ public class UserServlet {
     @Path("search")
     public User searchUser(@QueryParam("id") int id){return dbUser.searchUser(id);}
 
-
+        //*Todo Implement auto generated initials.
     @POST
     public void createUser(User user) {
-        dbUser.createUser(user.getFirstname(), user.getLastname(), user.getRole());
-    }
+        dbUser.createUser(user.getFirstname(), user.getLastname(), user.getInitial(), user.getRole()); }
 
+        // *todo Test edit-user:
     @PUT
     @Path("{id}")
     public void editUser(@PathParam("id") int id, User user) {
-        dbUser.editUser(id, user.getFirstname(), user.getLastname(), user.getRole());
-    }
+        dbUser.editUser(id, user.getFirstname(), user.getLastname(), user.getRole()); }
 
     @PUT
-    @Path("{id}")
-    public void deactivateUser(@PathParam("id") int id) {
+    @Path("deactivated")
+    public void deactivateUser(@QueryParam("id") int id) {
         dbUser.deactivateUser(id);
     }
 

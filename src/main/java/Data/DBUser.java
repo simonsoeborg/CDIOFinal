@@ -17,7 +17,6 @@ public class DBUser implements IDataHandlerDAO {
     private List<User> userList;
     private DBConnector MySQLConnector = new DBConnector();
 
-
     public List<User> listAllActivatedUsers() {
         userList = new ArrayList<>();
         userList = getAllActivatedUsers();
@@ -73,12 +72,12 @@ public class DBUser implements IDataHandlerDAO {
     public void deactivateUser(int userID) {
         try {
             SQLConn = MySQLConnector.createConnection();
+            String parameter2 = "Deactivated";
             if (SQLConn != null) {
-                sqlQuery = "UPDATE Brugere," +
-                        "SET Status='Deactivated'," +
-                        "WHERE UserId = ?";
+                sqlQuery = "UPDATE Brugere  SET Status=? WHERE UserId = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-                pstm.setInt(1, userID );
+                pstm.setString(1,parameter2);
+                pstm.setInt(2, userID );
 
                 pstm.executeUpdate();
                 SQLConn.close();
@@ -94,7 +93,7 @@ public class DBUser implements IDataHandlerDAO {
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "SELECT * FROM Users WHERE UserId = ?";
+                sqlQuery = "SELECT * FROM Brugere WHERE UserId = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setInt(1, userID);
                 ResultSet resultSet = pstm.executeQuery();
@@ -109,17 +108,18 @@ public class DBUser implements IDataHandlerDAO {
         return temp;
     }
 
-    public void createUser(String firstName, String lastName, String role) {
+    public void createUser(String firstName, String lastName, String initial, String role) {
+        // String initial = String.valueOf(Character.toUpperCase(firstName.charAt(0))+ Character.toUpperCase(lastName.charAt(0)));
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "INSERT INTO Brugere (FirstName, LastName, Role)" +
-                        "VALUES (?, ?, ?)";
+                sqlQuery = "INSERT INTO Brugere (FirstName, LastName, Initial, Role)" +
+                        "VALUES (?, ?, ?, ?)";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setString(1, firstName);
                 pstm.setString(2, lastName);
-                pstm.setString(3, role);
-
+                pstm.setString(3, initial);
+                pstm.setString(4, role);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -150,12 +150,4 @@ public class DBUser implements IDataHandlerDAO {
             System.out.println(e);
         }
     }
-
-  /*  // *todo Lav en mere fyldestgørende løsning:
-    public void setInitial (String firstname, String lastname) {
-        Character first = Character.toUpperCase(firstname.charAt(0));
-        Character second = Character.toUpperCase(lastname.charAt(0));
-        User.initial = String.valueOf(first+second);
-    }*/
-
 }
