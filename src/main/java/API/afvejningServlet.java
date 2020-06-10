@@ -1,8 +1,11 @@
+/*
+    Author: Simon Søborg
+    Github: simonsoeborg
+*/
 package API;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import Data.DBAfvejning;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("afvejning")
@@ -10,4 +13,17 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 public class afvejningServlet {
 
+    DBAfvejning dba = new DBAfvejning();
+
+    @GET
+    @Path("lab")
+    public String findLaborant(@QueryParam("labNr") int id) {
+        return dba.getLaborantName(id);
+    }
+
+    @GET
+    @Path("pb")
+    public String findRecept(@QueryParam("pbNr") int id) {
+        return dba.findRecept(id);
+    }
 }

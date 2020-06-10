@@ -1,3 +1,8 @@
+/* *********************************************************************** */
+/*
+Author: Simon Søborg
+Github: simonsoeborg
+*/
 /* Site functionality */
 
 // SinglePage functionality:
@@ -21,3 +26,4 @@ function includeFooter() {
 }
 
 /* End of Site functionality */
+/* *********************************************************************** */
