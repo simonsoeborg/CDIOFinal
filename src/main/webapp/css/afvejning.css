@@ -13,24 +13,9 @@ Github: simonsoeborg
   margin-right: 25%;
 }
 
-
 [class*="afvejningStep"] {
   width: 100%;
 }
-
-[class*="col-"] {
-  padding-left: 16px;
-  padding-right: 16px;
-  align-content: center;
-}
-
-.small_Container {
-  border: 1px solid rgba(114, 85, 85, 0.29);
-  padding: 16px;
-  width: auto;
-  margin-bottom: 10px;
-}
-
 
 #produktionStatus {
   color: #E44E4E;
@@ -39,36 +24,8 @@ Github: simonsoeborg
   visibility: hidden;
 }
 
-
 #afvejningStep1 {
     display: block;
-}
-
-
-.small_Container_borderless {
-  border: 0px;
-  padding: 16px;
-  width: auto;
-  margin-bottom: 10px;
-}
-
-
-
-.Container_borderless {
-  border: 0px;
-  padding: 16px;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-
-.col-50 {
-  width: 50%;
-  float: left;
-}
-
-.col-25 {
-  width: 25%;
 }
 
 label {
@@ -106,36 +63,12 @@ button:hover {
   border-radius: 5px;
 }
 
-.vLine {
-  border-left: 1px solid #E44E4E;
-  padding: 16px;
-  height: 50%;
-  position: absolute;
-  left: 50%;
-  top: 25%;
-  bottom: 25%;
-}
-
 #labNameResponse {
   color: #4CAF50;
 }
 
 .repeatButton {
   margin: 10px;
-}
-
-.successbutton {
-  border-radius: 5px;
-  background-color: #4CAF50;
-  color: white;
-  width: 100px;
-}
-
-.warningbutton {
-  border-radius: 5px;
-  background-color: #ffad00;
-  color: white;
-  width: 100px;
 }
 
 #runAllBatchesButton {

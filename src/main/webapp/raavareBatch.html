@@ -1,0 +1,41 @@
+<!-- Author: Karl Emil -->
+<div class="grid-container">
+
+    <!-- Attach global header -->
+    <div class="grid-menu"><script>includeHeader();</script></div>
+
+    <!-- Attach global sideMenu -->
+    <div class="grid-sideMenu"><script>includeSideMenu();</script></div>
+
+    <div class="grid-contentHeader">
+        <!-- Titel på siden -->
+        <h1>Råvarebatch</h1>
+    </div>
+
+    <div class="grid-contentBody">
+        <!-- Inputs, labels, paragrapher CONTENT -->
+
+        <div class="container" style="align-content: center; margin-left: 25%;">
+            <div class="row">
+            </div>
+
+            <div class="grid-item-10">
+                <table>
+                    <thead>
+                    <tr>
+                        <td>Råvarebatch ID</td>
+                        <td>Råvare ID</td>
+                        <td>Mængde</td>
+                        <td> </td>
+                    </tr>
+                    </thead>
+                    <tbody id="loadAllRaavareBatchList"><script>loadRaavareBatchList();</script></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attach global footer -->
+    <div class="grid-contentFooter"><script>includeFooter();</script></div>
+
+</div>

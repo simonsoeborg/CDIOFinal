@@ -8,8 +8,8 @@ public class User {
     private String role;
     private String status;
 
-    public User() { }
-
+    public User() {
+    }
     public User(int id, String firstname, String lastname, String initial, String role, String status) {
         this.id = id;
         this.firstname = firstname;
@@ -19,12 +19,12 @@ public class User {
         this.status=status;
     }
 
-  /*  todo Lav en mere fyldestgørende løsning:
+    // *Todo Lav en løsning sålede at initials selv bliver dannet. (Ved ikke hvor jeg skal implementer).
     public void setInitial (String firstname, String lastname) {
         Character first = Character.toUpperCase(firstname.charAt(0));
         Character second = Character.toUpperCase(lastname.charAt(0));
         initial= String.valueOf(first+second);
-    }*/
+    }
 
     public String getInitial() { return initial; }
 
@@ -65,4 +65,5 @@ public class User {
     public void setStatus(String status) {
         this.status=status;
     }
+
 }

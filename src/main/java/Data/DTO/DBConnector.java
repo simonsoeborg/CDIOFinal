@@ -1,6 +1,7 @@
-package DB;
+package Data.DTO;
 
-import Data.DBUser;
+import Controller.DBRaavare;
+import Controller.DBUser;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,9 +15,9 @@ public class DBConnector {
     private String port = "3306";
     private String password = "2d4f6r3t";
     private List<DBUser> userList;
+    private List<DBRaavare> Raavarer;
 
-    public DBConnector() {
-    }
+    public DBConnector(){ }
 
     public Connection createConnection() {
         Connection SQLConn;
@@ -30,4 +31,5 @@ public class DBConnector {
         }
         return null;
     }
+
 }
