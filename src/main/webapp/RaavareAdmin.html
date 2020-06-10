@@ -8,40 +8,34 @@
 
     <div class="grid-contentHeader">
         <!-- Titel på siden såsom Afvejning -->
-        <h1 id="RaavareAdminTitel">Råvare</h1>
+        <h1 id="RaavareAdminTitel">Råvare Administration</h1>
 
     </div>
-
-
 
     <div class="grid-contentBody">
         <!-- ------------------------------- Her sættes alt hvad der skal vises ---------------------------------- -->
         <div class="Container_borderless">
             <form>
-                <div class="rowCreate">
-                    <div class="column"><label>Indtast Råvare ID:</label> <br> <input id="raavareId" type="text"></div>
-                    <div class="column"><label>Indtast Råvare Navn:</label> <br> <input id="raavareNavn" type="text"></div>
-                    <div class="column"><label>Indtast leverandør:</label> <br> <input id="leveradoer" type="text"> </div>
-                    <div class="column"><button class="successbutton" type="button" name="button">Opret</button> </div>
-                </div>
+                <div class="column"><label>Indtast Råvare ID:</label> <br> <input id="raavareId" type="text"></div>
+                <div class="column"><label>Indtast Råvare Navn:</label> <br> <input id="raavareNavn" type="text"></div>
+                <div class="column"><label>Indtast leverandør:</label> <br> <input id="leverandoer" type="text"> </div>
+                <div class="column"><button class="successbutton" type="button" name="button">Opret</button> </div>
             </form>
         </div>
         <div class="Container_borderless">
-            <div class="rowCreate">
-                <form>
-                    <table>
-                        <thead>
-                        <tr>
-                            <td>RaavareId</td>
-                            <td>RaavareNavn</td>
-                            <td>leveradør</td>
-                            <td></td>
-                        </tr>
-                        </thead>
-                        <tbody id="loadAllRaavareList"><script>loadRaavareList();</script></tbody>
-                    </table>
-                </form>
-            </div>
+            <form>
+                <table>
+                    <thead>
+                    <tr>
+                        <td>Råvare Id</td>
+                        <td>Råvare navn</td>
+                        <td>leverandør</td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody id="loadAllRaavareList"><script>loadRaavareList();</script></tbody>
+                </table>
+            </form>
         </div>
     </div>
     <!-- ----------------------------------------------------------------------------------------------------- -->

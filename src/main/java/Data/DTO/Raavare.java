@@ -3,12 +3,16 @@ package Data.DTO;
 public class Raavare {
     private int raavareId;
     private String raavareNavn;
-    private String leveradoer;
+    private String leverandoer;
 
-    public Raavare (int raavareId, String raavareNavn, String leveradoer){
+    public Raavare () {
+
+    }
+
+    public Raavare (int raavareId, String raavareNavn, String leverandoer){
         this.raavareId = raavareId;
         this.raavareNavn = raavareNavn;
-        this.leveradoer = leveradoer;
+        this.leverandoer = leverandoer;
     }
 
     public int getRaavareId() {
@@ -27,11 +31,11 @@ public class Raavare {
         this.raavareNavn = raavareNavn;
     }
 
-    public String getLeveradoer() {
-        return leveradoer;
+    public String getLeverandoer() {
+        return leverandoer;
     }
 
-    public void setLeveradoer(String leveradoer) {
-        this.leveradoer = leveradoer;
+    public void setLeverandoer(String leverandoer) {
+        this.leverandoer = leverandoer;
     }
 }

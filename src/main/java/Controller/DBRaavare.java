@@ -18,11 +18,6 @@ public class DBRaavare {
 
     private DBConnector MySQLConnector = new DBConnector();
 
-    public void fetchAllRaavare() {
-        raavare = new ArrayList<>();
-        raavare = GetAllRaavare();
-    }
-
     public List<Raavare> GetAllRaavare() {
         ArrayList<Raavare> data = new ArrayList<>();
         SQLConn = MySQLConnector.createConnection();
@@ -40,11 +35,8 @@ public class DBRaavare {
                 System.out.println(e);
             }
         }
-        return data;
-    }
-
-    public List<Raavare> listAllRaavare() {
-        fetchAllRaavare();
+        raavare = new ArrayList<>();
+        raavare = data;
         return raavare;
     }
 

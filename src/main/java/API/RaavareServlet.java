@@ -16,7 +16,7 @@ public class RaavareServlet {
 
     @GET
     public List<Raavare> GetRaavare() {
-        return DBRaavare.listAllRaavare();
+        return DBRaavare.GetAllRaavare();
     }
 
     // @GET
