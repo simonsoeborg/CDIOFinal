@@ -11,7 +11,7 @@ import java.util.List;
 @Path("users")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class UserServlet {
+public class brugerServlet {
     private DBUser dbUser = new DBUser();
 
     @GET
