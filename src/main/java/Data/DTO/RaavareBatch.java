@@ -1,5 +1,5 @@
 package Data.DTO;
-// Author: Kristoffer
+
 public class RaavareBatch {
 
     private int rbId;

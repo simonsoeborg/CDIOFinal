@@ -34,7 +34,7 @@ public class DBRaavare {
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
                     data.add(new Raavare(resultSet.getInt("raavareId"), resultSet.getString("raavareNavn"), resultSet.getString("leverandoer")));
-                   // System.out.println(resultSet.getString("raavareNavn"));
+                   System.out.println(resultSet.getString("raavareNavn"));
                 }
                 SQLConn.close();
             } catch (SQLException e) {

@@ -1,5 +1,4 @@
 package API;
-// Author: Kristoffer
 
 import Data.DBRaavareBatch;
 import Data.DTO.RaavareBatch;
