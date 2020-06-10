@@ -1,13 +1,10 @@
-<!-- Author: Kristoffer -->
-var hostURL = '/CDIOFinal_war_exploded/test/raavare/';
 
-$(document).ready(function () {
-    loadRaavareList();
-});
+var hostURL = "/CDIOFinal_war_exploded/test/raavare/";
 
 function loadRaavareList() {
-    console.log("Loading raavarer");
-    $.get(hostURL, function (data, textStatus, req) {
+    let hostURLGetList = "/CDIOFinal_war_exploded/test/raavare/load/";
+    console.log("Loading raavare");
+    $.get(hostURLGetList, function (data, textStatus, req) {
         $("#loadAllRaavareList").empty();
         $.each(data, function (i, raavare) {
             $("#loadAllRaavareList").append(genTableHTMLForRaavare(raavare));
@@ -16,11 +13,12 @@ function loadRaavareList() {
 }
 
 function genTableHTMLForRaavare(raavare) {
-    return '<tr><td>'+ raavare.raavareId + '</td>'  +
-        '<td>' + raavare.raavareNavn +'</td>' +
+    return '<tr>' +
+        '<td>'+ raavare.raavareid + '</td>'  +
+        '<td>' + raavare.raavarenavn +'</td>' +
         '<td>' + raavare.leverandoer + '</td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteRaavare(' + raavare.raavareId + ');">Slet</button></td>' +
-        '</td>'
+        '<td><button class="btn-alert" type="submit" onclick="deleteRaavare(' + raavare.raavareid + ');">Slet</button></td>' +
+        '</tr>';
 }
 
 function deleteRaavare(raavareId) {

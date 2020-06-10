@@ -1,6 +1,6 @@
-package Data;
+package Controller;
 
-import DB.DBConnector;
+import Data.DTO.DBConnector;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

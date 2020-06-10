@@ -1,12 +1,10 @@
-package DB;
+package Data.DTO;
 
-import Data.DBRaavare;
-import Data.DBUser;
+import Controller.DBRaavare;
+import Controller.DBUser;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DBConnector {

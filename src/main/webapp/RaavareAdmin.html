@@ -9,41 +9,34 @@
 
     <div class="grid-contentHeader">
         <!-- Titel på siden såsom Afvejning -->
-        <h1>Råvarer</h1>
-        <form>
-            <div class="container" style="align-content: center; margin-left: 20%;">
-                <div class="rowCreate">
-                    <div class="column">  <label>Indtast Råvare ID:</label> <br \> <input id="raavareId" type="text"></div>
-                    <div class="column">  <label>Indtast Råvare Navn:</label> <br \> <input id="raavareNavn" type="text"></div>
-                    <div class="column"> <label>Indtast leverandør:</label> <br \> <input id="leveradoer" type="text"> </div>
-                    <div class="column"> <br \> <button class="successbutton" type="button" name="button" onclick="findLaborant();">Opret</button> </div>
-                </div>
-            </div>
-        </form>
+        <h1 id="RaavareAdminTitel">Råvare Administration</h1>
+
     </div>
-
-
 
     <div class="grid-contentBody">
         <!-- ------------------------------- Her sættes alt hvad der skal vises ---------------------------------- -->
-
-        <div class="container" style="align-content: center; margin-left: 25%;">
-            <div class="row">
-            </div>
-
-            <div class="grid-item-10">
+        <div class="Container_borderless">
+            <form>
+                <div class="column"><label>Indtast Råvare ID:</label> <br> <input id="raavareId" type="text"></div>
+                <div class="column"><label>Indtast Råvare Navn:</label> <br> <input id="raavareNavn" type="text"></div>
+                <div class="column"><label>Indtast leverandør:</label> <br> <input id="leverandoer" type="text"> </div>
+                <div class="column"><button class="successbutton" type="button" name="button">Opret</button> </div>
+            </form>
+        </div>
+        <div class="Container_borderless">
+            <form>
                 <table>
                     <thead>
                     <tr>
-                        <td>Råvare ID</td>
-                        <td>Råvare Navn</td>
+                        <td>Råvare Id</td>
+                        <td>Råvare navn</td>
                         <td>leverandør</td>
-                        <td> </td>
+                        <td></td>
                     </tr>
                     </thead>
                     <tbody id="loadAllRaavareList"><script>loadRaavareList();</script></tbody>
                 </table>
-            </div>
+            </form>
         </div>
     </div>
     <!-- ----------------------------------------------------------------------------------------------------- -->

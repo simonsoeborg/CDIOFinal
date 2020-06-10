@@ -1,7 +1,7 @@
 package API;
 // Author: Kristoffer
 
-import Data.DBRaavare;
+import Controller.DBRaavare;
 import Data.DTO.Raavare;
 
 import javax.ws.rs.*;
@@ -16,8 +16,9 @@ public class RaavareServlet {
     DBRaavare DBRaavare = new DBRaavare();
 
     @GET
+    @Path("load")
     public List<Raavare> GetRaavare() {
-        return DBRaavare.listAllRaavare();
+        return DBRaavare.GetAllRaavare();
     }
 
     // @GET
