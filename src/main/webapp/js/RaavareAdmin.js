@@ -1,6 +1,10 @@
 <!-- Author: Kristoffer -->
 var hostURL = '/CDIOFinal_war_exploded/test/raavare/';
 
+$(document).ready(function () {
+    loadRaavareList();
+});
+
 function loadRaavareList() {
     console.log("Loading raavarer");
     $.get(hostURL, function (data, textStatus, req) {
@@ -13,10 +17,10 @@ function loadRaavareList() {
 
 function genTableHTMLForRaavare(raavare) {
     return '<tr><td>'+ raavare.raavareId + '</td>'  +
-           '<td>' + raavare.raavareNavn +'</td>' +
-           '<td>' + raavare.leverandoer + '</td>' +
-           '<td><button class="btn-alert" type="submit" onclick="deleteRaavare(' + raavare.raavareId + ');">Slet</button></td>' +
-            '</td>'
+        '<td>' + raavare.raavareNavn +'</td>' +
+        '<td>' + raavare.leveradoer + '</td>' +
+        '<td><button class="btn-alert" type="submit" onclick="deleteRaavare(' + raavare.raavareId + ');">Slet</button></td>' +
+        '</td>'
 }
 
 function deleteRaavare(raavareId) {
