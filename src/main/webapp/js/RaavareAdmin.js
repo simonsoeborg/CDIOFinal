@@ -20,7 +20,7 @@ function genTableHTMLForRaavare(raavare) {
         '<td>' + raavare.raavareNavn +'</td>' +
         '<td>' + raavare.leverandoer + '</td>' +
         '<td><button class="btn-alert" type="submit" onclick="deleteRaavare(' + raavare.raavareId + ');">Slet</button></td>' +
-        '</td>'
+        '</tr>'
 }
 
 function deleteRaavare(raavareId) {
