@@ -1,0 +1,9 @@
+.column {
+    float: left;
+    width: 25%;
+}
+.rowCreate{
+    width: 85%;
+    height: auto;
+    align-content: center;
+}

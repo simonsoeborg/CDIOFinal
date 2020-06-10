@@ -3,6 +3,16 @@
 Author: Simon Søborg
 Github: simonsoeborg
 */
+* {
+  --color-primary: #F95454;
+  --color-secondary: #564848;
+  --color-third: rgba(255, 34, 15, 0.65);
+  font-family: 'Lato', sans-serif;
+  color: var(--color-secondary);
+
+
+  box-sizing: border-box;
+}
 .contentContainer {
   margin-top: 10%;
   margin-left: 20%;
@@ -15,6 +25,70 @@ Github: simonsoeborg
   margin-top: 1%;
   margin-left: 2%;
 }
+.btn-alert {
+  background-color: var(--color-primary);
+  color: white;
+}
+.btn-alert:hover {
+  background-color: rgba(255,144,142,0.65);
+  color: var(--color-secondary);
+}
+
+.submitButton{
+  font-size: 100%;
+  color: white;
+  font-weight: bold;
+  background-color: var(--color-primary);
+  padding: 8px;
+  margin-top: 1%;
+  border-radius: 10px; /* Border radius gør vores kanter runde*/
+  border: none;
+  outline: none;
+  /* Bonus: Brug transitions til flydende at skifte properties (her
+      'background-color' og 'color', når der skiftes til denne */
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.submitButton:hover{
+  border: none;
+  color: white;
+  background-color: var(--color-third);
+  transition: background-color 0.25s, color 0.25s;
+}
+
+table {
+  border-spacing: 0px;
+}
+
+thead td {
+  font-weight: bold;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+}
+
+tbody {
+  border-bottom: 1px solid var(--color-primary);
+}
+
+td {
+  padding: 15px 15px 15px 15px;
+  vertical-align: middle;
+  text-align: left;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5;
+  color: var(--color-secondary);
+}
+
+select {
+  margin: 15px 15px 15px 15px;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+}
+
 
 h1 {
   color: #E44E4E;
