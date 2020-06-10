@@ -1,7 +1,6 @@
 package API;
 
-import DB.DBConnector;
-import Data.DBUser;
+import Controller.DBUser;
 import Data.DTO.User;
 
 import javax.ws.rs.*;
@@ -24,6 +23,11 @@ public class brugerServlet {
     @Path("deactivated")
     public List<User> listAllDeactivatedUsers() {
         return dbUser.listAllDeactivatedUsers();
+    }
+
+    @GET
+    public List<User> getAllUsers() {
+        return dbUser.listAllUsers();
     }
 
     @GET

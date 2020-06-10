@@ -1,7 +1,7 @@
-package DB;
+package Data.DTO;
 
-import Data.DBRaavare;
-import Data.DBUser;
+import Controller.DBRaavare;
+import Controller.DBUser;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

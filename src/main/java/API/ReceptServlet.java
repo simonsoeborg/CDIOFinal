@@ -1,6 +1,5 @@
 package API;
-import DB.DBConnector;
-import Data.DBRecept;
+import Controller.DBRecept;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
