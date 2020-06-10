@@ -1,18 +1,31 @@
-
+/*
+Author: Simon Søborg
+Github: simonsoeborg
+*/
 var repeatI = 1;
 
 function repeatObject() {
-  var orig = document.getElementById('repeatableObject' + repeatI);
-  var repeat = orig.cloneNode(true);
+  if(repeatI < 5) {
+    if(repeatI >= 1) {
+      showRunAllBatchesButton();
+    }
+    var raavareOrig = document.getElementById('raavareOrig').id;
+    var maengdeOrig = document.getElementById('maengdeOrig').id;
+    var orig = document.getElementById('repeatableObject' + repeatI);
+    var repeat = orig.cloneNode(true);
 
-  repeat.id = "repeatableObject" + ++repeatI;
+    repeat.id = "repeatableObject" + ++repeatI;
 
-  repeat.onclick = repeatObject;
-  orig.parentNode.appendChild(repeat);
+    document.getElementById('raavareOrig').id = raavareOrig + repeatI;
+    document.getElementById('maengdeOrig').id = maengdeOrig + repeatI;
 
+    orig.parentNode.appendChild(repeat);
+  }
 }
 
-var hostURL = '/CDIOFinal_war_exploded/test/afvejning/';
+function showRunAllBatchesButton() {
+  document.getElementById('runAllBatchesButton').style.display = 'block';
+}
 
 function findLaborant() {
   var hostLabURL = '/CDIOFinal_war_exploded/test/afvejning/lab?labNr=';
@@ -22,9 +35,13 @@ function findLaborant() {
     url: hostLabURL + labNr,
     dataType: "text",
     success: function (result) {
-      document.getElementById('labNameResponse').innerHTML = "Laborant: " + result;
-      document.getElementById('afvejningStep1').style.display = "none";
-      document.getElementById('produktionStatus').style.visibility = "visible";
+      if(result == null || result == " ") {
+        alert("Error using " + labNr + "! \nTry again or use another laborant nr.");
+      } else {
+        document.getElementById('labNameResponse').innerHTML = "Laborant: " + result;
+        document.getElementById('afvejningStep1').style.display = "none";
+        document.getElementById('produktionStatus').style.visibility = "visible";
+      }
     },
     error: function (jqXHR, textStatus, errorThrown) {
       alert("Unable to find laborant");
@@ -33,14 +50,18 @@ function findLaborant() {
 }
 
 function findProduktBatch() {
-  var hostPBURL = '/CDIOFinal_war_exploded/test/afvejning/pb/';
+  var hostPBURL = '/CDIOFinal_war_exploded/test/afvejning/pb?pbNr=';
   var produktbatchNr = document.getElementById('produktbatchNr').value;
   $.ajax({
     type: 'GET',
     url: hostPBURL + produktbatchNr,
     dataType: "text",
     success: function (result) {
-      document.getElementById('receptNameResponse').innerHTML = "Recept: " + result;
+      if(result == null || result == " ") {
+        alert("Error using " + produktbatchNr + "! \nTry again or use another produktbatch nr.");
+      } else {
+        document.getElementById('receptNameResponse').innerHTML = "Recept: " + result;
+      }
     },
     error: function (jqXHR, textStatus, errorThrown) {
       alert("Unable to find receipt");

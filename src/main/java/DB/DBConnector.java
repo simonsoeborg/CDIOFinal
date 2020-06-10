@@ -5,6 +5,8 @@ import Data.DBUser;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DBConnector {
@@ -17,8 +19,7 @@ public class DBConnector {
     private List<DBUser> userList;
     private List<DBRaavare> Raavarer;
 
-    public DBConnector() {
-    }
+    public DBConnector(){ }
 
     public Connection createConnection() {
         Connection SQLConn;
@@ -32,4 +33,5 @@ public class DBConnector {
         }
         return null;
     }
+
 }

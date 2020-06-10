@@ -1,71 +1,84 @@
 package Data;
 
 import DB.DBConnector;
+import Data.DTO.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class DBUser implements IDataHandlerDAO {
+public class DBUser {
 
-    private int id;
-    private String firstname;
-    private String lastname;
-    private String password;
-    private String role;
     private Connection SQLConn;
     private String sqlQuery;
-    private ArrayList<DBUser> userList;
-
+    private List<User> userList;
     private DBConnector MySQLConnector = new DBConnector();
 
-    public DBUser(int id, String firstname, String lastname, String password, String role) {
-        this.id = id;
-        this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.role = role;
-    }
-
-    public ArrayList<DBUser> listAllUsers() {
+    public List<User> listAllActivatedUsers() {
+        userList = new ArrayList<>();
+        userList = getAllActivatedUsers();
         return userList;
     }
 
-    public void fetchAllUsers() {
+    public List<User> listAllDeactivatedUsers() {
         userList = new ArrayList<>();
-        userList = addUsersFromResultSet();
+        userList = getAllDeactivatedUsers();
+        return userList;
     }
 
-    public ArrayList<DBUser> addUsersFromResultSet() {
+    public List<User> getAllActivatedUsers() {
         SQLConn = MySQLConnector.createConnection();
-        ArrayList<DBUser> data = new ArrayList<>();
+        ArrayList<User> data = new ArrayList<>();
         if (SQLConn != null) {
             try {
-                sqlQuery = "SELECT * FROM Users";
+                sqlQuery = "SELECT * FROM Brugere WHERE Status='Activated'";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new DBUser(resultSet.getInt("userID"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Password"), resultSet.getString("Role")));
+                    data.add(new User(resultSet.getInt("UserId"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Initial"), resultSet.getString("Role"), resultSet.getString("Status")));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
                 System.out.println(e);
             }
-
         }
         return data;
     }
 
-    public void deleteUser(int id) {
+    public List<User> getAllDeactivatedUsers() {
+        SQLConn = MySQLConnector.createConnection();
+        ArrayList<User> data = new ArrayList<>();
+        if (SQLConn != null) {
+            try {
+                sqlQuery = "SELECT * FROM Brugere WHERE Status='Deactivated'";
+                //prepared statement
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                ResultSet resultSet = pstm.executeQuery();
+                while (resultSet.next()) {
+                    data.add(new User(resultSet.getInt("UserId"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Initial"), resultSet.getString("Role"), resultSet.getString("Status")));
+                }
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return data;
+    }
+
+    public void deactivateUser(int userID) {
         try {
             SQLConn = MySQLConnector.createConnection();
+            String parameter2 = "Deactivated";
             if (SQLConn != null) {
-                sqlQuery = "DELETE FROM Users WHERE userID = ?";
+                sqlQuery = "UPDATE Brugere  SET Status=? WHERE UserId = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-                pstm.setInt(1, id);
+                pstm.setString(1,parameter2);
+                pstm.setInt(2, userID );
+
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -74,18 +87,59 @@ public class DBUser implements IDataHandlerDAO {
         }
     }
 
-    public void createUser(String firstName, String lastName, String password, String role) {
+    public void activateUser(int userID) {
+        try {
+            SQLConn = MySQLConnector.createConnection();
+            String parameter1 = "Activated";
+            if (SQLConn != null) {
+                sqlQuery = "UPDATE Brugere  SET Status=? WHERE UserId = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setString(1,parameter1);
+                pstm.setInt(2, userID );
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+
+
+
+
+    public User searchUser(int userID) {
+        User temp = null;
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "INSERT INTO Users (FirstName, LastName, Password, Role)" +
+                sqlQuery = "SELECT * FROM Brugere WHERE UserId = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, userID);
+                ResultSet resultSet = pstm.executeQuery();
+
+                while (resultSet.next()) {
+                    temp = new User(resultSet.getInt("UserId"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Initial"), resultSet.getString("Role"), resultSet.getString("Status"));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return temp;
+    }
+
+    public void createUser(String firstName, String lastName, String initial, String role) {
+        // String initial = String.valueOf(Character.toUpperCase(firstName.charAt(0))+ Character.toUpperCase(lastName.charAt(0)));
+        try {
+            SQLConn = MySQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "INSERT INTO Brugere (FirstName, LastName, Initial, Role)" +
                         "VALUES (?, ?, ?, ?)";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setString(1, firstName);
                 pstm.setString(2, lastName);
-                pstm.setString(3, password);
+                pstm.setString(3, initial);
                 pstm.setString(4, role);
-
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -94,22 +148,20 @@ public class DBUser implements IDataHandlerDAO {
         }
     }
 
-    public void editUser(int userID, String CPR, String firstName, String lastName, String role, String password) {
+    public void editUser(int userID, String firstName, String lastName, String role) {
         try {
             SQLConn = MySQLConnector.createConnection();
             if(SQLConn != null) {
-                sqlQuery = "UPDATE Users " +
+                sqlQuery = "UPDATE Brugere " +
                         "SET FirstName=?, " +
                         "LastName=?, " +
-                        "Password=?, " +
                         "Role=? " +
-                        "WHERE userID = ?";
+                        "WHERE UserId = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setString(1, firstName);
                 pstm.setString(2, lastName);
-                pstm.setString(3, password);
-                pstm.setString(4, role);
-                pstm.setInt(6, userID);
+                pstm.setString(3, role);
+                pstm.setInt(4, userID);
 
                 pstm.executeUpdate();
                 SQLConn.close();
@@ -117,46 +169,5 @@ public class DBUser implements IDataHandlerDAO {
         } catch (SQLException e) {
             System.out.println(e);
         }
-    }
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 }
