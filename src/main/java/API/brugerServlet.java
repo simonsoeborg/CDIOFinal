@@ -26,6 +26,11 @@ public class brugerServlet {
     }
 
     @GET
+    public List<User> getAllUsers() {
+        return dbUser.listAllUsers();
+    }
+
+    @GET
     @Path("search")
     public User searchUser(@QueryParam("id") int id) {
         return dbUser.searchUser(id);

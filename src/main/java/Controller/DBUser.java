@@ -29,12 +29,38 @@ public class DBUser {
         return userList;
     }
 
+    public List<User> listAllUsers() {
+        userList = new ArrayList<>();
+        userList = getAllUsers();
+        return userList;
+    }
+
     public List<User> getAllActivatedUsers() {
         SQLConn = MySQLConnector.createConnection();
         ArrayList<User> data = new ArrayList<>();
         if (SQLConn != null) {
             try {
                 sqlQuery = "SELECT * FROM Brugere WHERE Status='Activated'";
+                //prepared statement
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                ResultSet resultSet = pstm.executeQuery();
+                while (resultSet.next()) {
+                    data.add(new User(resultSet.getInt("UserId"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Initial"), resultSet.getString("Role"), resultSet.getString("Status")));
+                }
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return data;
+    }
+
+    public List<User> getAllUsers() {
+        SQLConn = MySQLConnector.createConnection();
+        ArrayList<User> data = new ArrayList<>();
+        if (SQLConn != null) {
+            try {
+                sqlQuery = "SELECT * FROM Brugere";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();

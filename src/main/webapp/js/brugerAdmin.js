@@ -1,19 +1,21 @@
-var hostURL = '/CDIOFinal_war_exploded/test/brugerAdmin/';
+var hostURL = '/CDIOFinal_war_exploded/test/users/';
 
-function loadUserList() {
-    console.log("Loading Userlist ");
+function loadActiveUserList() {
+    console.log("Loading Active Users");
     $.get(hostURL, function (data, textStatus, req) {
-        $("#loadAllRaavareBatchList").empty();
-        $.each(data, function (i, raavareBatch) {
-            $("#loadAllRaavareBatchList").append(genTableHTMLForRaavareBatch(raavareBatch));
+        $("#loadAllActiveUserList").empty();
+        $.each(data, function (i, User) {
+            $("#loadAllActiveUserList").append(genTableHTMLForUserList((User)));
         });
     });
 }
 
-function genTableHTMLForRaavareBatch(raavareBatch) {
-    return  '<tr><td>' + raavareBatch.rbId + '</td>' +
-        '<td>' + raavareBatch.raavareId +'</td>' +
-        '<td>' + raavareBatch.maengde + '</td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
-        '</td>'
+function genTableHTMLForUserList(User) {
+    return  '<tr><td>' + User.id + '</td>' +
+        '<td>' + User.firstname +'</td>' +
+        '<td>' + User.lastname + '</td>' +
+        '<td>' + User.initial + '</td>' +
+        '<td>' + User.role + '</td>' +
+        '<td>' + User.status + '</td>' +
+        '</tr>'
 }
