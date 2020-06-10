@@ -15,6 +15,7 @@ public class RaavareServlet {
     DBRaavare DBRaavare = new DBRaavare();
 
     @GET
+    @Path("load")
     public List<Raavare> GetRaavare() {
         return DBRaavare.GetAllRaavare();
     }

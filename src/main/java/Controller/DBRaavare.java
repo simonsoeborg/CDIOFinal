@@ -28,7 +28,7 @@ public class DBRaavare {
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new Raavare(resultSet.getInt("raavareId"), resultSet.getString("raavareNavn"), resultSet.getString("leverandoer")));
+                    data.add(new Raavare(resultSet.getInt("raavareid"), resultSet.getString("raavarenavn"), resultSet.getString("leverandoer")));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
