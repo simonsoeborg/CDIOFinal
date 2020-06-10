@@ -11,4 +11,16 @@ public class raavareBatch {
         this.raavareId = raavareId;
         this.maengde = maengde;
     }
+
+    public int getRbId() {
+        return rbId;
+    }
+
+    public int getRaavareId() {
+        return raavareId;
+    }
+
+    public double getMaengde() {
+        return maengde;
+    }
 }

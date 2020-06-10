@@ -1,3 +1,4 @@
+
 var hostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
 
 function loadRaavareBatchList() {
@@ -12,10 +13,10 @@ function loadRaavareBatchList() {
 
 function genTableHTMLForRaavareBatch(raavareBatch) {
     return  '<tr><td>' + raavareBatch.rbId + '</td>' +
-            '<tr>' + raavareBatch.raavareId +'</td>' +
+            '<td>' + raavareBatch.raavareId +'</td>' +
             '<td>' + raavareBatch.maengde + '</td>' +
             '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
-            '</tr>'
+            '</td>'
 }
 
 function deleteRaavareBatch(rbId) {
@@ -24,7 +25,7 @@ function deleteRaavareBatch(rbId) {
         url: hostURL + rbId,
         method: 'DELETE',
         success: function (data) {
-            alert(' Råvare Batch med id: ' + rbId + ' er blevet slettet!')
+            alert(' Råvare Batch med id: ' + rbId + ' er blevet slettet!');
             loadRaavareBatchList();
         }
     });
