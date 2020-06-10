@@ -1,3 +1,5 @@
+/* Author: Karl Emil */
+
 package Data.DTO;
 
 public class raavareBatch {

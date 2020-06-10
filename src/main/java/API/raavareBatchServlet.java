@@ -1,3 +1,5 @@
+/* Author: Karl Emil */
+
 package API;
 
 import Data.DBRaavareBatch;

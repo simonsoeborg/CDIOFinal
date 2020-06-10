@@ -1,3 +1,5 @@
+/* Author: Karl Emil */
+
 package Data;
 
 import DB.DBConnector;
