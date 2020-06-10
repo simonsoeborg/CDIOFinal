@@ -1,52 +1,37 @@
-.mainMenu {
-  height: 10%;
-  width: 100%;
-  margin: 0;
-  left: 0;
-  top: 0;
-  padding: 16px;
-  background-color: #E44E4E;
-  margin-bottom: 2%;
-  position: fixed;
-}
-
-.mainMenu_container {
-  text-align: right;
-  width: 100%;
+/*
+Author: Simon Søborg
+Github: simonsoeborg
+*/
+#logoImg {
   height: auto;
-}
-
-.mainMenuImageContainer {
-  padding-left: 10%;
+  width: 50px;
   float: left;
 }
 
-.mainMenuImageContainer img {
-  width: 75px;
-  height: 110px;
-}
-
 .mainMenuUL {
-  padding-right: 5%;
-  list-style-type: none;
-  margin: 0;
-  padding: 16px;
-  padding-right: 5%;
+  text-align: right;
+  padding-right: 10%;
 }
 
 .mainMenuUL li {
-  display: inline-block;
   padding: 16px;
+  display: inline-block;
+  color: white;
+  font-size: 34px;
 }
 
 .mainMenuUL li a {
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 400;
   color: white;
   text-decoration: none;
+  font-size: 34px;
+}
+
+.mainMenuUL li:hover {
+  text-decoration: underline;
+  color: white;
 }
 
 .mainMenuUL li a:hover {
-  color: #e3b0b0;
+  text-decoration: underline;
+  color: white;
 }

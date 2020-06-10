@@ -1,6 +1,22 @@
-
+/* ******************************************************************** */
+/*
+Author: Simon Søborg
+Github: simonsoeborg
+*/
 .contentContainer {
   margin-top: 10%;
   margin-left: 20%;
   float: left;
+  width: 100%;
 }
+
+.contentPage {
+  width: 100%;
+  margin-top: 1%;
+  margin-left: 2%;
+}
+
+h1 {
+  color: #E44E4E;
+}
+/* ******************************************************************** */

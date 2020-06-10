@@ -1,0 +1,21 @@
+/*
+Author: Simon Søborg
+Github: simonsoeborg
+*/
+.sideMenuUL {
+  text-align: center;
+  padding: 16px;
+}
+
+.sideMenuUL li {
+  padding: 16px;
+  display: block;
+  color: white;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+.sideMenuUL li:hover {
+  text-decoration: underline;
+  color: white;
+}
