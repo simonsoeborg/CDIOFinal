@@ -1,6 +1,6 @@
-package Data;
+package Controller;
 
-import DB.DBConnector;
+import Data.DTO.DBConnector;
 import Data.DTO.User;
 
 import java.sql.Connection;
