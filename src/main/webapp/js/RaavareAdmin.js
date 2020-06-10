@@ -16,11 +16,11 @@ function loadRaavareList() {
 }
 
 function genTableHTMLForRaavare(raavare) {
-    return  '<tr><td>'+ raavare.raavareId + '</td>'  +
-            '<td>' + raavare.raavareNavn +'</td>' +
-            '<td>' + raavare.leveradoer + '</td>' +
-            '<td><button class="btn-alert" type="submit" onclick="deleteRaavare(' + raavare.raavareId + ');">Delete</button></td>' +
-            '</tr>'
+    return '<tr><td>'+ raavare.raavareId + '</td>'  +
+        '<td>' + raavare.raavareNavn +'</td>' +
+        '<td>' + raavare.leveradoer + '</td>' +
+        '<td><button class="btn-alert" type="submit" onclick="deleteRaavare(' + raavare.raavareId + ');">Slet</button></td>' +
+        '</tr>'
 }
 
 function deleteRaavare(raavareId) {
@@ -30,7 +30,7 @@ function deleteRaavare(raavareId) {
         method: 'DELETE',
         success: function (data) {
             alert(' råvare med id: ' + raavareId + ' er blevet slettet!');
-            loadRaavarerList();
+            loadRaavareList();
         }
     });
 }

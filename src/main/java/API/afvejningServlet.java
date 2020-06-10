@@ -1,10 +1,12 @@
+/*
+    Author: Simon Søborg
+    Github: simonsoeborg
+*/
 package API;
 
 import Data.DBAfvejning;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 @Path("afvejning")
 @Produces(MediaType.APPLICATION_JSON)
@@ -15,9 +17,13 @@ public class afvejningServlet {
 
     @GET
     @Path("lab")
-    public String findLaborant(@QueryParam("labNr") int id) {return dba.findBruger(id);}
+    public String findLaborant(@QueryParam("labNr") int id) {
+        return dba.getLaborantName(id);
+    }
 
-//    @GET
-//    @Path("pb")
-//    public List findRecept(@QueryParam("pbNr") int id) {return dba.findRecept(id);}
+    @GET
+    @Path("pb")
+    public String findRecept(@QueryParam("pbNr") int id) {
+        return dba.findRecept(id);
+    }
 }
