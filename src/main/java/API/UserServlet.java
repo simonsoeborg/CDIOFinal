@@ -12,7 +12,6 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserServlet {
-    private DBConnector DBC = new DBConnector();
     private DBUser dbUser = new DBUser();
 
     @GET
