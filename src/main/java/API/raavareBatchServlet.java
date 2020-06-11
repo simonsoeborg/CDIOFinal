@@ -1,7 +1,7 @@
 package API;
 
 import Controller.DBRaavareBatch;
-import Data.DTO.raavareBatch;
+import Data.DTO.RaavareBatch;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -15,7 +15,7 @@ public class raavareBatchServlet {
     DBRaavareBatch DBrb = new DBRaavareBatch();
 
     @GET
-    public List<raavareBatch> GetRaavareBatch() {
+    public List<RaavareBatch> GetRaavareBatch() {
         return DBrb.listAllRaavareBatch();
     }
 

@@ -1,4 +1,5 @@
 package Controller;
+
 import Data.DTO.DBConnector;
 import Data.DTO.Raavare;
 
@@ -17,11 +18,6 @@ public class DBRaavare {
 
     private DBConnector MySQLConnector = new DBConnector();
 
-    public void fetchAllRaavare() {
-        raavare = new ArrayList<>();
-        raavare = GetAllRaavare();
-    }
-
     public List<Raavare> GetAllRaavare() {
         ArrayList<Raavare> data = new ArrayList<>();
         SQLConn = MySQLConnector.createConnection();
@@ -32,18 +28,15 @@ public class DBRaavare {
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new Raavare(resultSet.getInt("raavareId"), resultSet.getString("raavareNavn"), resultSet.getString("leverandoer")));
+                    data.add(new Raavare(resultSet.getInt("raavareid"), resultSet.getString("raavarenavn"), resultSet.getString("leverandoer")));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
                 System.out.println(e);
             }
         }
-        return data;
-    }
-
-    public List<Raavare> listAllRaavare() {
-        fetchAllRaavare();
+        raavare = new ArrayList<>();
+        raavare = data;
         return raavare;
     }
 

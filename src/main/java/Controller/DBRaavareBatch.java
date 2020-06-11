@@ -1,7 +1,7 @@
 package Controller;
 
 import Data.DTO.DBConnector;
-import Data.DTO.raavareBatch;
+import Data.DTO.RaavareBatch;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ public class DBRaavareBatch {
     DBConnector dbc = new DBConnector();
     private String sqlQuery;
     private Connection SQLConn = dbc.createConnection();
-    private List<raavareBatch> raavarebatch;
+    private List<RaavareBatch> raavarebatch;
 
     private DBConnector MySQLConnector = new DBConnector();
 
@@ -23,8 +23,8 @@ public class DBRaavareBatch {
         raavarebatch = GetAllRaavareBatch();
     }
 
-    public List<raavareBatch> GetAllRaavareBatch() {
-        ArrayList<raavareBatch> data = new ArrayList<>();
+    public List<RaavareBatch> GetAllRaavareBatch() {
+        ArrayList<RaavareBatch> data = new ArrayList<>();
         SQLConn = MySQLConnector.createConnection();
         if (SQLConn != null) {
             try {
@@ -33,7 +33,7 @@ public class DBRaavareBatch {
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new raavareBatch(resultSet.getInt("rbId"), resultSet.getInt("raavareId"), resultSet.getDouble("maengde")));
+                    data.add(new RaavareBatch(resultSet.getInt("rbId"), resultSet.getInt("raavareId"), resultSet.getDouble("maengde")));
                     //System.out.println(resultSet.getInt("rbId"));
                 }
                 SQLConn.close();
@@ -44,7 +44,7 @@ public class DBRaavareBatch {
         return data;
     }
 
-    public List<raavareBatch> listAllRaavareBatch() {
+    public List<RaavareBatch> listAllRaavareBatch() {
         fetchAllRaavareBatch();
         return raavarebatch;
     }

@@ -4,7 +4,6 @@ import Controller.DBRecept;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
-import java.util.List;
 
 @Path("receipts")
 @Produces(MediaType.APPLICATION_JSON)
