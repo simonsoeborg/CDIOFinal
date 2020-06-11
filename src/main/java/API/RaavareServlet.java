@@ -1,4 +1,5 @@
 package API;
+// Author: Kristoffer
 
 import Controller.DBRaavare;
 import Data.DTO.Raavare;
@@ -15,17 +16,19 @@ public class RaavareServlet {
     DBRaavare DBRaavare = new DBRaavare();
 
     @GET
+    @Path("load")
     public List<Raavare> GetRaavare() {
-        return DBRaavare.listAllRaavare();
+        return DBRaavare.GetAllRaavare();
     }
 
-    // @GET
-   //@Path("{raavareId}")
-   // public Raavare searchRaavare(@PathParam("raavareId") int id){return DBRaavarer.searchRaavarer(raavarerId);}
+    @POST
+    public void createRaavare(Raavare raavare) {
+        DBRaavare.createRaavare(raavare.getRaavareid(), raavare.getRaavarenavn());
+    }
 
     @DELETE
-    @Path("{raavareId}")
-    public void deleteRaavare(@PathParam("raavareId") int raavareId) {
-        DBRaavare.deleteRaavare(raavareId);
+    @Path("{raavareid}")
+    public void deleteRaavare(@PathParam("raavareid") int raavareid) {
+        DBRaavare.deleteRaavare(raavareid);
     }
 }

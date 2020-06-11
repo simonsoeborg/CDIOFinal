@@ -1,37 +1,20 @@
 package Data.DTO;
-
+// Author: Kristoffer
 public class Raavare {
-    private int raavareId;
-    private String raavareNavn;
-    private String leveradoer;
+    private int raavareid;
+    private String raavarenavn;
 
-    public Raavare (int raavareId, String raavareNavn, String leveradoer){
-        this.raavareId = raavareId;
-        this.raavareNavn = raavareNavn;
-        this.leveradoer = leveradoer;
+    public Raavare (int raavareid, String raavarenavn){
+        this.raavareid = raavareid;
+        this.raavarenavn = raavarenavn;
     }
 
-    public int getRaavareId() {
-        return raavareId;
+    public int getRaavareid() {
+        return raavareid;
     }
 
-    public void setRaavareId(int raavareId) {
-        this.raavareId = raavareId;
+    public String getRaavarenavn() {
+        return raavarenavn;
     }
 
-    public String getRaavareNavn() {
-        return raavareNavn;
-    }
-
-    public void setRaavareNavn(String raavareNavn) {
-        this.raavareNavn = raavareNavn;
-    }
-
-    public String getLeveradoer() {
-        return leveradoer;
-    }
-
-    public void setLeveradoer(String leveradoer) {
-        this.leveradoer = leveradoer;
-    }
 }
