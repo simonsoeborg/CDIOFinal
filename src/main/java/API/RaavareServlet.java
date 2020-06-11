@@ -1,6 +1,6 @@
 package API;
 
-import Data.DBRaavare;
+import DB.DBRaavare;
 import Data.DTO.Raavare;
 
 import javax.ws.rs.*;

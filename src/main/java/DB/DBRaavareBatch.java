@@ -1,6 +1,6 @@
 /* Author: Karl Emil */
 
-package Data;
+package DB;
 
 import DB.DBConnector;
 import Data.DTO.raavareBatch;
@@ -36,7 +36,6 @@ public class DBRaavareBatch {
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
                     data.add(new raavareBatch(resultSet.getInt("rbId"), resultSet.getInt("raavareId"), resultSet.getDouble("maengde")));
-                    //System.out.println(resultSet.getInt("rbId"));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
@@ -65,4 +64,25 @@ public class DBRaavareBatch {
             System.out.println(e);
         }
     }
+
+    public String getRaavareNavn(int raavareId) {
+        String raavareNavn;
+        try {
+            SQLConn = MySQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "SELECT * FROM Raavare WHERE raavareId= ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, raavareId);
+                ResultSet resultSet = pstm.executeQuery();
+                resultSet.next();
+                raavareNavn = resultSet.getString("raavarenavn");
+                SQLConn.close();
+                return raavareNavn;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return "ERROR";
+    }
+
 }

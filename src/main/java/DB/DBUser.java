@@ -1,4 +1,4 @@
-package Data;
+package DB;
 
 import DB.DBConnector;
 import Data.DTO.User;

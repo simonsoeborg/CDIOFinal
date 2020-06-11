@@ -2,7 +2,7 @@
     Author: Simon Søborg
     Github: simonsoeborg
 */
-package Data;
+package DB;
 
 import DB.DBConnector;
 

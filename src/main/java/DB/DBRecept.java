@@ -1,6 +1,4 @@
-package Data;
-
-import DB.DBConnector;
+package DB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DBRecept implements IDataHandlerDAO {
+public class DBRecept {
 
     private int receptId;
     private String receptNavn;

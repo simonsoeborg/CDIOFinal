@@ -2,7 +2,7 @@
 
 package API;
 
-import Data.DBRaavareBatch;
+import DB.DBRaavareBatch;
 import Data.DTO.raavareBatch;
 
 import javax.ws.rs.*;
@@ -26,6 +26,10 @@ public class raavareBatchServlet {
     public void deleteRaavareBatch(@PathParam("rbId") int rbId) {
         DBrb.deleteRaavareBatch(rbId);
     }
+
+    @GET
+    @Path("/raavare/" + "{raavareId}")
+    public String getRaavareNavn(@PathParam("raavareId") int raavareId) { return DBrb.getRaavareNavn(raavareId);}
 
 }
 

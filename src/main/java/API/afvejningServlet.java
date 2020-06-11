@@ -4,7 +4,7 @@
 */
 package API;
 
-import Data.DBAfvejning;
+import DB.DBAfvejning;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
