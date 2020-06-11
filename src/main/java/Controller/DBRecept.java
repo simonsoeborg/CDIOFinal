@@ -1,4 +1,4 @@
-package Data;
+package Controller;
 
 import Data.DTO.DBConnector;
 import Data.DTO.Recept;

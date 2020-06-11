@@ -1,8 +1,7 @@
 package API;
 
-import Data.DBRecept;
+import Controller.DBRecept;
 import Data.DTO.Recept;
-import Data.DTO.User;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -13,7 +12,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ReceptServlet {
 
-    DBRecept dbr = new DBRecept();
+    private DBRecept dbr = new DBRecept();
 
     @GET
     public List<Recept> getRecepts() { return dbr.listAllRecepts(); }
@@ -37,14 +36,15 @@ public class ReceptServlet {
         dbr.deleteRecept(id);
     }
 
+
     @PUT
-    @Path("{id}")
+    @Path("component/{id}")
     public void updateReceptComponent(@PathParam("id") int id, Recept recept) {
         dbr.UpdateReceptComponent(recept.getRaavareId(), recept.getNonNetto(), recept.getTolerance());
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("component/{id}")
     public void deleteReceptComponent(@PathParam("id") int id) {
         dbr.deleteReceptComponent(id);
     }
