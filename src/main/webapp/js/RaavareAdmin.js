@@ -1,5 +1,5 @@
 
-var hostURL = "/CDIOFinal_war_exploded/test/raavare/";
+var hotRaavareURL = "/CDIOFinal_war_exploded/test/raavare/";
 
 function loadRaavareList() {
     let hostURLGetList = "/CDIOFinal_war_exploded/test/raavare/load/";
@@ -24,7 +24,7 @@ function genTableHTMLForRaavare(raavare) {
 function deleteRaavare(raavareId) {
     event.preventDefault();
     $.ajax({
-        url: hostURL + raavareId,
+        url: hotRaavareURL + raavareId,
         method: 'DELETE',
         success: function (data) {
             alert(' råvare med id: ' + raavareId + ' er blevet slettet!');
