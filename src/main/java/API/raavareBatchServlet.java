@@ -2,7 +2,7 @@
 
 package API;
 
-import DB.DBRaavareBatch;
+import Controller.DBRaavareBatch;
 import Data.DTO.raavareBatch;
 
 import javax.ws.rs.*;

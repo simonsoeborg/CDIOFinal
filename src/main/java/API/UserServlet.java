@@ -1,6 +1,6 @@
 package API;
 
-import DB.DBUser;
+import Controller.DBUser;
 import Data.DTO.User;
 
 import javax.ws.rs.*;

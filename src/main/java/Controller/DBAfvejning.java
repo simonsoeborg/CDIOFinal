@@ -2,9 +2,7 @@
     Author: Simon Søborg
     Github: simonsoeborg
 */
-package DB;
-
-import DB.DBConnector;
+package Controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

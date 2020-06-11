@@ -1,8 +1,7 @@
 /* Author: Karl Emil */
 
-package DB;
+package Controller;
 
-import DB.DBConnector;
 import Data.DTO.raavareBatch;
 
 import java.sql.Connection;

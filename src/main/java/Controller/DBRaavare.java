@@ -1,6 +1,5 @@
-package DB;
+package Controller;
 
-import DB.DBConnector;
 import Data.DTO.Raavare;
 
 import java.sql.Connection;
