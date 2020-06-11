@@ -40,15 +40,35 @@ public class DBRaavare {
         return raavare;
     }
 
-    public void deleteRaavare(int raavareId) {
+    public void deleteRaavare(int raavareid) {
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "DELETE FROM Raavare WHERE raavareId= ?";
+                sqlQuery = "DELETE FROM Raavare WHERE raavareid= ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-                pstm.setInt(1, raavareId);
+                pstm.setInt(1, raavareid);
                 pstm.executeUpdate();
                 SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void createRaavare(int raavareid, String raavarenavn, String leverandoer) {
+        try {
+            SQLConn = MySQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "INSERT INTO Raavare (raavareid, raavarenavn, leverandoer)" +
+                        "VALUES (?, ?, ?)";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, raavareid);
+                pstm.setString(2, raavarenavn);
+                pstm.setString(3, leverandoer);
+
+                pstm.executeUpdate();
+//                Statement stm = SQLConn.createStatement();
+//                stm.executeUpdate(sqlQuery);
             }
         } catch (SQLException e) {
             System.out.println(e);
