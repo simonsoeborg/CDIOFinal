@@ -17,18 +17,33 @@
         <!-- ------------------------------- Her sættes alt hvad der skal vises ---------------------------------- -->
         <div class="Container_borderless">
             <form>
-                <div class="column"><label>Indtast Råvare ID:</label> <br> <input id="raavareId" type="text"></div>
-                <div class="column"><label>Indtast Råvare Navn:</label> <br> <input id="raavareNavn" type="text"></div>
-                <div class="column"><label>Indtast leverandør:</label> <br> <input id="leverandoer" type="text"> </div>
+                <div class="column"><label>Indtast Råvare ID:</label> <br>
+                    <label>
+                        <input id="raavareid" style="width:50%;" type="text" name="raavareid">
+                    </label>
+                </div>
+                <div class="column"><label>Indtast Råvare Navn:</label> <br>
+                    <label>
+                        <input id="raavarenavn" style="width:50%;" type="text" name="raavarenavn">
+                    </label>
+                </div>
+                <div class="column"><label>Indtast leverandør:</label> <br>
+                    <label>
+                        <input id="leverandoer" style="width:50%;" type="text" name="leverandoer">
+                    </label>
+                <br> </div>
                 <br>
-                <div class="column"><button class="successbutton" type="button" name="button">Opret</button> </div>
+                <br>
+                <div class="column"><button class="successbutton" type="button" onclick="createRaavare();" name="button">Opret</button> </div>
             </form>
         </div>
 
         <div>
         <br>
         <br>
-    </div>
+        <br>
+        <br>
+        </div>
 
         <div class="Container_borderless" style="align-content: center; margin-left: 25%;">
             <form>

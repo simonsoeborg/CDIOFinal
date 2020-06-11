@@ -19,24 +19,12 @@ public class Raavare {
         return raavareid;
     }
 
-    public void setRaavareid(int raavareid) {
-        this.raavareid = raavareid;
-    }
-
-
     public String getRaavarenavn() {
         return raavarenavn;
-    }
-
-    public void setRaavarenavn(String raavarenavn) {
-        this.raavarenavn = raavarenavn;
     }
 
     public String getLeverandoer() {
         return leverandoer;
     }
 
-    public void setLeverandoer(String leverandoer) {
-        this.leverandoer = leverandoer;
-    }
 }

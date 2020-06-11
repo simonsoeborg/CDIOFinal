@@ -21,13 +21,14 @@ public class RaavareServlet {
         return DBRaavare.GetAllRaavare();
     }
 
-    // @GET
-   //@Path("{raavareId}")
-   // public Raavare searchRaavare(@PathParam("raavareId") int id){return DBRaavarer.searchRaavarer(raavarerId);}
+    @POST
+    public void createRaavare(Raavare raavare) {
+        DBRaavare.createRaavare(raavare.getRaavareid(), raavare.getRaavarenavn(), raavare.getLeverandoer());
+    }
 
     @DELETE
-    @Path("{raavareId}")
-    public void deleteRaavare(@PathParam("raavareId") int raavareId) {
-        DBRaavare.deleteRaavare(raavareId);
+    @Path("{raavareid}")
+    public void deleteRaavare(@PathParam("raavareid") int raavareid) {
+        DBRaavare.deleteRaavare(raavareid);
     }
 }
