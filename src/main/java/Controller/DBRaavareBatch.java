@@ -2,6 +2,7 @@
 
 package Controller;
 
+import Data.DTO.Raavare;
 import Data.DTO.RaavareBatch;
 
 import java.sql.Connection;
@@ -65,7 +66,7 @@ public class DBRaavareBatch {
     }
 
     public String getRaavareNavn(int raavareId) {
-        String raavareNavn;
+        String raavareNavn = null;
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
@@ -76,12 +77,29 @@ public class DBRaavareBatch {
                 resultSet.next();
                 raavareNavn = resultSet.getString("raavarenavn");
                 SQLConn.close();
-                return raavareNavn;
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return "ERROR";
+        return raavareNavn;
+    }
+
+    public void createRaavareBatch(RaavareBatch rb) {
+        try {
+            SQLConn = MySQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "INSERT INTO Raavarebatch (rbid, raavareid, maengde, leverandoer)" +
+                        "VALUES (?, ?, ?, ?)";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, rb.getRbId());
+                pstm.setInt(2, rb.getRaavareId());
+                pstm.setDouble(3, rb.getMaengde());
+                pstm.setString(4, rb.getLeverandoer());
+                pstm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
 }

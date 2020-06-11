@@ -32,6 +32,10 @@ public class RaavareBatchServlet {
     @Path("/raavare/" + "{raavareId}")
     public String getRaavareNavn(@PathParam("raavareId") int raavareId) { return DBrb.getRaavareNavn(raavareId);}
 
+    @POST
+    @Path("create")
+    public void createRaavareBatch(RaavareBatch rb) { DBrb.createRaavareBatch(rb);}
+
 }
 
 
