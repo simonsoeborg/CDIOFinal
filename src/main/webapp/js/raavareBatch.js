@@ -1,3 +1,4 @@
+/* Author: Karl Emil */
 
 var hostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
 
@@ -13,10 +14,10 @@ function loadRaavareBatchList() {
 
 function genTableHTMLForRaavareBatch(raavareBatch) {
     return  '<tr><td>' + raavareBatch.rbId + '</td>' +
-            '<td>' + raavareBatch.raavareId +'</td>' +
-            '<td>' + raavareBatch.maengde + '</td>' +
-            '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
-            '</td>'
+        '<td>' + raavareBatch.raavareId +'</td>' +
+        '<td>' + raavareBatch.maengde + '</td>' +
+        '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
+        '</td>'
 }
 
 function deleteRaavareBatch(rbId) {
