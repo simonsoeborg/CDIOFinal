@@ -4,7 +4,8 @@ var hostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
 
 function loadRaavareBatchList() {
     console.log("Loading Råvare Batches");
-    $.get(hostURL, function (data) {
+    let hostGetURL = hostURL + 'load';
+    $.get(hostGetURL, function (data) {
         $("#loadAllRaavareBatchList").empty();
         $.each(data, function (i, raavareBatch) {
             $("#loadAllRaavareBatchList").append(genTableHTMLForRaavareBatch(raavareBatch));
@@ -35,7 +36,7 @@ function deleteRaavareBatch(rbId) {
 
 function getRaavareNavn(raavareId) {
     console.log("kaldes dette?");
-    var hostGetNameURL = hostURL + 'raavare/' + raavareId;
+    let hostGetNameURL = hostURL + 'raavare/' + raavareId;
     $.get(hostGetNameURL, function (data) {
             alert("Data: " + data);
             return data;

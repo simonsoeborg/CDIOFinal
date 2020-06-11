@@ -17,6 +17,7 @@ public class raavareBatchServlet {
     DBRaavareBatch DBrb = new DBRaavareBatch();
 
     @GET
+    @Path("load")
     public List<raavareBatch> GetRaavareBatch() {
         return DBrb.listAllRaavareBatch();
     }
