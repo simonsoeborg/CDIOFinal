@@ -15,9 +15,10 @@
 
     <div class="grid-contentBody">
         <!-- ------------------------------- Her sættes alt hvad der skal vises ---------------------------------- -->
-            <h2>Opret råvare:</h2>
 
-        <div class="Container_borderless" style="width: 100%;">
+        <div class="Container_borderless">
+            <h2>Opret råvare:</h2> <br>
+
             <label><input id="raavareid" style="width:30%;" type="text" name="raavareid"  placeholder="Indsæt råvare ID"></label>
             <label><input id="raavarenavn" style="width:30%;" type="text" name="raavarenavn"  placeholder="Indsæt råvare navn"></label>
             <button class="successbutton" type="button" onclick="createRaavare();" style="align-content: center;" name="button">Opret</button>
@@ -27,23 +28,23 @@
         </div>
 
         <div>
-        <hr class="new4">
-        <h2>Råvare tabel:</h2>
-        <div class="Container_borderless" style="align-content: center; margin-left: 30%;">
-            <form>
-                <table>
-                    <thead>
-                    <tr>
-                        <td>Råvare Id</td>
-                        <td>Råvare navn</td>
-                        <td></td>
-                    </tr>
-                    </thead>
-                    <tbody id="loadAllRaavareList"><script>loadRaavareList();</script></tbody>
-                </table>
-            </form>
+            <hr class="new4">
+            <div class="Container_borderless" style="padding-left: 33%;">
+                <h2>Råvare tabel:</h2>
+                <form>
+                    <table>
+                        <thead>
+                        <tr>
+                            <td>Råvare Id</td>
+                            <td>Råvare navn</td>
+                            <td></td>
+                        </tr>
+                        </thead>
+                        <tbody id="loadAllRaavareList"><script>loadRaavareList();</script></tbody>
+                    </table>
+                </form>
+            </div>
         </div>
-    </div>
     <!-- ----------------------------------------------------------------------------------------------------- -->
 
     <!-- Attach global footer -->
