@@ -7,11 +7,13 @@ public class RaavareBatch {
     private int rbId;
     private int raavareId;
     private double maengde;
+    private String leverandoer;
 
-    public RaavareBatch(int rbId, int raavareId, double maengde) {
+    public RaavareBatch(int rbId, int raavareId, double maengde, String leverandoer) {
         this.rbId = rbId;
         this.raavareId = raavareId;
         this.maengde = maengde;
+        this.leverandoer = leverandoer;
     }
 
     public int getRbId() {
@@ -24,5 +26,9 @@ public class RaavareBatch {
 
     public double getMaengde() {
         return maengde;
+    }
+
+    public String getLeverandoer() {
+        return leverandoer;
     }
 }

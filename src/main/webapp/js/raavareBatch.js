@@ -18,6 +18,7 @@ function genTableHTMLForRaavareBatch(raavareBatch) {
             '<td>' + raavareBatch.raavareId +'</td>' +
             '<td>' + getRaavareNavn(raavareBatch.raavareId) +'</td>' +
             '<td>' + raavareBatch.maengde + ' kg</td>' +
+            '<td>' + raavareBatch.leverandoer + '</td>' +
             '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
             '</tr>'
 }

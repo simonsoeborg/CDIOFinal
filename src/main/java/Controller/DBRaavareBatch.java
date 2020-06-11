@@ -34,7 +34,7 @@ public class DBRaavareBatch {
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new RaavareBatch(resultSet.getInt("rbId"), resultSet.getInt("raavareId"), resultSet.getDouble("maengde")));
+                    data.add(new RaavareBatch(resultSet.getInt("rbId"), resultSet.getInt("raavareId"), resultSet.getDouble("maengde"), resultSet.getString("leverandoer")));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
