@@ -4,8 +4,6 @@
 */
 package Controller;
 
-import Data.DTO.DBConnector;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
