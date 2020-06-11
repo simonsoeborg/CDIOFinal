@@ -3,28 +3,20 @@
 Author: Simon Søborg
 Github: simonsoeborg
 */
+
 * {
   --color-primary: #F95454;
   --color-secondary: #564848;
   --color-third: rgba(255, 34, 15, 0.65);
   font-family: 'Lato', sans-serif;
   color: var(--color-secondary);
-
-
   box-sizing: border-box;
 }
-.contentContainer {
-  margin-top: 10%;
-  margin-left: 20%;
-  float: left;
-  width: 100%;
+
+h1 {
+  color: #E44E4E;
 }
 
-.contentPage {
-  width: 100%;
-  margin-top: 1%;
-  margin-left: 2%;
-}
 .btn-alert {
   background-color: var(--color-primary);
   color: white;
@@ -32,6 +24,20 @@ Github: simonsoeborg
 .btn-alert:hover {
   background-color: rgba(255,144,142,0.65);
   color: var(--color-secondary);
+}
+
+.successbutton {
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  width: 100px;
+}
+
+.warningbutton {
+  border-radius: 5px;
+  background-color: #ffad00;
+  color: white;
+  width: 100px;
 }
 
 .submitButton{
@@ -44,8 +50,6 @@ Github: simonsoeborg
   border-radius: 10px; /* Border radius gør vores kanter runde*/
   border: none;
   outline: none;
-  /* Bonus: Brug transitions til flydende at skifte properties (her
-      'background-color' og 'color', når der skiftes til denne */
   transition: background-color 0.5s, color 0.5s;
 }
 
@@ -89,8 +93,24 @@ select {
   -moz-text-align-last: center;
 }
 
+.small_Container {
+  border: 1px solid rgba(114, 85, 85, 0.29);
+  padding: 16px;
+  width: auto;
+  margin-bottom: 10px;
+}
 
-h1 {
-  color: #E44E4E;
+.small_Container_borderless {
+  border: 0px;
+  padding: 16px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.Container_borderless {
+  border: 0px;
+  padding: 16px;
+  width: 100%;
+  margin-bottom: 10px;
 }
 /* ******************************************************************** */

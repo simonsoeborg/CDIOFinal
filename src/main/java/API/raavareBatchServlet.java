@@ -1,7 +1,7 @@
 package API;
 
-import Data.DBRaavareBatch;
-import Data.DTO.RaavareBatch;
+import Controller.DBRaavareBatch;
+import Data.DTO.raavareBatch;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
