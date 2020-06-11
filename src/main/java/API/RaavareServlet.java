@@ -23,7 +23,7 @@ public class RaavareServlet {
 
     @POST
     public void createRaavare(Raavare raavare) {
-        DBRaavare.createRaavare(raavare.getRaavareid(), raavare.getRaavarenavn(), raavare.getLeverandoer());
+        DBRaavare.createRaavare(raavare.getRaavareid(), raavare.getRaavarenavn());
     }
 
     @DELETE

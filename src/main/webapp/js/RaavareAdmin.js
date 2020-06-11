@@ -16,7 +16,6 @@ function genTableHTMLForRaavare(raavare) {
     return '<tr>' +
         '<td>'+ raavare.raavareid + '</td>'  +
         '<td>' + raavare.raavarenavn +'</td>' +
-        '<td>' + raavare.leverandoer + '</td>' +
         '<td><button class="btn-alert" type="submit" onclick="deleteRaavare(' + raavare.raavareid + ');">Slet</button></td>' +
         '</tr>';
 }
@@ -54,7 +53,6 @@ function createRaavare() {
 function dataCreateToJSON() {
     return JSON.stringify({
         "raavareid": $('#raavareid').val(),
-        "raavarenavn": $('#raavarenavn').val(),
-        "leverandoer": $('#leverandoer').val()
+        "raavarenavn": $('#raavarenavn').val()
     });
 }

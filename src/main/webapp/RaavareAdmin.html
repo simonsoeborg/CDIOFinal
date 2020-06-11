@@ -10,43 +10,23 @@
     <div class="grid-contentHeader">
         <!-- Titel på siden såsom Afvejning -->
         <h1 id="RaavareAdminTitel">Råvare Administration</h1>
-        <h2>Opret råvare:</h2>
+
     </div>
 
     <div class="grid-contentBody">
         <!-- ------------------------------- Her sættes alt hvad der skal vises ---------------------------------- -->
-        <div class="Container_borderless">
-            <form>
-                <div class="column"><label>Indtast Råvare ID:</label> <br>
-                    <label>
-                        <input id="raavareid" style="width:60%;" type="text" name="raavareid">
-                    </label>
-                </div>
-                <div class="column"><label>Indtast Råvare Navn:</label> <br>
-                    <label>
-                        <input id="raavarenavn" style="width:60%;" type="text" name="raavarenavn">
-                    </label>
-                </div>
-                <div class="column"><label>Indtast leverandør:</label> <br>
-                    <label>
-                        <input id="leverandoer" style="width:60%;" type="text" name="leverandoer">
-                    </label>
-                <br> </div>
-            </form>
+            <h2>Opret råvare:</h2>
+
+        <div class="Container_borderless" style="width: 100%;">
+            <label><input id="raavareid" style="width:30%;" type="text" name="raavareid"  placeholder="Indsæt råvare ID"></label>
+            <label><input id="raavarenavn" style="width:30%;" type="text" name="raavarenavn"  placeholder="Indsæt råvare navn"></label>
+            <button class="successbutton" type="button" onclick="createRaavare();" style="align-content: center;" name="button">Opret</button>
         </div>
         <div>
             <br>
-            <br>
         </div>
 
-        <div class="Container_borderless" style="align-content: center; margin-left: 40% ;">
-            <form>
-                <br>
-        <div class="column"><button class="successbutton" type="button" onclick="createRaavare();" style="align-content: center;" name="button">Opret</button> </div>
-            </form>
-        </div>
-        <br>
-        <br>
+        <div>
         <hr class="new4">
         <h2>Råvare tabel:</h2>
         <div class="Container_borderless" style="align-content: center; margin-left: 30%;">
@@ -56,7 +36,6 @@
                     <tr>
                         <td>Råvare Id</td>
                         <td>Råvare navn</td>
-                        <td>leverandør</td>
                         <td></td>
                     </tr>
                     </thead>
