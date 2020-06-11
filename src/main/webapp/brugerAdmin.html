@@ -12,28 +12,34 @@
 
     <div class="grid-contentBody">
         <!-- Inputs, labels, paragrapher CONTENT -->
-        <div class="container" style="align-content: center; margin-left: 25%;">
-            <div class="row">
+        <div class="row">
+            <div id=sidebar class="container" style="align-content: start; margin-left: 5%; margin-right:  20%;">
+            <h2 id="functions">Funktioner</h2>
+            <h3 id="Active">Aktiverede brugere</h3>
+            <h3 id="Deactive">Deaktiverede brugere</h3>
             </div>
 
-            <div class="userTable">
-                <table>
-                    <thead>
-                    <tr>
-                        <td>Medlems ID</td>
-                        <td>Fornavn</td>
-                        <td>Efternavn</td>
-                        <td>Initialer</td>
-                        <td>Rolle</td>
-                        <td>Status</td>
-                    </tr>
-                    </thead>
-                    <tbody id="loadActiveUserList"><script>loadActiveUserList();</script></tbody>
-                </table>
+            <div id=usertable class="container" style="align-content: center; margin-left: 25%;">
+                <div class="row"></div>
+
+                <div class="Container_borderless">
+                    <table>
+                        <thead>
+                        <tr>
+                            <td>Medlems ID</td>
+                            <td>Fornavn</td>
+                            <td>Efternavn</td>
+                            <td>Initialer</td>
+                            <td>Rolle</td>
+                            <td>Status</td>
+                        </tr>
+                        </thead>
+                        <tbody id="loadActiveUserList"><script>loadActiveUserList();</script></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-
-<!-- Attach global footer -->
+    <!-- Attach global footer -->
     <div class="grid-contentFooter"><script>includeFooter();</script></div>
 </div>

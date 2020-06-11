@@ -1,0 +1,11 @@
+
+[class*="sidebar"] {
+    width: 25%;
+}
+
+[class*="usertable"] {
+    width: 75%;
+}
+
+
+
