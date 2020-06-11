@@ -19,6 +19,7 @@ function genTableHTMLForRaavare(raavare) {
         '<td><button class="btn-alert" type="submit" onclick="deleteRaavare(' + raavare.raavareid + ');">Slet</button></td>' +
         '</tr>';
 }
+
 function deleteRaavare(id) {
     var hostDeleteURL = "/CDIOFinal_war_exploded/test/raavare/" + id;
     event.preventDefault();
