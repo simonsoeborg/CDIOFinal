@@ -1,21 +1,21 @@
-var hostUserURL = '/CDIOFinal_war_exploded/test/users/';
+ var hostUserURL = '/CDIOFinal_war_exploded/test/users/';
 
 function loadActiveUserList() {
     console.log("Loading Active Users");
     $.get(hostUserURL, function (data, textStatus, req) {
         $("#loadAllActiveUserList").empty();
-        $.each(data, function (i, User) {
-            $("#loadAllActiveUserList").append(genTableHTMLForUserList((User)));
+        $.each(data, function (i, user) {
+            $("#loadAllActiveUserList").append(genTableHTMLForUserList((user)));
         });
     });
 }
 
-function genTableHTMLForUserList(User) {
-    return  '<tr><td>' + User.id + '</td>' +
-        '<td>' + User.firstname +'</td>' +
-        '<td>' + User.lastname + '</td>' +
-        '<td>' + User.initial + '</td>' +
-        '<td>' + User.role + '</td>' +
-        '<td>' + User.status + '</td>' +
+function genTableHTMLForUserList(user) {
+    return  '<tr><td>' + user.id + '</td>' +
+        '<td>' + user.firstname +'</td>' +
+        '<td>' + user.lastname + '</td>' +
+        '<td>' + user.initial + '</td>' +
+        '<td>' + user.role + '</td>' +
+        '<td>' + user.status + '</td>' +
         '</tr>'
 }
