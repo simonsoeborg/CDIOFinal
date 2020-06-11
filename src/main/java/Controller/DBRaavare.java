@@ -1,6 +1,5 @@
 package Controller;
-// Author: Kristoffer
-import Data.DTO.DBConnector;
+
 import Data.DTO.Raavare;
 
 import java.sql.Connection;
