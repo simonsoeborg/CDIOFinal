@@ -34,6 +34,7 @@ function deleteRaavare(id) {
 function createRaavare() {
     var hostCreateURL = "/CDIOFinal_war_exploded/test/raavare/";
     console.log('Creating ny råvare');
+    if (controlRaavareID($('#raavareid').val()) && controlRaavareNavn($('#raavarenavn').val())) {
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
@@ -48,6 +49,7 @@ function createRaavare() {
                 alert('fejl ved oprettelsen af råvaren: ' + textStatus);
             }
         })
+    }
 }
 
 function dataCreateToJSON() {
@@ -55,4 +57,19 @@ function dataCreateToJSON() {
         "raavareid": $('#raavareid').val(),
         "raavarenavn": $('#raavarenavn').val()
     });
+}
+
+function controlRaavareID(ID) {
+    if (ID.length !== 5) {
+        alert("råvarens ID skal indholde 5-tal");
+        return false;
+    }
+    return true
+}
+function controlRaavareNavn(raavareNavn) {
+    if (!(raavareNavn.length > 1) && !(raavareNavn.length < 21)) {
+        alert("råvarens navn skal være minimum 2 og maks 20");
+        return false;
+    }
+    return true;
 }
