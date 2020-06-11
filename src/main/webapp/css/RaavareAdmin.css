@@ -1,9 +1,16 @@
 .column {
+    display: inline-block;
     float: left;
-    width: 25%;
+    width: 33%;
+    align-content: center;
 }
 .rowCreate{
     width: 100%;
     height: auto;
     align-content: center;
+}
+
+/* Thick red border */
+hr.new4 {
+    border: 2px solid var(--color-third);
 }

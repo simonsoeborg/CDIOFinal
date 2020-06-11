@@ -10,7 +10,7 @@
     <div class="grid-contentHeader">
         <!-- Titel på siden såsom Afvejning -->
         <h1 id="RaavareAdminTitel">Råvare Administration</h1>
-
+        <h2>Opret råvare:</h2>
     </div>
 
     <div class="grid-contentBody">
@@ -19,33 +19,37 @@
             <form>
                 <div class="column"><label>Indtast Råvare ID:</label> <br>
                     <label>
-                        <input id="raavareid" style="width:50%;" type="text" name="raavareid">
+                        <input id="raavareid" style="width:60%;" type="text" name="raavareid">
                     </label>
                 </div>
                 <div class="column"><label>Indtast Råvare Navn:</label> <br>
                     <label>
-                        <input id="raavarenavn" style="width:50%;" type="text" name="raavarenavn">
+                        <input id="raavarenavn" style="width:60%;" type="text" name="raavarenavn">
                     </label>
                 </div>
                 <div class="column"><label>Indtast leverandør:</label> <br>
                     <label>
-                        <input id="leverandoer" style="width:50%;" type="text" name="leverandoer">
+                        <input id="leverandoer" style="width:60%;" type="text" name="leverandoer">
                     </label>
                 <br> </div>
-                <br>
-                <br>
-                <div class="column"><button class="successbutton" type="button" onclick="createRaavare();" name="button">Opret</button> </div>
             </form>
         </div>
-
         <div>
-        <br>
-        <br>
-        <br>
-        <br>
+            <br>
+            <br>
         </div>
 
-        <div class="Container_borderless" style="align-content: center; margin-left: 25%;">
+        <div class="Container_borderless" style="align-content: center; margin-left: 40% ;">
+            <form>
+                <br>
+        <div class="column"><button class="successbutton" type="button" onclick="createRaavare();" style="align-content: center;" name="button">Opret</button> </div>
+            </form>
+        </div>
+        <br>
+        <br>
+        <hr class="new4">
+        <h2>Råvare tabel:</h2>
+        <div class="Container_borderless" style="align-content: center; margin-left: 30%;">
             <form>
                 <table>
                     <thead>
