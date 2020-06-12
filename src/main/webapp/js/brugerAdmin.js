@@ -59,6 +59,7 @@ function genTableHTMLForActiveUserList(user) {
         '<td>' + user.lastname + '</td>' +
         '<td>' + user.initial + '</td>' +
         '<td>' + user.role + '</td>' +
+        '<td><button id="edit-button" class="btn-alert"  type="submit">Rediger</button></td>' +
         '<td><button class="btn-alert" type="submit" onclick="deactivate('+ user.id+' );">Deaktiver</button></td>' +
         '</tr>';
 }
@@ -69,6 +70,7 @@ function genTableHTMLForActiveUserList(user) {
          '<td>' + user.lastname + '</td>' +
          '<td>' + user.initial + '</td>' +
          '<td>' + user.role + '</td>' +
-         '<td><button class="btn-alert" type="submit" onclick="activate('+ user.id+' );">Aktiver</button></td>' +
+         '<td><button id="edit-button" class="btn-alert"  type="submit">Rediger</button></td>' +
+         '<td><button id="activate-button" class="btn-alert" type="submit" onclick="activate('+ user.id+' );">Aktiver</button></td>' +
          '</tr>';
  }
