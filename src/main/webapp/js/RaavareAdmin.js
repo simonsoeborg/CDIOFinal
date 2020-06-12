@@ -74,3 +74,32 @@ function controlRaavareNavn(raavareNavn) {
     }
     return true;
 }
+
+function searchRaavare(raavarenavn) {
+    var hostLabURL = '/CDIOFinal_war_exploded/test/raavare/r?raavarenavn=';
+    var labNr = document.getElementsByName('raavarenavn').value;
+    $.ajax({
+        type: 'GET',
+        url: hostLabURL + labNr,
+        dataType: "text",
+        data: dataSearchToJSON(),
+        success: function (result, data) {
+            if(result == null || result == " ") {
+                alert("Råvaren: "+ raavarenavn + " findes ikke i databasen");
+            } else {
+                document.getElementById('raavareid').raavareid;
+                document.getElementsByName('raavarenavn').raavarenavn;
+                loadRaavareList();
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert("kan ikke finde råvaren");
+        }
+    });
+
+    function dataSearchToJSON() {
+        return JSON.stringify({
+            "raavarenavn": $('#soegraavarenavn').val()
+        });
+    }
+}

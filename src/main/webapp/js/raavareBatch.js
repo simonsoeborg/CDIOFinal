@@ -30,3 +30,4 @@ function deleteRaavareBatch(rbId) {
         }
     });
 }
+

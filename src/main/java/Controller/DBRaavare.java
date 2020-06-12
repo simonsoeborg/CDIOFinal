@@ -72,4 +72,24 @@ public class DBRaavare {
             System.out.println(e);
         }
     }
+
+    public Raavare searchRaavare(String raavarenavn) {
+        Raavare temp = null;
+        try {
+            SQLConn = MySQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "SELECT * FROM Raavare WHERE raavarenavn = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setString(1, raavarenavn);
+                ResultSet resultSet = pstm.executeQuery();
+
+                while (resultSet.next()) {
+                    temp = new Raavare(resultSet.getInt("raavareid"), resultSet.getString("raavarenavn"));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return temp;
+    }
 }
