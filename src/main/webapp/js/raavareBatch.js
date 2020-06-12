@@ -28,7 +28,7 @@ function deleteRaavareBatch(rbId) {
     $.ajax({
         url: hostURL + rbId,
         method: 'DELETE',
-        success: function (data) {
+        success: function () {
             alert(' Råvare Batch med id: ' + rbId + ' er blevet slettet!');
             loadRaavareBatchList();
         }

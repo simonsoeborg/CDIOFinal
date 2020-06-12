@@ -9,6 +9,9 @@ public class RaavareBatch {
     private double maengde;
     private String leverandoer;
 
+    public RaavareBatch() {
+    }
+
     public RaavareBatch(int rbId, int raavareId, double maengde, String leverandoer) {
         this.rbId = rbId;
         this.raavareId = raavareId;

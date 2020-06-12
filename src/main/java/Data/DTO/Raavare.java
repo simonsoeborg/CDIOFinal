@@ -4,6 +4,9 @@ public class Raavare {
     private int raavareid;
     private String raavarenavn;
 
+    public Raavare() {
+    }
+
     public Raavare (int raavareid, String raavarenavn){
         this.raavareid = raavareid;
         this.raavarenavn = raavarenavn;

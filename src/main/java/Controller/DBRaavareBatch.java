@@ -2,7 +2,6 @@
 
 package Controller;
 
-import Data.DTO.Raavare;
 import Data.DTO.RaavareBatch;
 
 import java.sql.Connection;
