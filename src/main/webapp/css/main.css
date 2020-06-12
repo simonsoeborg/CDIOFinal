@@ -60,25 +60,6 @@ h1 {
   transition: background-color 0.25s, color 0.25s;
 }
 
-/* ------------------------------------------------ Search bar   ---------------------------------------------------- */
-.topnav .search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background-color: var(--color-third);
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.topnav .search-container button:hover {
-  background-color: var(--color-third);
-}
-
-.topnav .search-container {
-    float: none;
-  }
 
 table {
   border-spacing: 0px;
