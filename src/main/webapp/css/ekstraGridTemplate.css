@@ -1,0 +1,41 @@
+/*
+Author: Simon Fridolf
+Github: IceMonk3y
+
+Note: The class following class is made as an extension to the otherwise global grid.ccs.
+        The extension is used in brugerAdmin.
+*/
+
+.grid-containerUsers {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 0.5fr 0.75fr 1fr 1fr;
+    grid-template-rows: 0.25fr 0.25fr 2fr 0.25fr;
+    grid-template-areas:
+            "grid-menu grid-menu grid-menu grid-menu"
+            "sideMenu contentHeader contentHeader contentHeader"
+            "sideMenu contentSidebar contentBody contentBody"
+            "sideMenu contentFooter contentFooter contentFooter";
+    grid-gap: 0.2rem;
+}
+
+.grid-contentSidebar {
+    grid-area: contentSidebar;
+    border-radius: var(--grid-main-radius);
+    padding: 16px;
+}
+
+/* Responsive hvis skærmen er mindre end 600px */
+@media only screen and (max-width:600px) {
+    .grid-containerUsers {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.4fr 0.4fr 1fr 2.2fr 0.4fr;
+        grid-template-areas:
+                "grid-menu"
+                "sideMenu"
+                "contentHeader"
+                "contentSidebar"
+                "contentBody"
+                "contentFooter"
+    }
+}

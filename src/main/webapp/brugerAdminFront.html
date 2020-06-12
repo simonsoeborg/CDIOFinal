@@ -1,4 +1,4 @@
-<div class="grid-container">
+<div class="grid-containerUsers">
 
     <!-- Attach global header -->
     <div class="grid-menu"><script>includeHeader();</script></div>
@@ -10,16 +10,17 @@
         <h1 id="brugeradmin">BrugerAdministration</h1>
     </div>
 
+    <div class="grid-contentSidebar" >
+        <div class="container" style="align-content: start; margin-left: 5%;">
+        <h2 id="functions">Funktioner</h2>
+        <h3 id="Active">Aktiverede brugere</h3>
+        <h3 id="Deactive">Deaktiverede brugere</h3>
+    </div>
+    </div>
+
     <div class="grid-contentBody">
         <!-- Inputs, labels, paragrapher CONTENT -->
-        <div class="row" >
-            <div id=sidebar class="container" style="align-content: start; margin-left: 5%; margin-right:  20%;">
-            <h2 id="functions">Funktioner</h2>
-            <h3 id="Active">Aktiverede brugere</h3>
-            <h3 id="Deactive">Deaktiverede brugere</h3>
-            </div>
-
-            <div id=usertable class="container" style="align-content: center; margin-left: 25%;">
+            <div id=usertable class="container" style=" align-content: start;">
                 <div class="row"></div>
 
                 <div class="Container_borderless">
@@ -31,7 +32,6 @@
                             <td>Efternavn</td>
                             <td>Initialer</td>
                             <td>Rolle</td>
-                            <td>Status</td>
                         </tr>
                         </thead>
                         <tbody id="loadActiveUserList"><script>loadActiveUserList();</script></tbody>
