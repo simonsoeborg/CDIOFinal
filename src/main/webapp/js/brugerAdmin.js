@@ -1,7 +1,11 @@
- // Load userSideMenu code functionality:
+/*
+Author: Simon Fridolf
+Github: IceMonk3y
+*/
  var hostUserURL = '/CDIOFinal_war_exploded/test/users/';
 
- function includeUserSideMenu() {
+// Load userSideMenu code functionality:
+function includeUserSideMenu() {
      $(".grid-contentSidebar").load("brugerAdminSidebar.html");}
 
 

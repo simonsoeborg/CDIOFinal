@@ -1,3 +1,8 @@
+/*
+Author: Simon Fridolf
+Github: IceMonk3y
+*/
+
 package API;
 
 import Controller.DBUser;
