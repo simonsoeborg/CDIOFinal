@@ -2,6 +2,8 @@
 
 var hostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
 
+var raavareNavn;
+
 function loadRaavareBatchList() {
     console.log("Loading Råvare Batches");
     let hostGetURL = hostURL + 'load';
@@ -16,11 +18,24 @@ function loadRaavareBatchList() {
 function genTableHTMLForRaavareBatch(raavareBatch) {
     return  '<tr><td>' + raavareBatch.rbId + '</td>' +
             '<td>' + raavareBatch.raavareId +'</td>' +
-            '<td>' + getRaavareNavn(raavareBatch.raavareId) +'</td>' +
+            '<td id="raavare">' + getRaavareNavn(raavareBatch.raavareId) + '</td>' +
             '<td>' + raavareBatch.maengde + ' kg</td>' +
             '<td>' + raavareBatch.leverandoer + '</td>' +
             '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
             '</tr>'
+}
+
+function getRaavareNavn(raavareId) {
+    let hostGetNameURL = hostURL + 'raavare/' + raavareId;
+    $.ajax({
+        url: hostGetNameURL,
+        type: 'GET',
+        dataType: "text",
+        success: function (res) {
+            console.log(res);
+            document.getElementById('raavare').innerHTML = res;
+        },
+    });
 }
 
 function deleteRaavareBatch(rbId) {
@@ -32,14 +47,6 @@ function deleteRaavareBatch(rbId) {
             alert(' Råvare Batch med id: ' + rbId + ' er blevet slettet!');
             loadRaavareBatchList();
         }
-    });
-}
-
-function getRaavareNavn(raavareId) {
-    console.log("kaldes dette?");
-    let hostGetNameURL = hostURL + 'raavare/' + raavareId;
-    $.get(hostGetNameURL, function (data, status) {
-        alert("Data: " + data + "\nStatus: " + status);
     });
 }
 
@@ -60,6 +67,19 @@ function createRaavareBatch() {
             alert('Fejl ved oprettelsen af RåvareBatch: ' + textStatus);
         }
     })
+}
+
+function showRaavareNavn() {
+    var raavareId = document.getElementById('raavareId').value;
+    let hostShowURL = hostURL + 'raavare/' + raavareId
+    $.ajax({
+        url: hostShowURL,
+        type: 'GET',
+        dataType: "text",
+        success: function (res) {
+            document.getElementById('raavareNavn').innerHTML = res;
+        },
+    });
 }
 
 function dataCreateToJSON() {

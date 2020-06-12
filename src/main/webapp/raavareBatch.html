@@ -17,12 +17,15 @@
         <!-- Inputs, labels, paragrapher CONTENT -->
         <h2>Opret RåvareBatch</h2>
 
-        <div class="Container_borderless" style="width: 80%;">
-            <label><input id="rbId" style="width:15%;" type="text" name="rbId"  placeholder="RåvareBatch ID"></label>
-            <label><input id="raavareId" style="width:15%;" type="text" name="raavareId"  placeholder="Råvare ID"></label>
-            <label><input id="maengde" style="width:15%;" type="text" name="maengde"  placeholder="Mændge i kg"></label>
-            <label><input id="leverandoer" style="width:15%;" type="text" name="leverandoer"  placeholder="Leverandør"></label>
+        <div class="Container_borderless" style="width: 100%;">
+            <label><input id="rbId" style="width: 20%;" type="text" name="rbId"  placeholder="RåvareBatch ID"></label>
+            <label><input id="raavareId" style="width: 20%;" type="text" name="raavareId"  placeholder="Råvare ID"></label>
+            <label><input id="maengde" onclick="showRaavareNavn()" style="width: 20%;" type="text" name="maengde"  placeholder="Mændge i kg"></label>
+            <label><input id="leverandoer" style="width: 20%;" type="text" name="leverandoer"  placeholder="Leverandør"></label>
             <button class="successbutton" type="button" onclick="createRaavareBatch();" style="align-content: center;" name="button">Opret</button>
+            <row>
+                <label style="padding-left: 21%" id="raavareNavn"></label>
+            </row>
         </div>
 
 
