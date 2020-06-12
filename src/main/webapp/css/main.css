@@ -17,6 +17,10 @@ h1 {
   color: #E44E4E;
 }
 
+h2{
+  color: #878688;
+}
+
 .btn-alert {
   background-color: var(--color-primary);
   color: white;
