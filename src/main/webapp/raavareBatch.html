@@ -14,10 +14,19 @@
 
     <div class="grid-contentBody">
         <!-- Inputs, labels, paragrapher CONTENT -->
+        <h2>Opret RåvareBatch</h2>
 
-        <div class="container" style="align-content: center; margin-left: 25%;">
-            <div class="row">
-            </div>
+        <div class="Container_borderless" style="width: 80%;">
+            <label><input id="rbId" style="width:15%;" type="text" name="rbId"  placeholder="RåvareBatch ID"></label>
+            <label><input id="raavareId" style="width:15%;" type="text" name="raavareId"  placeholder="Råvare ID"></label>
+            <label><input id="maengde" style="width:15%;" type="text" name="maengde"  placeholder="Mændge i kg"></label>
+            <label><input id="leverandoer" style="width:15%;" type="text" name="leverandoer"  placeholder="Leverandør"></label>
+            <button class="successbutton" type="button" onclick="createRaavareBatch();" style="align-content: center;" name="button">Opret</button>
+        </div>
+
+
+        <div class="container">
+            <div class="row"></div>
 
             <div class="grid-item-10">
                 <table>
@@ -25,7 +34,9 @@
                     <tr>
                         <td>Råvarebatch ID</td>
                         <td>Råvare ID</td>
+                        <td>Råvare Navn</td>
                         <td>Mængde</td>
+                        <td>Leverandør</td>
                         <td> </td>
                     </tr>
                     </thead>
