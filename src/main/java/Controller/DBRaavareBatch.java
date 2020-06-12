@@ -1,7 +1,6 @@
 package Controller;
 
-import Data.DTO.DBConnector;
-import Data.DTO.raavareBatch;
+import Data.DTO.RaavareBatch;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

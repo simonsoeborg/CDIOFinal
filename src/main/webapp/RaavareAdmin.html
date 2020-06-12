@@ -15,32 +15,39 @@
 
     <div class="grid-contentBody">
         <!-- ------------------------------- Her sættes alt hvad der skal vises ---------------------------------- -->
+
         <div class="Container_borderless">
-            <form>
-                <div class="column"><label>Indtast Råvare ID:</label> <br> <input id="raavareId" type="text"></div>
-                <div class="column"><label>Indtast Råvare Navn:</label> <br> <input id="raavareNavn" type="text"></div>
-                <div class="column"><label>Indtast leverandør:</label> <br> <input id="leverandoer" type="text"> </div>
-                <div class="column"><button class="successbutton" type="button" name="button">Opret</button> </div>
-            </form>
+            <h2>Opret råvare:</h2> <br>
+
+            <label><input id="raavareid" style="width:30%;" type="text" name="raavareid"  placeholder="Indsæt råvare ID"></label>
+            <label><input id="raavarenavn" style="width:30%;" type="text" name="raavarenavn"  placeholder="Indsæt råvare navn"></label>
+            <button class="successbutton" type="button" onclick="createRaavare();" style="align-content: center;" name="button">Opret</button>
         </div>
-        <div class="Container_borderless">
-            <form>
-                <table>
-                    <thead>
-                    <tr>
-                        <td>Råvare Id</td>
-                        <td>Råvare navn</td>
-                        <td>leverandør</td>
-                        <td></td>
-                    </tr>
-                    </thead>
-                    <tbody id="loadAllRaavareList"><script>loadRaavareList();</script></tbody>
-                </table>
-            </form>
+        <div>
+            <br>
         </div>
-    </div>
+
+        <div>
+            <hr class="new4">
+            <div class="Container_borderless" style="padding-left: 33%;">
+                <h2>Råvare tabel:</h2>
+                <form>
+                    <table>
+                        <thead>
+                        <tr>
+                            <td>Råvare Id</td>
+                            <td>Råvare navn</td>
+                            <td></td>
+                        </tr>
+                        </thead>
+                        <tbody id="loadAllRaavareList"><script>loadRaavareList();</script></tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
     <!-- ----------------------------------------------------------------------------------------------------- -->
 
     <!-- Attach global footer -->
     <div class="grid-contentFooter"><script>includeFooter();</script></div>
+    </div>
 </div>
