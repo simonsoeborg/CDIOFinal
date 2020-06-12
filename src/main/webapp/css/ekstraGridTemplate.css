@@ -25,7 +25,7 @@ Note: The class following class is made as an extension to the otherwise global 
     padding: 16px;
 }
 
-/* Responsive hvis skærmen er mindre end 600px */
+/* Responsive hvis skærmen er mindre end 600px --> Baseret på Simon Søborgs løsning i grid.css */
 @media only screen and (max-width:600px) {
     .grid-containerUsers {
         grid-template-columns: 1fr;
