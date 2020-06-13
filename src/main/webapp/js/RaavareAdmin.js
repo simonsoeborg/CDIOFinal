@@ -75,15 +75,18 @@ function controlRaavareNavn(raavareNavn) {
     return true;
 }
 
-function searchRaavare() {
-    var raavarenavn = document.getElementById('soegraavarenavn').value;
+function searchRaavare(raavarenavn) {
+    raavarenavn = document.getElementById('soegraavarenavn').value;
     var hostSearchURL = '/CDIOFinal_war_exploded/test/raavare/' + raavarenavn;
     console.log(hostSearchURL);
     console.log("Searching råvare");
-    $.get(hostSearchURL, function (data) {
-        $("#loadAllRaavareList").empty();
-        $.each(data, function (i, raavare) {
-            $("#loadAllRaavareList").append(genTableHTMLForRaavare(raavare));
+    if (hostSearchURL != null && hostSearchURL != ' ') {
+        $.get(hostSearchURL, function (data) {
+            $("#loadAllRaavareList").empty();
+            $.each(data, function (i, raavarenavn) {
+                $("#loadAllRaavareList").append(genTableHTMLForRaavare(raavarenavn));
+            });
         });
-    });
+    } else alert("kan ikke finde råvaren: " + raavarenavn);
+
 }

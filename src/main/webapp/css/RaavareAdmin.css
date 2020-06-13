@@ -28,7 +28,7 @@ hr.new4 {
 }
 
 .topnav .search-container button:hover {
-    background-color: var(--color-third);
+    background-color: #fff58f;
 }
 
 .topnav .search-container {
@@ -36,5 +36,6 @@ hr.new4 {
 }
 
 #searchbutton {
-    background-color: var(--color-primary);
+    background-color: #ffad00;
+    border-radius: 5px;
 }

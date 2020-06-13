@@ -34,5 +34,5 @@ public class RaavareServlet {
 
     @GET
     @Path("{raavarenavn}")
-    public Raavare searchRaavare(@PathParam("raavarenavn") String raavarenavn){return DBRaavare.searchRaavare(raavarenavn);}
+    public List<Raavare> searchRaavare(@PathParam("raavarenavn") String raavarenavn){return DBRaavare.searchRaavare(raavarenavn);}
 }
