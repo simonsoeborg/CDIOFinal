@@ -1,6 +1,5 @@
 package Controller;
 
-import Data.DTO.DBConnector;
 import Data.DTO.Raavare;
 
 import java.sql.Connection;
@@ -28,7 +27,7 @@ public class DBRaavare {
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new Raavare(resultSet.getInt("raavareid"), resultSet.getString("raavarenavn"), resultSet.getString("leverandoer")));
+                    data.add(new Raavare(resultSet.getInt("raavareid"), resultSet.getString("raavarenavn")));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
@@ -55,16 +54,15 @@ public class DBRaavare {
         }
     }
 
-    public void createRaavare(int raavareid, String raavarenavn, String leverandoer) {
+    public void createRaavare(int raavareid, String raavarenavn) {
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "INSERT INTO Raavare (raavareid, raavarenavn, leverandoer)" +
-                        "VALUES (?, ?, ?)";
+                sqlQuery = "INSERT INTO Raavare (raavareid, raavarenavn)" +
+                        "VALUES (?, ?)";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setInt(1, raavareid);
                 pstm.setString(2, raavarenavn);
-                pstm.setString(3, leverandoer);
 
                 pstm.executeUpdate();
 //                Statement stm = SQLConn.createStatement();

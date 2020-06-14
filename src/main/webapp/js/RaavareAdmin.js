@@ -16,10 +16,10 @@ function genTableHTMLForRaavare(raavare) {
     return '<tr>' +
         '<td>'+ raavare.raavareid + '</td>'  +
         '<td>' + raavare.raavarenavn +'</td>' +
-        '<td>' + raavare.leverandoer + '</td>' +
         '<td><button class="btn-alert" type="submit" onclick="deleteRaavare(' + raavare.raavareid + ');">Slet</button></td>' +
         '</tr>';
 }
+
 function deleteRaavare(id) {
     var hostDeleteURL = "/CDIOFinal_war_exploded/test/raavare/" + id;
     event.preventDefault();
@@ -35,6 +35,7 @@ function deleteRaavare(id) {
 function createRaavare() {
     var hostCreateURL = "/CDIOFinal_war_exploded/test/raavare/";
     console.log('Creating ny råvare');
+    if (controlRaavareID($('#raavareid').val()) && controlRaavareNavn($('#raavarenavn').val())) {
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
@@ -49,12 +50,27 @@ function createRaavare() {
                 alert('fejl ved oprettelsen af råvaren: ' + textStatus);
             }
         })
+    }
 }
 
 function dataCreateToJSON() {
     return JSON.stringify({
         "raavareid": $('#raavareid').val(),
-        "raavarenavn": $('#raavarenavn').val(),
-        "leverandoer": $('#leverandoer').val()
+        "raavarenavn": $('#raavarenavn').val()
     });
+}
+
+function controlRaavareID(ID) {
+    if (ID.length !== 5) {
+        alert("råvarens ID skal indholde 5-tal");
+        return false;
+    }
+    return true
+}
+function controlRaavareNavn(raavareNavn) {
+    if (!(raavareNavn.length > 1) && !(raavareNavn.length < 21)) {
+        alert("råvarens navn skal være minimum 2 og maks 20");
+        return false;
+    }
+    return true;
 }
