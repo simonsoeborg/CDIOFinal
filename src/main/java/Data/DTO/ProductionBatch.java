@@ -8,16 +8,16 @@ public class ProductionBatch {
     private int status;
 
     public ProductionBatch(int pbId,int receptId, int status){
-        this.pbID = pbId;
+        this.pbId = pbId;
         this.status = receptId;
-        this.receptID = status;
+        this.receptId = status;
     }
 
     public int getPbId() {return pbId;}
 
     public void setPbId(int pbId) { this.pbId = pbId; }
 
-    public int getReceptId(){return receptID;}
+    public int getReceptId(){return receptId; }
 
     public void setReceptId(int receptId) {this.receptId = receptId; }
 

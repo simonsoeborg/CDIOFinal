@@ -1,6 +1,5 @@
 package Controller;
 
-import Data.DTO.DBConnector;
 import Data.DTO.ProductionBatch;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,8 +17,8 @@ public class DBProductionBatch {
     private DBConnector MySQLConnector = new DBConnector();
 
     public void fetchAllProductionBatch() {
-            ProductionBatch = new ArrayList<>();
-            ProductionBatch = GetAllProductionBatch();
+            ProductionBatches = new ArrayList<>();
+            ProductionBatches = GetAllProductionBatch();
         }
 
         public List<ProductionBatch> GetAllProductionBatch() {
@@ -44,7 +43,7 @@ public class DBProductionBatch {
 
         public List<ProductionBatch> listAllProductionBatches() {
             fetchAllProductionBatch();
-            return ProductionBatch;
+            return ProductionBatches;
         }
 
         public void deleteProductionBatch(int pbId) {
