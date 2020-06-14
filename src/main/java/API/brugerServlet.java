@@ -41,13 +41,10 @@ public class brugerServlet {
         return dbUser.searchUser(id);
     }
 
-    //*Todo Implement auto generated initials.
     @POST
     public void createUser(User user) {
-        dbUser.createUser(user.getFirstname(), user.getLastname(), user.getInitial(), user.getRole());
+        dbUser.createUser(user.getFirstname(), user.getLastname(), user.getRole());
     }
-
-    // *todo Test edit-user:
     @PUT
     @Path("{id}")
     public void editUser(@PathParam("id") int id, User user) {

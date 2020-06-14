@@ -159,8 +159,8 @@ public class DBUser {
         return temp;
     }
 
-    public void createUser(String firstName, String lastName, String initial, String role) {
-        // String initial = String.valueOf(Character.toUpperCase(firstName.charAt(0))+ Character.toUpperCase(lastName.charAt(0)));
+    public void createUser(String firstName, String lastName, String role) {
+        String initial =(Character.toUpperCase(firstName.charAt(0)) +""+Character.toUpperCase(lastName.charAt(0)));
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {

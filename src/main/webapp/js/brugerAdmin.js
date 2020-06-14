@@ -56,6 +56,39 @@ function loadActiveUserList() {
      });
  }
 
+function createUser() {
+    console.log('Creating new user');
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+            url: hostUserURL,
+            dataType: "json",
+            data: dataCreateToJSON(),
+            success: function (data, textStatus, req) {
+                alert('User created Successfully!');
+                displayContent('UserManagement.html');
+                loadUserList();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('Error creating user: ' + textStatus);
+            }
+        })
+}
+
+
+function dataEditToJSON(id) {
+    return JSON.stringify({
+        "id": id,
+        "firstname": $('#firstname').val(),
+        "lastname": $('#lastname').val(),
+        "cpr": $('#cpr').val(),
+        "password": $('#password').val(),
+        "role": $('#role').val()
+    });
+}
+
+
+
 
 function genTableHTMLForActiveUserList(user) {
     return  '<tr><td>' + user.id + '</td>' +
