@@ -180,19 +180,22 @@ public class DBUser {
     }
 
     public void editUser(int userID, String firstName, String lastName, String role) {
+        String initialUpdate =(Character.toUpperCase(firstName.charAt(0)) +""+Character.toUpperCase(lastName.charAt(0)));
         try {
             SQLConn = MySQLConnector.createConnection();
             if(SQLConn != null) {
                 sqlQuery = "UPDATE Brugere " +
                         "SET FirstName=?, " +
                         "LastName=?, " +
+                        "Initial=?," +
                         "Role=? " +
                         "WHERE UserId = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setString(1, firstName);
                 pstm.setString(2, lastName);
-                pstm.setString(3, role);
-                pstm.setInt(4, userID);
+                pstm.setString(3,initialUpdate);
+                pstm.setString(4, role);
+                pstm.setInt(5, userID);
 
                 pstm.executeUpdate();
                 SQLConn.close();

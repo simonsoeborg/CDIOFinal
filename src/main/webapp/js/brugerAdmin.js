@@ -8,7 +8,7 @@ Github: IceMonk3y
 function includeUserSideMenu() {
      $(".grid-contentSidebar").load("brugerAdminSidebar.html");}
 
-
+// Functionality to load different lists:
 function loadActiveUserList() {
     let getAllActiveUsersURL = hostUserURL + 'activated';
     console.log("Loading Active Users");
@@ -31,7 +31,7 @@ function loadActiveUserList() {
      });
  }
 
-
+// Functionality to deactivate and reactivate users.
  function deactivate (id) {
      event.preventDefault();
      $.ajax({
@@ -56,6 +56,18 @@ function loadActiveUserList() {
      });
  }
 
+ // Functionality to create users, this includes a translation function to Json.
+ function dataCreateToJSON() {
+    return JSON.stringify({
+        "id": 0,
+        "firstname": $('#firstname').val(),
+        "lastname": $('#lastname').val(),
+        "initial": "",
+        "role": $('#role').val(),
+        "status": ""
+    });
+}
+
 function createUser() {
     console.log('Creating new user');
         $.ajax({
@@ -66,8 +78,8 @@ function createUser() {
             data: dataCreateToJSON(),
             success: function (data, textStatus, req) {
                 alert('User created Successfully!');
-                displayContent('UserManagement.html');
-                loadUserList();
+                displayContent('brugerAdminFront.html');
+                loadActiveUserList();
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert('Error creating user: ' + textStatus);
@@ -76,20 +88,59 @@ function createUser() {
 }
 
 
+// Functionality to edit users, this includes a Json translation as well as a function to display the previous data.
 function dataEditToJSON(id) {
     return JSON.stringify({
         "id": id,
         "firstname": $('#firstname').val(),
         "lastname": $('#lastname').val(),
-        "cpr": $('#cpr').val(),
-        "password": $('#password').val(),
-        "role": $('#role').val()
+        "role": $('#role').val(),
     });
 }
 
+function displayEditUser(id) {
+    displayContent('EditUser.html');
+    $.ajax({
+        type: 'GET',
+        url: hostUserURL + id,
+        dataType: "json",
+        success: function (result) {
+            document.getElementById('firstname').value = result.firstname;
+            document.getElementById('lastname').value = result.lastname;
+            document.getElementById('role').value = result.role;
+
+            var input = document.getElementById('myID');
+            input.value = id;
+            document.getElementById('editUserBtn').onclick = function () {
+                execEditUser();
+            };
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert("unable to find user");
+        }
+    });
+}
+
+function execEditUser() {
+    $.ajax({
+        type: 'PUT',
+        url: hostUserURL + id,
+        contentType: 'application/json',
+        dataType: "json",
+        data: dataEditToJSON(id),
+        success: function (data, textStatus, req) {
+            alert('User Successfully updated!');
+            displayContent('brugerAdminFront.html');
+            loadActiveUserList();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error updating user with id: '+ id + ' | ' + textStatus);
+        }
+    })
+}
 
 
-
+// Functions for generating the tables needed to store the users.
 function genTableHTMLForActiveUserList(user) {
     return  '<tr><td>' + user.id + '</td>' +
         '<td>' + user.firstname +'</td>' +
