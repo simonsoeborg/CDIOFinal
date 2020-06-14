@@ -22,16 +22,23 @@
     <div class="grid-contentBody">
 
         <!---------------------------------------------------------------------------------->
+        <tbody id="loadAllRecepts"><script>loadRecepts();</script></tbody>
 
-        <h4>Opret recept</h4>
+        <h2>Opret recept</h2>
         <label for="receptid">ReceptID:</label><br>
         <input type="text" id="receptid" name="receptid"><br>
         <label for="receptname">ReceptNavn:</label><br>
         <input type="text" id="receptname" name="receptname"><br>
-        <button id="add-recept">Opret</button>
 
-        <h4>Recepter</h4>
-        <ul id="recepts"></ul>
+        <label for="raavareid">Vælg en råvare:</label>
+        <select id="raavareid" name="raavareid"></select> <br>
+
+        <label for="nonnetto">NonNetto:</label><br>
+        <input type="text" id="nonnetto" name="nonnetto"><br>
+        <label for="tolerance">Tolerance:</label><br>
+        <input type="text" id="tolerance" name="tolerance"><br>
+
+        <button id="add-recept">Opret</button>
 
         <!---------------------------------------------------------------------------------->
 
