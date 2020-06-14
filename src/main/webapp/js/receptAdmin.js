@@ -23,7 +23,7 @@ function loadRecepts() {
 function dataCreateToJSON() {
     return JSON.stringify({
         "receptid": $('#receptid').val(),
-        "receptname": $('#lastname').val(),
+        "receptname": $('#receptname').val(),
         "nonnetto": $('#nonnetto').val(),
         "tolerance": $('#tolerance').val()
     })
