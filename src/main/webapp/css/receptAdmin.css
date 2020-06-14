@@ -1,0 +1,18 @@
+/*
+
+@media screen and (max-width: 600px) {
+    .recept-content {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+.recept-content {
+    float: left;
+    padding: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #f1f1f1;
+}*/

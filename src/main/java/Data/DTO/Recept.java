@@ -8,6 +8,8 @@ public class Recept {
     private double nonNetto;
     private double tolerance;
 
+    public Recept(){}
+
     public Recept(int receptId, String receptNavn, int raavareId, double nonNetto, double tolerance) {
         this.receptId = receptId;
         this.receptNavn = receptNavn;

@@ -60,17 +60,16 @@ public class DBRecept {
     //-------------------------------------------------------------------------------------
 
 
-    public void createRecept(int receptId, String receptNavn, int raavareID, double nonNetto, double tolerance) {
+    public void createRecept(int receptId, String receptNavn, int raavareId, double nonNetto, double tolerance) {
 
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("INSERT INTO Recept (receptId, receptNavn, raavareID, nonNetto, tolerance)" +
+                pstm = SQLConn.prepareStatement("INSERT INTO Recept (receptId, receptNavn, raavareId, nonNetto, tolerance)" +
                         "VALUES (?, ?, ?, ?, ?)");
-                resultSet = pstm.executeQuery();
                 pstm.setInt(1, receptId);
                 pstm.setString(2, receptNavn);
-                pstm.setInt(3, raavareID);
+                pstm.setInt(3, raavareId);
                 pstm.setDouble(4, nonNetto);
                 pstm.setDouble(5, tolerance);
                 pstm.executeUpdate();
@@ -81,17 +80,17 @@ public class DBRecept {
         }
     }
 
-    public void UpdateRecept(int receptId, String receptNavn, int raavareID, double nonNetto, double tolerance) {
+    public void UpdateRecept(int receptId, String receptNavn, int raavareId, double nonNetto, double tolerance) {
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("UPDATE Recept " + "SET receptId=?, " + "receptNavn=?, " +
-                        "raavareID=?, " + "nonNetto=? " + "tolerance=? " + "WHERE receptId = ?");
-                pstm.setInt(1, receptId);
-                pstm.setString(2, receptNavn);
-                pstm.setInt(3, raavareID);
-                pstm.setDouble(4, nonNetto);
-                pstm.setDouble(5, tolerance);
+                pstm = SQLConn.prepareStatement("UPDATE Recept SET receptNavn = ?, raavareId = ?, " +
+                        "nonNetto = ?, tolerance = ? WHERE receptId = ?");
+                pstm.setString(1, receptNavn);
+                pstm.setInt(2, raavareId);
+                pstm.setDouble(3, nonNetto);
+                pstm.setDouble(4, tolerance);
+                pstm.setInt(5, receptId);
 
                 pstm.executeUpdate();
                 SQLConn.close();
@@ -101,16 +100,15 @@ public class DBRecept {
         }
     }
 
-    public void UpdateReceptComponent(int raavareID, double nonNetto, double tolerance) {
+    public void UpdateReceptComponent(int raavareId, double nonNetto, double tolerance) { //Virker ikke
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("UPDATE Recept " + "SET raavareID=?, "
-                        + "nonNetto=? " + "tolerance=? " + "WHERE raavareID = ?");
-                pstm.setInt(3, raavareID);
-                pstm.setDouble(4, nonNetto);
-                pstm.setDouble(5, tolerance);
-
+                pstm = SQLConn.prepareStatement("UPDATE Recept  SET nonNetto = ?, " +
+                        "tolerance = ? WHERE raavareId = ?");
+                pstm.setDouble(1, nonNetto);
+                pstm.setDouble(2, tolerance);
+                pstm.setInt(3, raavareId);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -133,7 +131,7 @@ public class DBRecept {
         }
     }
 
-    //Dette skal indgå, når man har trykket på knappen 'rediger
+    //Dette skal indgå, når man har trykket på knappen 'rediger'
 
     public void deleteReceptComponent(int raavareId) {
         try {

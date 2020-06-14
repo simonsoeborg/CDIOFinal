@@ -15,13 +15,25 @@
     <div class="grid-sideMenu"><script>includeSideMenu();</script></div>
 
     <div class="grid-contentHeader">
-        <!-- Titel på siden såsom Afvejning -->
-        <h1 id="afvejningsTitel">Afvejning</h1>
+        <!-- Titel-->
+        <h1 id="receptTitel">Recepter</h1>
     </div>
 
     <div class="grid-contentBody">
 
-        <!-- Inputs, labels, paragrapher CONTENT -->
+        <!---------------------------------------------------------------------------------->
+
+        <h4>Opret recept</h4>
+        <label for="receptid">ReceptID:</label><br>
+        <input type="text" id="receptid" name="receptid"><br>
+        <label for="receptname">ReceptNavn:</label><br>
+        <input type="text" id="receptname" name="receptname"><br>
+        <button id="add-recept">Opret</button>
+
+        <h4>Recepter</h4>
+        <ul id="recepts"></ul>
+
+        <!---------------------------------------------------------------------------------->
 
     </div>
 

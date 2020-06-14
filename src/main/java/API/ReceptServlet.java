@@ -14,16 +14,16 @@ public class ReceptServlet {
 
     private DBRecept dbr = new DBRecept();
 
-    @GET
+    @GET //Virker
     public List<Recept> getRecepts() { return dbr.listAllRecepts(); }
 
-    @POST
+    @POST //Virker
     public void createRecept(Recept recept) {
         dbr.createRecept(recept.getReceptId(), recept.getReceptNavn(),
                 recept.getRaavareId(), recept.getNonNetto(), recept.getTolerance());
     }
 
-    @PUT
+    @PUT //Virker
     @Path("{id}")
     public void updateRecept(@PathParam("id") int id, Recept recept) {
         dbr.UpdateRecept(id, recept.getReceptNavn(),
