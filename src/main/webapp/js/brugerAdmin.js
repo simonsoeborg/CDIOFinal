@@ -99,10 +99,10 @@ function dataEditToJSON(id) {
 }
 
 function displayEditUser(id) {
-    displayContent('EditUser.html');
+    displayContent('brugerAdminRediger.html');
     $.ajax({
         type: 'GET',
-        url: hostUserURL + id,
+        url: hostUserURL + 'search/?id=' + id,
         dataType: "json",
         success: function (result) {
             document.getElementById('firstname').value = result.firstname;
@@ -112,7 +112,7 @@ function displayEditUser(id) {
             var input = document.getElementById('myID');
             input.value = id;
             document.getElementById('editUserBtn').onclick = function () {
-                execEditUser();
+                execEditUser(id);
             };
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -121,7 +121,7 @@ function displayEditUser(id) {
     });
 }
 
-function execEditUser() {
+function execEditUser(id) {
     $.ajax({
         type: 'PUT',
         url: hostUserURL + id,
@@ -159,7 +159,7 @@ function genTableHTMLForActiveUserList(user) {
         '<td>' + user.lastname + '</td>' +
         '<td>' + user.initial + '</td>' +
         '<td>' + user.role + '</td>' +
-        '<td><button id="edit-button" class="btn-alert"  type="submit">Rediger</button></td>' +
+        '<td><button id="edit-button" class="btn-alert"  type="submit" onclick="displayEditUser('+ user.id + ');">Rediger</button></td>' +
         '<td><button class="btn-alert" type="submit" onclick="deactivate('+ user.id+' );">Deaktiver</button></td>' +
         '</tr>';
 }
@@ -170,7 +170,7 @@ function genTableHTMLForActiveUserList(user) {
          '<td>' + user.lastname + '</td>' +
          '<td>' + user.initial + '</td>' +
          '<td>' + user.role + '</td>' +
-         '<td><button id="edit-button" class="btn-alert"  type="submit">Rediger</button></td>' +
+         '<td><button id="edit-button" class="btn-alert"  type="submit" onclick="displayEditUser('+ user.id + ');">Rediger</button></td>' +
          '<td><button id="activate-button" class="btn-alert" type="submit" onclick="activate('+ user.id+' );">Aktiver</button></td>' +
          '</tr>';
  }

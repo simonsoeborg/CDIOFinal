@@ -45,6 +45,7 @@ public class brugerServlet {
     public void createUser(User user) {
         dbUser.createUser(user.getFirstname(), user.getLastname(), user.getRole());
     }
+
     @PUT
     @Path("{id}")
     public void editUser(@PathParam("id") int id, User user) {
