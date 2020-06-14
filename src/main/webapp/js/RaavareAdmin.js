@@ -100,14 +100,18 @@ function searchRaavare(raavarenavn) {
         $.ajax({
             url: hostSearchURL,
             success: function (url) {
-                $.get(hostSearchURL, function (data) {
-                    $("#loadAllRaavareList").empty();
-                    $.each(data, function (i, raavarenavn) {
-                        $("#loadAllRaavareList").append(genTableHTMLForRaavare(raavarenavn));
+                if($.trim(url)) {
+                    $.get(hostSearchURL, function (data) {
+                        $("#loadAllRaavareList").empty();
+                        $.each(data, function (i, raavarenavn) {
+                            $("#loadAllRaavareList").append(genTableHTMLForRaavare(raavarenavn));
+                        });
                     });
-                });
+                } else {
+                   alert("råvaren findes ikke i databasen. ");
+                }
             },
-            error: function (jqXHR, textStatus, errorThrown) {
+            error: function () {
                 loadRaavareList();
             }
         })

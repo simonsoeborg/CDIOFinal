@@ -92,7 +92,7 @@ public class DBRaavare {
             raavare = temp;
 
         } catch (SQLException e) {
-            System.out.println("råvaren findes ikke i databasen: " + e);
+            System.out.println("kan ikke få adgang til råvare databasen");
         }
         return raavare;
     }
