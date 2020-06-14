@@ -122,6 +122,7 @@ function displayEditUser(id) {
 }
 
 function execEditUser(id) {
+    // *todo Fix således at den kan checke hvorvidt der er tale om en aktiv eller deaktiv bruger.
     $.ajax({
         type: 'PUT',
         url: hostUserURL + id,
@@ -130,7 +131,6 @@ function execEditUser(id) {
         data: dataEditToJSON(id),
         success: function (data, textStatus, req) {
             alert('User Successfully updated!');
-
             if (checkStatus($('#status').val())){
                 displayContent('brugerAdminFront.html');
                 loadActiveUserList();
@@ -147,9 +147,8 @@ function execEditUser(id) {
 }
 
 function checkStatus(status) {
-    if (status='activated')
-        return true;
-    else return false
+    if (status=='Activated') { return true;}
+    else return false;
 }
 
 // Functions for generating the tables needed to store the users.
