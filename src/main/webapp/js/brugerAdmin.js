@@ -130,8 +130,15 @@ function execEditUser() {
         data: dataEditToJSON(id),
         success: function (data, textStatus, req) {
             alert('User Successfully updated!');
-            displayContent('brugerAdminFront.html');
-            loadActiveUserList();
+
+            if (checkStatus($('#status').val())){
+                displayContent('brugerAdminFront.html');
+                loadActiveUserList();
+            }
+            else{
+                displayContent('brugerAdminDeaktiverede.html');
+                loadDeactivatedUserList();
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error updating user with id: '+ id + ' | ' + textStatus);
@@ -139,6 +146,11 @@ function execEditUser() {
     })
 }
 
+function checkStatus(status) {
+    if (status='activated')
+        return true;
+    else return false
+}
 
 // Functions for generating the tables needed to store the users.
 function genTableHTMLForActiveUserList(user) {
