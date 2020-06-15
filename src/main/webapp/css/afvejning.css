@@ -69,6 +69,37 @@ button:hover {
   margin: 10px;
 }
 
+#repeatableObjectZero {
+  display: block;
+}
+
+#repeatableObjectOne {
+  display: none;
+}
+
+#repeatableObjectTwo {
+  display: none;
+}
+
 #runAllBatchesButton {
   margin-right: 25%;
 }
+
+#wrapper {
+  display: none;
+}
+#checkToleranceZero {
+  width: auto;
+  font-size: 16px;
+}
+
+#checkToleranceOne {
+  width: auto;
+  font-size: 16px;
+}
+
+#checkToleranceTwo {
+  width: auto;
+  font-size: 16px;
+}
+
