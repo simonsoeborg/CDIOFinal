@@ -22,7 +22,6 @@
     <div class="grid-contentBody">
 
         <!---------------------------------------------------------------------------------->
-        <tbody id="loadAllRecepts"><script>loadRecepts();</script></tbody>
 
         <h2>Opret recept</h2>
         <label for="receptid">ReceptID:</label><br>
@@ -41,6 +40,23 @@
         <button id="add-recept">Opret</button>
 
         <!---------------------------------------------------------------------------------->
+
+        <h2>Råvare tabel:</h2>
+        <div class="Container_borderless" style="align-content: center;">
+            <form>
+                <table>
+                    <thead>
+                    <tr>
+                        <td>RåvareId</td>
+                        <td>NonNetto</td>
+                        <td>Tolerance</td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody id="loadAllRecepts"><script>loadRecepts();</script></tbody>
+                </table>
+            </form>
+        </div>
 
     </div>
 

@@ -1,7 +1,7 @@
 function genTableHTMLForRecepts(recept) {
-    return '<tr id="' + recept.receptid + ' '+ recept.receptname +'">' +
+    return '<tr>' +
     '<td>'+ recept.raavareid + '</td>' +
-    '<td>' + recept.nonnetto+ '</td>' +
+    '<td>' + recept.nonnetto + '</td>' +
     '<td>' + recept.tolerance + '</td>' +
     /*'<td><button class="btn-warning" type="submit" onclick="editRecept(' + recept.receptid + ');">Ret</button></td>' +
     '<td><button class="btn-alert" type="submit" onclick="deleteUser(' + recept.receptid + ');">Slet</button></td>' +*/
