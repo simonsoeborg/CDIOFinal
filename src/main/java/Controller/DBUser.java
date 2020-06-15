@@ -1,3 +1,8 @@
+/*
+Author: Simon Fridolf
+Github: IceMonk3y
+*/
+
 package Controller;
 
 import Data.DTO.User;
@@ -28,12 +33,38 @@ public class DBUser {
         return userList;
     }
 
+    public List<User> listAllUsers() {
+        userList = new ArrayList<>();
+        userList = getAllUsers();
+        return userList;
+    }
+
     public List<User> getAllActivatedUsers() {
         SQLConn = MySQLConnector.createConnection();
         ArrayList<User> data = new ArrayList<>();
         if (SQLConn != null) {
             try {
                 sqlQuery = "SELECT * FROM Brugere WHERE Status='Activated'";
+                //prepared statement
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                ResultSet resultSet = pstm.executeQuery();
+                while (resultSet.next()) {
+                    data.add(new User(resultSet.getInt("UserId"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Initial"), resultSet.getString("Role"), resultSet.getString("Status")));
+                }
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return data;
+    }
+
+    public List<User> getAllUsers() {
+        SQLConn = MySQLConnector.createConnection();
+        ArrayList<User> data = new ArrayList<>();
+        if (SQLConn != null) {
+            try {
+                sqlQuery = "SELECT * FROM Brugere";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
@@ -127,8 +158,8 @@ public class DBUser {
         return temp;
     }
 
-    public void createUser(String firstName, String lastName, String initial, String role) {
-        // String initial = String.valueOf(Character.toUpperCase(firstName.charAt(0))+ Character.toUpperCase(lastName.charAt(0)));
+    public void createUser(String firstName, String lastName, String role) {
+        String initial =(Character.toUpperCase(firstName.charAt(0)) +""+Character.toUpperCase(lastName.charAt(0)));
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
@@ -148,19 +179,22 @@ public class DBUser {
     }
 
     public void editUser(int userID, String firstName, String lastName, String role) {
+        String initialUpdate =(Character.toUpperCase(firstName.charAt(0)) +""+Character.toUpperCase(lastName.charAt(0)));
         try {
             SQLConn = MySQLConnector.createConnection();
             if(SQLConn != null) {
                 sqlQuery = "UPDATE Brugere " +
                         "SET FirstName=?, " +
                         "LastName=?, " +
+                        "Initial=?," +
                         "Role=? " +
                         "WHERE UserId = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setString(1, firstName);
                 pstm.setString(2, lastName);
-                pstm.setString(3, role);
-                pstm.setInt(4, userID);
+                pstm.setString(3,initialUpdate);
+                pstm.setString(4, role);
+                pstm.setInt(5, userID);
 
                 pstm.executeUpdate();
                 SQLConn.close();

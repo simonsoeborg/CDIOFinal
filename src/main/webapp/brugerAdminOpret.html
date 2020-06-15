@@ -1,0 +1,41 @@
+<!--
+Author: Simon Fridolf
+Github: IceMonk3y
+-->
+<div class="grid-containerUsers">
+
+    <!-- Attach global header -->
+    <div class="grid-menu"><script>includeHeader();</script></div>
+
+    <!-- Attach global sideMenu -->
+    <div class="grid-sideMenu"><script>includeSideMenu();</script></div>
+
+    <!-- Attach  extra-sideMenu -->
+    <div class="grid-contentSidebar"><script>includeUserSideMenu();</script></div>
+
+    <div class="grid-contentHeader">
+        <h1 id="BrugerAdministration">BrugerAdministration</h1>
+    </div>
+
+    <div class="grid-contentBody">
+        <div class="container" style=" align-content: start;">
+            <h2> Opret bruger </h2>
+            <input id="firstname" style="width:30%;" type="text" name="firstname" placeholder="Fornavn">
+            <br>
+            <input id="lastname" style="width:30%;" type="text" name="lastname" placeholder="Efternavn">
+            <div class="dropdown" style="width: 30%;">
+                <select id="role">
+                    <option disabled selected hidden>Vælg rolle</option>
+                    <option>Adminstrator</option>
+                    <option>Farmaceut</option>
+                    <option>Produktionsleder</option>
+                    <option>Laborant</option>
+                </select>
+            </div>
+            <button class="successbutton" type="button" name="button" onclick="createUser();">Opret</button>
+        </div>
+    </div>
+</div>
+
+    <!-- Attach global footer -->
+    <div class="grid-contentFooter"><script>includeFooter();</script></div>
