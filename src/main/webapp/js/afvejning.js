@@ -61,6 +61,7 @@ function findProduktBatch() {
         alert("Error using " + produktbatchNr + "! \nTry again or use another produktbatch nr.");
       } else {
         document.getElementById('receptNameResponse').innerHTML = "Recept: " + result;
+        document.getElementById('produktBatchAndReceptName').style.display = "none";
       }
     },
     error: function (jqXHR, textStatus, errorThrown) {

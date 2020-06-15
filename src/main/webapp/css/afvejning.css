@@ -26,6 +26,7 @@ Github: simonsoeborg
 
 #afvejningStep1 {
     display: block;
+
 }
 
 label {
@@ -53,7 +54,7 @@ input:active {
 
 button {
   padding: 10px;
-  background-color: transparent;
+
   border: 0px;
   font-size: 22px;
 }
@@ -61,10 +62,7 @@ button {
 button:hover {
   border: 1px solid rgba(114, 85, 85, 0.29);
   border-radius: 5px;
-}
-
-#labNameResponse {
-  color: #4CAF50;
+  background-color: transparent;
 }
 
 .repeatButton {

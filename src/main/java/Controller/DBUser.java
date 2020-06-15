@@ -5,7 +5,6 @@ Github: IceMonk3y
 
 package Controller;
 
-import Data.DTO.DBConnector;
 import Data.DTO.User;
 
 import java.sql.Connection;

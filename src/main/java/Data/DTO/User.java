@@ -15,6 +15,7 @@ public class User {
 
     public User() {
     }
+
     public User(int id, String firstname, String lastname, String initial, String role, String status) {
         this.id = id;
         this.firstname = firstname;
