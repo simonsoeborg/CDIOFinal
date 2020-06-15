@@ -1,9 +1,13 @@
+/* Author: Karl Emil */
 
 var hostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
 
+var raavareNavn;
+
 function loadRaavareBatchList() {
     console.log("Loading Råvare Batches");
-    $.get(hostURL, function (data, textStatus, req) {
+    let hostGetURL = hostURL + 'load';
+    $.get(hostGetURL, function (data) {
         $("#loadAllRaavareBatchList").empty();
         $.each(data, function (i, raavareBatch) {
             $("#loadAllRaavareBatchList").append(genTableHTMLForRaavareBatch(raavareBatch));
@@ -14,9 +18,24 @@ function loadRaavareBatchList() {
 function genTableHTMLForRaavareBatch(raavareBatch) {
     return  '<tr><td>' + raavareBatch.rbId + '</td>' +
             '<td>' + raavareBatch.raavareId +'</td>' +
-            '<td>' + raavareBatch.maengde + '</td>' +
+            '<td id="raavare">' + getRaavareNavn(raavareBatch.raavareId) + '</td>' +
+            '<td>' + raavareBatch.maengde + ' kg</td>' +
+            '<td>' + raavareBatch.leverandoer + '</td>' +
             '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
-            '</td>'
+            '</tr>'
+}
+
+function getRaavareNavn(raavareId) {
+    let hostGetNameURL = hostURL + 'raavare/' + raavareId;
+    $.ajax({
+        url: hostGetNameURL,
+        type: 'GET',
+        dataType: "text",
+        success: function (res) {
+            console.log(res);
+            document.getElementById('raavare').innerHTML = res;
+        },
+    });
 }
 
 function deleteRaavareBatch(rbId) {
@@ -24,10 +43,50 @@ function deleteRaavareBatch(rbId) {
     $.ajax({
         url: hostURL + rbId,
         method: 'DELETE',
-        success: function (data) {
+        success: function () {
             alert(' Råvare Batch med id: ' + rbId + ' er blevet slettet!');
             loadRaavareBatchList();
         }
     });
 }
 
+function createRaavareBatch() {
+    let hostCreateURL = hostURL + 'create';
+    console.log('Opretter ny RåvareBatch');
+    $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        url: hostCreateURL,
+        dataType: "json",
+        data: dataCreateToJSON(),
+        success: function () {
+            alert('Succes! RåvareBatch oprettet');
+            loadRaavareBatchList();
+        },
+        error: function (jqXHR, textStatus) {
+            alert('Fejl ved oprettelsen af RåvareBatch: ' + textStatus);
+        }
+    })
+}
+
+function showRaavareNavn() {
+    var raavareId = document.getElementById('raavareId').value;
+    let hostShowURL = hostURL + 'raavare/' + raavareId
+    $.ajax({
+        url: hostShowURL,
+        type: 'GET',
+        dataType: "text",
+        success: function (res) {
+            document.getElementById('raavareNavn').innerHTML = res;
+        },
+    });
+}
+
+function dataCreateToJSON() {
+    return JSON.stringify({
+        "rbId": $('#rbId').val(),
+        "raavareId": $('#raavareId').val(),
+        "maengde": $('#maengde').val(),
+        "leverandoer": $('#leverandoer').val()
+    });
+}

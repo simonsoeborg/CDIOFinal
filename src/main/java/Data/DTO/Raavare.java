@@ -4,8 +4,7 @@ public class Raavare {
     private int raavareid;
     private String raavarenavn;
 
-    public Raavare () {
-
+    public Raavare() {
     }
 
     public Raavare (int raavareid, String raavarenavn){
