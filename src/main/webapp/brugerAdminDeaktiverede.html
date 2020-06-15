@@ -1,0 +1,45 @@
+<!--
+Author: Simon Fridolf
+Github: IceMonk3y
+-->
+<div class="grid-containerUsers">
+
+    <!-- Attach global header -->
+    <div class="grid-menu"><script>includeHeader();</script></div>
+
+    <!-- Attach global sideMenu -->
+    <div class="grid-sideMenu"><script>includeSideMenu();</script></div>
+
+    <!-- Attach  extra-sideMenu -->
+    <div class="grid-contentSidebar"><script>includeUserSideMenu();</script></div>
+
+    <div class="grid-contentHeader">
+        <h1 id="brugeradmin">BrugerAdministration</h1>
+    </div>
+
+    <div class="grid-contentBody">
+        <!-- Inputs, labels, paragrapher CONTENT -->
+        <div id=usertable class="container" style=" align-content: start;">
+            <div class="row"></div>
+            <div class="Container_borderless">
+                <h2> Deaktiverede brugere </h2>
+                <table>
+                    <thead id="t-deactive">
+                    <tr>
+                        <td>Medlems ID</td>
+                        <td>Fornavn</td>
+                        <td>Efternavn</td>
+                        <td>Initialer</td>
+                        <td>Rolle</td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    </thead>
+                    <tbody id="loadDeactivatedUserList"><script>loadDeactivatedUserList();</script></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Attach global footer -->
+<div class="grid-contentFooter"><script>includeFooter();</script></div>

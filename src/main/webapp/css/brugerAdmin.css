@@ -1,0 +1,29 @@
+/*
+Author: Simon Fridolf
+Github: IceMonk3y
+
+Note: Additions and override for brugerAdmin.
+*/
+
+/*Additional color too the table head element*/
+#t-deactive td{
+    background-color: #585858;
+}
+
+/*Other color to edit */
+#edit-button{
+    background-color: #ff7f02;
+}
+
+/*Other color to activate */
+#activate-button{
+    background-color: #007900;
+}
+/*More styled list*/
+
+/*Make create user page */
+
+
+
+
+

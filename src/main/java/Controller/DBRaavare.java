@@ -72,4 +72,28 @@ public class DBRaavare {
             System.out.println(e);
         }
     }
+
+    public List<Raavare> searchRaavare(String raavarenavn) {
+        try {
+            ArrayList<Raavare> temp = new ArrayList<>();
+            SQLConn = MySQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "SELECT * FROM Raavare WHERE raavarenavn = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setString(1, raavarenavn);
+                ResultSet resultSet = pstm.executeQuery();
+
+                while (resultSet.next()) {
+                    temp.add(new Raavare(resultSet.getInt("raavareid"), resultSet.getString("raavarenavn")));
+                }
+                SQLConn.close();
+            }
+            raavare = new ArrayList<>();
+            raavare = temp;
+
+        } catch (SQLException e) {
+            System.out.println("kan ikke få adgang til råvare databasen");
+        }
+        return raavare;
+    }
 }

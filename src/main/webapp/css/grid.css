@@ -54,6 +54,7 @@ Reference: https://www.youtube.com/watch?v=68O6eOGAGqA
   padding: 16px;
 }
 
+
 .grid-contentFooter {
   grid-area: contentFooter;
   border-radius: var(--grid-main-radius);

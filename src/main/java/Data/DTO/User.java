@@ -1,3 +1,8 @@
+/*
+Author: Simon Fridolf
+Github: IceMonk3y
+*/
+
 package Data.DTO;
 
 public class User {

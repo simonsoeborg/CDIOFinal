@@ -17,6 +17,10 @@ h1 {
   color: #E44E4E;
 }
 
+h2{
+  color: #878688;
+}
+
 .btn-alert {
   background-color: var(--color-primary);
   color: white;
@@ -60,11 +64,12 @@ h1 {
   transition: background-color 0.25s, color 0.25s;
 }
 
+
 table {
   border-spacing: 0px;
 }
 
-thead td {
+thead td  {
   font-weight: bold;
   background-color: var(--color-primary);
   color: white;
