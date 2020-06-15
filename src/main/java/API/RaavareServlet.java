@@ -31,4 +31,8 @@ public class RaavareServlet {
     public void deleteRaavare(@PathParam("raavareid") int raavareid) {
         DBRaavare.deleteRaavare(raavareid);
     }
+
+    @GET
+    @Path("{raavarenavn}")
+    public List<Raavare> searchRaavare(@PathParam("raavarenavn") String raavarenavn){return DBRaavare.searchRaavare(raavarenavn);}
 }

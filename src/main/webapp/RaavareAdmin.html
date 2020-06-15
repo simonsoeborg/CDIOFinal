@@ -29,8 +29,18 @@
 
         <div>
             <hr class="new4">
+            <h2>Råvare tabel:</h2>
             <div class="Container_borderless" style="padding-left: 33%;">
-                <h2>Råvare tabel:</h2>
+                <!-- -------------------------------------- search bar---------------------------------------------- -->
+                <div class="search-container">
+                    <form>
+                        <label><input id="soegraavarenavn" type="text" name="searchraavare"  placeholder="Søg efter navn.."></label>
+                        <button id= "searchbutton" type="button"><i class="fa fa-search"onclick="searchRaavare();"></i></button>
+                    </form>
+                </div>
+                <div>
+                    <br>
+                </div>
                 <form>
                     <table>
                         <thead>
