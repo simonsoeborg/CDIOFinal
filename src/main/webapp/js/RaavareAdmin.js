@@ -76,7 +76,7 @@ function controlRaavareNavn(raavareNavn) {
 }
 
 function searchRaavare(raavarenavn) {
-    /*raavarenavn = document.getElementById('soegraavarenavn').value;
+    raavarenavn = document.getElementById('soegraavarenavn').value;
     if (raavarenavn == null) {
         loadRaavareList();
     } else {
@@ -92,7 +92,7 @@ function searchRaavare(raavarenavn) {
             });
         }
      }
-     */
+
 
     raavarenavn = document.getElementById('soegraavarenavn').value
         var hostSearchURL = '/CDIOFinal_war_exploded/test/raavare/' + raavarenavn;

@@ -1,8 +1,6 @@
 /* Author: Karl Emil */
 
-var hostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
-
-var raavareNavn;
+let hostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
 
 function loadRaavareBatchList() {
     console.log("Loading Råvare Batches");
@@ -16,9 +14,11 @@ function loadRaavareBatchList() {
 }
 
 function genTableHTMLForRaavareBatch(raavareBatch) {
+    var raavareNavn = getRaavareNavn(raavareBatch.raavareId);
+    console.log(typeof raavareNavn);
     return  '<tr><td>' + raavareBatch.rbId + '</td>' +
             '<td>' + raavareBatch.raavareId +'</td>' +
-            '<td id="raavare">' + getRaavareNavn(raavareBatch.raavareId) + '</td>' +
+            '<td>' + raavareNavn + '</td>' +
             '<td>' + raavareBatch.maengde + ' kg</td>' +
             '<td>' + raavareBatch.leverandoer + '</td>' +
             '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
@@ -27,13 +27,13 @@ function genTableHTMLForRaavareBatch(raavareBatch) {
 
 function getRaavareNavn(raavareId) {
     let hostGetNameURL = hostURL + 'raavare/' + raavareId;
+    event.preventDefault();
     $.ajax({
         url: hostGetNameURL,
         type: 'GET',
         dataType: "text",
         success: function (res) {
-            console.log(res);
-            document.getElementById('raavare').innerHTML = res;
+            raavareNavn = res;
         },
     });
 }
@@ -51,6 +51,7 @@ function deleteRaavareBatch(rbId) {
 }
 
 function createRaavareBatch() {
+
     let hostCreateURL = hostURL + 'create';
     console.log('Opretter ny RåvareBatch');
     $.ajax({
@@ -66,7 +67,7 @@ function createRaavareBatch() {
         error: function (jqXHR, textStatus) {
             alert('Fejl ved oprettelsen af RåvareBatch: ' + textStatus);
         }
-    })
+    });
 }
 
 function showRaavareNavn() {
