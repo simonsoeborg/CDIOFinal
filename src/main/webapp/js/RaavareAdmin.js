@@ -93,27 +93,28 @@ function searchRaavare(raavarenavn) {
         }
      }
      */
-    raavarenavn = document.getElementById('soegraavarenavn').value;
-    var hostSearchURL = '/CDIOFinal_war_exploded/test/raavare/'+ raavarenavn;
-    console.log('søger efter råvare');
-    if (hostSearchURL != null && hostSearchURL != ' ') {
-        $.ajax({
-            url: hostSearchURL,
-            success: function (url) {
-                if($.trim(url)) {
-                    $.get(hostSearchURL, function (data) {
-                        $("#loadAllRaavareList").empty();
-                        $.each(data, function (i, raavarenavn) {
-                            $("#loadAllRaavareList").append(genTableHTMLForRaavare(raavarenavn));
+
+    raavarenavn = document.getElementById('soegraavarenavn').value
+        var hostSearchURL = '/CDIOFinal_war_exploded/test/raavare/' + raavarenavn;
+        console.log('søger efter råvare');
+        if (hostSearchURL != null && hostSearchURL !== ' ') {
+            $.ajax({
+                url: hostSearchURL,
+                success: function (url) {
+                    if ($.trim(url)) {
+                        $.get(hostSearchURL, function (data) {
+                            $("#loadAllRaavareList").empty();
+                            $.each(data, function (i, raavarenavn) {
+                                $("#loadAllRaavareList").append(genTableHTMLForRaavare(raavarenavn));
+                            });
                         });
-                    });
-                } else {
-                   alert("råvaren findes ikke i databasen. ");
+                    } else {
+                        alert("råvaren findes ikke i databasen. ");
+                    }
+                },
+                error: function () {
+                    loadRaavareList();
                 }
-            },
-            error: function () {
-                loadRaavareList();
-            }
-        })
-    }
+            })
+        }
 }
