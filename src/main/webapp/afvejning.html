@@ -10,18 +10,15 @@ Github: simonsoeborg
     <div class="grid-sideMenu"><script>includeSideMenu();</script></div>
 
     <div class="grid-contentHeader">
-        <h1 id="afvejningsTitel">Afvejning</h1>
-        <label id="produktionStatus">Produktion Status: Pending</label>
+        <h1 id="afvejningsTitel" style="text-align: left;">Afvejning</h1>
+
+        <label id="labNameResponse" style="text-align: center;"></label>
+
+        <label id="produktionStatus" style="text-align: right;">Produktion Status: Pending</label>
 
     </div>
 
     <div class="grid-contentBody">
-
-        <div class="Container_borderless">
-            <!-- Svar tilbage med Laborant navn som tilhører laborant nr.  -->
-            <label id="labNameResponse"></label> <!-- JS To return name of Laborant into this element. -->
-        </div>
-        <br>
         <div id="afvejningStep1" class="small_Container">
             <form>
                 <!-- Indtast laborant nr -->
@@ -30,54 +27,123 @@ Github: simonsoeborg
                 <button class="successbutton" type="button" name="button" onclick="findLaborant();">OK</button>
             </form>
         </div>
-        <div class="Container_borderless">
-            <!-- Svar tilbage med Laborant navn som tilhører laborant nr.  -->
-            <label id="receptNameResponse"></label> <!-- JS To return name of Laborant into this element. -->
-        </div>
-        <div id="produktBatchAndReceptName" class="small_Container">
-            <form>
-                <!-- Indtast produktbatch nr -->
-                <label>Indtast Produktbatch nr:</label> <br />
-                <input id="produktbatchNr" type="text">
-                <button class="successbutton" type="button" name="button" onclick="findProduktBatch();">OK</button>
+        <div id="wrapper">
+            <div class="Container_borderless">
+                <!-- Svar tilbage med Laborant navn som tilhører laborant nr.  -->
+                <label id="receptNameResponse"></label>
+            </div>
+            <div class="Container_borderless">
+                <!-- Table med alle raavare som skal bruges
 
-                <!-- Systemet sætter produktbatch nummerets status til ”Under produktion”. -->
+                 raavareId
+                 raavareNavn
+                 Mængde
+                 Tolerance
 
-                <!-- Run script to set pB with pB nr to: "Under Produktion" i Databasen. -->
+                 -->
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Råvare Id</td>
+                            <td>Råvare Navn</td>
+                            <td>Mængde</td>
+                            <td>Tolerance</td>
+                        </tr>
+                    </thead>
+                    <tbody id="getIngredients">
+                    </tbody>
+                </table>
+            </div>
+            <div id="produktBatchAndReceptName" class="small_Container">
+                <form>
+                    <!-- Indtast produktbatch nr -->
+                    <label>Indtast Produktbatch nr:</label> <br />
+                    <input id="produktbatchNr" type="text">
+                    <button class="successbutton" type="button" name="button" onclick="findProduktBatch();">OK</button>
 
-                <!-- Antallet af råvare materialer skal definere hvor mange gange steps der skal gentages. -->
+                    <!-- Systemet sætter produktbatch nummerets status til ”Under produktion”. -->
 
-                <!-- JS skal læse antallet af materialer i recepten. Tallet skal bruges senere i proceduren. -->
-            </form>
-        </div>
+                    <!-- Run script to set pB with pB nr to: "Under Produktion" i Databasen. -->
 
-        <hr>
+                    <!-- Antallet af råvare materialer skal definere hvor mange gange steps der skal gentages. -->
 
-        <div id="repeatButtonContainer" class="small_Container_borderless">
-            <label>Tilføj flere afvejninger:</label> <br>
-            <button id="repeatButton" type="button" name="button" onclick="repeatObject();" ><i class="material-icons">add_circle_outline</i></button>
-            <button id="runAllBatchesButton" class="successbutton" style="float: right; display: none;" type="button" name="button" onclick="" >Run All</button>
-        </div>
+                    <!-- JS skal læse antallet af materialer i recepten. Tallet skal bruges senere i proceduren. -->
+                </form>
+            </div>
 
-        <div id="repeatableObject1" class="small_Container">
-            <form>
-                <!-- Indtast første tara beholder. -->
-                <label>Indtast tara-belastningen:</label> <br />
-                <input id="taraBelastning" type="text" placeholder="Vægt">
-                <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
-            </form>
-            <form>
-                <!-- System beder om raavarebatch nummer på første råvare. -->
-                <label id="raavareLabelOrig">Indtast Råvarebatch: </label> <br>
-                <input id="raavareOrig" type="text" placeholder="Produktbatch nummer"> <br>
-            </form>
-            <form>
-                <!-- Laboranten afvejer op til den ønskede mængde og indtaster værdierne i systemet. -->
-                <label id="maengdeLabelOrig">Indtast Mængde: </label> <br>
-                <input id="maengdeOrig" type="text" placeholder="Mængde">
+            <hr>
 
-                <button class="warningbutton" type="button" name="button" onclick="" ><i style="color: white;" class="material-icons">chevron_right</i></button>
-            </form>
+            <div id="repeatButtonContainer" class="small_Container_borderless">
+                <label>Tilføj flere afvejninger:</label> <br>
+                <button id="repeatButton" type="button" name="button" onclick="repeatObject();" ><i class="material-icons">add_circle_outline</i></button>
+                <button id="runAllBatchesButton" class="successbutton" style="float: right; display: none;" type="button" name="button" onclick="" >Run All</button>
+            </div>
+
+            <div id="repeatableObjectZero" class="small_Container">
+                <form>
+                    <!-- Indtast første tara beholder. -->
+                    <label>Indtast tara-belastningen:</label> <br />
+                    <input id="taraBelastningZero" type="text" placeholder="Vægt">
+                    <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
+                    <button class="warningbutton" type="button" name="button" onclick="" >Check tolerance</button>
+                </form>
+                <form>
+                    <!-- System beder om raavarebatch nummer på første råvare. -->
+                    <label>Indtast Råvarebatch: </label> <br>
+                    <input id="raavareZero" type="text" placeholder="Råvarebatch nummer"> <br>
+                </form>
+                <form>
+                    <!-- Laboranten afvejer op til den ønskede mængde og indtaster værdierne i systemet. -->
+                    <label>Indtast Mængde: </label> <br>
+                    <input id="maengdeZero" type="text" placeholder="Mængde">
+
+                    <button id="checkToleranceZero" class="warningbutton" type="button" name="button" onclick="" ><i style="color: white;" class="material-icons">chevron_right</i></button>
+                </form>
+            </div>
+
+            <div id="repeatableObjectOne" class="small_Container">
+                <form>
+                    <!-- Indtast første tara beholder. -->
+                    <label>Indtast tara-belastningen:</label> <br />
+                    <input id="taraBelastningOne" type="text" placeholder="Vægt">
+                    <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
+                    <button id="checkToleranceOne" class="warningbutton" type="button" name="button" onclick="" >Check tolerance</button>
+                </form>
+                <form>
+                    <!-- System beder om raavarebatch nummer på første råvare. -->
+                    <label>Indtast Råvarebatch: </label> <br>
+                    <input id="raavareOne" type="text" placeholder="Råvarebatch nummer"> <br>
+                </form>
+                <form>
+                    <!-- Laboranten afvejer op til den ønskede mængde og indtaster værdierne i systemet. -->
+                    <label>Indtast Mængde: </label> <br>
+                    <input id="maengdeOne" type="text" placeholder="Mængde">
+
+                    <button id="checkToleranceTwo" class="warningbutton" type="button" name="button" onclick="" ><i style="color: white;" class="material-icons">chevron_right</i></button>
+                </form>
+            </div>
+
+            <div id="repeatableObjectTwo" class="small_Container">
+                <form>
+                    <!-- Indtast første tara beholder. -->
+                    <label>Indtast tara-belastningen:</label> <br />
+                    <input id="taraBelastningTwo" type="text" placeholder="Vægt">
+                    <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
+                    <button class="warningbutton" type="button" name="button" onclick="" >Check tolerance</button>
+                </form>
+                <form>
+                    <!-- System beder om raavarebatch nummer på første råvare. -->
+                    <label>Indtast Råvarebatch: </label> <br>
+                    <input id="raavareTwo" type="text" placeholder="Råvarebatch nummer"> <br>
+                </form>
+                <form>
+                    <!-- Laboranten afvejer op til den ønskede mængde og indtaster værdierne i systemet. -->
+                    <label>Indtast Mængde: </label> <br>
+                    <input id="maengdeTwo" type="text" placeholder="Mængde">
+
+                    <button class="warningbutton" type="button" name="button" onclick="" ><i style="color: white;" class="material-icons">chevron_right</i></button>
+                </form>
+            </div>
         </div>
     </div>
 
