@@ -111,8 +111,9 @@ function displayEditUser(id) {
 
             var input = document.getElementById('myID');
             input.value = id;
+
             document.getElementById('editUserBtn').onclick = function () {
-                execEditUser(id);
+                execEditUser(id, result.status);
             };
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -121,8 +122,7 @@ function displayEditUser(id) {
     });
 }
 
-function execEditUser(id) {
-    // *todo Fix således at den kan checke hvorvidt der er tale om en aktiv eller deaktiv bruger.
+function execEditUser(id, status) {
     $.ajax({
         type: 'PUT',
         url: hostUserURL + id,
@@ -131,15 +131,15 @@ function execEditUser(id) {
         data: dataEditToJSON(id),
         success: function (data, textStatus, req) {
             alert('User Successfully updated!');
-            if (checkStatus($('#status').val())){
+            if (checkStatus(status)){
                 displayContent('brugerAdminFront.html');
                 loadActiveUserList();
             }
             else{
                 displayContent('brugerAdminDeaktiverede.html');
                 loadDeactivatedUserList();
-            }
-        },
+             }
+         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error updating user with id: '+ id + ' | ' + textStatus);
         }
@@ -147,8 +147,7 @@ function execEditUser(id) {
 }
 
 function checkStatus(status) {
-    if (status=='Activated') { return true;}
-    else return false;
+    return status == 'Activated';
 }
 
 // Functions for generating the tables needed to store the users.
