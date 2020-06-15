@@ -14,18 +14,16 @@ function loadRaavareBatchList() {
 }
 
 function genTableHTMLForRaavareBatch(raavareBatch) {
-    var raavareNavn = getRaavareNavn(raavareBatch.raavareId);
-    console.log(typeof raavareNavn);
     return  '<tr><td>' + raavareBatch.rbId + '</td>' +
             '<td>' + raavareBatch.raavareId +'</td>' +
-            '<td>' + raavareNavn + '</td>' +
+            '<td>' + raavareBatch.raavareNavn + '</td>' +
             '<td>' + raavareBatch.maengde + ' kg</td>' +
             '<td>' + raavareBatch.leverandoer + '</td>' +
             '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
             '</tr>'
 }
 
-function getRaavareNavn(raavareId) {
+/*function getRaavareNavn(raavareId) {
     let hostGetNameURL = hostURL + 'raavare/' + raavareId;
     event.preventDefault();
     $.ajax({
@@ -36,7 +34,7 @@ function getRaavareNavn(raavareId) {
             raavareNavn = res;
         },
     });
-}
+}*/
 
 function deleteRaavareBatch(rbId) {
     event.preventDefault();
