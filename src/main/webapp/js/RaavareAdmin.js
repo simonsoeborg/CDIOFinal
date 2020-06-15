@@ -97,6 +97,7 @@ function searchRaavare(raavarenavn) {
     raavarenavn = document.getElementById('soegraavarenavn').value
         var hostSearchURL = '/CDIOFinal_war_exploded/test/raavare/' + raavarenavn;
         console.log('søger efter råvare');
+    if (hostSearchURL !== '/CDIOFinal_war_exploded/test/raavare/' ) {
         if (hostSearchURL != null && hostSearchURL !== ' ') {
             $.ajax({
                 url: hostSearchURL,
@@ -113,8 +114,13 @@ function searchRaavare(raavarenavn) {
                     }
                 },
                 error: function () {
-                    loadRaavareList();
+                    alert("kan ikke få fat i råvare databasen");
                 }
+
             })
+
         }
+    } else{
+        loadRaavareList();
+    }
 }
