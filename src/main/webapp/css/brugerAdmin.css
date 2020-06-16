@@ -21,8 +21,25 @@ Note: Additions and override for brugerAdmin.
 }
 /*More styled list*/
 
-/*Make create user page */
+.brugerSidebarUL li {
+    padding-right: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
 
+    display: block;
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.brugerSidebarUL li:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.dropdown {
+    padding: 0px;
+}
 
 
 

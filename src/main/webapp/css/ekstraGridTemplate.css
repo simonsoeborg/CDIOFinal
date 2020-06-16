@@ -9,7 +9,7 @@ Note: The class following class is made as an extension to the otherwise global 
 .grid-containerUsers {
     display: grid;
     height: 100vh;
-    grid-template-columns: 0.5fr 0.75fr 1fr 1fr;
+    grid-template-columns: 0.5fr 0.75fr 1.25fr 1fr;
     grid-template-rows: 0.25fr 0.25fr 2fr 0.25fr;
     grid-template-areas:
             "grid-menu grid-menu grid-menu grid-menu"
