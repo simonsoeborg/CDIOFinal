@@ -76,25 +76,7 @@ function controlRaavareNavn(raavareNavn) {
 }
 
 function searchRaavare(raavarenavn) {
-    /*raavarenavn = document.getElementById('soegraavarenavn').value;
-    if (raavarenavn == null) {
-        loadRaavareList();
-    } else {
-        var hostSearchURL = '/CDIOFinal_war_exploded/test/raavare/' + raavarenavn;
-        console.log(hostSearchURL);
-        console.log("Searching råvare");
-        if (hostSearchURL != null && hostSearchURL != ' ') {
-            $.get(hostSearchURL, function (data) {
-                $("#loadAllRaavareList").empty();
-                $.each(data, function (i, raavarenavn) {
-                    $("#loadAllRaavareList").append(genTableHTMLForRaavare(raavarenavn));
-                });
-            });
-        }
-     }
-     */
-
-    raavarenavn = document.getElementById('soegraavarenavn').value
+    raavarenavn = document.getElementById('soegraavarenavn').value;
         var hostSearchURL = '/CDIOFinal_war_exploded/test/raavare/' + raavarenavn;
         console.log('søger efter råvare');
     if (hostSearchURL !== '/CDIOFinal_war_exploded/test/raavare/' ) {
