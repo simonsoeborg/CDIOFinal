@@ -32,6 +32,7 @@ Note: Additions and override for brugerAdmin.
     text-decoration: none;
 }
 
+
 .brugerSidebarUL li:hover {
     text-decoration: underline;
     color: black;

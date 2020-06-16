@@ -139,6 +139,7 @@ function findProduktBatch() {
         document.getElementById('receptNameResponse').innerHTML = "Recept: " + result;
         document.getElementById('produktBatchAndReceptName').style.display = "none";
         getIngredients(produktbatchNr);
+        document.getElementById('ReceptList').style.display = "block";
       }
     },
     error: function (jqXHR, textStatus, errorThrown) {
@@ -168,9 +169,10 @@ function getIngredients(pbId) {
 
 function genTableHTMLForAfvejningTable(value) {
   let data = '<tr>' +
-              '<td>'+ value.raavareId +'</td>' +
-              '<td>' + value.raavarenavn +'</td>' +
-              '<td>'+ value.maengde + '</td>' +
-              '<td>'+ value.tolerance + '</td>';
+              '<td>'+ value.rkraavareid +'</td>' +
+              '<td>' + value.rkraavarenavn +'</td>' +
+              '<td>'+ value.rkmaengde + '</td>' +
+              '<td>'+ value.rktolerance + '</td>' +
+            '</tr>';
   return data;
 }
