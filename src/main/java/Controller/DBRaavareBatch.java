@@ -29,12 +29,12 @@ public class DBRaavareBatch {
         SQLConn = MySQLConnector.createConnection();
         if (SQLConn != null) {
             try {
-                sqlQuery = "SELECT * FROM Raavarebatch";
+                sqlQuery = "SELECT * FROM RaavareBatchMedNavn";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new RaavareBatch(resultSet.getInt("rbId"), resultSet.getInt("raavareId"), resultSet.getDouble("maengde"), resultSet.getString("leverandoer")));
+                    data.add(new RaavareBatch(resultSet.getInt("rbId"), resultSet.getInt("raavareId"), resultSet.getDouble("maengde"), resultSet.getString("leverandoer"), resultSet.getString("raavareNavn")));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
