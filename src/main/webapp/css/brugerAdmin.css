@@ -39,6 +39,7 @@ Note: Additions and override for brugerAdmin.
 }
 
 #role {
+    border-radius: 5px;
     margin-left: 0;
     width: 50%;
     height: 40px;
