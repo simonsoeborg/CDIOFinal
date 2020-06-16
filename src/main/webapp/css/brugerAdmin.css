@@ -38,8 +38,14 @@ Note: Additions and override for brugerAdmin.
     color: black;
 }
 
-.dropdown {
-    padding: 0px;
+#role {
+    margin-left: 0;
+    width: 50%;
+    height: 40px;
+}
+
+#firstname{
+    margin-bottom: 10px;
 }
 
 
