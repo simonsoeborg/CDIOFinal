@@ -37,8 +37,7 @@ function createRaavare() {
     console.log('Creating ny råvare');
     var id = document.getElementById('raavareid').value;
     var navn = document.getElementById('raavarenavn').value;
-    console.log(id);
-    console.log(navn);
+
     if (controlRaavareID(id) && controlRaavareNavn(navn)) {
         $.ajax({
             type: 'POST',
@@ -74,10 +73,8 @@ function controlRaavareID(ID) {
 function controlRaavareNavn(raavareNavn) {
     if(raavareNavn.length < 2 && raavareNavn.length > 20) {
         alert("råvarens navn skal være minimum 2 og maks 20");
-        console.log("False!");
         return false;
     } else {
-        console.log("True!");
         return true;
     }
 }
