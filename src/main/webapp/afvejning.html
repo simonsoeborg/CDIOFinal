@@ -27,33 +27,31 @@ Github: simonsoeborg
                 <button class="successbutton" type="button" name="button" onclick="findLaborant();">OK</button>
             </form>
         </div>
+        <div id="ReceptList" class="Container_borderless">
+            <!-- Svar tilbage med Laborant navn som tilhører laborant nr.  -->
+            <label id="receptNameResponse"></label>
+            <!-- Table med alle raavare som skal bruges
+
+             raavareId
+             raavareNavn
+             Mængde
+             Tolerance
+
+             -->
+            <table>
+                <thead>
+                <tr>
+                    <td>Råvare Id</td>
+                    <td>Råvare Navn</td>
+                    <td>Mængde</td>
+                    <td>Tolerance</td>
+                </tr>
+                </thead>
+                <tbody id="getIngredients">
+                </tbody>
+            </table>
+        </div>
         <div id="wrapper">
-            <div class="Container_borderless">
-                <!-- Svar tilbage med Laborant navn som tilhører laborant nr.  -->
-                <label id="receptNameResponse"></label>
-            </div>
-            <div class="Container_borderless">
-                <!-- Table med alle raavare som skal bruges
-
-                 raavareId
-                 raavareNavn
-                 Mængde
-                 Tolerance
-
-                 -->
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Råvare Id</td>
-                            <td>Råvare Navn</td>
-                            <td>Mængde</td>
-                            <td>Tolerance</td>
-                        </tr>
-                    </thead>
-                    <tbody id="getIngredients">
-                    </tbody>
-                </table>
-            </div>
             <div id="produktBatchAndReceptName" class="small_Container">
                 <form>
                     <!-- Indtast produktbatch nr -->
