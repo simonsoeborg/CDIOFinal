@@ -29,7 +29,7 @@ public class DBRaavareBatch {
         SQLConn = MySQLConnector.createConnection();
         if (SQLConn != null) {
             try {
-                sqlQuery = "SELECT * FROM RaavareBatcMedNavn";
+                sqlQuery = "SELECT * FROM RaavareBatchMedNavn";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();

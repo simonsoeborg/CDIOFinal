@@ -1,10 +1,10 @@
 /* Author: Karl Emil */
 
-let hostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
+let rbHostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
 
 function loadRaavareBatchList() {
     console.log("Loading Råvare Batches");
-    let hostGetURL = hostURL + 'load';
+    let hostGetURL = rbHostURL + 'load';
     $.get(hostGetURL, function (data) {
         $("#loadAllRaavareBatchList").empty();
         $.each(data, function (i, raavareBatch) {
@@ -39,7 +39,7 @@ function genTableHTMLForRaavareBatch(raavareBatch) {
 function deleteRaavareBatch(rbId) {
     event.preventDefault();
     $.ajax({
-        url: hostURL + rbId,
+        url: rbHostURL + rbId,
         method: 'DELETE',
         success: function () {
             alert(' Råvare Batch med id: ' + rbId + ' er blevet slettet!');
@@ -50,7 +50,7 @@ function deleteRaavareBatch(rbId) {
 
 function createRaavareBatch() {
 
-    let hostCreateURL = hostURL + 'create';
+    let hostCreateURL = rbHostURL + 'create';
     console.log('Opretter ny RåvareBatch');
     $.ajax({
         type: 'POST',
@@ -70,7 +70,7 @@ function createRaavareBatch() {
 
 function showRaavareNavn() {
     var raavareId = document.getElementById('raavareId').value;
-    let hostShowURL = hostURL + 'raavare/' + raavareId
+    let hostShowURL = rbHostURL + 'raavare/' + raavareId
     $.ajax({
         url: hostShowURL,
         type: 'GET',
