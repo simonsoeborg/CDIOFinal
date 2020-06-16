@@ -23,9 +23,6 @@
             <label><input id="raavarenavn" style="width:30%;" type="text" name="raavarenavn"  placeholder="Indsæt råvare navn"></label>
             <button class="successbutton" type="button" onclick="createRaavare();" style="align-content: center;" name="button">Opret</button>
         </div>
-        <div>
-            <br>
-        </div>
 
         <div>
             <hr class="new4">
@@ -34,8 +31,23 @@
                 <!-- -------------------------------------- search bar---------------------------------------------- -->
                 <div class="search-container">
                     <form>
-                        <label><input id="soegraavarenavn" type="text" name="searchraavare"  placeholder="Søg efter navn.."></label>
-                        <button id= "searchbutton" type="button"><i class="fa fa-search"onclick="searchRaavare();"></i></button>
+                        <label><input id="soegraavarenavn" type="text" name="searchraavare"  placeholder="Søg efter navn.." ></label>
+
+                        <button id= "searchbutton" type="button"><i class="fa fa-search" onclick="searchRaavare();"></i></button>
+
+                        <!-- ------------------------- når man klikker enter i søgefeltet -------------------------- -->
+                        <script>
+                            $("#soegraavarenavn").keypress(function(event) {
+                                if (event.keyCode === 13) {
+                                    event.preventDefault();
+                                    $("#searchbutton").click();
+                                }
+                            });
+
+                            $("#searchbutton").click(function() {
+                                searchRaavare();
+                            });
+                        </script>
                     </form>
                 </div>
                 <div>

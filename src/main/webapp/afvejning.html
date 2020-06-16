@@ -27,33 +27,22 @@ Github: simonsoeborg
                 <button class="successbutton" type="button" name="button" onclick="findLaborant();">OK</button>
             </form>
         </div>
+        <div id="ReceptList" class="Container_borderless">
+            <label id="receptNameResponse" style="margin-bottom: 1%;"></label>
+            <table>
+                <thead>
+                <tr>
+                    <td>Råvare Id</td>
+                    <td>Råvare Navn</td>
+                    <td>Mængde</td>
+                    <td>Tolerance</td>
+                </tr>
+                </thead>
+                <tbody id="getIngredients">
+                </tbody>
+            </table>
+        </div>
         <div id="wrapper">
-            <div class="Container_borderless">
-                <!-- Svar tilbage med Laborant navn som tilhører laborant nr.  -->
-                <label id="receptNameResponse"></label>
-            </div>
-            <div class="Container_borderless">
-                <!-- Table med alle raavare som skal bruges
-
-                 raavareId
-                 raavareNavn
-                 Mængde
-                 Tolerance
-
-                 -->
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Råvare Id</td>
-                            <td>Råvare Navn</td>
-                            <td>Mængde</td>
-                            <td>Tolerance</td>
-                        </tr>
-                    </thead>
-                    <tbody id="getIngredients">
-                    </tbody>
-                </table>
-            </div>
             <div id="produktBatchAndReceptName" class="small_Container">
                 <form>
                     <!-- Indtast produktbatch nr -->
@@ -85,7 +74,7 @@ Github: simonsoeborg
                     <label>Indtast tara-belastningen:</label> <br />
                     <input id="taraBelastningZero" type="text" placeholder="Vægt">
                     <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
-                    <button class="warningbutton" type="button" name="button" onclick="" >Check tolerance</button>
+                    <button  id="checkToleranceZero" class="warningbutton" type="button" name="button" onclick="" >Check</button>
                 </form>
                 <form>
                     <!-- System beder om raavarebatch nummer på første råvare. -->
@@ -97,7 +86,7 @@ Github: simonsoeborg
                     <label>Indtast Mængde: </label> <br>
                     <input id="maengdeZero" type="text" placeholder="Mængde">
 
-                    <button id="checkToleranceZero" class="warningbutton" type="button" name="button" onclick="" ><i style="color: white;" class="material-icons">chevron_right</i></button>
+                    <button class="warningbutton" type="button" name="button" onclick="" ><i style="color: white;" class="material-icons">chevron_right</i></button>
                 </form>
             </div>
 
@@ -107,7 +96,7 @@ Github: simonsoeborg
                     <label>Indtast tara-belastningen:</label> <br />
                     <input id="taraBelastningOne" type="text" placeholder="Vægt">
                     <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
-                    <button id="checkToleranceOne" class="warningbutton" type="button" name="button" onclick="" >Check tolerance</button>
+                    <button id="checkToleranceOne" class="warningbutton" type="button" name="button" onclick="" >Check</button>
                 </form>
                 <form>
                     <!-- System beder om raavarebatch nummer på første råvare. -->
@@ -119,7 +108,7 @@ Github: simonsoeborg
                     <label>Indtast Mængde: </label> <br>
                     <input id="maengdeOne" type="text" placeholder="Mængde">
 
-                    <button id="checkToleranceTwo" class="warningbutton" type="button" name="button" onclick="" ><i style="color: white;" class="material-icons">chevron_right</i></button>
+                    <button class="warningbutton" type="button" name="button" onclick="" ><i style="color: white;" class="material-icons">chevron_right</i></button>
                 </form>
             </div>
 
@@ -129,7 +118,7 @@ Github: simonsoeborg
                     <label>Indtast tara-belastningen:</label> <br />
                     <input id="taraBelastningTwo" type="text" placeholder="Vægt">
                     <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
-                    <button class="warningbutton" type="button" name="button" onclick="" >Check tolerance</button>
+                    <button id="checkToleranceTwo"  class="warningbutton" type="button" name="button" onclick="" >Check</button>
                 </form>
                 <form>
                     <!-- System beder om raavarebatch nummer på første råvare. -->

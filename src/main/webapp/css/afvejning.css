@@ -36,6 +36,7 @@ label {
 
 .repeatButton {
   margin: 10px;
+  background-color: transparent;
 }
 
 #repeatableObjectZero {
@@ -57,18 +58,22 @@ label {
 #wrapper {
   display: none;
 }
-#checkToleranceZero {
+
+#checkToleranceZero i {
   width: auto;
   font-size: 16px;
 }
 
-#checkToleranceOne {
+#checkToleranceOne i {
   width: auto;
   font-size: 16px;
 }
 
-#checkToleranceTwo {
+#checkToleranceTwo i {
   width: auto;
   font-size: 16px;
 }
 
+#ReceptList {
+  display: none;
+}
