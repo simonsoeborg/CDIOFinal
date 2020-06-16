@@ -14,22 +14,24 @@ public class ReceptServlet {
 
     private DBRecept dbr = new DBRecept();
 
-    @GET //Virker
-    public List<Recept> getRecepts() { return dbr.listAllRecepts(); }
+    @GET
+    @Path("{id}")
+    public List<Recept> getRecepts(@PathParam("id") int id) { return dbr.GetAllRecepts(id); }
 
-    @POST //Virker
+    @POST
     public void createRecept(Recept recept) {
         dbr.createRecept(recept.getReceptId(), recept.getReceptNavn(),
-                recept.getRaavareId(), recept.getNonNetto(), recept.getTolerance());
+                recept.getRaavareNavn(), recept.getMaengde(), recept.getTolerance());
     }
 
-    @PUT //Virker
+    @PUT
     @Path("{id}")
     public void updateRecept(@PathParam("id") int id, Recept recept) {
-        dbr.UpdateRecept(id, recept.getReceptNavn(),
-                recept.getRaavareId(), recept.getNonNetto(), recept.getTolerance());
+        dbr.UpdateRecept(id, recept.getReceptNavn(), recept.getRaavareNavn(),
+                recept.getMaengde(), recept.getTolerance());
     }
 
+/*
     @DELETE
     @Path("{id}")
     public void deleteRecept(@PathParam("id") int id) {
@@ -47,5 +49,5 @@ public class ReceptServlet {
     @Path("component/{id}")
     public void deleteReceptComponent(@PathParam("id") int id) {
         dbr.deleteReceptComponent(id);
-    }
+    }*/
 }

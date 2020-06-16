@@ -23,25 +23,21 @@ public class DBRecept {
 
     //-------------------------------FETCH ALL RECEPTS------------------------------------------
 
-    public void fetchAllRecepts() {
-        recepts = new ArrayList<>();
-        recepts = GetAllRecepts();
-    }
-
-    public List<Recept> GetAllRecepts() {
+    public List<Recept> GetAllRecepts(int id) {
         ArrayList<Recept> data = new ArrayList<>();
         SQLConn = SQLConnector.createConnection();
         if (SQLConn != null) {
             try {
-                sqlQuery = "SELECT * FROM Recept";
+                sqlQuery = "SELECT * FROM FrejaView2 WHERE receptId = ?";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1,id);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
                     data.add(new Recept(resultSet.getInt("receptId"),
                             resultSet.getString("receptNavn"),
-                            resultSet.getInt("raavareId"),
-                            resultSet.getDouble("nonNetto"),
+                            resultSet.getString("raavareNavn"),
+                            resultSet.getDouble("maengde"),
                             resultSet.getDouble("tolerance")));
                 }
                 SQLConn.close();
@@ -52,25 +48,20 @@ public class DBRecept {
         return data;
     }
 
-    public List<Recept> listAllRecepts() {
-        fetchAllRecepts();
-        return recepts;
-    }
-
     //-------------------------------------------------------------------------------------
 
 
-    public void createRecept(int receptId, String receptNavn, int raavareId, double nonNetto, double tolerance) {
+    public void createRecept(int receptId, String receptNavn, String raavareNavn, double maengde, double tolerance) {
 
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("INSERT INTO Recept (receptId, receptNavn, raavareId, nonNetto, tolerance)" +
+                pstm = SQLConn.prepareStatement("INSERT INTO FrejaView2 (receptId, receptNavn, raavareNavn, maengde, tolerance)" +
                         "VALUES (?, ?, ?, ?, ?)");
                 pstm.setInt(1, receptId);
                 pstm.setString(2, receptNavn);
-                pstm.setInt(3, raavareId);
-                pstm.setDouble(4, nonNetto);
+                pstm.setString(3, raavareNavn);
+                pstm.setDouble(4, maengde);
                 pstm.setDouble(5, tolerance);
                 pstm.executeUpdate();
                 SQLConn.close();
@@ -80,35 +71,18 @@ public class DBRecept {
         }
     }
 
-    public void UpdateRecept(int receptId, String receptNavn, int raavareId, double nonNetto, double tolerance) {
+    public void UpdateRecept(int receptId, String receptNavn, String raavareNavn, double maengde, double tolerance) {
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("UPDATE Recept SET receptNavn = ?, raavareId = ?, " +
-                        "nonNetto = ?, tolerance = ? WHERE receptId = ?");
-                pstm.setString(1, receptNavn);
-                pstm.setInt(2, raavareId);
-                pstm.setDouble(3, nonNetto);
-                pstm.setDouble(4, tolerance);
-                pstm.setInt(5, receptId);
+                pstm = SQLConn.prepareStatement("UPDATE FrejaView2 SET receptId = ?, receptNavn = ?, raavareNavn = ?, " +
+                        "meangde = ?, tolerance = ? WHERE receptId = ?");
+                pstm.setInt(1, receptId);
+                pstm.setString(2, receptNavn);
+                pstm.setString(3, raavareNavn);
+                pstm.setDouble(4, maengde);
+                pstm.setDouble(5, tolerance);
 
-                pstm.executeUpdate();
-                SQLConn.close();
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-    }
-
-    public void UpdateReceptComponent(int raavareId, double nonNetto, double tolerance) { //Virker ikke
-        try {
-            SQLConn = SQLConnector.createConnection();
-            if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("UPDATE Recept  SET nonNetto = ?, " +
-                        "tolerance = ? WHERE raavareId = ?");
-                pstm.setDouble(1, nonNetto);
-                pstm.setDouble(2, tolerance);
-                pstm.setInt(3, raavareId);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -131,6 +105,23 @@ public class DBRecept {
         }
     }
 
+   /* public void UpdateReceptComponent(int raavareId, double nonNetto, double tolerance) { //Virker ikke
+        try {
+            SQLConn = SQLConnector.createConnection();
+            if (SQLConn != null) {
+                pstm = SQLConn.prepareStatement("UPDATE Recept  SET nonNetto = ?, " +
+                        "tolerance = ? WHERE raavareId = ?");
+                pstm.setDouble(1, nonNetto);
+                pstm.setDouble(2, tolerance);
+                pstm.setInt(3, raavareId);
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
     //Dette skal indgå, når man har trykket på knappen 'rediger'
 
     public void deleteReceptComponent(int raavareId) {
@@ -145,7 +136,7 @@ public class DBRecept {
         } catch (SQLException e) {
             System.out.println(e);
         }
-    }
+    }*/
 }
 
 
