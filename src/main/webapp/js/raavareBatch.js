@@ -57,7 +57,7 @@ function createRaavareBatch() {
         contentType: 'application/json',
         url: hostCreateURL,
         dataType: "json",
-        data: dataCreateToJSON(),
+        data: rbCreateToJSON(),
         success: function () {
             alert('Succes! RåvareBatch oprettet');
             loadRaavareBatchList();
@@ -81,7 +81,7 @@ function showRaavareNavn() {
     });
 }
 
-function dataCreateToJSON() {
+function rbCreateToJSON() {
     return JSON.stringify({
         "rbId": $('#rbId').val(),
         "raavareId": $('#raavareId').val(),
