@@ -26,7 +26,6 @@ public class RaavareBatch {
         this.raavareId = raavareId;
         this.maengde = maengde;
         this.leverandoer = leverandoer;
-        this.raavareNavn = null;
     }
 
     public int getRbId() {
@@ -44,4 +43,6 @@ public class RaavareBatch {
     public String getLeverandoer() {
         return leverandoer;
     }
+
+
 }

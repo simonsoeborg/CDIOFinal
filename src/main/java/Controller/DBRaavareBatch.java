@@ -35,12 +35,14 @@ public class DBRaavareBatch {
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
                     data.add(new RaavareBatch(resultSet.getInt("rbId"), resultSet.getInt("raavareId"), resultSet.getDouble("maengde"), resultSet.getString("leverandoer"), resultSet.getString("raavarenavn")));
+                    System.out.println(resultSet.getString("raavarenavn"));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
                 System.out.println(e);
             }
         }
+
         return data;
     }
 
