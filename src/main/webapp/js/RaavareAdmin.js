@@ -71,11 +71,11 @@ function controlRaavareID(ID) {
     return true
 }
 function controlRaavareNavn(raavareNavn) {
-    if(raavareNavn.length < 2 && raavareNavn.length > 20) {
+    if(raavareNavn.length > 1 && raavareNavn.length < 21) {
+        return true;
+    } else {
         alert("råvarens navn skal være minimum 2 og maks 20");
         return false;
-    } else {
-        return true;
     }
 }
 
