@@ -1,12 +1,11 @@
 function genTableHTMLForRecepts(recept) {
-    return '<tr>' + '<td>' + recept.receptid + '</td>' +
-        '<td>' + recept.receptname + '</td>' +
-        '<td>' + recept.raavareid + '</td>' +
-        '<td>' + recept.maengde + '</td>' +
+    return '<tr>' + '<td>' + recept.receptId + '</td>' +
+        '<td>' + recept.receptNavn + '</td>' +
+        '<td>' + recept.raavareNavn + '</td>' +
+        '<td>' + recept.maengde + ' g</td>' +
         '<td>' + recept.tolerance + '</td>' +
-       /* '<td><button class="btn-warning" type="submit" onclick="editUser(' + recept.receptid + ');">Ret</button></td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteUser(' + recept.receptid + ');">Slet</button></td>' +*/
-        '</tr>'
+        '<td><button class="btn-alert" type="submit" onclick="deleteRecept(recept.receptId);">Slet</button></td>'+
+    '</tr>';
 }
 
 function loadRecepts() {
@@ -21,7 +20,7 @@ function loadRecepts() {
 }
 
 
-function dataCreateToJSON() {
+function receptDataCreateToJSON() {
     return JSON.stringify({
         "receptid": $('#receptid').val(),
         "receptname": $('#receptname').val(),
@@ -31,13 +30,13 @@ function dataCreateToJSON() {
     })
 }
 
-function createUser() {
+function createRecept() {
     $("#add-recept").on('click', function () {
         $.ajax({
             type: 'POST',
             url: '/CDIOFinal_war_exploded/test/recepts/',
             dataType: "json",
-            data: dataCreateToJSON(),
+            data: receptDataCreateToJSON(),
             success: function (newRecept) {
                 $recepts.append(genTableHTMLForRecepts(newRecept))
             }

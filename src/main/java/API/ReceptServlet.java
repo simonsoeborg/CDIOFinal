@@ -15,8 +15,7 @@ public class ReceptServlet {
     private DBRecept dbr = new DBRecept();
 
     @GET
-    @Path("{id}")
-    public List<Recept> getRecepts(@PathParam("id") int id) { return dbr.GetAllRecepts(id); }
+    public List<Recept> getRecepts() { return dbr.GetAllRecepts(); }
 
     @POST
     public void createRecept(Recept recept) {

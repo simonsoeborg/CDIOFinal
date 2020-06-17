@@ -23,19 +23,20 @@ public class DBRecept {
 
     //-------------------------------FETCH ALL RECEPTS------------------------------------------
 
-    public List<Recept> GetAllRecepts(int id) {
+    public List<Recept> GetAllRecepts() {
         ArrayList<Recept> data = new ArrayList<>();
         SQLConn = SQLConnector.createConnection();
         if (SQLConn != null) {
             try {
-                sqlQuery = "SELECT * FROM FrejaView2 WHERE receptId = ?";
+                sqlQuery = "SELECT * FROM FrejaView2 ORDER BY receptId";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-                pstm.setInt(1,id);
+//                pstm.setInt(1,id);
                 ResultSet resultSet = pstm.executeQuery();
-                while (resultSet.next()) {
+
+                while (resultSet.next()){
                     data.add(new Recept(resultSet.getInt("receptId"),
-                            resultSet.getString("receptnNavn"),
+                            resultSet.getString("receptNavn"),
                             resultSet.getString("raavareNavn"),
                             resultSet.getDouble("maengde"),
                             resultSet.getDouble("tolerance")));
