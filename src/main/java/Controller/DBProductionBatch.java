@@ -1,7 +1,6 @@
 package Controller;
 
 import Data.DTO.ProductionBatch;
-import com.mysql.cj.jdbc.exceptions.MySQLQueryInterruptedException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -52,7 +51,7 @@ public class DBProductionBatch {
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "DELETE FROM ProductionBatch WHERE pbId= ?";
+                sqlQuery = "DELETE FROM ProductionBatch WHERE pbId=?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setInt(1, pbId);
                 pstm.executeUpdate();
@@ -70,7 +69,8 @@ public class DBProductionBatch {
             if (SQLConn != null) {
                 ptsm = SQLConn.prepareStatement("INSERT INTO ProductionBatch (pbId, receptId, status, userId, rbID, tara, netto)" +
                         "VALUES (?, ?, ?, ?, ?, ?, ?)");
-                ResultSet = pstm.executeQuery();
+                PreparedStatement pstm;
+                ResultSet resultSet = pstm.executeUpdate();
                 pstm.setInt(1, pbId);
                 pstm.setInt(2, receptId);
                 pstm.setInt(3, status);
