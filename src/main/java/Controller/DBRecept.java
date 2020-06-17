@@ -29,7 +29,7 @@ public class DBRecept {
         if (SQLConn != null) {
             try {
                 //prepared statement
-                PreparedStatement pstm = SQLConn.prepareStatement("SELECT * FROM ReceptView3 ORDER BY receptid");
+                PreparedStatement pstm = SQLConn.prepareStatement("SELECT * FROM ReceptView ORDER BY receptid");
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()){
                     data.add(new Recept(resultSet.getInt("receptid"),
