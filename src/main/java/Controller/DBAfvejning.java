@@ -25,6 +25,7 @@ public class DBAfvejning {
     private String getReceptRaavareQuery = "SELECT raavareid, raavarenavn, maengde, tolerance FROM AfvejningReceptKomponent2 WHERE pbId = ?";
     private String updateAfvejetDataQuery = "INSERT INTO ProduktBatchKomponent (pbid, rbid, afvejetmaengde, tara)" +
             "VALUES (?, ?, ?, ?)";
+    private String updateProduktionStatusQuery = "UPDATE ProduktBatch SET status = ? WHERE pbId = ?";
 
     public String getLaborantName(int id) {
         SQLConn = dbc.createConnection();
@@ -120,6 +121,22 @@ public class DBAfvejning {
                 pstm.setInt(2, rbid);
                 pstm.setDouble(3, afvejetmaengde);
                 pstm.setDouble(4, tara);
+                pstm.executeUpdate();
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    public void updateProduktionStatus(int id) {
+        SQLConn = dbc.createConnection();
+        if(SQLConn != null) {
+            try {
+                sqlQuery = updateProduktionStatusQuery;
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setString(1, "Afsluttet");
+                pstm.setInt(2, id);
                 pstm.executeUpdate();
                 SQLConn.close();
             } catch (SQLException e) {

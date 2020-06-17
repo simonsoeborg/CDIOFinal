@@ -49,4 +49,10 @@ public class afvejningServlet {
     public void updateAfvejetRB(Afvejning afvejning) {
         dba.updateAfvejetData(afvejning.getPbid(), afvejning.getRbid(), afvejning.getAfvejetmaengde(), afvejning.getTara());
     }
+
+    @PUT
+    @Path("/status/update/" + "{id}")
+    public void updateProduktionStatus(@PathParam("id") int id) {
+        dba.updateProduktionStatus(id);
+    }
 }

@@ -59,21 +59,30 @@ label {
   display: none;
 }
 
-#checkToleranceZero i {
-  width: auto;
-  font-size: 16px;
-}
-
-#checkToleranceOne i {
-  width: auto;
-  font-size: 16px;
-}
-
-#checkToleranceTwo i {
-  width: auto;
-  font-size: 16px;
-}
-
 #ReceptList {
   display: none;
+}
+
+#serverUpdateSuccessZero {
+  color: #75e453;
+  display: inline-block;
+  float: right;
+  visibility: hidden;
+  padding: 16px;
+}
+
+#serverUpdateSuccessOne {
+  color: #75e453;
+  display: inline-block;
+  float: right;
+  visibility: hidden;
+  padding: 16px;
+}
+
+#serverUpdateSuccessTwo {
+  color: #75e453;
+  display: inline-block;
+  float: right;
+  visibility: hidden;
+  padding: 16px;
 }

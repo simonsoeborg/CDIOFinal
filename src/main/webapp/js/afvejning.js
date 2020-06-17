@@ -4,18 +4,16 @@ Github: simonsoeborg
 */
 
 var IndexRepeat = 0;
+var produktbatchNr = 0;
 
 function repeatObject() {
   if(IndexRepeat < 2) {
     IndexRepeat++;
-    if(IndexRepeat >= 1) {
-      showRunAllBatchesButton();
-    }
 
     if(IndexRepeat === 1) {
+      showRunAllBatchesButton();
       document.getElementById('repeatableObjectOne').style.display = "block";
       document.getElementById('repeatableObjectOne').style.visibility = "visible";
-
     }
 
     if (IndexRepeat === 2) {
@@ -26,117 +24,139 @@ function repeatObject() {
   } else {
     alert("Der kan kun tilføjes max 3 afvejninger af gangen.");
   }
-
-  if(repeatI < 5) {
-    if(repeatI >= 1) {
-      showRunAllBatchesButton();
-    }
-  }
 }
 
 function executeUpdateCommands(number) {
   let afvejningHostURL = '/CDIOFinal_war_exploded/test/afvejning/';
+  let postfix;
 
+  if(produktbatchNr !== 0) {
+    if(number === 0) {
+      // Run only stuff from inputs in repeatableObjectZero
+      postfix = "Zero";
+      $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        url: afvejningHostURL,
+        dataType: 'json',
+        data: afvejningToJSON(0),
+        success: function (data, textStatus, req) {
+          var data0 = document.getElementById('taraBelastning' + postfix).value;
+          var data1 = document.getElementById('raavare' + postfix).value;
+          var data2 = document.getElementById('maengde' + postfix).value;
+          document.getElementById('serverUpdateSuccess' + postfix).style.visibility = 'visible';
+          console.log(data0 + ", " + data1 + ", " + data2 + " er blevet tilføjet til databasen!");
+          updateProduktBatchStatus(produktbatchNr);
+        }
+      })
+    }
+
+    if(number === 1) {
+      // Run only stuff from inputs in repeatableObjectOne
+      postfix = "One";
+      $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        url: afvejningHostURL,
+        dataType: 'json',
+        data: afvejningToJSON(1),
+        success: function (data, textStatus, req) {
+          var data0 = document.getElementById('taraBelastning' + postfix).value;
+          var data1 = document.getElementById('raavare' + postfix).value;
+          var data2 = document.getElementById('maengde' + postfix).value;
+          document.getElementById('serverUpdateSuccess' + postfix).style.visibility = 'visible';
+          console.log(data0 + ", " + data1 + ", " + data2 + " er blevet tilføjet til databasen!");
+          updateProduktBatchStatus(produktbatchNr);
+        }
+      })
+    }
+
+    if(number === 2) {
+      // Run only stuff from inputs in repeatableObjectTwo
+      postfix = "Two";
+      $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        url: afvejningHostURL,
+        dataType: 'json',
+        data: afvejningToJSON(2),
+        success: function (data, textStatus, req) {
+          var data0 = document.getElementById('taraBelastning' + postfix).value;
+          var data1 = document.getElementById('raavare' + postfix).value;
+          var data2 = document.getElementById('maengde' + postfix).value;
+          document.getElementById('serverUpdateSuccess' + postfix).style.visibility = 'visible';
+          console.log(data0 + ", " + data1 + ", " + data2 + " er blevet tilføjet til databasen!");
+          updateProduktBatchStatus(produktbatchNr);
+        }
+      })
+    }
+  } else {
+    alert("Du mangler at skrive et Produktbatch nummer!");
+  }
+}
+
+function executeAllUpdateCommands() {
+  let afvejningHostURL = '/CDIOFinal_war_exploded/test/afvejning/';
+  var postfix;
+  // Run all. For loop.
+  if(produktbatchNr !== 0) {
+    for (var i = 0; i <= IndexRepeat; i++) {
+      if (i === 0) {
+        postfix = "Zero";
+      }
+      if (i === 1) {
+        postfix = "One";
+      }
+      if (i === 2) {
+        postfix = "Two";
+      }
+
+
+      // Run only stuff from inputs in repeatableObjectOne
+      $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        url: afvejningHostURL,
+        dataType: 'json',
+        data: afvejningToJSON(i),
+        success: function (data, textStatus, req) {
+          var data0 = document.getElementById('taraBelastning' + postfix).value;
+          var data1 = document.getElementById('raavare' + postfix).value;
+          var data2 = document.getElementById('maengde' + postfix).value;
+          document.getElementById('serverUpdateSuccess' + postfix).style.visibility = 'visible';
+          console.log(data0 + ", " + data1 + ", " + data2 + " er blevet tilføjet til databasen!");
+          updateProduktBatchStatus(produktbatchNr);
+        }
+      })
+    }
+  } else {
+    alert("Du mangler at skrive et Produktbatch nummer!")
+  }
+}
+
+function afvejningToJSON(number) {
+  let postfix;
   if(number === 0) {
-    // Run only stuff from inputs in repeatableObjectZero
-    $.ajax({
-      type: 'POST',
-      contentType: 'application/json',
-      url: afvejningHostURL,
-      dataType: 'json',
-      data: afvejningToJSONZero(),
-      success: function (data, textStatus, req) {
-        var data0 = document.getElementById('taraBelastningZero').val();
-        var data1 = document.getElementById('raavareZero').val();
-        var data2 = document.getElementById('maengdeZero').val();
-        console.log(data0 + ", " + data1 + ", " + data2 + " er blevet tilføjet til databasen!");
-      },
-      error: function () {
-
-      }
-    })
+    postfix = "Zero";
   }
-
   if(number === 1) {
-    // Run only stuff from inputs in repeatableObjectOne
-    $.ajax({
-      type: 'POST',
-      contentType: 'application/json',
-      url: afvejningHostURL,
-      dataType: 'json',
-      data: afvejningToJSONOne(),
-      success: function (data, textStatus, req) {
-        var data0 = document.getElementById('taraBelastningOne').val();
-        var data1 = document.getElementById('raavareOne').val();
-        var data2 = document.getElementById('maengdeOne').val();
-        console.log(data0 + ", " + data1 + ", " + data2 + " er blevet tilføjet til databasen!");
-      },
-      error: function () {
-
-      }
-    })
+    postfix = "One";
   }
-
   if(number === 2) {
-    // Run only stuff from inputs in repeatableObjectTwo
-    $.ajax({
-      type: 'POST',
-      contentType: 'application/json',
-      url: afvejningHostURL,
-      dataType: 'json',
-      data: afvejningToJSONTwo(),
-      success: function (data, textStatus, req) {
-        var data0 = document.getElementById('taraBelastningTwo').val();
-        var data1 = document.getElementById('raavareTwo').val();
-        var data2 = document.getElementById('maengdeTwo').val();
-        console.log(data0 + ", " + data1 + ", " + data2 + " er blevet tilføjet til databasen!");
-      },
-      error: function () {
-
-      }
-    })
+    postfix = "Two";
   }
 
-  if(number === 9) {
-    // Run all. For loop.
-  }
-}
-
-function afvejningToJSONZero() {
   return JSON.stringify({
-    "pbid": $('#maengdeZero').val(),
-    "rbid": $('#raavareZero').val(),
-    "afvejetmaengde": $('#maengdeZero').val(),
-    "tara": $('#taraBelastningZero').val()
-  });
-}
-
-function afvejningToJSONOne() {
-  return JSON.stringify({
-    "pbid": $('#maengdeOne').val(),
-    "rbid": $('#raavareOne').val(),
-    "afvejetmaengde": $('#maengdeOne').val(),
-    "tara": $('#taraBelastningOne').val()
-  });
-}
-
-function afvejningToJSONTwo() {
-  return JSON.stringify({
-    "pbid": $('#maengdeTwo').val(),
-    "rbid": $('#raavareTwo').val(),
-    "afvejetmaengde": $('#maengdeTwo').val(),
-    "tara": $('#taraBelastningTwo').val()
+    "pbid": produktbatchNr,
+    "rbid": document.getElementById('raavare' + postfix).value,
+    "afvejetmaengde": document.getElementById('maengde' + postfix).value,
+    "tara": document.getElementById('taraBelastning' + postfix).value
   });
 }
 
 function showRunAllBatchesButton() {
   document.getElementById('runAllBatchesButton').style.display = 'block';
 }
-
-function CheckTolerance(inputId) {
-
-}
-
 
 function findLaborant() {
   var hostLabURL = '/CDIOFinal_war_exploded/test/afvejning/lab?labNr=';
@@ -159,8 +179,6 @@ function findLaborant() {
     }
   });
 }
-
-var produktbatchNr;
 
 function findProduktBatch() {
   var hostPBURL = '/CDIOFinal_war_exploded/test/afvejning/pb?pbNr=';
@@ -202,6 +220,21 @@ function getProduktBatchStatus(id) {
     },
     error: function (jqXHR, textStatus, errorThrown) {
       alert("Unable to find status");
+    }
+  });
+}
+
+function updateProduktBatchStatus(id) {
+  var hostPBUpdateStatusURL = '/CDIOFinal_war_exploded/test/afvejning/status/update/';
+  $.ajax({
+    type: 'PUT',
+    url: hostPBUpdateStatusURL + id,
+    dataType: "text",
+    success: function (result) {
+      getProduktBatchStatus(id);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      alert("Unable to find update status");
     }
   });
 }
