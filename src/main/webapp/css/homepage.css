@@ -1,3 +1,8 @@
+.content_role{
+    display: flex;
+    justify-content: center;
+}
+
 
 .roleButton {
     border-radius: 5px;
