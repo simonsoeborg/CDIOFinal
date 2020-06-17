@@ -1,3 +1,5 @@
+let ReceptUrl = '/CDIOFinal_war_exploded/test/recepts/';
+
 function genTableHTMLForRecepts(recept) {
     return '<tr>' + '<td>' + recept.receptid + '</td>' +
         '<td>' + recept.receptnavn + '</td>' +
@@ -10,9 +12,9 @@ function genTableHTMLForRecepts(recept) {
 }
 
 function loadRecepts() {
-    let loadReceptUrl = '/CDIOFinal_war_exploded/test/recepts/';
+    let ReceptUrl = '/CDIOFinal_war_exploded/test/recepts/';
     console.log("Loading Recepts");
-    $.get(loadReceptUrl, function (data, textStatus, req) {
+    $.get(ReceptUrl, function (data, textStatus, req) {
         $("#loadAllRecepts").empty();
         $.each(data, function (i, recept) {
             $("#loadAllRecepts").append(genTableHTMLForRecepts(recept));
@@ -32,18 +34,23 @@ function receptDataCreateToJSON() {
     })
 }
 
+
 function createRecept() {
-    $("#add-recept").on('click', function () {
-        $.ajax({
-            type: 'POST',
-            url: '/CDIOFinal_war_exploded/test/recepts/',
-            dataType: "json",
-            data: receptDataCreateToJSON(),
-            success: function (newRecept) {
-                $recepts.append(genTableHTMLForRecepts(newRecept))
-            }
-        })
-    })
+    console.log('Opretter ny recept');
+    $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        url: ReceptUrl,
+        dataType: "json",
+        data: receptDataCreateToJSON(),
+        success: function () {
+            alert('Recept oprettet');
+            loadRecepts();
+        },
+        error: function (jqXHR, textStatus) {
+            alert('Fejl ved oprettelsen ' + textStatus);
+        }
+    });
 }
 
 
