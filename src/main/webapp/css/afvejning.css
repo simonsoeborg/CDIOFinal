@@ -34,7 +34,7 @@ label {
   font-size: 22px;
 }
 
-.repeatButton {
+#repeatButton {
   margin: 10px;
   background-color: transparent;
 }

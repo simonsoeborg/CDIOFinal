@@ -3,8 +3,6 @@ Author: Simon Søborg
 Github: simonsoeborg
 */
 
-
-
 var IndexRepeat = 0;
 
 function repeatObject() {
@@ -51,7 +49,7 @@ function executeUpdateCommands(number) {
         var data0 = document.getElementById('taraBelastningZero').val();
         var data1 = document.getElementById('raavareZero').val();
         var data2 = document.getElementById('maengdeZero').val();
-        alert(data0 + ", " + data1 + ", " + data2 + " er blevet tilføjet til databasen!");
+        console.log(data0 + ", " + data1 + ", " + data2 + " er blevet tilføjet til databasen!");
       },
       error: function () {
 
@@ -61,12 +59,42 @@ function executeUpdateCommands(number) {
 
   if(number === 1) {
     // Run only stuff from inputs in repeatableObjectOne
+    $.ajax({
+      type: 'POST',
+      contentType: 'application/json',
+      url: afvejningHostURL,
+      dataType: 'json',
+      data: afvejningToJSONOne(),
+      success: function (data, textStatus, req) {
+        var data0 = document.getElementById('taraBelastningOne').val();
+        var data1 = document.getElementById('raavareOne').val();
+        var data2 = document.getElementById('maengdeOne').val();
+        console.log(data0 + ", " + data1 + ", " + data2 + " er blevet tilføjet til databasen!");
+      },
+      error: function () {
 
+      }
+    })
   }
 
   if(number === 2) {
     // Run only stuff from inputs in repeatableObjectTwo
+    $.ajax({
+      type: 'POST',
+      contentType: 'application/json',
+      url: afvejningHostURL,
+      dataType: 'json',
+      data: afvejningToJSONTwo(),
+      success: function (data, textStatus, req) {
+        var data0 = document.getElementById('taraBelastningTwo').val();
+        var data1 = document.getElementById('raavareTwo').val();
+        var data2 = document.getElementById('maengdeTwo').val();
+        console.log(data0 + ", " + data1 + ", " + data2 + " er blevet tilføjet til databasen!");
+      },
+      error: function () {
 
+      }
+    })
   }
 
   if(number === 9) {
@@ -76,31 +104,39 @@ function executeUpdateCommands(number) {
 
 function afvejningToJSONZero() {
   return JSON.stringify({
-    "tara": $('#taraBelastningZero').val(),
+    "pbid": $('#maengdeZero').val(),
     "rbid": $('#raavareZero').val(),
-    "rbId": $('#maengdeZero').val()
+    "afvejetmaengde": $('#maengdeZero').val(),
+    "tara": $('#taraBelastningZero').val()
   });
 }
 
 function afvejningToJSONOne() {
   return JSON.stringify({
-    "tara": $('#taraBelastningOne').val(),
+    "pbid": $('#maengdeOne').val(),
     "rbid": $('#raavareOne').val(),
-    "rbId": $('#maengdeOne').val()
+    "afvejetmaengde": $('#maengdeOne').val(),
+    "tara": $('#taraBelastningOne').val()
   });
 }
 
 function afvejningToJSONTwo() {
   return JSON.stringify({
-    "tara": $('#taraBelastningTwo').val(),
+    "pbid": $('#maengdeTwo').val(),
     "rbid": $('#raavareTwo').val(),
-    "rbId": $('#maengdeTwo').val()
+    "afvejetmaengde": $('#maengdeTwo').val(),
+    "tara": $('#taraBelastningTwo').val()
   });
 }
 
 function showRunAllBatchesButton() {
   document.getElementById('runAllBatchesButton').style.display = 'block';
 }
+
+function CheckTolerance(inputId) {
+
+}
+
 
 function findLaborant() {
   var hostLabURL = '/CDIOFinal_war_exploded/test/afvejning/lab?labNr=';
@@ -116,7 +152,6 @@ function findLaborant() {
         document.getElementById('labNameResponse').innerHTML = "Laborant: " + result;
         document.getElementById('wrapper').style.display = "block";
         document.getElementById('afvejningStep1').style.display = "none";
-        document.getElementById('produktionStatus').style.visibility = "visible";
       }
     },
     error: function (jqXHR, textStatus, errorThrown) {
@@ -125,9 +160,11 @@ function findLaborant() {
   });
 }
 
+var produktbatchNr;
+
 function findProduktBatch() {
   var hostPBURL = '/CDIOFinal_war_exploded/test/afvejning/pb?pbNr=';
-  var produktbatchNr = document.getElementById('produktbatchNr').value;
+  produktbatchNr = document.getElementById('produktbatchNr').value;
   $.ajax({
     type: 'GET',
     url: hostPBURL + produktbatchNr,
@@ -138,6 +175,7 @@ function findProduktBatch() {
       } else {
         document.getElementById('receptNameResponse').innerHTML = "Recept: " + result;
         document.getElementById('produktBatchAndReceptName').style.display = "none";
+        getProduktBatchStatus(produktbatchNr);
         getIngredients(produktbatchNr);
         document.getElementById('ReceptList').style.display = "block";
       }
@@ -148,9 +186,28 @@ function findProduktBatch() {
   });
 }
 
+function getProduktBatchStatus(id) {
+  var hostPBStatusURL = '/CDIOFinal_war_exploded/test/afvejning/status/';
+  $.ajax({
+    type: 'GET',
+    url: hostPBStatusURL + id,
+    dataType: "text",
+    success: function (result) {
+      if(result == null || result == " ") {
+        alert("Error using " + id + "! \nTry again or use another produktbatch nr.");
+      } else {
+        document.getElementById('produktionStatus').style.visibility = "visible";
+        document.getElementById('produktionStatus').innerHTML = "Produktion Status: \n" + result;
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      alert("Unable to find status");
+    }
+  });
+}
+
 function getIngredients(pbId) {
   let hostURLGetIngredients = "/CDIOFinal_war_exploded/test/afvejning/" + pbId;
-
   $.ajax({
     type: 'GET',
     contentType: 'application/json',
@@ -164,15 +221,15 @@ function getIngredients(pbId) {
     error: function (jqXHR, textStatus, errorThrown) {
       console.log('Der skete en fejl ved forsøg på indhentning af data' + textStatus);
     }
-  })
+  });
 }
 
 function genTableHTMLForAfvejningTable(value) {
   let data = '<tr>' +
               '<td>'+ value.rkraavareid +'</td>' +
               '<td>' + value.rkraavarenavn +'</td>' +
-              '<td>'+ value.rkmaengde + '</td>' +
-              '<td>'+ value.rktolerance + '</td>' +
+              '<td>'+ value.rkmaengde + ' kg</td>' +
+              '<td>'+ value.rktolerance + ' %</td>' +
             '</tr>';
   return data;
 }

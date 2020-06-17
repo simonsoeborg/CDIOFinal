@@ -5,6 +5,7 @@
 package API;
 
 import Controller.DBAfvejning;
+import Data.DTO.Afvejning;
 import Data.DTO.AfvejningReceptKomponent;
 
 import javax.ws.rs.*;
@@ -17,6 +18,8 @@ import java.util.List;
 public class afvejningServlet {
 
     DBAfvejning dba = new DBAfvejning();
+
+    // #### GET Requests ####
 
     @GET
     @Path("lab")
@@ -34,5 +37,16 @@ public class afvejningServlet {
     @Path("{id}")
     public List<AfvejningReceptKomponent> GetData(@PathParam("id") int id) {
         return dba.getAfvejningReceptKomponent(id);
+    }
+
+    @GET
+    @Path("/status/" + "{id}")
+    public String getProduktionStatus(@PathParam("id") int id) {
+        return dba.getProduktionStatus(id);
+    }
+
+    @POST
+    public void updateAfvejetRB(Afvejning afvejning) {
+        dba.updateAfvejetData(afvejning.getPbid(), afvejning.getRbid(), afvejning.getAfvejetmaengde(), afvejning.getTara());
     }
 }
