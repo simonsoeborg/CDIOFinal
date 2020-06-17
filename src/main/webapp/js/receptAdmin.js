@@ -1,11 +1,12 @@
 function genTableHTMLForRecepts(recept) {
-    return '<tr>' +
-    '<td>'+ recept.raavareid + '</td>' +
-    '<td>' + recept.nonnetto + '</td>' +
-    '<td>' + recept.tolerance + '</td>' +
-    /*'<td><button class="btn-warning" type="submit" onclick="editRecept(' + recept.receptid + ');">Ret</button></td>' +
-    '<td><button class="btn-alert" type="submit" onclick="deleteUser(' + recept.receptid + ');">Slet</button></td>' +*/
-    '</tr>'
+    return '<tr>' + '<td>' + recept.receptid + '</td>' +
+        '<td>' + recept.receptname + '</td>' +
+        '<td>' + recept.raavareid + '</td>' +
+        '<td>' + recept.maengde + '</td>' +
+        '<td>' + recept.tolerance + '</td>' +
+       /* '<td><button class="btn-warning" type="submit" onclick="editUser(' + recept.receptid + ');">Ret</button></td>' +
+        '<td><button class="btn-alert" type="submit" onclick="deleteUser(' + recept.receptid + ');">Slet</button></td>' +*/
+        '</tr>'
 }
 
 function loadRecepts() {
@@ -24,14 +25,13 @@ function dataCreateToJSON() {
     return JSON.stringify({
         "receptid": $('#receptid').val(),
         "receptname": $('#receptname').val(),
-        "nonnetto": $('#nonnetto').val(),
+        "raavareid": $('#raavareid').val(),
+        "meangde": $('#maengde').val(),
         "tolerance": $('#tolerance').val()
     })
 }
 
 function createUser() {
-    var $receptid = $('#receptid');
-    var $receptname = $('#receptname');
     $("#add-recept").on('click', function () {
         $.ajax({
             type: 'POST',

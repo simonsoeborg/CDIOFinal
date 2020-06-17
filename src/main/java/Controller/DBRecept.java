@@ -35,7 +35,7 @@ public class DBRecept {
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
                     data.add(new Recept(resultSet.getInt("receptId"),
-                            resultSet.getString("receptNavn"),
+                            resultSet.getString("receptnNavn"),
                             resultSet.getString("raavareNavn"),
                             resultSet.getDouble("maengde"),
                             resultSet.getDouble("tolerance")));
@@ -76,7 +76,7 @@ public class DBRecept {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
                 pstm = SQLConn.prepareStatement("UPDATE FrejaView2 SET receptId = ?, receptNavn = ?, raavareNavn = ?, " +
-                        "meangde = ?, tolerance = ? WHERE receptId = ?");
+                        "maengde = ?, tolerance = ? WHERE receptId = ?");
                 pstm.setInt(1, receptId);
                 pstm.setString(2, receptNavn);
                 pstm.setString(3, raavareNavn);
