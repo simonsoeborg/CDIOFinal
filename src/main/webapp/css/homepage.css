@@ -1,12 +1,17 @@
-.container_roles{
+.container_roles{}
 
-}
-
-.rolebutton {
+.roleButton {
     border-radius: 5px;
-    background-color:var(--color-primary);
+    background-color: var(--color-primary);
     color: white;
     width: 200px;
     height: 200px;
     margin: 25px;
+}
+
+.roleButton:hover {
+    cursor: pointer;
+    border-color: black;
+    border-width:1px;
+    border-style: solid;
 }
