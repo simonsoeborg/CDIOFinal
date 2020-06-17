@@ -92,8 +92,52 @@ public class DBRecept {
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
 
     //-------------------------------------------------------------------------------------
+
+    public void deleteReceptKomponent(int receptid, String receptnavn, int raavareid, String raavarenavn,
+                                      double maengde, double tolerance) {
+        if (SQLConn != null) {
+            try {
+            SQLConn = SQLConnector.createConnection();
+                pstm = SQLConn.prepareStatement("DELETE FROM ReceptKomponent WHERE receptid = ?, raavareid = ?, maengde = ?, tolerance = ?");
+                pstm.setInt(1, receptid);
+                pstm.setInt(2, raavareid);
+                pstm.setDouble(3, maengde);
+                pstm.setDouble(4, tolerance);
+                pstm.executeUpdate();
+                SQLConn.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        try {
+            if (SQLConn != null) {
+                pstm = SQLConn.prepareStatement("DELETE FROM Recept WHERE receptid = ?, receptnavn = ?");
+                pstm.setInt(1, receptid);
+                pstm.setString(2, receptnavn);
+
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        try {
+            if (SQLConn != null) {
+                pstm = SQLConn.prepareStatement("DELETE FROM Raavare WHERE raavareid = ?, raavarenavn = ?");
+                pstm.setInt(1, raavareid);
+                pstm.setString(2, raavarenavn);
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }}
+
+    //-------------------------------------------------------------------------------------
+
 
 //    public void UpdateRecept(int receptId, String receptNavn, String raavareNavn, double maengde, double tolerance) {
 //        try {
@@ -162,6 +206,6 @@ public class DBRecept {
         }
     }*/
     }
-}
+
 
 

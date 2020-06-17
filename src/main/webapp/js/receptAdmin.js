@@ -7,7 +7,7 @@ function genTableHTMLForRecepts(recept) {
         '<td>' + recept.raavarenavn + '</td>' +
         '<td>' + recept.maengde + ' g</td>' +
         '<td>' + recept.tolerance + '</td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteRecept(recept.receptId);">Slet</button></td>'+
+        '<td><button class="btn-alert" onclick="deleteReceptKomponent(recept.receptid);">Slet</button></td>'+
     '</tr>';
 }
 
@@ -49,6 +49,18 @@ function createRecept() {
         },
         error: function (jqXHR, textStatus) {
             alert('Fejl ved oprettelsen ' + textStatus);
+        }
+    });
+}
+
+function deleteReceptKomponent(id) {
+    event.preventDefault();
+    $.ajax({
+        method: 'DELETE',
+        url: ReceptUrl + id,
+        success: function () {
+            alert(' Recept med id: ' + id + ' er blevet slettet!');
+            loadRecepts();
         }
     });
 }

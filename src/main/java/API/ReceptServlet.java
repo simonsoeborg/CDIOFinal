@@ -23,6 +23,13 @@ public class ReceptServlet {
                 recept.getRaavarenavn(), recept.getMaengde(), recept.getTolerance());
     }
 
+    @DELETE
+    @Path("{id}")
+    public void deleteReceptKomponent(@PathParam("id") int id) {
+        dbr.deleteReceptKomponent(id, recept.get, id.getRaavareid(),
+                id.getRaavarenavn(), id.getMaengde(), id.getTolerance());
+    }
+
 /*
     @PUT
     @Path("{id}")
@@ -33,11 +40,7 @@ public class ReceptServlet {
 */
 
 /*
-    @DELETE
-    @Path("{id}")
-    public void deleteRecept(@PathParam("id") int id) {
-        dbr.deleteRecept(id);
-    }
+
 
 
     @PUT
