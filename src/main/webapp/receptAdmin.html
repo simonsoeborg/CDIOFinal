@@ -23,6 +23,7 @@
 
         <!---------------------------------------------------------------------------------->
 
+            <div class="recept-content">
         <h2>Opret recept</h2>
         <label for="receptid">ReceptID:</label><br>
         <input type="text" id="receptid" name="receptid"><br>
@@ -37,14 +38,16 @@
         <label for="tolerance">Tolerance:</label><br>
         <input type="text" id="tolerance" name="tolerance"><br>
 
-        <button id="add-recept">Opret</button>
+        <button id="btn-alert">Opret</button>
+            </div>
 
         <!---------------------------------------------------------------------------------->
 
-        <h2>Råvare tabel:</h2>
         <div class="Container_borderless">
+
             <form>
-                <table>
+                <table id="table">
+                    <h2>Råvare tabel:</h2>
                     <thead>
                     <tr>
                         <td>ReceptId</td>
@@ -59,8 +62,6 @@
                 </table>
             </form>
         </div>
-
-    </div>
 
     <!---------------------------------------------------------------------------------->
 
