@@ -26,12 +26,14 @@
             <div class="recept-content">
         <h2 id="createReceptTxt">Opret recept</h2>
         <input type="text" id="receptid" name="receptid" placeholder="ReceptID"><br>
-        <input type="text" id="receptname" name="receptname" placeholder="ReceptNavn"><br>
+        <input type="text" id="receptnavn" name="receptnavn" placeholder="ReceptNavn"><br>
 
+                <div class="receptcomponent">
         <select id="raavareid" name="raavareid" placeholder="Vælg råvare"></select> <br>
 
         <input type="text" id="maengde" name="maengde" placeholder="Mængde"><br>
         <input type="text" id="tolerance" name="tolerance" placeholder="Tolerance"><br>
+                </div>
 
         <button id="btn-create">Opret</button>
             </div>
@@ -46,6 +48,7 @@
                     <tr>
                         <td>ReceptId</td>
                         <td>ReceptNavn</td>
+                        <td>RåvareId</td>
                         <td>RåvareNavn</td>
                         <td>Mængde</td>
                         <td>Tolerance</td>

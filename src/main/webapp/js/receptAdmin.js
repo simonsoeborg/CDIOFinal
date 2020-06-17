@@ -1,7 +1,8 @@
 function genTableHTMLForRecepts(recept) {
-    return '<tr>' + '<td>' + recept.receptId + '</td>' +
-        '<td>' + recept.receptNavn + '</td>' +
-        '<td>' + recept.raavareNavn + '</td>' +
+    return '<tr>' + '<td>' + recept.receptid + '</td>' +
+        '<td>' + recept.receptnavn + '</td>' +
+        '<td>' + recept.raavareid + '</td>' +
+        '<td>' + recept.raavarenavn + '</td>' +
         '<td>' + recept.maengde + ' g</td>' +
         '<td>' + recept.tolerance + '</td>' +
         '<td><button class="btn-alert" type="submit" onclick="deleteRecept(recept.receptId);">Slet</button></td>'+
@@ -23,8 +24,9 @@ function loadRecepts() {
 function receptDataCreateToJSON() {
     return JSON.stringify({
         "receptid": $('#receptid').val(),
-        "receptname": $('#receptname').val(),
+        "receptnavn": $('#receptnavn').val(),
         "raavareid": $('#raavareid').val(),
+        "raavarenavn": $('#raavarenavn').val(),
         "meangde": $('#maengde').val(),
         "tolerance": $('#tolerance').val()
     })

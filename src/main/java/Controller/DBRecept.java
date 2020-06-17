@@ -28,16 +28,14 @@ public class DBRecept {
         SQLConn = SQLConnector.createConnection();
         if (SQLConn != null) {
             try {
-                sqlQuery = "SELECT * FROM FrejaView2 ORDER BY receptId";
                 //prepared statement
-                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-//                pstm.setInt(1,id);
+                PreparedStatement pstm = SQLConn.prepareStatement("SELECT * FROM ReceptView3 ORDER BY receptid");
                 ResultSet resultSet = pstm.executeQuery();
-
                 while (resultSet.next()){
-                    data.add(new Recept(resultSet.getInt("receptId"),
-                            resultSet.getString("receptNavn"),
+                    data.add(new Recept(resultSet.getInt("receptid"),
+                            resultSet.getString("receptnavn"),
                             resultSet.getInt("raavareid"),
+                            resultSet.getString("raavarenavn"),
                             resultSet.getDouble("maengde"),
                             resultSet.getDouble("tolerance")));
                 }
@@ -52,14 +50,14 @@ public class DBRecept {
     //-------------------------------------------------------------------------------------
 
 
-    public void createRecept(int receptId, String receptNavn, int raavareid, double maengde, double tolerance) {
+    public void createRecept(int receptid, String receptnavn, int raavareid, String raavarenavn, double maengde, double tolerance) {
 
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("INSERT INTO Recept (receptId, receptNavn) VALUES (?, ?)");
-                pstm.setInt(1, receptId);
-                pstm.setString(2, receptNavn);
+                pstm = SQLConn.prepareStatement("INSERT INTO Recept (receptid, receptnavn) VALUES (?, ?)");
+                pstm.setInt(1, receptid);
+                pstm.setString(2, receptnavn);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -71,10 +69,23 @@ public class DBRecept {
             if (SQLConn != null) {
                 pstm = SQLConn.prepareStatement(
                         "INSERT INTO ReceptKomponent (receptId, raavareid, maengde, tolerance) VALUES (?, ?, ?, ?)");
-                pstm.setInt(1, receptId);
+                pstm.setInt(1, receptid);
                 pstm.setInt(2, raavareid);
                 pstm.setDouble(3, maengde);
                 pstm.setDouble(4, tolerance);
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        try {
+            SQLConn = SQLConnector.createConnection();
+            if (SQLConn != null) {
+                pstm = SQLConn.prepareStatement(
+                        "INSERT INTO Raavare (raavareid, raavarenavn) VALUES (?, ?)");
+                pstm.setInt(1, raavareid);
+                pstm.setString(2, raavarenavn);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
