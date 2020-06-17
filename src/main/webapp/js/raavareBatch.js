@@ -77,9 +77,6 @@ function showRaavareNavn() {
         dataType: "text",
         success: function (res) {
             document.getElementById('raavareNavn').innerHTML = res;
-        },
-        error: function () {
-            document.getElementById('raavareNavn').innerHTML = " ";
         }
     });
 }
