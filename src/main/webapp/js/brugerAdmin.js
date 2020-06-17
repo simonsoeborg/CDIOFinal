@@ -9,26 +9,28 @@ function includeUserSideMenu() {
      $(".grid-contentSidebar").load("brugerAdminSidebar.html");}
 
 // Functionality to load different lists:
-function loadActiveUserList() {
+async function loadActiveUserList() {
     let getAllActiveUsersURL = hostUserURL + 'activated';
     console.log("Loading Active Users");
-    $.get(getAllActiveUsersURL, function (data, textStatus, req) {
+     await $.get(getAllActiveUsersURL, function (data, textStatus, req) {
         $("#loadActiveUserList").empty();
         $.each(data, function (i, user) {
             $("#loadActiveUserList").append(genTableHTMLForActiveUserList((user)));
         });
     });
+     document.getElementsByClassName("loader")[0].className="loader-disabled";
 }
 
- function loadDeactivatedUserList() {
+ async function loadDeactivatedUserList() {
      let getAllDeactivatedUsersURL = hostUserURL+'deactivated';
      console.log("Loading deactivated Users");
-     $.get(getAllDeactivatedUsersURL, function (data, textStatus, req) {
+     await $.get(getAllDeactivatedUsersURL, function (data, textStatus, req) {
          $("#loadDeactivatedUserList").empty();
          $.each(data, function (i, user) {
              $("#loadDeactivatedUserList").append(genTableHTMLForDeactivatedUserList((user)));
          });
      });
+     document.getElementsByClassName("loader")[0].className="loader-disabled";
  }
 
 // Functionality to deactivate and reactivate users.
