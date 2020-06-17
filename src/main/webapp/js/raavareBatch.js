@@ -23,19 +23,6 @@ function genTableHTMLForRaavareBatch(raavareBatch) {
             '</tr>'
 }
 
-/*function getRaavareNavn(raavareId) {
-    let hostGetNameURL = hostURL + 'raavare/' + raavareId;
-    event.preventDefault();
-    $.ajax({
-        url: hostGetNameURL,
-        type: 'GET',
-        dataType: "text",
-        success: function (res) {
-            raavareNavn = res;
-        },
-    });
-}*/
-
 function deleteRaavareBatch(rbId) {
     event.preventDefault();
     $.ajax({
@@ -52,25 +39,35 @@ function createRaavareBatch() {
 
     let hostCreateURL = rbHostURL + 'create';
     console.log('Opretter ny RåvareBatch');
-    $.ajax({
-        type: 'POST',
-        contentType: 'application/json',
-        url: hostCreateURL,
-        dataType: "json",
-        data: rbCreateToJSON(),
-        success: function () {
-            alert('Succes! RåvareBatch oprettet');
-            loadRaavareBatchList();
-        },
-        error: function (jqXHR, textStatus) {
-            alert('Fejl ved oprettelsen af RåvareBatch: ' + textStatus);
-        }
-    });
+    if (controlRBID($('#rbId').val())) {
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+            url: hostCreateURL,
+            dataType: "json",
+            data: rbCreateToJSON(),
+            success: function () {
+                alert('Succes! RåvareBatch oprettet');
+                loadRaavareBatchList();
+            },
+            error: function (jqXHR, textStatus) {
+                alert('Fejl ved oprettelsen af RåvareBatch: ' + textStatus);
+            }
+        });
+    }
+}
+
+function controlRBID(id) {
+    if (id.length !== 5) {
+        alert("RåvareBatchID skal indholde fem cifre");
+        return false;
+    }
+    return true
 }
 
 function showRaavareNavn() {
     var raavareId = document.getElementById('raavareId').value;
-    let hostShowURL = rbHostURL + 'raavare/' + raavareId
+    let hostShowURL = rbHostURL + 'raavare/' + raavareId;
     $.ajax({
         url: hostShowURL,
         type: 'GET',

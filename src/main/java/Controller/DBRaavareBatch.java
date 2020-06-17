@@ -15,16 +15,10 @@ public class DBRaavareBatch {
     DBConnector dbc = new DBConnector();
     private String sqlQuery;
     private Connection SQLConn = dbc.createConnection();
-    private List<RaavareBatch> raavarebatch;
 
     private DBConnector MySQLConnector = new DBConnector();
 
-    public void fetchAllRaavareBatch() {
-        raavarebatch = new ArrayList<>();
-        raavarebatch = GetAllRaavareBatch();
-    }
-
-    public List<RaavareBatch> GetAllRaavareBatch() {
+    public List<RaavareBatch> getAllRaavareBatch() {
         ArrayList<RaavareBatch> data = new ArrayList<>();
         SQLConn = MySQLConnector.createConnection();
         if (SQLConn != null) {
@@ -34,20 +28,18 @@ public class DBRaavareBatch {
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new RaavareBatch(resultSet.getInt("rbId"), resultSet.getInt("raavareId"), resultSet.getDouble("maengde"), resultSet.getString("leverandoer"), resultSet.getString("raavarenavn")));
+                    data.add(new RaavareBatch(resultSet.getInt("rbId"),
+                                              resultSet.getInt("raavareId"),
+                                              resultSet.getDouble("maengde"),
+                                              resultSet.getString("leverandoer"),
+                                              resultSet.getString("raavarenavn")));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
                 System.out.println(e);
             }
         }
-
         return data;
-    }
-
-    public List<RaavareBatch> listAllRaavareBatch() {
-        fetchAllRaavareBatch();
-        return raavarebatch;
     }
 
     public void deleteRaavareBatch(int rbId) {
