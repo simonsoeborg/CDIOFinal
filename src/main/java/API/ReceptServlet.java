@@ -20,15 +20,17 @@ public class ReceptServlet {
     @POST
     public void createRecept(Recept recept) {
         dbr.createRecept(recept.getReceptId(), recept.getReceptNavn(),
-                recept.getRaavareNavn(), recept.getMaengde(), recept.getTolerance());
+                recept.getRaavareId(), recept.getMaengde(), recept.getTolerance());
     }
 
+/*
     @PUT
     @Path("{id}")
     public void updateRecept(@PathParam("id") int id, Recept recept) {
         dbr.UpdateRecept(id, recept.getReceptNavn(), recept.getRaavareNavn(),
                 recept.getMaengde(), recept.getTolerance());
     }
+*/
 
 /*
     @DELETE

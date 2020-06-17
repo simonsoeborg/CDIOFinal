@@ -4,16 +4,16 @@ public class Recept {
 
     private int receptId;
     private String receptNavn;
-    private String raavareNavn;
+    private int raavareId;
     private double maengde;
     private double tolerance;
 
     public Recept(){}
 
-    public Recept(int receptId, String receptNavn, String raavareNavn, double maengde, double tolerance) {
+    public Recept(int receptId, String receptNavn, int raavareId, double maengde, double tolerance) {
         this.receptId = receptId;
         this.receptNavn = receptNavn;
-        this.raavareNavn = raavareNavn;
+        this.raavareId = raavareId;
         this.maengde = maengde;
         this.tolerance = tolerance;
     }
@@ -27,15 +27,15 @@ public class Recept {
         return receptNavn;
     }
 
-    public String getRaavareNavn() {
-        return raavareNavn;
-    }
-
     public double getMaengde() {
         return maengde;
     }
 
     public double getTolerance() {
         return tolerance;
+    }
+
+    public int getRaavareId() {
+        return raavareId;
     }
 }
