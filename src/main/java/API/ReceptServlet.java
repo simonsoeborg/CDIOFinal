@@ -25,9 +25,9 @@ public class ReceptServlet {
 
     @DELETE
     @Path("{id}")
-    public void deleteReceptKomponent(@PathParam("id") int id) {
-        dbr.deleteReceptKomponent(id, recept.get, id.getRaavareid(),
-                id.getRaavarenavn(), id.getMaengde(), id.getTolerance());
+    public void deleteReceptKomponent(@PathParam("id") int id, Recept recept) {
+        dbr.deleteReceptKomponent(recept.getReceptid(), recept.getReceptnavn(), recept.getRaavareid(),
+                recept.getRaavarenavn(), recept.getMaengde(),recept.getTolerance());
     }
 
 /*
