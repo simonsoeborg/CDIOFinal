@@ -20,6 +20,14 @@ public class Recept {
         this.tolerance = tolerance;
     }
 
+    public Recept(int receptId, String receptNavn, int raavareId, double maengde, double tolerance) {
+        this.receptId = receptId;
+        this.receptNavn = receptNavn;
+        this.raavareId = raavareId;
+        this.maengde = maengde;
+        this.tolerance = tolerance;
+    }
+
     public int getReceptId() {
         return receptId;
     }
@@ -38,5 +46,9 @@ public class Recept {
 
     public String getRaavareNavn() {
         return raavareNavn;
+    }
+
+    public int getRaavareId() {
+        return raavareId;
     }
 }

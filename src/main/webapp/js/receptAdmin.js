@@ -22,26 +22,30 @@ function loadRecepts() {
 
 function receptDataCreateToJSON() {
     return JSON.stringify({
-        "receptid": $('#receptid').val(),
-        "receptname": $('#receptname').val(),
-        "raavareid": $('#raavareid').val(),
+        "receptId": $('#receptId').val(),
+        "receptNavn": $('#receptNavn').val(),
+        "raavareId": $('#raavareId').val(),
         "meangde": $('#maengde').val(),
         "tolerance": $('#tolerance').val()
     })
 }
 
 function createRecept() {
-    $("#add-recept").on('click', function () {
-        $.ajax({
-            type: 'POST',
-            url: '/CDIOFinal_war_exploded/test/recepts/',
-            dataType: "json",
-            data: receptDataCreateToJSON(),
-            success: function (newRecept) {
-                $recepts.append(genTableHTMLForRecepts(newRecept))
-            }
-        })
+    $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        url: '/CDIOFinal_war_exploded/test/recepts/',
+        dataType: "json",
+        data: receptDataCreateToJSON(),
+        success: function () {
+            alert('Succes! Recept oprettet');
+            loadRecepts();
+        },
+        error: function (jqXHR, textStatus) {
+            alert('Fejl ved oprettelsen af Recept: ' + textStatus);
+        }
     })
+
 }
 
 
