@@ -15,15 +15,16 @@ public class ProductionBatchServlet {
      DBProductionBatch DBProductionBatch = new DBProductionBatch();
 
      @GET
-     @Path("Loading")
+     @Path("/productionBatch")
      public List<ProductionBatch> GetProductionBatch() { return DBProductionBatch.GetAllProductionBatch(); }
 
      @POST
     public void createProductionBatch(ProductionBatch ProductionBatch) {
-            DBProductionBatch.createProductionBatch(ProductionBatch.getPbId(), ProductionBatch.getPbId());
+         DBProductionBatch.createProductionBatch(ProductionBatch.getPbId(), ProductionBatch.getPbId());
+     }
 
     @DELETE
-    @Path("{pbId}")}
-    public void deleteProductionBatch(@PathParam("pbId") int pbId) {  DBProductionBatch.deleteProductionBatch(pbId);  }
+    @Path("{Pbid}")
+    public void deleteProductionBatch(@PathParam("PbId") int pbId) {  DBProductionBatch.deleteProductionBatch(pbId);  }
     
     }

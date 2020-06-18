@@ -14,8 +14,8 @@ public class ProductionBatch {
 
     public ProductionBatch(int pbId,int receptId, int status,int userId,int rbId, double tara, double netto){
         this.pbId = pbId;
-        this.status = receptId;
-        this.receptId = status;
+        this.status = status;
+        this.receptId = receptId;
         this.userId = userId;
         this.rbId = rbId;
         this.tara = tara;
@@ -26,9 +26,9 @@ public class ProductionBatch {
 
     public void setPbId(int pbId) { this.pbId = pbId; }
 
-    public int getReceptId(){return receptId; }
+    public int getReceptId(){return ReceptId; }
 
-    public void setReceptId(int receptId) {this.receptId = receptId; }
+    public void setReceptId(int ReceptId) {this.ReceptId = ReceptId; }
 
     public int getstatus() {return status;}
 

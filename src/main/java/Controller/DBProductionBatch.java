@@ -62,7 +62,7 @@ public class DBProductionBatch {
         }
     }
 
-    public void createProductionBatch(int pbId, int receptId, int status, int userId, int rbId, double tara, double netto) {
+    public void createProductionBatch(int pbId, int receptIdeceptId) {
 
         try {
             SQLConn = MySQLConnector.createConnection();
