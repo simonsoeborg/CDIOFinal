@@ -52,7 +52,7 @@ public class DBRecept {
     //-------------------------------------------------------------------------------------
 
 
-    public void createRecept(int receptId, String receptNavn, String raavareNavn, double maengde, double tolerance) {
+    public void createRecept(int receptId, String receptNavn, int raavareId, double maengde, double tolerance) {
 
         try {
             SQLConn = SQLConnector.createConnection();
@@ -70,9 +70,9 @@ public class DBRecept {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
                 pstm = SQLConn.prepareStatement(
-                        "INSERT INTO ReceptKomponent (receptId, raavareid, maengde, tolerance) VALUES (?, ?, ?, ?)");
+                        "INSERT INTO ReceptKomponent (receptid, raavareid, maengde, tolerance) VALUES (?, ?, ?, ?)");
                 pstm.setInt(1, receptId);
-                pstm.setString(2, raavareNavn);
+                pstm.setInt(2, raavareId);
                 pstm.setDouble(3, maengde);
                 pstm.setDouble(4, tolerance);
                 pstm.executeUpdate();

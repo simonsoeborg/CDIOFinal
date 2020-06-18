@@ -1,20 +1,17 @@
-let ReceptUrl = '/CDIOFinal_war_exploded/test/recepts/';
-
 function genTableHTMLForRecepts(recept) {
-    return '<tr>' + '<td>' + recept.receptid + '</td>' +
-        '<td>' + recept.receptnavn + '</td>' +
-        '<td>' + recept.raavareid + '</td>' +
-        '<td>' + recept.raavarenavn + '</td>' +
+    return '<tr>' + '<td>' + recept.receptId + '</td>' +
+        '<td>' + recept.receptNavn + '</td>' +
+        '<td>' + recept.raavareNavn + '</td>' +
         '<td>' + recept.maengde + ' g</td>' +
         '<td>' + recept.tolerance + '</td>' +
-        '<td><button class="btn-alert" onclick="deleteReceptKomponent(recept.receptid);">Slet</button></td>'+
+        '<td><button class="btn-alert" type="submit" onclick="deleteRecept(recept.receptId);">Slet</button></td>'+
     '</tr>';
 }
 
 function loadRecepts() {
-    let ReceptUrl = '/CDIOFinal_war_exploded/test/recepts/';
+    let loadReceptUrl = '/CDIOFinal_war_exploded/test/recepts/';
     console.log("Loading Recepts");
-    $.get(ReceptUrl, function (data, textStatus, req) {
+    $.get(loadReceptUrl, function (data, textStatus, req) {
         $("#loadAllRecepts").empty();
         $.each(data, function (i, recept) {
             $("#loadAllRecepts").append(genTableHTMLForRecepts(recept));
@@ -25,44 +22,30 @@ function loadRecepts() {
 
 function receptDataCreateToJSON() {
     return JSON.stringify({
-        "receptid": $('#receptid').val(),
-        "receptnavn": $('#receptnavn').val(),
-        "raavareid": $('#raavareid').val(),
-        "raavarenavn": $('#raavarenavn').val(),
+        "receptId": $('#receptId').val(),
+        "receptNavn": $('#receptNavn').val(),
+        "raavareId": $('#raavareId').val(),
         "meangde": $('#maengde').val(),
         "tolerance": $('#tolerance').val()
     })
 }
 
-
 function createRecept() {
-    console.log('Opretter ny recept');
     $.ajax({
         type: 'POST',
         contentType: 'application/json',
-        url: ReceptUrl,
+        url: '/CDIOFinal_war_exploded/test/recepts/',
         dataType: "json",
         data: receptDataCreateToJSON(),
         success: function () {
-            alert('Recept oprettet');
+            alert('Succes! Recept oprettet');
             loadRecepts();
         },
         error: function (jqXHR, textStatus) {
-            alert('Fejl ved oprettelsen ' + textStatus);
+            alert('Fejl ved oprettelsen af Recept: ' + textStatus);
         }
-    });
-}
+    })
 
-function deleteReceptKomponent(id) {
-    event.preventDefault();
-    $.ajax({
-        method: 'DELETE',
-        url: ReceptUrl + id,
-        success: function () {
-            alert(' Recept med id: ' + id + ' er blevet slettet!');
-            loadRecepts();
-        }
-    });
 }
 
 

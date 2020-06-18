@@ -25,15 +25,15 @@
 
         <h2 id="createReceptTxt">Opret recept</h2>
         <div class="Container-borderless" style="width: 100%;">
-            <input type="text" style="width: 16%;" id="receptname" name="receptname" placeholder="ReceptNavn">
-            <input type="text" style="width: 16%;" id="receptid" name="receptid" placeholder="ReceptID">
+            <input type="text" style="width: 16%;" id="receptId" name="receptId" placeholder="ReceptID">
+            <input type="text" style="width: 16%;" id="receptNavn" name="receptNavn" placeholder="ReceptNavn">
 
             <!--<select id="raavareid" name="raavareid" placeholder="Vælg råvare"></select> <br>-->
             <input type="text" style="width: 16%;" id="raavareId" name="raavareId" onblur="showRaavareNavn();" placeholder="RåvareID">
 
             <input type="text" style="width: 16%;" id="maengde" name="maengde" placeholder="Mængde">
             <input type="text" style="width: 16%;" id="tolerance" name="tolerance" placeholder="Tolerance">
-            <button id="successbutton">Opret</button><br>
+            <button id="successbutton" onclick="createRecept()">Opret</button><br>
             <label style="padding-left: 33%" id="raavareNavn"> </label>
 
         </div>
