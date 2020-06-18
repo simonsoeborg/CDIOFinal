@@ -21,6 +21,10 @@ h2{
   color: #878688;
 }
 
+h3{
+  color: #414141;
+}
+
 .btn-alert {
   background-color: var(--color-primary);
   color: white;
