@@ -23,23 +23,20 @@
 
         <!---------------------------------------------------------------------------------->
 
-            <div class="recept-content">
         <h2 id="createReceptTxt">Opret recept</h2>
-        <input type="text" id="receptid" name="receptid" placeholder="ReceptID"><br>
-        <input type="text" id="receptnavn" name="receptnavn" placeholder="ReceptNavn"><br>
-                <input type="text" id="raavareid" name="raavareid" placeholder="RåvareId"><br>
-                <input type="text" id="raavarenavn" name="raavarenavn" placeholder="RåvareNavn"><br>
+        <div class="Container-borderless" style="width: 100%;">
+            <input type="text" style="width: 16%;" id="receptname" name="receptname" placeholder="ReceptNavn">
+            <input type="text" style="width: 16%;" id="receptid" name="receptid" placeholder="ReceptID">
 
+            <!--<select id="raavareid" name="raavareid" placeholder="Vælg råvare"></select> <br>-->
+            <input type="text" style="width: 16%;" id="raavareId" name="raavareId" onblur="showRaavareNavn();" placeholder="RåvareID">
 
-                <div class="receptcomponent">
-<!--        <select id="raavareid" name="raavareid" placeholder="Vælg råvare"></select> <br>-->
+            <input type="text" style="width: 16%;" id="maengde" name="maengde" placeholder="Mængde">
+            <input type="text" style="width: 16%;" id="tolerance" name="tolerance" placeholder="Tolerance">
+            <button id="successbutton">Opret</button><br>
+            <label style="padding-left: 33%" id="raavareNavn"> </label>
 
-        <input type="text" id="maengde" name="maengde" placeholder="Mængde"><br>
-        <input type="text" id="tolerance" name="tolerance" placeholder="Tolerance"><br>
-                </div>
-
-        <button id="btn-create" type="button" onclick="createRecept();">Opret</button>
-            </div>
+        </div>
 
         <!---------------------------------------------------------------------------------->
 
@@ -51,7 +48,6 @@
                     <tr>
                         <td>ReceptId</td>
                         <td>ReceptNavn</td>
-                        <td>RåvareId</td>
                         <td>RåvareNavn</td>
                         <td>Mængde</td>
                         <td>Tolerance</td>
