@@ -17,6 +17,41 @@ h1 {
   color: #E44E4E;
 }
 
+h2{
+  color: #878688;
+}
+
+input {
+  border-radius: 5px;
+  width: auto;
+  border-width: 1px;
+  padding: 10px;
+  outline: none;
+  font-size: 22px;
+}
+
+input:hover {
+  border: 1px solid #E44E4E;
+  border-radius: 5px;
+}
+
+input:active {
+  border: 1px solid #E44E4E;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+
+  border: 0px;
+  font-size: 22px;
+}
+
+button:hover {
+  border: 1px solid rgba(114, 85, 85, 0.29);
+  border-radius: 5px;
+}
+
 .btn-alert {
   background-color: var(--color-primary);
   color: white;
@@ -60,11 +95,12 @@ h1 {
   transition: background-color 0.25s, color 0.25s;
 }
 
+
 table {
   border-spacing: 0px;
 }
 
-thead td {
+thead td  {
   font-weight: bold;
   background-color: var(--color-primary);
   color: white;

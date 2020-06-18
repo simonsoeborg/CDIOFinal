@@ -1,3 +1,5 @@
+/* Author: Karl Emil */
+
 package Data.DTO;
 
 public class RaavareBatch {
@@ -5,11 +7,18 @@ public class RaavareBatch {
     private int rbId;
     private int raavareId;
     private double maengde;
+    private String leverandoer;
+    private String raavareNavn;
 
-    public RaavareBatch(int rbId, int raavareId, double maengde) {
+    public RaavareBatch() {
+    }
+
+    public RaavareBatch(int rbId, int raavareId, double maengde, String leverandoer, String raavareNavn) {
         this.rbId = rbId;
         this.raavareId = raavareId;
         this.maengde = maengde;
+        this.leverandoer = leverandoer;
+        this.raavareNavn = raavareNavn;
     }
 
     public int getRbId() {
@@ -22,5 +31,13 @@ public class RaavareBatch {
 
     public double getMaengde() {
         return maengde;
+    }
+
+    public String getLeverandoer() {
+        return leverandoer;
+    }
+
+    public String getRaavareNavn() {
+        return raavareNavn;
     }
 }

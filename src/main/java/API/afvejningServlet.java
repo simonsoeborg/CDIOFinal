@@ -5,8 +5,11 @@
 package API;
 
 import Controller.DBAfvejning;
+import Data.DTO.AfvejningReceptKomponent;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("afvejning")
 @Produces(MediaType.APPLICATION_JSON)
@@ -25,5 +28,11 @@ public class afvejningServlet {
     @Path("pb")
     public String findRecept(@QueryParam("pbNr") int id) {
         return dba.findRecept(id);
+    }
+
+    @GET
+    @Path("{id}")
+    public List<AfvejningReceptKomponent> GetData(@PathParam("id") int id) {
+        return dba.getAfvejningReceptKomponent(id);
     }
 }
