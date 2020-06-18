@@ -1,6 +1,10 @@
+/*
+Author: Simon Fridolf
+Github: IceMonk3y
+*/
+
 package Controller;
 
-import Data.DTO.DBConnector;
 import Data.DTO.User;
 
 import java.sql.Connection;
@@ -10,25 +14,35 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBUser {
+public class DBUser implements IUser {
 
     private Connection SQLConn;
     private String sqlQuery;
     private List<User> userList;
     private DBConnector MySQLConnector = new DBConnector();
 
+    @Override
     public List<User> listAllActivatedUsers() {
         userList = new ArrayList<>();
         userList = getAllActivatedUsers();
         return userList;
     }
 
+    @Override
     public List<User> listAllDeactivatedUsers() {
         userList = new ArrayList<>();
         userList = getAllDeactivatedUsers();
         return userList;
     }
 
+    @Override
+    public List<User> listAllUsers() {
+        userList = new ArrayList<>();
+        userList = getAllUsers();
+        return userList;
+    }
+
+    @Override
     public List<User> getAllActivatedUsers() {
         SQLConn = MySQLConnector.createConnection();
         ArrayList<User> data = new ArrayList<>();
@@ -49,6 +63,28 @@ public class DBUser {
         return data;
     }
 
+    @Override
+    public List<User> getAllUsers() {
+        SQLConn = MySQLConnector.createConnection();
+        ArrayList<User> data = new ArrayList<>();
+        if (SQLConn != null) {
+            try {
+                sqlQuery = "SELECT * FROM Brugere";
+                //prepared statement
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                ResultSet resultSet = pstm.executeQuery();
+                while (resultSet.next()) {
+                    data.add(new User(resultSet.getInt("UserId"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Initial"), resultSet.getString("Role"), resultSet.getString("Status")));
+                }
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return data;
+    }
+
+    @Override
     public List<User> getAllDeactivatedUsers() {
         SQLConn = MySQLConnector.createConnection();
         ArrayList<User> data = new ArrayList<>();
@@ -69,6 +105,7 @@ public class DBUser {
         return data;
     }
 
+    @Override
     public void deactivateUser(int userID) {
         try {
             SQLConn = MySQLConnector.createConnection();
@@ -87,6 +124,7 @@ public class DBUser {
         }
     }
 
+    @Override
     public void activateUser(int userID) {
         try {
             SQLConn = MySQLConnector.createConnection();
@@ -107,7 +145,7 @@ public class DBUser {
 
 
 
-
+    @Override
     public User searchUser(int userID) {
         User temp = null;
         try {
@@ -128,8 +166,9 @@ public class DBUser {
         return temp;
     }
 
-    public void createUser(String firstName, String lastName, String initial, String role) {
-        // String initial = String.valueOf(Character.toUpperCase(firstName.charAt(0))+ Character.toUpperCase(lastName.charAt(0)));
+    @Override
+    public void createUser(String firstName, String lastName, String role) {
+        String initial =(Character.toUpperCase(firstName.charAt(0)) +""+Character.toUpperCase(lastName.charAt(0)));
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
@@ -148,20 +187,24 @@ public class DBUser {
         }
     }
 
+    @Override
     public void editUser(int userID, String firstName, String lastName, String role) {
+        String initialUpdate =(Character.toUpperCase(firstName.charAt(0)) +""+Character.toUpperCase(lastName.charAt(0)));
         try {
             SQLConn = MySQLConnector.createConnection();
             if(SQLConn != null) {
                 sqlQuery = "UPDATE Brugere " +
                         "SET FirstName=?, " +
                         "LastName=?, " +
+                        "Initial=?," +
                         "Role=? " +
                         "WHERE UserId = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setString(1, firstName);
                 pstm.setString(2, lastName);
-                pstm.setString(3, role);
-                pstm.setInt(4, userID);
+                pstm.setString(3,initialUpdate);
+                pstm.setString(4, role);
+                pstm.setInt(5, userID);
 
                 pstm.executeUpdate();
                 SQLConn.close();

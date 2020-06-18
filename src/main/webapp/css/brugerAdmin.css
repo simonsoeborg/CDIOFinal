@@ -1,0 +1,54 @@
+/*
+Author: Simon Fridolf
+Github: IceMonk3y
+
+Note: Additions and override for brugerAdmin.
+*/
+
+/*Additional color too the table head element*/
+#t-deactive td{
+    background-color: #585858;
+}
+
+/*Other color to edit */
+#edit-button{
+    background-color: #ff7f02;
+}
+
+/*Other color to activate */
+#activate-button{
+    background-color: #007900;
+}
+/*More styled list*/
+
+.brugerSidebarUL li {
+    padding-right: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    display: block;
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+
+.brugerSidebarUL li:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+#role {
+    border-radius: 5px;
+    margin-left: 0;
+    width: 50%;
+    height: 40px;
+}
+
+#firstname{
+    margin-bottom: 10px;
+}
+
+
+
+

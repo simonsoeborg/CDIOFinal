@@ -19,15 +19,8 @@ public class ReceptServlet {
 
     @POST
     public void createRecept(Recept recept) {
-        dbr.createRecept(recept.getReceptid(), recept.getReceptnavn(), recept.getRaavareid(),
-                recept.getRaavarenavn(), recept.getMaengde(), recept.getTolerance());
-    }
-
-    @DELETE
-    @Path("{id}")
-    public void deleteReceptKomponent(@PathParam("id") int id, Recept recept) {
-        dbr.deleteReceptKomponent(recept.getReceptid(), recept.getReceptnavn(), recept.getRaavareid(),
-                recept.getRaavarenavn(), recept.getMaengde(),recept.getTolerance());
+        dbr.createRecept(recept.getReceptId(), recept.getReceptNavn(),
+                recept.getRaavareNavn(), recept.getMaengde(), recept.getTolerance());
     }
 
 /*
@@ -40,7 +33,11 @@ public class ReceptServlet {
 */
 
 /*
-
+    @DELETE
+    @Path("{id}")
+    public void deleteRecept(@PathParam("id") int id) {
+        dbr.deleteRecept(id);
+    }
 
 
     @PUT

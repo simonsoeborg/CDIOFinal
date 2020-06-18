@@ -1,4 +1,5 @@
     <!-- Author: Karl Emil -->
+
 <div class="grid-container">
 
     <!-- Attach global header -->
@@ -14,18 +15,32 @@
 
     <div class="grid-contentBody">
         <!-- Inputs, labels, paragrapher CONTENT -->
+        <h2>Opret RåvareBatch</h2>
 
-        <div class="container" style="align-content: center; margin-left: 25%;">
-            <div class="row">
-            </div>
+        <div class="Container_borderless" style="width: 100%;">
+            <label><input id="rbId" style="width: 20%;" type="text" placeholder="RåvareBatch ID"></label>
+            <label><input id="raavareId" onblur="showRaavareNavn();" style="width: 20%;" type="text" placeholder="Råvare ID"></label>
+            <label><input id="maengde" style="width: 20%;" type="text" placeholder="Mændge i kg"></label>
+            <label><input id="leverandoer" style="width: 20%;" type="text" placeholder="Leverandør"></label>
+            <button class="successbutton" type="button" onclick="createRaavareBatch();" style="align-content: center;" >Opret</button>
+            <row>
+                <label style="padding-left: 21%" id="raavareNavn"></label>
+            </row>
+        </div>
 
-            <div class="grid-item-10">
+
+        <div class="Container_borderless" style="width: 80%;">
+            <div class="row"></div>
+
+            <div class="">
                 <table>
                     <thead>
                     <tr>
-                        <td>Råvarebatch ID</td>
+                        <td>RåvareBatch ID</td>
                         <td>Råvare ID</td>
+                        <td>Råvare Navn</td>
                         <td>Mængde</td>
+                        <td>Leverandør</td>
                         <td> </td>
                     </tr>
                     </thead>
@@ -34,8 +49,8 @@
             </div>
         </div>
     </div>
+</div>
 
     <!-- Attach global footer -->
     <div class="grid-contentFooter"><script>includeFooter();</script></div>
-
 </div>

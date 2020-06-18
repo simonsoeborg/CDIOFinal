@@ -1,6 +1,5 @@
 package Controller;
 
-import Data.DTO.DBConnector;
 import Data.DTO.Recept;
 
 import java.sql.Connection;
@@ -28,13 +27,15 @@ public class DBRecept {
         SQLConn = SQLConnector.createConnection();
         if (SQLConn != null) {
             try {
+                sqlQuery = "SELECT * FROM ReceptView ORDER BY receptId";
                 //prepared statement
-                PreparedStatement pstm = SQLConn.prepareStatement("SELECT * FROM ReceptView ORDER BY receptid");
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+//                pstm.setInt(1,id);
                 ResultSet resultSet = pstm.executeQuery();
+
                 while (resultSet.next()){
                     data.add(new Recept(resultSet.getInt("receptid"),
                             resultSet.getString("receptnavn"),
-                            resultSet.getInt("raavareid"),
                             resultSet.getString("raavarenavn"),
                             resultSet.getDouble("maengde"),
                             resultSet.getDouble("tolerance")));
@@ -50,14 +51,14 @@ public class DBRecept {
     //-------------------------------------------------------------------------------------
 
 
-    public void createRecept(int receptid, String receptnavn, int raavareid, String raavarenavn, double maengde, double tolerance) {
+    public void createRecept(int receptId, String receptNavn, String raavareNavn, double maengde, double tolerance) {
 
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("INSERT INTO Recept (receptid, receptnavn) VALUES (?, ?)");
-                pstm.setInt(1, receptid);
-                pstm.setString(2, receptnavn);
+                pstm = SQLConn.prepareStatement("INSERT INTO Recept (receptId, receptNavn) VALUES (?, ?)");
+                pstm.setInt(1, receptId);
+                pstm.setString(2, receptNavn);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -69,8 +70,8 @@ public class DBRecept {
             if (SQLConn != null) {
                 pstm = SQLConn.prepareStatement(
                         "INSERT INTO ReceptKomponent (receptId, raavareid, maengde, tolerance) VALUES (?, ?, ?, ?)");
-                pstm.setInt(1, receptid);
-                pstm.setInt(2, raavareid);
+                pstm.setInt(1, receptId);
+                pstm.setString(2, raavareNavn);
                 pstm.setDouble(3, maengde);
                 pstm.setDouble(4, tolerance);
                 pstm.executeUpdate();
@@ -79,65 +80,8 @@ public class DBRecept {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        try {
-            SQLConn = SQLConnector.createConnection();
-            if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement(
-                        "INSERT INTO Raavare (raavareid, raavarenavn) VALUES (?, ?)");
-                pstm.setInt(1, raavareid);
-                pstm.setString(2, raavarenavn);
-                pstm.executeUpdate();
-                SQLConn.close();
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-    }
 
     //-------------------------------------------------------------------------------------
-
-    public void deleteReceptKomponent(int receptid, String receptnavn, int raavareid, String raavarenavn,
-                                      double maengde, double tolerance) {
-        if (SQLConn != null) {
-            try {
-            SQLConn = SQLConnector.createConnection();
-                pstm = SQLConn.prepareStatement("DELETE FROM ReceptKomponent WHERE receptid = ?, raavareid = ?, maengde = ?, tolerance = ?");
-                pstm.setInt(1, receptid);
-                pstm.setInt(2, raavareid);
-                pstm.setDouble(3, maengde);
-                pstm.setDouble(4, tolerance);
-                pstm.executeUpdate();
-                SQLConn.close();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        try {
-            if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("DELETE FROM Recept WHERE receptid = ?, receptnavn = ?");
-                pstm.setInt(1, receptid);
-                pstm.setString(2, receptnavn);
-
-                pstm.executeUpdate();
-                SQLConn.close();
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        try {
-            if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("DELETE FROM Raavare WHERE raavareid = ?, raavarenavn = ?");
-                pstm.setInt(1, raavareid);
-                pstm.setString(2, raavarenavn);
-                pstm.executeUpdate();
-                SQLConn.close();
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-    }}
-
-    //-------------------------------------------------------------------------------------
-
 
 //    public void UpdateRecept(int receptId, String receptNavn, String raavareNavn, double maengde, double tolerance) {
 //        try {
@@ -206,6 +150,6 @@ public class DBRecept {
         }
     }*/
     }
-
+}
 
 
