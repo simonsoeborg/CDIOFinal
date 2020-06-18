@@ -5,6 +5,7 @@ public class Recept {
     private int receptId;
     private String receptNavn;
     private String raavareNavn;
+    private int raavareId;
     private double maengde;
     private double tolerance;
 
@@ -14,6 +15,14 @@ public class Recept {
         this.receptId = receptId;
         this.receptNavn = receptNavn;
         this.raavareNavn = raavareNavn;
+        this.maengde = maengde;
+        this.tolerance = tolerance;
+    }
+
+    public Recept(int receptId, String receptNavn, int raavareId, double maengde, double tolerance) {
+        this.receptId = receptId;
+        this.receptNavn = receptNavn;
+        this.raavareId = raavareId;
         this.maengde = maengde;
         this.tolerance = tolerance;
     }
