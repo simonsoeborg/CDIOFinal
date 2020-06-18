@@ -57,7 +57,7 @@ public class DBRecept {
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("INSERT INTO Recept (receptId, receptNavn) VALUES (?, ?)");
+                pstm = SQLConn.prepareStatement("INSERT INTO Recept (receptid, receptnavn) VALUES (?, ?)");
                 pstm.setInt(1, receptId);
                 pstm.setString(2, receptNavn);
                 pstm.executeUpdate();
