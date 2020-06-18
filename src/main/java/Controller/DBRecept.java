@@ -36,6 +36,7 @@ public class DBRecept {
                 while (resultSet.next()){
                     data.add(new Recept(resultSet.getInt("receptid"),
                             resultSet.getString("receptnavn"),
+                            resultSet.getInt("raavareiD"),
                             resultSet.getString("raavarenavn"),
                             resultSet.getDouble("maengde"),
                             resultSet.getDouble("tolerance")));

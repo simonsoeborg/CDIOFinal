@@ -5,14 +5,16 @@ public class Recept {
     private int receptId;
     private String receptNavn;
     private String raavareNavn;
+    private int raavareId;
     private double maengde;
     private double tolerance;
 
     public Recept(){}
 
-    public Recept(int receptId, String receptNavn, String raavareNavn, double maengde, double tolerance) {
+    public Recept(int receptId, String receptNavn, int raavareId, String raavareNavn, double maengde, double tolerance) {
         this.receptId = receptId;
         this.receptNavn = receptNavn;
+        this.raavareId = raavareId;
         this.raavareNavn = raavareNavn;
         this.maengde = maengde;
         this.tolerance = tolerance;
