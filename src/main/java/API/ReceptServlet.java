@@ -20,7 +20,7 @@ public class ReceptServlet {
     @POST
     public void createRecept(Recept recept) {
         dbr.createRecept(recept.getReceptId(), recept.getReceptNavn(),
-                recept.getRaavareId(), recept.getMaengde(), recept.getTolerance());
+                recept.getRaavareNavn(), recept.getMaengde(), recept.getTolerance());
     }
 
 /*

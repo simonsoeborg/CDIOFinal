@@ -1,6 +1,5 @@
 package Controller;
 
-import Data.DTO.DBConnector;
 import Data.DTO.Recept;
 
 import java.sql.Connection;
@@ -28,16 +27,16 @@ public class DBRecept {
         SQLConn = SQLConnector.createConnection();
         if (SQLConn != null) {
             try {
-                sqlQuery = "SELECT * FROM FrejaView2 ORDER BY receptId";
+                sqlQuery = "SELECT * FROM ReceptView ORDER BY receptId";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
 //                pstm.setInt(1,id);
                 ResultSet resultSet = pstm.executeQuery();
 
                 while (resultSet.next()){
-                    data.add(new Recept(resultSet.getInt("receptId"),
-                            resultSet.getString("receptNavn"),
-                            resultSet.getInt("raavareid"),
+                    data.add(new Recept(resultSet.getInt("receptid"),
+                            resultSet.getString("receptnavn"),
+                            resultSet.getString("raavarenavn"),
                             resultSet.getDouble("maengde"),
                             resultSet.getDouble("tolerance")));
                 }
@@ -52,7 +51,7 @@ public class DBRecept {
     //-------------------------------------------------------------------------------------
 
 
-    public void createRecept(int receptId, String receptNavn, int raavareid, double maengde, double tolerance) {
+    public void createRecept(int receptId, String receptNavn, String raavareNavn, double maengde, double tolerance) {
 
         try {
             SQLConn = SQLConnector.createConnection();
@@ -72,7 +71,7 @@ public class DBRecept {
                 pstm = SQLConn.prepareStatement(
                         "INSERT INTO ReceptKomponent (receptId, raavareid, maengde, tolerance) VALUES (?, ?, ?, ?)");
                 pstm.setInt(1, receptId);
-                pstm.setInt(2, raavareid);
+                pstm.setString(2, raavareNavn);
                 pstm.setDouble(3, maengde);
                 pstm.setDouble(4, tolerance);
                 pstm.executeUpdate();
