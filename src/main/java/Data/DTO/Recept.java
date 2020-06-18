@@ -2,40 +2,38 @@ package Data.DTO;
 
 public class Recept {
 
-    private int receptid;
-    private String receptnavn;
-    private int raavareid;
-    private String raavarenavn;
+    private int receptId;
+    private String receptNavn;
+    private String raavareNavn;
+    private int raavareId;
     private double maengde;
     private double tolerance;
 
     public Recept(){}
 
-    //Identisk med ReceptView2
-    public Recept(int receptid, String receptnavn, int raavareid, String raavarenavn, double maengde, double tolerance) {
-        this.receptid = receptid;
-        this.receptnavn = receptnavn;
-        this.raavareid = raavareid;
-        this.raavarenavn = raavarenavn;
+    public Recept(int receptId, String receptNavn, int raavareId, String raavareNavn, double maengde, double tolerance) {
+        this.receptId = receptId;
+        this.receptNavn = receptNavn;
+        this.raavareId = raavareId;
+        this.raavareNavn = raavareNavn;
         this.maengde = maengde;
         this.tolerance = tolerance;
     }
 
-
-    public int getReceptid() {
-        return receptid;
+    public Recept(int receptId, String receptNavn, int raavareId, double maengde, double tolerance) {
+        this.receptId = receptId;
+        this.receptNavn = receptNavn;
+        this.raavareId = raavareId;
+        this.maengde = maengde;
+        this.tolerance = tolerance;
     }
 
-    public String getReceptnavn() {
-        return receptnavn;
+    public int getReceptId() {
+        return receptId;
     }
 
-    public int getRaavareid() {
-        return raavareid;
-    }
-
-    public String getRaavarenavn() {
-        return raavarenavn;
+    public String getReceptNavn() {
+        return receptNavn;
     }
 
     public double getMaengde() {
@@ -46,6 +44,7 @@ public class Recept {
         return tolerance;
     }
 
-
+    public String getRaavareNavn() {
+        return raavareNavn;
+    }
 }
-
