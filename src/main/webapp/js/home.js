@@ -1,17 +1,9 @@
-// import { setRole, getRole} from "./user";
-
-
-function resetAll() {
-    document.getElementById("sideMenuUL li").style.display = "none";
-}
-
 function welcome() {
     let role = sessionStorage.getItem("role");
     document.getElementById('scriptName').innerHTML="Velkommen - Du er logget ind som " + role;
 }
 
-
-async function userLayout(obj) {
+function userLayout(obj) {
     let role = obj.id;
     sessionStorage.setItem('role', role);
 
@@ -20,7 +12,6 @@ async function userLayout(obj) {
 
 
 function access() {
-    let role = sessionStorage.getItem('role');
     if (sessionStorage.getItem('role') === "Administrator") {
         document.getElementById('brugerAdminMenu').style.display = "block";
     }
