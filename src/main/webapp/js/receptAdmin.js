@@ -80,6 +80,7 @@ function loadReceptId() {
         $("#loadAllReceptsId").empty();
         $.each(receptIdData, function (i, receptid) {
             $("#loadAllReceptsId").append(genTableHTMLForReceptId(receptid));
+            loadRecepts();
         });
     });
 }
