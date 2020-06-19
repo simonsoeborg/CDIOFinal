@@ -21,7 +21,11 @@ public class DBAfvejning {
 
     private String findBrugerQuery = "SELECT * FROM Brugere WHERE UserId = ?";
     private String findReceptQuery = "SELECT receptNavn FROM ProduktBatchAfvejning WHERE pbId = ?";
+    private String getProduktionStatusQuery = "SELECT status FROM ProduktBatch WHERE pbId = ?";
     private String getReceptRaavareQuery = "SELECT raavareid, raavarenavn, maengde, tolerance FROM AfvejningReceptKomponent2 WHERE pbId = ?";
+    private String updateAfvejetDataQuery = "INSERT INTO ProduktBatchKomponent (pbid, rbid, afvejetmaengde, tara)" +
+            "VALUES (?, ?, ?, ?)";
+    private String updateProduktionStatusQuery = "UPDATE ProduktBatch SET status = ? WHERE pbId = ?";
 
     public String getLaborantName(int id) {
         SQLConn = dbc.createConnection();
@@ -67,6 +71,27 @@ public class DBAfvejning {
         return data;
     }
 
+    public String getProduktionStatus(int id) {
+        SQLConn = dbc.createConnection();
+        String data = null;
+        try {
+            if (SQLConn != null) {
+                sqlQuery = getProduktionStatusQuery;
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, id);
+                ResultSet resultSet = pstm.executeQuery();
+
+                while (resultSet.next()) {
+                    data = resultSet.getString("status");
+                }
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return data;
+    }
+
     public List<AfvejningReceptKomponent> getAfvejningReceptKomponent(int id) {
         ArrayList<AfvejningReceptKomponent> data = new ArrayList<>();
         SQLConn = dbc.createConnection();
@@ -84,5 +109,39 @@ public class DBAfvejning {
             }
         }
         return data;
+    }
+
+    public void updateAfvejetData(int pbid, int rbid, double afvejetmaengde, double tara) {
+        SQLConn = dbc.createConnection();
+        if(SQLConn != null) {
+            try {
+                sqlQuery = updateAfvejetDataQuery;
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, pbid);
+                pstm.setInt(2, rbid);
+                pstm.setDouble(3, afvejetmaengde);
+                pstm.setDouble(4, tara);
+                pstm.executeUpdate();
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    public void updateProduktionStatus(int id) {
+        SQLConn = dbc.createConnection();
+        if(SQLConn != null) {
+            try {
+                sqlQuery = updateProduktionStatusQuery;
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setString(1, "Afsluttet");
+                pstm.setInt(2, id);
+                pstm.executeUpdate();
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
     }
 }
