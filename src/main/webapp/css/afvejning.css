@@ -34,36 +34,6 @@ label {
   font-size: 22px;
 }
 
-input {
-  border-radius: 5px;
-  width: auto;
-  padding: 10px;
-  outline: none;
-  font-size: 22px;
-}
-
-input:hover {
-  border: 1px solid #E44E4E;
-  border-radius: 5px;
-}
-
-input:active {
-  border: 1px solid #E44E4E;
-  border-radius: 5px;
-}
-
-button {
-  padding: 10px;
-
-  border: 0px;
-  font-size: 22px;
-}
-
-button:hover {
-  border: 1px solid rgba(114, 85, 85, 0.29);
-  border-radius: 5px;
-}
-
 .repeatButton {
   margin: 10px;
   background-color: transparent;
