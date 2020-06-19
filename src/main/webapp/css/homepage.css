@@ -1,4 +1,4 @@
 /*hide role-specific div html*/
-div.administrator, div.farmaceut, div.agent, div.manager {
+.administrator, .farmaceut{
     display: none;
 }

@@ -1,35 +1,30 @@
-function displayBlock(id) {
-    document.getElementById(id).style.display="block";
-}
+// import { setRole, getRole} from "./user";
 
-async function adminRole() {
-    displayContent("home.html");
-    await displayBlock("brugerAdminMenu");
-}
 
 function resetAll() {
     document.getElementById("sideMenuUL li").style.display = "none";
 }
 
+async function userLayout(obj) {
+    let role = obj.id;
+    console.log(role);
 
-function admin() {
-        displayContent('home.html');
-
-}
-
-async function userLayout() {
-    var role = document.getElementsByClassName("roleButton")[0].id;
-    console.log("check who is login");
-
+// Todo: Lave en løsning hvorpå information fra html klasserne kan overskrifes. (Hvilket kræver at information omkring id'et kan overføres.
+    // todo: ps. show owerwritter IKKE style display none.
 // Show div html based on role
     if (role === "loginAdministrator") {
-        $("div.administrator").show();
-        console.log("login as Administrator")
+        $(".farmaceut").show();
+        console.log("login as Farmaceut")
+
+
+       /* document.getElementsByClassName("administrator")[0].style.display="block";
+        let x = document.getElementsByClassName("administrator")[0].style.display="block";
+        console.log(x);*/
 
     }
 
     if (role === "loginFarmaceut"){
-        $("div.farmaceut").show();
+        $(".farmaceut").show();
         console.log("login as Farmaceut")
     }
 
@@ -49,3 +44,6 @@ async function userLayout() {
     }
     await displayContent('home.html')
 }
+
+
+
