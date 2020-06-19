@@ -18,8 +18,8 @@ function admin() {
 }
 
 async function userLayout() {
-    var role = document.getElementsByClassName("content_role")[0].id;
-    console.log("check who is login in");
+    var role = document.getElementsByClassName("roleButton")[0].id;
+    console.log("check who is login");
 
 // Show div html based on role
     if (role === "loginAdministrator") {
