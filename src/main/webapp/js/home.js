@@ -5,21 +5,27 @@ function resetAll() {
     document.getElementById("sideMenuUL li").style.display = "none";
 }
 
+function welcome(){
+    let role = sessionStorage.getItem("role");
+    console.log(role);
+}
+
 async function userLayout(obj) {
     let role = obj.id;
+    sessionStorage.setItem('role', role);
     console.log(role);
 
 // Todo: Lave en løsning hvorpå information fra html klasserne kan overskrifes. (Hvilket kræver at information omkring id'et kan overføres.
     // todo: ps. show owerwritter IKKE style display none.
 // Show div html based on role
-    if (role === "loginAdministrator") {
+    /*if (role === "loginAdministrator") {
         $(".farmaceut").show();
         console.log("login as Farmaceut")
 
 
-       /* document.getElementsByClassName("administrator")[0].style.display="block";
+       /!* document.getElementsByClassName("administrator")[0].style.display="block";
         let x = document.getElementsByClassName("administrator")[0].style.display="block";
-        console.log(x);*/
+        console.log(x);*!/
 
     }
 
@@ -41,7 +47,7 @@ async function userLayout(obj) {
     if (role === "loginDeveloper"){
         $("div.developer").show();
         console.log("login as Developer")
-    }
+    }*/
     await displayContent('home.html')
 }
 
