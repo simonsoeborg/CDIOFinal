@@ -9,7 +9,7 @@ Github: simonsoeborg
 
 .sideMenuUL li {
   padding: 16px;
-  display: block;
+  display: none;
   color: white;
   font-size: 22px;
   text-decoration: none;

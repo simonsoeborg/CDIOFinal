@@ -5,51 +5,48 @@ function resetAll() {
     document.getElementById("sideMenuUL li").style.display = "none";
 }
 
-function welcome(){
+function welcome() {
     let role = sessionStorage.getItem("role");
-    console.log(role);
+    document.getElementById('scriptName').innerHTML="Velkommen - Du er logget ind som " + role;
 }
+
 
 async function userLayout(obj) {
     let role = obj.id;
     sessionStorage.setItem('role', role);
-    console.log(role);
 
-// Todo: Lave en løsning hvorpå information fra html klasserne kan overskrifes. (Hvilket kræver at information omkring id'et kan overføres.
-    // todo: ps. show owerwritter IKKE style display none.
-// Show div html based on role
-    /*if (role === "loginAdministrator") {
-        $(".farmaceut").show();
-        console.log("login as Farmaceut")
-
-
-       /!* document.getElementsByClassName("administrator")[0].style.display="block";
-        let x = document.getElementsByClassName("administrator")[0].style.display="block";
-        console.log(x);*!/
-
-    }
-
-    if (role === "loginFarmaceut"){
-        $(".farmaceut").show();
-        console.log("login as Farmaceut")
-    }
-
-    if (role === "loginProduktionsleder"){
-        $("div.produktionsleder").show();
-        console.log("login as Produktionsleder")
-    }
-
-    if (role === "loginLaborant"){
-        $("div.laborant").show();
-        console.log("login as Laborant")
-    }
-
-    if (role === "loginDeveloper"){
-        $("div.developer").show();
-        console.log("login as Developer")
-    }*/
-    await displayContent('home.html')
+    displayContent('home.html');
 }
 
+
+function access() {
+    let role = sessionStorage.getItem('role');
+    if (sessionStorage.getItem('role') === "Administrator") {
+        document.getElementById('brugerAdminMenu').style.display = "block";
+    }
+    if (sessionStorage.getItem('role') === "Farmaceut") {
+        document.getElementById('raavareAdminMenu').style.display = "block";
+        document.getElementById('receptAdminMenu').style.display = "block";
+        document.getElementById('raavarebatchAdminMenu').style.display = "block";
+        document.getElementById('produktbatchAdminMenu').style.display = "block";
+        document.getElementById('afvejningMenu').style.display = "block";
+    }
+    if (sessionStorage.getItem('role') === "Produktionsleder") {
+        document.getElementById('raavarebatchAdminMenu').style.display = "block";
+        document.getElementById('produktbatchAdminMenu').style.display = "block";
+        document.getElementById('afvejningMenu').style.display = "block";
+    }
+    if (sessionStorage.getItem('role') === "Laborant") {
+        document.getElementById('afvejningMenu').style.display = "block";
+    }
+    if (sessionStorage.getItem('role') === "Udvikler") {
+        document.getElementById('brugerAdminMenu').style.display = "block";
+        document.getElementById('raavareAdminMenu').style.display = "block";
+        document.getElementById('receptAdminMenu').style.display = "block";
+        document.getElementById('raavarebatchAdminMenu').style.display = "block";
+        document.getElementById('produktbatchAdminMenu').style.display = "block";
+        document.getElementById('afvejningMenu').style.display = "block";
+    }
+}
 
 
