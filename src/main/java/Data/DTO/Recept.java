@@ -20,12 +20,10 @@ public class Recept {
         this.tolerance = tolerance;
     }
 
-    public Recept(int receptId, String receptNavn, int raavareId, double maengde, double tolerance) {
+    public Recept(int receptId, String receptNavn) {
         this.receptId = receptId;
         this.receptNavn = receptNavn;
-        this.raavareId = raavareId;
-        this.maengde = maengde;
-        this.tolerance = tolerance;
+
     }
 
     public int getReceptId() {

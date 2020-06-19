@@ -33,7 +33,7 @@ public class DBRecept {
 //                pstm.setInt(1,id);
                 ResultSet resultSet = pstm.executeQuery();
 
-                while (resultSet.next()){
+                while (resultSet.next()) {
                     data.add(new Recept(resultSet.getInt("receptid"),
                             resultSet.getString("receptnavn"),
                             resultSet.getInt("raavareiD"),
@@ -81,6 +81,79 @@ public class DBRecept {
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+
+    //-------------------------------------------------------------------------------------
+
+    public void deleteReceptKomponent(int id, int receptId) {
+        try {
+            SQLConn = SQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "DELETE FROM ReceptKomponent WHERE raavareid = ?, receptid = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, id);
+                pstm.setInt(2, receptId);
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    //-------------------------------------------------------------------------------------
+
+    public void deleteReceptId(int receptId) {
+        try {
+            SQLConn = SQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "DELETE FROM ReceptKomponent WHERE receptid = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, receptId);
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        try {
+            SQLConn = SQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "DELETE FROM Recept WHERE receptid = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, receptId);
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    //-------------------------------------------------------------------------------------
+
+    public List<Recept> GetAllReceptsFromRecept() {
+        ArrayList<Recept> receptIdData = new ArrayList<>();
+        SQLConn = SQLConnector.createConnection();
+        if (SQLConn != null) {
+            try {
+                sqlQuery = "SELECT * FROM Recept ORDER BY receptId";
+                //prepared statement
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                ResultSet resultSet = pstm.executeQuery();
+
+                while (resultSet.next()) {
+                    receptIdData.add(new Recept(resultSet.getInt("receptid"),
+                            resultSet.getString("receptnavn")));
+                }
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return receptIdData;
+    }
+
 
     //-------------------------------------------------------------------------------------
 
@@ -151,6 +224,6 @@ public class DBRecept {
         }
     }*/
     }
-}
+
 
 
