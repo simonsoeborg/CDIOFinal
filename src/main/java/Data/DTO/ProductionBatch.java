@@ -4,7 +4,7 @@ package Data.DTO;
 public class ProductionBatch {
 
     private int pbId;
-    private int receptId;
+    private int receptid;
     private int status;
     private int userId;
     private int rbId;
@@ -12,45 +12,48 @@ public class ProductionBatch {
     private double netto;
 
 
-    public ProductionBatch(int pbId,int receptId, int status,int userId,int rbId, double tara, double netto){
+    public ProductionBatch(int pbId, int receptid, int status, int userId, int rbId, double tara, double netto) {
         this.pbId = pbId;
         this.status = status;
-        this.receptId = receptId;
+        this.receptid = receptid;
         this.userId = userId;
         this.rbId = rbId;
         this.tara = tara;
         this.netto = netto;
     }
 
-    public int getPbId() {return pbId;}
+    public int getpbId() {return pbId;}
 
     public void setPbId(int pbId) { this.pbId = pbId; }
 
-    public int getReceptId(){return ReceptId; }
+    public int getreceptid(){return receptid; }
 
-    public void setReceptId(int ReceptId) {this.ReceptId = ReceptId; }
+    public void setReceptid(int receptId) {this.receptid = receptid; }
 
     public int getstatus() {return status;}
 
-    public void setstatus(int status) {this.status = status;
+    public void setstatus(int status) {this.status = status;}
 
-    public int getuserId() {return userId; }
+    public int getuserId(){return userId; }
 
-    public void setUserId (int userId) { this.userId = userId; }
+    public void setuserId (int userId) { this.userId = userId; }
 
     public int getrbid() {return rbId; }
 
-    public void setRbId(int rbId) { this.rbId = rbId; }
+    public void setrbId(int rbId) { this.rbId = rbId; }
 
-    public double getTara() {return tara; }
+    public double gettara() {return tara; }
 
-    public void setTara(double tara) { this.tara = tara; }
+    public void settara(double tara) { this.tara = tara; }
 
-    public double getNetto() {return netto; }
+    public double getnetto() {return netto; }
 
-    public void setNetto (double netto) { this.netto = netto; } }
+    public void setnetto (double netto) { this.netto = netto; }
 
     }
+
+
+
 
 
 

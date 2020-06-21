@@ -14,6 +14,7 @@ public class DBProductionBatch {
     private String sqlQuery;
     private Connection SQLConn = dbc.createConnection();
     private List<ProductionBatch> ProductionBatches;
+    private PreparedStatement pstm;
 
     private DBConnector MySQLConnector = new DBConnector();
 
@@ -27,12 +28,12 @@ public class DBProductionBatch {
         SQLConn = MySQLConnector.createConnection();
         if (SQLConn != null) {
             try {
-                sqlQuery = "SELECT * FROM ProductionBatch";
+                sqlQuery = "SELECT * FROM ProduktBatchView";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new ProductionBatch(resultSet.getInt("pbId"), resultSet.getInt("receptId"), resultSet.getInt("status"), resultSet.getInt("userId"), resultSet.getInt("rbID"), resultSet.getDouble("tara"), resultSet.getDouble("netto")));
+                    data.add(new ProductionBatch(resultSet.getInt("pbId"), resultSet.getInt("receptid"), resultSet.getInt("status"), resultSet.getInt("userId"), resultSet.getInt("rbID"), resultSet.getDouble("tara"), resultSet.getDouble("netto")));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
@@ -47,11 +48,12 @@ public class DBProductionBatch {
         return ProductionBatches;
     }
 
+
     public void deleteProductionBatch(int pbId) {
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "DELETE FROM ProductionBatch WHERE pbId=?";
+                sqlQuery = "DELETE FROM ProduktBatch WHERE pbId=?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setInt(1, pbId);
                 pstm.executeUpdate();
@@ -62,22 +64,33 @@ public class DBProductionBatch {
         }
     }
 
-    public void createProductionBatch(int pbId, int receptIdeceptId) {
+    public void createProductionBatch(int pbId, int receptId, int status, int id, int rbid, double afvejetmaengde,double tara) {
 
+        PreparedStatement ptsm;
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                ptsm = SQLConn.prepareStatement("INSERT INTO ProductionBatch (pbId, receptId, status, userId, rbID, tara, netto)" +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?)");
-                PreparedStatement pstm;
-                ResultSet resultSet = pstm.executeUpdate();
+                ptsm = SQLConn.prepareStatement("INSERT INTO ProduktBatch (pbId, receptId, status)");
+                "VALUES (?, ?, ?)")
                 pstm.setInt(1, pbId);
                 pstm.setInt(2, receptId);
                 pstm.setInt(3, status);
-                pstm.setInt(4, userId);
-                pstm.setInt(5, rbId);
-                pstm.setDouble(6, tara);
-                pstm.setDouble(7, netto);
+
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+
+        }  try {
+            SQLConn = MySQLConnector.createConnection();
+            if (SQLConn != null) {
+                ptsm = SQLConn.prepareStatement("INSERT INTO ProduktBatchkomponent (id, rbid, afvejetmaengde,tara)");
+                "VALUES (?, ?, ?)")
+                pstm.setInt(1, id);
+                pstm.setInt(2, rbid);
+                pstm.setDouble(3, afvejetmaengde);
+                pstm.setDouble(4,tara);
 
                 pstm.executeUpdate();
                 SQLConn.close();
@@ -86,7 +99,23 @@ public class DBProductionBatch {
             System.out.println(e);
         }
     }
+
+    public void deleteProductionBatchkomponent(int pbId) {
+        try {
+            SQLConn = MySQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "DELETE FROM ProduktBatch WHERE pbId= ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, pbId);
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 }
+
 
 
 

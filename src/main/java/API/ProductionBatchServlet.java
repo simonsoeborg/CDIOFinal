@@ -20,11 +20,11 @@ public class ProductionBatchServlet {
 
      @POST
     public void createProductionBatch(ProductionBatch ProductionBatch) {
-         DBProductionBatch.createProductionBatch(ProductionBatch.getPbId(), ProductionBatch.getPbId());
+         DBProductionBatch.createProductionBatch(ProductionBatch.getpbId(), ProductionBatch.getpbId());
      }
 
     @DELETE
-    @Path("{Pbid}")
-    public void deleteProductionBatch(@PathParam("PbId") int pbId) {  DBProductionBatch.deleteProductionBatch(pbId);  }
+    @Path("{pbId}")
+    public void deleteProductionBatch(@PathParam("pbId") int pbId) {  DBProductionBatch.deleteProductionBatch(pbId);  }
     
     }
