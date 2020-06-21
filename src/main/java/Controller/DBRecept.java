@@ -30,7 +30,6 @@ public class DBRecept {
                 sqlQuery = "SELECT * FROM ReceptView ORDER BY receptId";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-//                pstm.setInt(1,id);
                 ResultSet resultSet = pstm.executeQuery();
 
                 while (resultSet.next()) {
