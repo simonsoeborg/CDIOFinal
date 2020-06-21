@@ -89,7 +89,7 @@ public class DBRecept {
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "DELETE FROM ReceptKomponent WHERE raavareid = ?, receptid = ?";
+                sqlQuery = "DELETE FROM ReceptKomponent WHERE raavareid = ? AND receptid = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setInt(1, id);
                 pstm.setInt(2, receptId);
@@ -103,13 +103,13 @@ public class DBRecept {
 
     //-------------------------------------------------------------------------------------
 
-    public void deleteReceptId(int receptId) {
+    public void deleteReceptId(int id) {
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
                 sqlQuery = "DELETE FROM ReceptKomponent WHERE receptid = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-                pstm.setInt(1, receptId);
+                pstm.setInt(1, id);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -121,7 +121,7 @@ public class DBRecept {
             if (SQLConn != null) {
                 sqlQuery = "DELETE FROM Recept WHERE receptid = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-                pstm.setInt(1, receptId);
+                pstm.setInt(1, id);
                 pstm.executeUpdate();
                 SQLConn.close();
             }

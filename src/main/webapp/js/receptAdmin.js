@@ -7,9 +7,8 @@ function genTableHTMLForRecepts(recept) {
         '<td>' + recept.raavareNavn + '</td>' +
         '<td>' + recept.maengde + ' g</td>' +
         '<td>' + recept.tolerance + ' %</td>' +
-   //     '<td><button class="btn-warning" type="submit" onclick="editUser(' + user.id + ');">Ret</button></td>' +
         '<td><button class="btn-alert" type="submit" onclick="deleteReceptKomponent(' + recept.receptId + ');">Slet</button></td>'+
-    '</tr>';
+    '</tr>'
 }
 
 function loadRecepts() {
@@ -71,7 +70,7 @@ function genTableHTMLForReceptId(receptid) {
     return '<tr>' + '<td>' + receptid.receptId + '  ' + receptid.receptNavn + '</td>' +
         '<td><button class="btn-alert" type="submit" ' +
         'onclick="deleteReceptId(' + receptid.receptId + ');">Slet</button></td>'+
-        '</tr>';
+        '</tr>'
 }
 
 function loadReceptId() {
