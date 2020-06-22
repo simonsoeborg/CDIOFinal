@@ -19,9 +19,10 @@ public class ProductionBatchServlet {
      public List<ProductionBatch> GetProductionBatch() { return DBProductionBatch.GetAllProductionBatch(); }
 
      @POST
-    public void createProductionBatch(ProductionBatch ProductionBatch) {
-         DBProductionBatch.createProductionBatch(ProductionBatch.getpbId(), ProductionBatch.getpbId());
+    public void createProductionBatch(ProductionBatch productionBatch) {
+         DBProductionBatch.createProductionBatch(productionBatch.getpbId(), productionBatch.getReceptID(),productionBatch.getstatus());
      }
+
 
     @DELETE
     @Path("{pbId}")

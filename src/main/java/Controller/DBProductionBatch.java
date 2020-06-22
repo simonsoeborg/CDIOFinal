@@ -14,7 +14,6 @@ public class DBProductionBatch {
     private String sqlQuery;
     private Connection SQLConn = dbc.createConnection();
     private List<ProductionBatch> ProductionBatches;
-    private PreparedStatement pstm;
 
     private DBConnector MySQLConnector = new DBConnector();
 
@@ -65,12 +64,11 @@ public class DBProductionBatch {
     }
 
     public void createProductionBatch(int pbId, int receptId, int status) {
-
-        PreparedStatement ptsm;
         try {
+            PreparedStatement pstm;
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                ptsm = SQLConn.prepareStatement("INSERT INTO ProduktBatch VALUES (?, ?, ?)");
+                pstm = SQLConn.prepareStatement("INSERT INTO ProduktBatch VALUES (?, ?, ?)");
                 pstm.setInt(1, pbId);
                 pstm.setInt(2, receptId);
                 pstm.setInt(3, status);
@@ -80,37 +78,42 @@ public class DBProductionBatch {
         } catch (SQLException e) {
             System.out.println(e);
 
-
-        }  try {
-            SQLConn = MySQLConnector.createConnection();
-            if (SQLConn != null) {
-                ptsm = SQLConn.prepareStatement("INSERT INTO ProduktBatchkomponent VALUES (?, ?, ?, ?) ");
-                pstm.setInt(1, id);
-                pstm.setInt(2, rbid);
-                pstm.setDouble(3, afvejetmaengde);
-                pstm.setDouble(4,tara);
-
-                pstm.executeUpdate();
-                SQLConn.close();
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
         }
     }
 
-    public void deleteProductionBatchkomponent(int pbId) {
+    public void createProductionBatchComponent(int id, int rbid, double afvejetmaengde, double tara) {
         try {
+            PreparedStatement pstm;
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                sqlQuery = "DELETE FROM ProduktBatch WHERE pbId= ?";
-                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-                pstm.setInt(1, pbId);
+                pstm = SQLConn.prepareStatement("INSERT INTO ProduktBatchkomponent VALUES (?, ?, ?, ?) ");
+                  pstm.setInt(1, id);
+                   pstm.setInt(2, rbid);
+                  pstm.setDouble(3, afvejetmaengde);
+                  pstm.setDouble(4,tara);
+
+                  pstm.executeUpdate();
+                  SQLConn.close();
+              }
+          } catch (SQLException e) {
+              System.out.println(e);
+          }
+    }
+
+    public void deleteProductionBatchComponent(int pbId){
+        try {
+            PreparedStatement pstm;
+            SQLConn = MySQLConnector.createConnection();
+            if(SQLConn != null) {
+                pstm = SQLConn.prepareStatement("DELETE pbid FROM ProduktBatchkomponent WHERE (?)");
+                pstm.setInt(1,pbId);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
+
     }
 }
 

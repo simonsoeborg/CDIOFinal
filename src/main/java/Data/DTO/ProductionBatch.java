@@ -3,44 +3,44 @@ package Data.DTO;
 
 public class ProductionBatch {
 
-    private int pbId;
-    private int receptid;
+    private int pbID;
+    private int receptID;
     private int status;
-    private int userId;
-    private int rbId;
+    private int userID;
+    private int rbID;
     private double tara;
     private double netto;
 
 
-    public ProductionBatch(int pbId, int receptid, int status, int userId, int rbId, double tara, double netto) {
-        this.pbId = pbId;
+    public ProductionBatch(int pbID, int receptID, int status, int userID, int rbID, double tara, double netto) {
+        this.pbID = pbID;
         this.status = status;
-        this.receptid = receptid;
-        this.userId = userId;
-        this.rbId = rbId;
+        this.receptID = receptID;
+        this.userID = userID;
+        this.rbID = rbID;
         this.tara = tara;
         this.netto = netto;
     }
 
-    public int getpbId() {return pbId;}
+    public int getpbId() {return pbID;}
 
-    public void setPbId(int pbId) { this.pbId = pbId; }
+    public void setPbID(int pbID) { this.pbID = pbID; }
 
-    public int getreceptid(){return receptid; }
+    public int getReceptID(){return receptID; }
 
-    public void setReceptid(int receptId) {this.receptid = receptid; }
+    public void setReceptID(int receptId) {this.receptID = receptID; }
 
     public int getstatus() {return status;}
 
     public void setstatus(int status) {this.status = status;}
 
-    public int getuserId(){return userId; }
+    public int getuserId(){return userID; }
 
-    public void setuserId (int userId) { this.userId = userId; }
+    public void setuserId (int userId) { this.userID = userId; }
 
-    public int getrbid() {return rbId; }
+    public int getrbid() {return rbID; }
 
-    public void setrbId(int rbId) { this.rbId = rbId; }
+    public void setrbId(int rbId) { this.rbID = rbId; }
 
     public double gettara() {return tara; }
 

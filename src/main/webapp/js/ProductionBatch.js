@@ -7,7 +7,7 @@ function loadProduktBatchList() {
     $.get(hostGetURL, function (data) {
         $("#loadAllProduktBatchList").empty();
         $.each(data, function (i, ProduktBatch) {
-            $("#loadAllProduktBatchList").append(genTableHTMLForRaavareBatch(ProduktBatch));
+            $("#loadAllProduktBatchList").append(genTableHTMLForProduktBatch(ProduktBatch));
         });
     });
 }
