@@ -1,5 +1,5 @@
 
-let rbHostURL = '/CDIOFinal_war_exploded/test/Produktbatch/';
+let pbHostURL = '/CDIOFinal_war_exploded/test/Produktbatch/';
 
 function loadProduktBatchList() {
     console.log("Loading Produkt Batches");
@@ -16,9 +16,9 @@ function genTableHTMLForProduktBatch(ProduktBatch) {
     return  '<tr><td>' + ProduktBatch.pbId + '</td>' +
         '<td>' + ProduktBatch.receptId +'</td>' +
         '<td>' + ProduktBatch.status + '</td>' +
-        '<td>' + ProduktBatch.id+ ' kg</td>' +
+        '<td>' + ProduktBatch.id+ '</td>' +
         '<td>' + ProduktBatch.rbid+ '</td>' +
-        '<td>' + ProduktBatch.afvejetmaengde+ '</td>' +
+        '<td>' + ProduktBatch.afvejetmaengde+ ' kg</td>' +
         '<td>' + ProduktBatch.tara+ '</td>' +
         '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + ProduktBatch.pbId + ');">Slet</button></td>' +
         '</tr>'
@@ -45,7 +45,7 @@ function createProduktBatch() {
         contentType: 'application/json',
         url: hostCreateURL,
         dataType: "json",
-        data: rbCreateToJSON(),
+        data: pbCreateToJSON(),
         success: function () {
             alert('Succes! ProduktBatch oprettet');
             loadProduktBatchList();
@@ -69,7 +69,7 @@ function showProduktNavn() {
     });
 }
 
-function rbCreateToJSON() {
+function pbCreateToJSON() {
     return JSON.stringify({
         "pbId": $('#pbId').val(),
         "receptId": $('#receptId').val(),
