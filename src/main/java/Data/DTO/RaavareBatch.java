@@ -37,5 +37,7 @@ public class RaavareBatch {
         return leverandoer;
     }
 
-
+    public String getRaavareNavn() {
+        return raavareNavn;
+    }
 }
