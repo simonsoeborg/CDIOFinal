@@ -5,21 +5,18 @@ public class ProductionBatch {
 
     private int pbID;
     private int receptID;
-    private int status;
+    private String status;
     private int userID;
     private int rbID;
     private double tara;
     private double netto;
 
 
-    public ProductionBatch(int pbID, int receptID, int status, int userID, int rbID, double tara, double netto) {
+    public ProductionBatch(int pbID, int receptID, String status, int userID) {
         this.pbID = pbID;
         this.status = status;
         this.receptID = receptID;
         this.userID = userID;
-        this.rbID = rbID;
-        this.tara = tara;
-        this.netto = netto;
     }
 
     public int getpbId() {return pbID;}
@@ -30,9 +27,9 @@ public class ProductionBatch {
 
     public void setReceptID(int receptId) {this.receptID = receptID; }
 
-    public int getstatus() {return status;}
+    public String getstatus() {return status;}
 
-    public void setstatus(int status) {this.status = status;}
+    public void setstatus(String status) {this.status = status;}
 
     public int getuserId(){return userID; }
 

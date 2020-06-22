@@ -1,26 +1,26 @@
 
-let pbHostURL = '/CDIOFinal_war_exploded/test/Produktbatch/';
+let pbHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/';
 
 function loadProduktBatchList() {
     console.log("Loading Produkt Batches");
     let hostGetURL = rbHostURL + 'load';
     $.get(hostGetURL, function (data) {
         $("#loadAllProduktBatchList").empty();
-        $.each(data, function (i, ProduktBatch) {
-            $("#loadAllProduktBatchList").append(genTableHTMLForProduktBatch(ProduktBatch));
+        $.each(data, function (i, produktBatch) {
+            $("#loadAllProduktBatchList").append(genTableHTMLForProduktBatch(produktBatch));
         });
     });
 }
 
-function genTableHTMLForProduktBatch(ProduktBatch) {
-    return  '<tr><td>' + ProduktBatch.pbId + '</td>' +
-        '<td>' + ProduktBatch.receptId +'</td>' +
-        '<td>' + ProduktBatch.status + '</td>' +
-        '<td>' + ProduktBatch.id+ '</td>' +
-        '<td>' + ProduktBatch.rbid+ '</td>' +
-        '<td>' + ProduktBatch.afvejetmaengde+ ' kg</td>' +
-        '<td>' + ProduktBatch.tara+ '</td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + ProduktBatch.pbId + ');">Slet</button></td>' +
+function genTableHTMLForProduktBatch(produktBatch) {
+    return '<td>' + produktBatch.receptID +'</td>' +
+        '<td>' + produktBatch.status + '</td>' +
+        '<td>' + produktBatch.tara + '</td>' +
+        '<td>' + produktBatch.netto + '</td>' +
+        '<td>' + produktBatch.rbid + '</td>' +
+        '<td>' + produktBatch.userId+ '</td>' +
+        '<tr><td>' + produktBatch.pbId + '</td>' +
+        '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + produktBatch.pbId + ');">Slet</button></td>' +
         '</tr>'
 }
 
@@ -71,9 +71,12 @@ function showProduktNavn() {
 
 function pbCreateToJSON() {
     return JSON.stringify({
-        "pbId": $('#pbId').val(),
-        "receptId": $('#receptId').val(),
+        "receptID": $('#receptID').val(),
         "status": $('#status').val(),
-        "userId": $('#UserId').val()
+        "tara": $('#tara').val(),
+        "netto": $('#netto').val(),
+        "rbid": $('#rbid').val(),
+        "userId": $('#UserId').val(),
+        "pbId": $('#pbId').val(),
     });
 }

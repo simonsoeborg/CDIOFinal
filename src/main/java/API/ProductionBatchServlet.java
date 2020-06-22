@@ -14,9 +14,11 @@ public class ProductionBatchServlet {
 
      DBProductionBatch DBProductionBatch = new DBProductionBatch();
 
-     @GET
-     @Path("/productionBatch")
-     public List<ProductionBatch> GetProductionBatch() { return DBProductionBatch.GetAllProductionBatch(); }
+    @GET
+    @Path("load")
+    public List<ProductionBatch> getProductionBatch() {
+        return DBProductionBatch.GetAllProductionBatch();
+    }
 
      @POST
     public void createProductionBatch(ProductionBatch productionBatch) {

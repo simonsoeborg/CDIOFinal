@@ -13,26 +13,21 @@ public class DBProductionBatch {
     DBConnector dbc = new DBConnector();
     private String sqlQuery;
     private Connection SQLConn = dbc.createConnection();
-    private List<ProductionBatch> ProductionBatches;
+    private List<ProductionBatch> productionBatches;
 
     private DBConnector MySQLConnector = new DBConnector();
-
-    public void fetchAllProductionBatch() {
-        ProductionBatches = new ArrayList<>();
-        ProductionBatches = GetAllProductionBatch();
-    }
 
     public List<ProductionBatch> GetAllProductionBatch() {
         ArrayList<ProductionBatch> data = new ArrayList<>();
         SQLConn = MySQLConnector.createConnection();
         if (SQLConn != null) {
             try {
-                sqlQuery = "SELECT * FROM ProduktBatchView";
+                sqlQuery = "SELECT * FROM ProduktBatch";
                 //prepared statement
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 ResultSet resultSet = pstm.executeQuery();
                 while (resultSet.next()) {
-                    data.add(new ProductionBatch(resultSet.getInt("pbId"), resultSet.getInt("receptid"), resultSet.getInt("status"), resultSet.getInt("userId"), resultSet.getInt("rbID"), resultSet.getDouble("tara"), resultSet.getDouble("netto")));
+                    data.add(new ProductionBatch(resultSet.getInt("pbid"), resultSet.getInt("receptId"), resultSet.getString("status"), resultSet.getInt("userid")));
                 }
                 SQLConn.close();
             } catch (SQLException e) {
@@ -40,11 +35,6 @@ public class DBProductionBatch {
             }
         }
         return data;
-    }
-
-    public List<ProductionBatch> listAllProductionBatches() {
-        fetchAllProductionBatch();
-        return ProductionBatches;
     }
 
 
@@ -63,7 +53,7 @@ public class DBProductionBatch {
         }
     }
 
-    public void createProductionBatch(int pbId, int receptId, int status) {
+    public void createProductionBatch(int pbId, int receptId, String status) {
         try {
             PreparedStatement pstm;
             SQLConn = MySQLConnector.createConnection();
@@ -71,7 +61,7 @@ public class DBProductionBatch {
                 pstm = SQLConn.prepareStatement("INSERT INTO ProduktBatch VALUES (?, ?, ?)");
                 pstm.setInt(1, pbId);
                 pstm.setInt(2, receptId);
-                pstm.setInt(3, status);
+                pstm.setString(3, status);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
