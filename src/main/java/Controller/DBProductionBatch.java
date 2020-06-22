@@ -64,32 +64,27 @@ public class DBProductionBatch {
         }
     }
 
-    public void createProductionBatch(int pbId, int receptId) {
+    public void createProductionBatch(int pbId, int receptId, int status) {
 
         PreparedStatement ptsm;
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                ptsm = SQLConn.prepareStatement("INSERT INTO ProduktBatch (pbId, receptId, status,id,rbid,afvejetmaengde,tara)");
-                "VALUES (?, ?, ?, ?, ?, ?, ?)");
+                ptsm = SQLConn.prepareStatement("INSERT INTO ProduktBatch VALUES (?, ?, ?)");
                 pstm.setInt(1, pbId);
                 pstm.setInt(2, receptId);
                 pstm.setInt(3, status);
-                pstm.setInt(4,id);
-                pstm.setDouble(5,afvejetmaengde);
-                pstm.setDouble(6,tara);
-
                 pstm.executeUpdate();
                 SQLConn.close();
             }
         } catch (SQLException e) {
             System.out.println(e);
 
+
         }  try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                ptsm = SQLConn.prepareStatement("INSERT INTO ProduktBatchkomponent (id, rbid, afvejetmaengde,tara)");
-                "VALUES (?, ?, ?, ?)");
+                ptsm = SQLConn.prepareStatement("INSERT INTO ProduktBatchkomponent VALUES (?, ?, ?, ?) ");
                 pstm.setInt(1, id);
                 pstm.setInt(2, rbid);
                 pstm.setDouble(3, afvejetmaengde);
