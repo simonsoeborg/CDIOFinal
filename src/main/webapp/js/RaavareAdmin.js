@@ -35,16 +35,19 @@ function deleteRaavare(id) {
 function createRaavare() {
     var hostCreateURL = "/CDIOFinal_war_exploded/test/raavare/";
     console.log('Creating ny råvare');
-    if (controlRaavareID($('#raavareid').val()) && controlRaavareNavn($('#raavarenavn').val())) {
+    var id = document.getElementById('raavareid').value;
+    var navn = document.getElementById('raavarenavn').value;
+
+    if (controlRaavareID(id) && controlRaavareNavn(navn)) {
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
             url: hostCreateURL,
             dataType: "json",
-            data: dataCreateToJSON(),
+            data: raavareDataCreateToJSON(id, navn),
             success: function (data, textStatus, req) {
-                alert('råvare successful oprettet!');
                 loadRaavareList();
+                alert(' råvare successful oprettet!');
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert('fejl ved oprettelsen af råvaren: ' + textStatus);
@@ -53,10 +56,10 @@ function createRaavare() {
     }
 }
 
-function dataCreateToJSON() {
+function raavareDataCreateToJSON(id, navn) {
     return JSON.stringify({
-        "raavareid": $('#raavareid').val(),
-        "raavarenavn": $('#raavarenavn').val()
+        "raavareid": id,
+        "raavarenavn": navn
     });
 }
 
@@ -68,9 +71,42 @@ function controlRaavareID(ID) {
     return true
 }
 function controlRaavareNavn(raavareNavn) {
-    if (!(raavareNavn.length > 1) && !(raavareNavn.length < 21)) {
+    if(raavareNavn.length > 1 && raavareNavn.length < 21) {
+        return true;
+    } else {
         alert("råvarens navn skal være minimum 2 og maks 20");
         return false;
     }
-    return true;
+}
+
+function searchRaavare(raavarenavn) {
+    raavarenavn = document.getElementById('soegraavarenavn').value;
+        var hostSearchURL = '/CDIOFinal_war_exploded/test/raavare/' + raavarenavn;
+        console.log('søger efter råvare');
+    if (hostSearchURL !== '/CDIOFinal_war_exploded/test/raavare/' ) {
+        if (hostSearchURL != null && hostSearchURL !== ' ') {
+            $.ajax({
+                url: hostSearchURL,
+                success: function (url) {
+                    if ($.trim(url)) {
+                        $.get(hostSearchURL, function (data) {
+                            $("#loadAllRaavareList").empty();
+                            $.each(data, function (i, raavarenavn) {
+                                $("#loadAllRaavareList").append(genTableHTMLForRaavare(raavarenavn));
+                            });
+                        });
+                    } else {
+                        alert("råvaren findes ikke i databasen. ");
+                    }
+                },
+                error: function () {
+                    alert("kan ikke få fat i råvare databasen");
+                }
+
+            })
+
+        }
+    } else{
+        loadRaavareList();
+    }
 }

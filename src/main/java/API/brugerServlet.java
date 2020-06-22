@@ -1,3 +1,8 @@
+/*
+Author: Simon Fridolf
+Github: IceMonk3y
+*/
+
 package API;
 
 import Controller.DBUser;
@@ -10,7 +15,7 @@ import java.util.List;
 @Path("users")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class UserServlet {
+public class brugerServlet {
     private DBUser dbUser = new DBUser();
 
     @GET
@@ -26,18 +31,26 @@ public class UserServlet {
     }
 
     @GET
-    @Path("search")
-    public User searchUser(@QueryParam("id") int id) {
-        return dbUser.searchUser(id);
+    @Path("roles")
+    public List<User> listAllSpeceficRoles(@QueryParam("role") String role) { return dbUser.listAllSpeceficRole(role);
     }
 
-    //*Todo Implement auto generated initials.
+
+    @GET
+    public List<User> getAllUsers() {
+        return dbUser.listAllUsers();
+    }
+
+    @GET
+    @Path("search")
+    public User searchUser(@QueryParam("id") int id) { return dbUser.searchUser(id);
+    }
+
     @POST
     public void createUser(User user) {
-        dbUser.createUser(user.getFirstname(), user.getLastname(), user.getInitial(), user.getRole());
+        dbUser.createUser(user.getFirstname(), user.getLastname(), user.getRole());
     }
 
-    // *todo Test edit-user:
     @PUT
     @Path("{id}")
     public void editUser(@PathParam("id") int id, User user) {
