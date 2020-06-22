@@ -10,3 +10,35 @@
         <h1 id="RaavareAdminTitel">Råvare Administration</h1>
 
     </div>
+
+    <div class="grid-contentBody">
+
+        <!-- Alt som skal vises  -->
+
+        <div class="container" style="align-content: center; margin-left: 25%;">
+            <div class="row">
+            </div>
+
+            <div class="grid-item-10">
+                <table>
+                    <thead>
+                    <tr>
+                        <td>ProduktBatch ID</td>
+                        <td>Recept ID</td>
+                        <td>Status</td>
+                        <td>id</td>
+                        <td>afvejetmaengde</td>
+                        <td>tara</td>
+                        <td> </td>
+                    </tr>
+                    </thead>
+                    <tbody id="loadAllProduktBatchList"><script>loadProduktBatchList();</script></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attach global footer -->
+    <div class="grid-contentFooter"><script>includeFooter();</script></div>
+
+</div>

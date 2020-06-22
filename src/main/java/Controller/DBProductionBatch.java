@@ -64,7 +64,7 @@ public class DBProductionBatch {
         }
     }
 
-    public void createProductionBatch(int pbId, int receptId, int status, int id, int rbid, double afvejetmaengde, double tara) {
+    public void createProductionBatch(int pbId, int receptId) {
 
         PreparedStatement ptsm;
         try {
