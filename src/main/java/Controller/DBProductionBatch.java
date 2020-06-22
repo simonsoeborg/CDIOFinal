@@ -71,7 +71,7 @@ public class DBProductionBatch {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
                 ptsm = SQLConn.prepareStatement("INSERT INTO ProduktBatch (pbId, receptId, status,id,rbid,afvejetmaengde,tara)");
-                "VALUES (?, ?, ?)");
+                "VALUES (?, ?, ?, ?, ?, ?, ?)");
                 pstm.setInt(1, pbId);
                 pstm.setInt(2, receptId);
                 pstm.setInt(3, status);
@@ -89,7 +89,7 @@ public class DBProductionBatch {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
                 ptsm = SQLConn.prepareStatement("INSERT INTO ProduktBatchkomponent (id, rbid, afvejetmaengde,tara)");
-                "VALUES (?, ?, ?)");
+                "VALUES (?, ?, ?, ?)");
                 pstm.setInt(1, id);
                 pstm.setInt(2, rbid);
                 pstm.setDouble(3, afvejetmaengde);
