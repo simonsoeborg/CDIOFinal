@@ -1,7 +1,7 @@
 //let pbHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/';
 
 function loadProduktBatchList() {
-    let pbHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/load';
+    let pbHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/load/';
     console.log("Loading Produkt Batches");
     $.get(pbHostURL, function (data) {
         console.log("test");
@@ -22,14 +22,15 @@ function genTableHTMLForProduktBatch(produktBatch) {
         '<td>' + produktBatch.rbid + '</td>' +
         '<td>' + produktBatch.afvejetmaengde + '</td>' +
         '<td>' + produktBatch.tara + '</td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + produktBatch.pbid + ', ' + produktBatch.pbid+');">Slet</button></td>' +
+        '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + produktBatch.pbid +',);">Slet</button></td>' +
         '</td>'
 }
 
 function deleteProduktBatch(pbid) {
+    let obHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/' + pbid;
     event.preventDefault();
     $.ajax({
-        url: pbHostURL + pbid,
+        url: obHostURL,
         method: 'DELETE',
         success: function () {
             alert(' Produkt Batch med id: ' + pbid + ' er blevet slettet!');
@@ -58,18 +59,6 @@ function createProduktBatch() {
     });
 }
 
-function showProduktNavn() {
-    var produktId = document.getElementById('pbid').value;
-    let hostShowURL = rbHostURL + 'produkt/' + pbid;
-    $.ajax({
-        url: hostShowURL,
-        type: 'GET',
-        dataType: "text",
-        success: function (res) {
-            document.getElementById('ProduktNavn').innerHTML = res;
-        },
-    });
-}
 
 function pbCreateToJSON() {
     return JSON.stringify({

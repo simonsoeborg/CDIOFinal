@@ -25,7 +25,6 @@ public class ProductionBatchServlet {
          DBProductionBatch.createProductionBatch(productionBatch.getpbid(), productionBatch.getreceptid(),productionBatch.getstatus());
      }
 
-
     @DELETE
     @Path("{pbid}")
     public void deleteProductionBatch(@PathParam("pbid") int pbid) {  DBProductionBatch.deleteProductionBatch(pbid);  }
