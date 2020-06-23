@@ -7,7 +7,7 @@ function genTableHTMLForRecepts(recept) {
         '<td>' + recept.raavarenavn + '</td>' +
         '<td>' + recept.maengde + ' g</td>' +
         '<td>' + recept.tolerance + ' %</td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteReceptKomponent(' + recept.receptid + ');">Slet</button></td>'+
+        '<td><button class="btn-alert" type="submit" onclick="deleteReceptKomponent(' + recept.raavareid + ', ' + recept.receptid +');">Slet</button></td>'+
     '</tr>';
 }
 
@@ -52,14 +52,14 @@ function createRecept() {
 
 }
 
-function deleteReceptKomponent(id) {
-    let deleteReceptUrl = '/CDIOFinal_war_exploded/test/recepts/komponent/' + id;
+function deleteReceptKomponent(raavareid, receptid) {
+    let deleteReceptUrl = '/CDIOFinal_war_exploded/test/recepts/komponent/' + raavareid + "/" + receptid;
     event.preventDefault();
     $.ajax({
         url: deleteReceptUrl,
         method: 'DELETE',
         success: function () {
-            alert('Recept/Receptkomponent' + id + 'er slettet');
+            alert('Recept/Receptkomponent' + raavareid + 'er slettet');
             loadRecepts();
         }
     });
@@ -89,7 +89,7 @@ function loadReceptId() {
 function deleteReceptId(id) {
     event.preventDefault();
     $.ajax({
-        url: ReceptUrl,
+        url: ReceptUrl + id,
         method: 'DELETE',
         success: function () {
             alert(' Recept med id: ' + id + ' er blevet slettet!');

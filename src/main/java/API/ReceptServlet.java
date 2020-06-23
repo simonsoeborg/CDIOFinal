@@ -26,9 +26,9 @@ public class ReceptServlet {
     }
 
     @DELETE
-    @Path("/komponent/{id}")
-    public void deleteReceptKomponent(@PathParam("id") int id, Recept recept) {
-        dbr.deleteReceptKomponent(id, recept.getReceptid());
+    @Path("/komponent/{raavareid}/{receptid}")
+    public void deleteReceptKomponent(@PathParam("raavareid") int raavareid, @PathParam("receptid") int receptid) {
+        dbr.deleteReceptKomponent(raavareid, receptid);
     }
 
     @DELETE

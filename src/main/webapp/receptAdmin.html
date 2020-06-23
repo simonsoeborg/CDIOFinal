@@ -35,7 +35,7 @@
 
             <input type="text" style="width: 16%;" id="maengde" name="maengde" placeholder="Mængde">
             <input type="text" style="width: 16%;" id="tolerance" name="tolerance" placeholder="Tolerance">
-            <button id="successbutton" onclick="createRecept()">Opret</button><br>
+            <button id="btn-create" onclick="createRecept()">Opret</button><br><br>
 
         </div>
 
@@ -58,12 +58,7 @@
                     </thead>
                     <tbody id="loadAllRecepts"><script>loadRecepts();</script></tbody>
                 </table>
-            </form>
-        </br>
-
-    <!---------------------------------------------------------------------------------->
-
-            <form>
+                <br>
                 <table id="tableright">
                     <thead>
                     <tr>
@@ -74,8 +69,9 @@
                     <tbody id="loadAllReceptsId"><script>loadReceptId();</script></tbody>
                 </table>
             </form>
-        </div>
-     </div>
+        </br>
+
+    <!---------------------------------------------------------------------------------->
 
 
         <!---------------------------------------------------------------------------------->
