@@ -22,7 +22,7 @@ function genTableHTMLForProduktBatch(produktBatch) {
         '<td>' + produktBatch.rbid + '</td>' +
         '<td>' + produktBatch.afvejetmaengde + '</td>' +
         '<td>' + produktBatch.tara + '</td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + produktBatch.pbid + ');">Slet</button></td>' +
+        '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + produktBatch.pbid + ', ' + produktBatch.pbid+');">Slet</button></td>' +
         '</td>'
 }
 
