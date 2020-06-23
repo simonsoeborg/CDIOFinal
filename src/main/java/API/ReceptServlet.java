@@ -21,14 +21,14 @@ public class ReceptServlet {
 
     @POST
     public void createRecept(Recept recept) {
-        dbr.createRecept(recept.getReceptId(), recept.getReceptNavn(),
-                recept.getRaavareId(), recept.getMaengde(), recept.getTolerance());
+        dbr.createRecept(recept.getReceptid(), recept.getReceptnavn(),
+                recept.getRaavareid(), recept.getMaengde(), recept.getTolerance());
     }
 
     @DELETE
     @Path("/komponent/{id}")
     public void deleteReceptKomponent(@PathParam("id") int id, Recept recept) {
-        dbr.deleteReceptKomponent(id, recept.getReceptId());
+        dbr.deleteReceptKomponent(id, recept.getReceptid());
     }
 
     @DELETE

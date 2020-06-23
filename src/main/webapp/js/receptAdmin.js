@@ -1,14 +1,14 @@
 let ReceptUrl = '/CDIOFinal_war_exploded/test/recepts/';
 
 function genTableHTMLForRecepts(recept) {
-    return '<tr>' + '<td>' + recept.receptId + '</td>' +
-        '<td>' + recept.receptNavn + '</td>' +
-        '<td>' + recept.raavareId + '</td>' +
-        '<td>' + recept.raavareNavn + '</td>' +
+    return '<tr>' + '<td>' + recept.receptid + '</td>' +
+        '<td>' + recept.receptnavn + '</td>' +
+        '<td>' + recept.raavareid + '</td>' +
+        '<td>' + recept.raavarenavn + '</td>' +
         '<td>' + recept.maengde + ' g</td>' +
         '<td>' + recept.tolerance + ' %</td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteReceptKomponent(' + recept.receptId + ');">Slet</button></td>'+
-    '</tr>'
+        '<td><button class="btn-alert" type="submit" onclick="deleteReceptKomponent(' + recept.receptid + ');">Slet</button></td>'+
+    '</tr>';
 }
 
 function loadRecepts() {
@@ -24,10 +24,10 @@ function loadRecepts() {
 
 function receptDataCreateToJSON() {
     return JSON.stringify({
-        "receptId": $('#receptId').val(),
-        "receptNavn": $('#receptNavn').val(),
-        "raavareId": $('#raavareId').val(),
-        "raavareNavn": $('#raavareNavn').html(),
+        "receptid": $('#receptid').val(),
+        "receptnavn": $('#receptnavn').val(),
+        "raavareid": $('#raavareid').val(),
+        "raavarenavn": $('#raavarenavn').html(),
         "maengde": $('#maengde').val(),
         "tolerance": $('#tolerance').val()
     })
@@ -43,6 +43,7 @@ function createRecept() {
         success: function () {
             alert('Succes! Recept oprettet');
             loadRecepts();
+            loadReceptId();
         },
         error: function (jqXHR, textStatus) {
             alert('Fejl ved oprettelsen af Recept: ' + textStatus);
@@ -52,12 +53,13 @@ function createRecept() {
 }
 
 function deleteReceptKomponent(id) {
+    let deleteReceptUrl = '/CDIOFinal_war_exploded/test/recepts/komponent/' + id;
     event.preventDefault();
     $.ajax({
-        url: ReceptUrl+ 'komponent/' + id,
+        url: deleteReceptUrl,
         method: 'DELETE',
         success: function () {
-            alert('Recept' + id + 'er slettet');
+            alert('Recept/Receptkomponent' + id + 'er slettet');
             loadRecepts();
         }
     });
@@ -67,9 +69,9 @@ function deleteReceptKomponent(id) {
 
 
 function genTableHTMLForReceptId(receptid) {
-    return '<tr>' + '<td>' + receptid.receptId + '  ' + receptid.receptNavn + '</td>' +
+    return '<tr>' + '<td>' + receptid.receptid + '  ' + receptid.receptnavn + '</td>' +
         '<td><button class="btn-alert" type="submit" ' +
-        'onclick="deleteReceptId(' + receptid.receptId + ');">Slet</button></td>'+
+        'onclick="deleteReceptId(' + receptid.receptid + ');">Slet</button></td>'+
         '</tr>'
 }
 

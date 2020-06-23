@@ -1,7 +1,7 @@
 
 
 @media screen and (max-width: 600px) {
-    .Container_borderless{
+    .containerborderless.recept-content{
         width: 100%;
         display: block;
         margin-bottom: 20px;
@@ -15,10 +15,6 @@
     box-sizing: border-box;
     text-align: center;
     background-color: #f1f1f1;
-}
-
-#table{
-    padding: 30px;
 }
 
 #btn-create {
@@ -37,8 +33,24 @@
     font-style: italic;
 }
 
-#containerborderless{
-    float: left;
-    display: inline;
+#containerborderless {
+    border: 5px;
+    padding: 16px;
+    margin-bottom: 10px;
+    align-content: center;
+    display: inline-block;
+
 }
 
+#tableleft{
+    padding: 30px;
+    width: 50%;
+    float: left;
+}
+
+#tableright{
+    padding: 30px;
+    width: 50%;
+    float: right;
+
+}

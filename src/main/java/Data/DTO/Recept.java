@@ -2,36 +2,36 @@ package Data.DTO;
 
 public class Recept {
 
-    private int receptId;
-    private String receptNavn;
-    private String raavareNavn;
-    private int raavareId;
+    private int receptid;
+    private String receptnavn;
+    private String raavarenavn;
+    private int raavareid;
     private double maengde;
     private double tolerance;
 
     public Recept(){}
 
     public Recept(int receptId, String receptNavn, int raavareId, String raavareNavn, double maengde, double tolerance) {
-        this.receptId = receptId;
-        this.receptNavn = receptNavn;
-        this.raavareId = raavareId;
-        this.raavareNavn = raavareNavn;
+        this.receptid = receptId;
+        this.receptnavn = receptNavn;
+        this.raavareid = raavareId;
+        this.raavarenavn = raavareNavn;
         this.maengde = maengde;
         this.tolerance = tolerance;
     }
 
     public Recept(int receptId, String receptNavn) {
-        this.receptId = receptId;
-        this.receptNavn = receptNavn;
+        this.receptid = receptId;
+        this.receptnavn = receptNavn;
 
     }
 
-    public int getReceptId() {
-        return receptId;
+    public int getReceptid() {
+        return receptid;
     }
 
-    public String getReceptNavn() {
-        return receptNavn;
+    public String getReceptnavn() {
+        return receptnavn;
     }
 
     public double getMaengde() {
@@ -42,11 +42,11 @@ public class Recept {
         return tolerance;
     }
 
-    public String getRaavareNavn() {
-        return raavareNavn;
+    public String getRaavarenavn() {
+        return raavarenavn;
     }
 
-    public int getRaavareId() {
-        return raavareId;
+    public int getRaavareid() {
+        return raavareid;
     }
 }

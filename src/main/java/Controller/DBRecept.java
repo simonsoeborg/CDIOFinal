@@ -35,7 +35,7 @@ public class DBRecept {
                 while (resultSet.next()) {
                     data.add(new Recept(resultSet.getInt("receptid"),
                             resultSet.getString("receptnavn"),
-                            resultSet.getInt("raavareiD"),
+                            resultSet.getInt("raavareid"),
                             resultSet.getString("raavarenavn"),
                             resultSet.getDouble("maengde"),
                             resultSet.getDouble("tolerance")));
@@ -84,14 +84,14 @@ public class DBRecept {
 
     //-------------------------------------------------------------------------------------
 
-    public void deleteReceptKomponent(int id, int receptId) {
+    public void deleteReceptKomponent(int raavareid, int receptid) {
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
                 sqlQuery = "DELETE FROM ReceptKomponent WHERE raavareid = ? AND receptid = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-                pstm.setInt(1, id);
-                pstm.setInt(2, receptId);
+                pstm.setInt(1, raavareid);
+                pstm.setInt(2, receptid);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -102,13 +102,13 @@ public class DBRecept {
 
     //-------------------------------------------------------------------------------------
 
-    public void deleteReceptId(int id) {
+    public void deleteReceptId(int receptid) {
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
                 sqlQuery = "DELETE FROM ReceptKomponent WHERE receptid = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-                pstm.setInt(1, id);
+                pstm.setInt(1, receptid);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -120,7 +120,7 @@ public class DBRecept {
             if (SQLConn != null) {
                 sqlQuery = "DELETE FROM Recept WHERE receptid = ?";
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
-                pstm.setInt(1, id);
+                pstm.setInt(1, receptid);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -155,73 +155,6 @@ public class DBRecept {
 
 
     //-------------------------------------------------------------------------------------
-
-//    public void UpdateRecept(int receptId, String receptNavn, String raavareNavn, double maengde, double tolerance) {
-//        try {
-//            SQLConn = SQLConnector.createConnection();
-//            if (SQLConn != null) {
-//                pstm = SQLConn.prepareStatement("UPDATE FrejaView2 SET receptId = ?, receptNavn = ?, raavareNavn = ?, " +
-//                        "maengde = ?, tolerance = ? WHERE receptId = ?");
-//                pstm.setInt(1, receptId);
-//                pstm.setString(2, receptNavn);
-//                pstm.setString(3, raavareNavn);
-//                pstm.setDouble(4, maengde);
-//                pstm.setDouble(5, tolerance);
-//
-//                pstm.executeUpdate();
-//                SQLConn.close();
-//            }
-//        } catch (SQLException e) {
-//            System.out.println(e);
-//        }
-//    }
-//
-//    public void deleteRecept(int receptId) {
-//        try {
-//            SQLConn = SQLConnector.createConnection();
-//            if (SQLConn != null) {
-//                pstm = SQLConn.prepareStatement("DELETE FROM Recept WHERE receptId = ?");
-//                pstm.setInt(1, receptId);
-//                pstm.executeUpdate();
-//                SQLConn.close();
-//            }
-//        } catch (SQLException e) {
-//            System.out.println(e);
-//        }
-//    }
-
-   /* public void UpdateReceptComponent(int raavareId, double nonNetto, double tolerance) { //Virker ikke
-        try {
-            SQLConn = SQLConnector.createConnection();
-            if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("UPDATE Recept  SET nonNetto = ?, " +
-                        "tolerance = ? WHERE raavareId = ?");
-                pstm.setDouble(1, nonNetto);
-                pstm.setDouble(2, tolerance);
-                pstm.setInt(3, raavareId);
-                pstm.executeUpdate();
-                SQLConn.close();
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-    }
-
-    //Dette skal indgå, når man har trykket på knappen 'rediger'
-
-    public void deleteReceptComponent(int raavareId) {
-        try {
-            SQLConn = SQLConnector.createConnection();
-            if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("DELETE FROM Recept WHERE raavareID = ?");
-                pstm.setInt(1, raavareId);
-                pstm.executeUpdate();
-                SQLConn.close();
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-    }*/
     }
 
 
