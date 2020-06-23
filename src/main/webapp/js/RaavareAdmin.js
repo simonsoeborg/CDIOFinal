@@ -98,12 +98,12 @@ function controlRaavareNavn(raavareNavn) {
 
 function doesItExist(raavareid) {
 
-    }
+}
 
 function searchRaavare(raavarenavn) {
     raavarenavn = document.getElementById('soegraavarenavn').value;
-        var hostSearchURL = '/CDIOFinal_war_exploded/test/raavare/' + raavarenavn;
-        console.log('søger efter råvare');
+    var hostSearchURL = '/CDIOFinal_war_exploded/test/raavare/' + raavarenavn;
+    console.log('søger efter råvare');
     if (hostSearchURL !== '/CDIOFinal_war_exploded/test/raavare/' ) {
         if (hostSearchURL != null && hostSearchURL !== ' ') {
             $.ajax({

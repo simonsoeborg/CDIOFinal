@@ -1,3 +1,7 @@
+/*
+    Author: Simon Søborg
+    Github: simonsoeborg
+*/
 package Data.DTO;
 
 public class Afvejning {
@@ -6,9 +10,7 @@ public class Afvejning {
     private double afvejetmaengde;
     private double tara;
 
-    public Afvejning() {
-
-    }
+    public Afvejning() {}
 
     public Afvejning(int pbid,int rbid, double tara, double afvejetmaengde) {
         this.pbid = pbid;

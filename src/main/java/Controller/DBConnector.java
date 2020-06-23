@@ -1,8 +1,11 @@
+/*
+    Author: Simon Søborg
+    Github: simonsoeborg
+*/
 package Controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.List;
 
 public class DBConnector {
 
@@ -11,8 +14,6 @@ public class DBConnector {
     private String username = "uglyrage_com";
     private String port = "3306";
     private String password = "2d4f6r3t";
-    private List<DBUser> userList;
-    private List<DBRaavare> Raavarer;
 
     public DBConnector(){ }
 

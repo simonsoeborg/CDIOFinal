@@ -5,7 +5,6 @@
 package Controller;
 
 import Data.DTO.AfvejningReceptKomponent;
-import Data.DTO.Raavare;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +18,7 @@ public class DBAfvejning {
     private String sqlQuery;
     private Connection SQLConn;
 
-    private String findBrugerQuery = "SELECT * FROM Brugere WHERE UserId = ?";
+    private String findLaborantQuery = "SELECT * FROM Brugere WHERE UserId = ? AND Role = ? AND Status = ?";
     private String findReceptQuery = "SELECT receptNavn FROM ProduktBatchAfvejning WHERE pbId = ?";
     private String getProduktionStatusQuery = "SELECT status FROM ProduktBatch WHERE pbId = ?";
     private String getReceptRaavareQuery = "SELECT raavareid, raavarenavn, maengde, tolerance FROM AfvejningReceptKomponent2 WHERE pbId = ?";
@@ -33,9 +32,11 @@ public class DBAfvejning {
 
         try {
             if (SQLConn != null) {
-                sqlQuery = findBrugerQuery;
+                sqlQuery = findLaborantQuery;
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setInt(1, id);
+                pstm.setString(2, "Laborant");
+                pstm.setString(3, "Activated");
                 ResultSet resultSet = pstm.executeQuery();
 
                 while (resultSet.next()) {
