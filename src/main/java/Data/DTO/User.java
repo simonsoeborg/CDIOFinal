@@ -25,6 +25,8 @@ public class User {
         this.status=status;
     }
 
+    public String getInitial() { return initial; }
+
     public int getId() {
         return id;
     }
