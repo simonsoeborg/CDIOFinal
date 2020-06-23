@@ -96,4 +96,26 @@ public class DBRaavare {
         }
         return raavare;
     }
+
+    // return true if it DOESN'T exists and return false if it exists
+    public boolean searchRaavareid (int raavareid) {
+        boolean check = true;
+        try {
+            SQLConn = MySQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "SELECT raavareid FROM Raavare WHERE raavareid = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, raavareid);
+                ResultSet resultSet = pstm.executeQuery();
+                if(resultSet.next()){
+                    check = false;
+                }
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("kan ikke få adgang til råvare databasen");
+        }
+
+        return check;
+    }
 }
