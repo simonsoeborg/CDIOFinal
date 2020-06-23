@@ -26,7 +26,8 @@ public class ProductionBatchServlet {
      }
 
     @DELETE
-    @Path("{pbid}")
-    public void deleteProductionBatch(@PathParam("pbid") int pbid) {  DBProductionBatch.deleteProductionBatch(pbid);  }
+    @Path("{pbid}/{rbid}")
+    public void deleteProductionBatch(@PathParam("pbid") int pbid, @PathParam("rbid") int rbid) {
+        DBProductionBatch.deleteProductionBatch(pbid,rbid);  }
     
     }

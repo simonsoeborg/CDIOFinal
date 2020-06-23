@@ -46,7 +46,7 @@ public class DBProductionBatch {
     }
 
 
-    public void deleteProductionBatch(int pbid) {
+    public void deleteProductionBatch(int i, int pbid) {
         try {
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
