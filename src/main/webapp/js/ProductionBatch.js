@@ -1,9 +1,9 @@
 
-let rbHostURL = '/CDIOFinal_war_exploded/test/Produktbatch/';
+let pbHostURL = HostURL + 'Produktbatch/';
 
 function loadProduktBatchList() {
     console.log("Loading Produkt Batches");
-    let hostGetURL = rbHostURL + 'load';
+    let hostGetURL = pbHostURL + 'load';
     $.get(hostGetURL, function (data) {
         $("#loadAllProduktBatchList").empty();
         $.each(data, function (i, ProduktBatch) {
@@ -58,7 +58,7 @@ function createProduktBatch() {
 
 function showProduktNavn() {
     var produktId = document.getElementById('pbId').value;
-    let hostShowURL = rbHostURL + 'produkt/' + pbid;
+    let hostShowURL = pbHostURL + 'produkt/' + pbid;
     $.ajax({
         url: hostShowURL,
         type: 'GET',
