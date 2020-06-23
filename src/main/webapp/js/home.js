@@ -43,7 +43,7 @@ function access() {
         document.getElementById('raavarebatchAdminMenu').style.display = "block";
         document.getElementById('produktbatchAdminMenu').style.display = "block";
         document.getElementById('afvejningMenu').style.display = "block";
-        document.getElementById('usertable').style.display = "none";
+        document.getElementById('speceficUsertable').style.display = "none";
 
     }
 }
