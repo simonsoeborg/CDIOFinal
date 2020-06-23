@@ -213,4 +213,35 @@ public class DBUser implements IUser {
             System.out.println(e);
         }
     }
+
+
+    @Override
+    public List<User> getAllSpeceficRoles(String role) {
+        SQLConn = MySQLConnector.createConnection();
+        ArrayList<User> data = new ArrayList<>();
+        if (SQLConn != null) {
+            try {
+                sqlQuery = "SELECT * FROM Brugere WHERE Role=?";
+                //prepared statement
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setString(1, role);
+                ResultSet resultSet = pstm.executeQuery();
+                while (resultSet.next()) {
+                    data.add(new User(resultSet.getInt("UserId"), resultSet.getString("FirstName"), resultSet.getString("LastName"), resultSet.getString("Initial"), resultSet.getString("Role"), resultSet.getString("Status")));
+                }
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return data;
+    }
+
+    @Override
+    public List<User> listAllSpeceficRole(String role) {
+        userList = new ArrayList<>();
+        userList = getAllSpeceficRoles(role);
+        return userList;
+    }
+
 }

@@ -11,6 +11,9 @@ public interface IUser {
     List<User> getAllActivatedUsers();
     List<User> getAllUsers();
     List<User> getAllDeactivatedUsers();
+    List<User> getAllSpeceficRoles(String role);
+    List<User> listAllSpeceficRole(String role);
+
     void deactivateUser(int userID);
     void activateUser(int userID);
     User searchUser(int userID);

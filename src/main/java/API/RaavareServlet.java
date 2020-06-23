@@ -35,4 +35,8 @@ public class RaavareServlet {
     @GET
     @Path("{raavarenavn}")
     public List<Raavare> searchRaavare(@PathParam("raavarenavn") String raavarenavn){return DBRaavare.searchRaavare(raavarenavn);}
+
+    @GET
+    @Path("/status/" + "{raavareid}")
+    public boolean searchRaavareid(@PathParam("raavareid") int raavareid){return DBRaavare.searchRaavareid(raavareid);}
 }

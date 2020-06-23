@@ -25,7 +25,5 @@ function includeFooter() {
     $(".grid-contentFooter").load("globalFooter.html");
 }
 
-
-
 /* End of Site functionality */
 /* *********************************************************************** */
