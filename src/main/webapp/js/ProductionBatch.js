@@ -27,10 +27,10 @@ function genTableHTMLForProduktBatch(produktBatch) {
 }
 
 function deleteProduktBatch(pbid,rbid) {
-    let pbHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/' + pbid + "/" + rbid;
+    let obHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/' + pbid + "/" + rbid;
     event.preventDefault();
     $.ajax({
-        url: pbHostURL,
+        url: obHostURL,
         method: 'DELETE',
         success: function () {
             alert(' Produkt Batch med id: ' + pbid + ' er blevet slettet!');
@@ -41,7 +41,7 @@ function deleteProduktBatch(pbid,rbid) {
 
 function createProduktBatch() {
 
-    let hostCreateURL = pbHostURL + 'create';
+    let hostCreateURL = obHostURL + 'create';
     console.log('Opretter ny ProduktBatch');
     $.ajax({
         type: 'POST',
