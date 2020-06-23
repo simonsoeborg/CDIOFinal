@@ -39,20 +39,37 @@ function createRaavare() {
     var navn = document.getElementById('raavarenavn').value;
 
     if (controlRaavareID(id) && controlRaavareNavn(navn)) {
-        $.ajax({
-            type: 'POST',
-            contentType: 'application/json',
-            url: hostCreateURL,
-            dataType: "json",
-            data: raavareDataCreateToJSON(id, navn),
-            success: function (data, textStatus, req) {
-                loadRaavareList();
-                alert(' råvare successful oprettet!');
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert('fejl ved oprettelsen af råvaren: ' + textStatus);
-            }
-        })
+        var doesItExistURL = '/CDIOFinal_war_exploded/test/raavare/status/' + id;
+        console.log('søger efter råvarens id ' + id);
+        if (doesItExistURL != null && doesItExistURL !== ' ') {
+            $.ajax({
+                url: doesItExistURL,
+                success: function (url) {
+                    console.log(url);
+                    if(url === false) {
+                        alert('råvaren med ID: ' + id + ' eksistere allerede i databasen');
+                    }else {
+                        $.ajax({
+                            type: 'POST',
+                            contentType: 'application/json',
+                            url: hostCreateURL,
+                            dataType: "json",
+                            data: raavareDataCreateToJSON(id, navn),
+                            success: function (data, textStatus, req) {
+                                loadRaavareList();
+                                alert(' råvare successful oprettet!');
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                alert('fejl ved oprettelsen af råvaren: ' + textStatus);
+                            }
+                        })
+                    }
+
+                }, error: function () {
+                    console.log('problemer med at finde i databasen');
+                }
+            })
+        }
     }
 }
 
@@ -78,6 +95,10 @@ function controlRaavareNavn(raavareNavn) {
         return false;
     }
 }
+
+function doesItExist(raavareid) {
+
+    }
 
 function searchRaavare(raavarenavn) {
     raavarenavn = document.getElementById('soegraavarenavn').value;
