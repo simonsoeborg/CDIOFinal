@@ -22,12 +22,12 @@ public class ProductionBatchServlet {
 
      @POST
     public void createProductionBatch(ProductionBatch productionBatch) {
-         DBProductionBatch.createProductionBatch(productionBatch.getpbId(), productionBatch.getReceptID(),productionBatch.getstatus());
+         DBProductionBatch.createProductionBatch(productionBatch.getpbid(), productionBatch.getreceptid(),productionBatch.getstatus());
      }
 
 
     @DELETE
-    @Path("{pbId}")
-    public void deleteProductionBatch(@PathParam("pbId") int pbId) {  DBProductionBatch.deleteProductionBatch(pbId);  }
+    @Path("{pbid}")
+    public void deleteProductionBatch(@PathParam("pbid") int pbid) {  DBProductionBatch.deleteProductionBatch(pbid);  }
     
     }

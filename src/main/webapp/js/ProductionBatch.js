@@ -1,36 +1,38 @@
-
-let pbHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/';
+//let pbHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/';
 
 function loadProduktBatchList() {
+    let pbHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/load';
     console.log("Loading Produkt Batches");
-    let hostGetURL = rbHostURL + 'load';
-    $.get(hostGetURL, function (data) {
+    $.get(pbHostURL, function (data) {
+        console.log("test");
         $("#loadAllProduktBatchList").empty();
+        console.log("test2");
         $.each(data, function (i, produktBatch) {
+            console.log(produktBatch);
             $("#loadAllProduktBatchList").append(genTableHTMLForProduktBatch(produktBatch));
         });
     });
 }
 
 function genTableHTMLForProduktBatch(produktBatch) {
-    return '<td>' + produktBatch.receptID +'</td>' +
+    return '<tr>' + '<td>' + produktBatch.pbid +'</td>' +
+        '<td>' + produktBatch.receptid + '</td>' +
         '<td>' + produktBatch.status + '</td>' +
-        '<td>' + produktBatch.tara + '</td>' +
-        '<td>' + produktBatch.netto + '</td>' +
+        '<td>' + produktBatch.userid+ '</td>' +
         '<td>' + produktBatch.rbid + '</td>' +
-        '<td>' + produktBatch.userId+ '</td>' +
-        '<tr><td>' + produktBatch.pbId + '</td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + produktBatch.pbId + ');">Slet</button></td>' +
-        '</tr>'
+        '<td>' + produktBatch.afvejetmaengde + '</td>' +
+        '<td>' + produktBatch.tara + '</td>' +
+        '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + produktBatch.pbid + ');">Slet</button></td>' +
+        '</td>'
 }
 
-function deleteProduktBatch(pbId) {
+function deleteProduktBatch(pbid) {
     event.preventDefault();
     $.ajax({
-        url: pbHostURL + pbId,
+        url: pbHostURL + pbid,
         method: 'DELETE',
         success: function () {
-            alert(' Produkt Batch med id: ' + pbId + ' er blevet slettet!');
+            alert(' Produkt Batch med id: ' + pbid + ' er blevet slettet!');
             loadProduktBatchList();
         }
     });
@@ -57,7 +59,7 @@ function createProduktBatch() {
 }
 
 function showProduktNavn() {
-    var produktId = document.getElementById('pbId').value;
+    var produktId = document.getElementById('pbid').value;
     let hostShowURL = rbHostURL + 'produkt/' + pbid;
     $.ajax({
         url: hostShowURL,
@@ -71,12 +73,15 @@ function showProduktNavn() {
 
 function pbCreateToJSON() {
     return JSON.stringify({
-        "receptID": $('#receptID').val(),
-        "status": $('#status').val(),
-        "tara": $('#tara').val(),
-        "netto": $('#netto').val(),
-        "rbid": $('#rbid').val(),
-        "userId": $('#UserId').val(),
         "pbId": $('#pbId').val(),
+        "receptid": $('#receptid').val(),
+        "status": $('#status').val(),
+        "userid": $('#userid').val(),
+        "rbid": $('#rbid').val(),
+        "tara": $('#tara').val(),
+        "afvejningsmaengde": $('#afvejningsmaengde').val(),
+
+
+
     });
 }
