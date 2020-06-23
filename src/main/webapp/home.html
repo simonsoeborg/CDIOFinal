@@ -6,14 +6,27 @@
   <div class="grid-sideMenu"><script>includeSideMenu();</script></div>
 
   <div class="grid-contentHeader">
-    <h1>Hi</h1>
+    <h1 id="scriptName"> <script>welcome();</script> </h1>
   </div>
 
   <div class="grid-contentBody">
-
+    <div id="speceficUsertable" class="container" style=" align-content: start;">
+      <h2 id="role"> <script>role();</script> </h2>
+      <table>
+        <thead id="t-users">
+        <tr>
+          <td>Medlems ID</td>
+          <td>Fornavn</td>
+          <td>Efternavn</td>
+        </tr>
+        </thead>
+        <tbody id="loadUsersList"><script>loadUserList();</script></tbody>
+      </table>
+      <div class="loader"/>
+    </div>
   </div>
+
 
   <!-- Attach global footer -->
   <div class="grid-contentFooter"><script>includeFooter();</script></div>
-
 </div>

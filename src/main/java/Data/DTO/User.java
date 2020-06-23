@@ -25,13 +25,6 @@ public class User {
         this.status=status;
     }
 
-    // *Todo Lav en løsning sålede at initials selv bliver dannet. (Ved ikke hvor jeg skal implementer).
-    public void setInitial (String firstname, String lastname) {
-        Character first = Character.toUpperCase(firstname.charAt(0));
-        Character second = Character.toUpperCase(lastname.charAt(0));
-        initial= String.valueOf(first+second);
-    }
-
     public String getInitial() { return initial; }
 
     public int getId() {

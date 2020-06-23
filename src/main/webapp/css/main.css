@@ -21,6 +21,41 @@ h2{
   color: #878688;
 }
 
+h3{
+  color: #414141;
+}
+
+input {
+  border-radius: 5px;
+  width: auto;
+  border-width: 1px;
+  padding: 10px;
+  outline: none;
+  font-size: 22px;
+}
+
+input:hover {
+  border: 1px solid #E44E4E;
+  border-radius: 5px;
+}
+
+input:active {
+  border: 1px solid #E44E4E;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+
+  border: 0px;
+  font-size: 22px;
+}
+
+button:hover {
+  border: 1px solid rgba(114, 85, 85, 0.29);
+  border-radius: 5px;
+}
+
 .btn-alert {
   background-color: var(--color-primary);
   color: white;

@@ -21,9 +21,52 @@ Note: Additions and override for brugerAdmin.
 }
 /*More styled list*/
 
-/*Make create user page */
+.brugerSidebarUL li {
+    padding-right: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    display: block;
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.brugerSidebarUL li:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+#role {
+    border-radius: 5px;
+    margin-left: 0;
+    width: 50%;
+    height: 40px;
+}
+
+#firstname{
+    margin-bottom: 10px;
+}
+
+.loader{
+    margin-top: 15px;
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid var(--color-primary);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
 
+.loader-disabled{
+    display: none;
+}
 
 
 

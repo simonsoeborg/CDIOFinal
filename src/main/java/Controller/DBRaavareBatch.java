@@ -36,11 +36,13 @@ public class DBRaavareBatch {
                 while (resultSet.next()) {
                     data.add(new RaavareBatch(resultSet.getInt("rbId"), resultSet.getInt("raavareId"), resultSet.getDouble("maengde"), resultSet.getString("leverandoer"), resultSet.getString("raavarenavn")));
                 }
+
                 SQLConn.close();
             } catch (SQLException e) {
                 System.out.println(e);
             }
         }
+
         return data;
     }
 
@@ -78,7 +80,7 @@ public class DBRaavareBatch {
                 SQLConn.close();
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            return " ";
         }
         return raavareNavn;
     }

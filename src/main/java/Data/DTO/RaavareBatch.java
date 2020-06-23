@@ -21,14 +21,6 @@ public class RaavareBatch {
         this.raavareNavn = raavareNavn;
     }
 
-    public RaavareBatch(int rbId, int raavareId, double maengde, String leverandoer) {
-        this.rbId = rbId;
-        this.raavareId = raavareId;
-        this.maengde = maengde;
-        this.leverandoer = leverandoer;
-        this.raavareNavn = null;
-    }
-
     public int getRbId() {
         return rbId;
     }
@@ -43,5 +35,9 @@ public class RaavareBatch {
 
     public String getLeverandoer() {
         return leverandoer;
+    }
+
+    public String getRaavareNavn() {
+        return raavareNavn;
     }
 }

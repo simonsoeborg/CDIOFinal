@@ -1,4 +1,7 @@
-/* Author: Karl Emil */
+/*
+Author: Karl Emil Hansen
+Github: KEHansen
+*/
 
 let rbHostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
 
@@ -57,7 +60,7 @@ function createRaavareBatch() {
         contentType: 'application/json',
         url: hostCreateURL,
         dataType: "json",
-        data: dataCreateToJSON(),
+        data: rbCreateToJSON(),
         success: function () {
             alert('Succes! RåvareBatch oprettet');
             loadRaavareBatchList();
@@ -77,11 +80,11 @@ function showRaavareNavn() {
         dataType: "text",
         success: function (res) {
             document.getElementById('raavareNavn').innerHTML = res;
-        },
+        }
     });
 }
 
-function dataCreateToJSON() {
+function rbCreateToJSON() {
     return JSON.stringify({
         "rbId": $('#rbId').val(),
         "raavareId": $('#raavareId').val(),
