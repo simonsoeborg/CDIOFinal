@@ -3,7 +3,7 @@ Author: Karl Emil Hansen
 Github: KEHansen
 */
 
-let rbHostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
+let rbHostURL = HostURL + 'raavarebatch/';
 
 function loadRaavareBatchList() {
     console.log("Loading Råvare Batches");
@@ -25,19 +25,6 @@ function genTableHTMLForRaavareBatch(raavareBatch) {
         '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
         '</tr>'
 }
-
-/*function getRaavareNavn(raavareId) {
-    let hostGetNameURL = hostURL + 'raavare/' + raavareId;
-    event.preventDefault();
-    $.ajax({
-        url: hostGetNameURL,
-        type: 'GET',
-        dataType: "text",
-        success: function (res) {
-            raavareNavn = res;
-        },
-    });
-}*/
 
 function deleteRaavareBatch(rbId) {
     event.preventDefault();

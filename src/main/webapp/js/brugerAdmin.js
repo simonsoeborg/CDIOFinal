@@ -2,7 +2,7 @@
 Author: Simon Fridolf
 Github: IceMonk3y
 */
-var hostUserURL = '/CDIOFinal_war_exploded/test/users/';
+var hostUserURL = HostURL + 'users/';
 
 // Load userSideMenu code functionality:
 function includeUserSideMenu() {
@@ -22,7 +22,7 @@ async function loadActiveUserList() {
 }
 
 async function loadDeactivatedUserList() {
-    let getAllDeactivatedUsersURL = hostUserURL+'deactivated';
+    let getAllDeactivatedUsersURL = hostUserURL + 'deactivated';
     console.log("Loading deactivated Users");
     await $.get(getAllDeactivatedUsersURL, function (data, textStatus, req) {
         $("#loadDeactivatedUserList").empty();

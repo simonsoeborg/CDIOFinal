@@ -1,8 +1,8 @@
 
-var hostURL = "/CDIOFinal_war_exploded/test/raavare/";
+var hostRaavareURL = HostURL + "raavare/";
 
 function loadRaavareList() {
-    let hostURLGetList = "/CDIOFinal_war_exploded/test/raavare/load/";
+    let hostURLGetList = hostRaavareURL + "load/";
     console.log("Loading raavare");
     $.get(hostURLGetList, function (data, textStatus, req) {
         $("#loadAllRaavareList").empty();
@@ -21,7 +21,7 @@ function genTableHTMLForRaavare(raavare) {
 }
 
 function deleteRaavare(id) {
-    var hostDeleteURL = "/CDIOFinal_war_exploded/test/raavare/" + id;
+    var hostDeleteURL = hostRaavareURL + id;
     event.preventDefault();
     $.ajax({
         url: hostDeleteURL,
@@ -33,13 +33,12 @@ function deleteRaavare(id) {
     });
 }
 function createRaavare() {
-    var hostCreateURL = "/CDIOFinal_war_exploded/test/raavare/";
     console.log('Creating ny råvare');
     var id = document.getElementById('raavareid').value;
     var navn = document.getElementById('raavarenavn').value;
 
     if (controlRaavareID(id) && controlRaavareNavn(navn)) {
-        var doesItExistURL = '/CDIOFinal_war_exploded/test/raavare/status/' + id;
+        var doesItExistURL = hostRaavareURL + 'status/' + id;
         console.log('søger efter råvarens id ' + id);
         if (doesItExistURL != null && doesItExistURL !== ' ') {
             $.ajax({
@@ -52,7 +51,7 @@ function createRaavare() {
                         $.ajax({
                             type: 'POST',
                             contentType: 'application/json',
-                            url: hostCreateURL,
+                            url: hostRaavareURL,
                             dataType: "json",
                             data: raavareDataCreateToJSON(id, navn),
                             success: function (data, textStatus, req) {
@@ -96,15 +95,11 @@ function controlRaavareNavn(raavareNavn) {
     }
 }
 
-function doesItExist(raavareid) {
-
-}
-
 function searchRaavare(raavarenavn) {
     raavarenavn = document.getElementById('soegraavarenavn').value;
-    var hostSearchURL = '/CDIOFinal_war_exploded/test/raavare/' + raavarenavn;
+    var hostSearchURL = hostRaavareURL + raavarenavn;
     console.log('søger efter råvare');
-    if (hostSearchURL !== '/CDIOFinal_war_exploded/test/raavare/' ) {
+    if (hostSearchURL !== hostRaavareURL ) {
         if (hostSearchURL != null && hostSearchURL !== ' ') {
             $.ajax({
                 url: hostSearchURL,

@@ -2,7 +2,7 @@
 Author:Kristoffer Baumgarten & Simon Fridolf
 Github: Jackktis & IceMonk3y
 */
-hostUserURL='/CDIOFinal_war_exploded/test/users/';
+hostUserURL = HostURL + 'users/';
 
 function welcome() {
     let role = sessionStorage.getItem("role");
@@ -15,7 +15,6 @@ function userLayout(obj) {
 
     displayContent('home.html');
 }
-
 
 function access() {
     if (sessionStorage.getItem('role') === "Administrator") {
