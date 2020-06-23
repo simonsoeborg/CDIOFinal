@@ -52,23 +52,38 @@ function deleteRaavareBatch(rbId) {
 }
 
 function createRaavareBatch() {
-
     let hostCreateURL = rbHostURL + 'create';
     console.log('Opretter ny RåvareBatch');
-    $.ajax({
-        type: 'POST',
-        contentType: 'application/json',
-        url: hostCreateURL,
-        dataType: "json",
-        data: rbCreateToJSON(),
-        success: function () {
-            alert('Succes! RåvareBatch oprettet');
-            loadRaavareBatchList();
-        },
-        error: function (jqXHR, textStatus) {
-            alert('Fejl ved oprettelsen af RåvareBatch: ' + textStatus);
-        }
-    });
+    if (control()) {
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+            url: hostCreateURL,
+            dataType: "json",
+            data: rbCreateToJSON(),
+            success: function () {
+                alert('Succes! RåvareBatch oprettet');
+                loadRaavareBatchList();
+            },
+            error: function (jqXHR, textStatus) {
+                alert("fejl ved oprettelsen af råvaren: " + textStatus);
+            }
+        });
+    }
+}
+
+function control() {
+    var rbID = document.getElementById('rbId').value;
+    var leverandoer = document.getElementById('leverandoer').value;
+    if (rbID.length !== 5) {
+        alert("RåvareBatchID skal indholde fem cifre!");
+        return false;
+    } else if (leverandoer.length < 5) {
+        alert("Der skal indtastes en gyldig leverandør!");
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function showRaavareNavn() {
