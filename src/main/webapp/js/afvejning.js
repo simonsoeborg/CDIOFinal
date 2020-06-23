@@ -29,7 +29,6 @@ function repeatObject() {
 
 function executeUpdateCommands(number) {
   let postfix;
-
   if(produktbatchNr !== 0) {
     if(number === 0) {
       // Run only stuff from inputs in repeatableObjectZero
@@ -170,7 +169,7 @@ function findLaborant() {
       } else {
         document.getElementById('labNameResponse').innerHTML = "Laborant: " + result;
         document.getElementById('wrapper').style.display = "block";
-        document.getElementById('afvejningStep1').style.display = "none";
+        document.getElementById('indtastLabNrContainer').style.display = "none";
       }
     },
     error: function (jqXHR, textStatus, errorThrown) {

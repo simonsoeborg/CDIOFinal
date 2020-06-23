@@ -10,25 +10,24 @@ Github: simonsoeborg
     <div class="grid-sideMenu"><script>includeSideMenu();</script></div>
 
     <div class="grid-contentHeader">
-        <h1 id="afvejningsTitel" style="text-align: left;">Afvejning</h1>
+        <h1 id="afvejningsTitel">Afvejning</h1>
 
-        <label id="labNameResponse" style="text-align: center;"></label>
+        <label id="labNameResponse"></label>
 
-        <label id="produktionStatus" style="text-align: right;"></label>
+        <label id="produktionStatus"></label>
 
     </div>
 
     <div class="grid-contentBody">
-        <div id="afvejningStep1" class="small_Container">
+        <div id="indtastLabNrContainer" class="small_Container">
             <form>
-                <!-- Indtast laborant nr -->
                 <label>Indtast laborant nr:</label> <br />
                 <input id="labNr" type="text">
                 <button class="successbutton" type="button" name="button" onclick="findLaborant();">OK</button>
             </form>
         </div>
         <div class="container-borderless">
-            <label id="receptNameResponse" style="padding: 16px;"></label>
+            <label id="receptNameResponse"></label>
         </div>
         <div id="ReceptList" class="Container_borderless">
             <table>
@@ -47,18 +46,9 @@ Github: simonsoeborg
         <div id="wrapper">
             <div id="produktBatchAndReceptName" class="small_Container">
                 <form>
-                    <!-- Indtast produktbatch nr -->
                     <label>Indtast Produktbatch nr:</label> <br />
                     <input id="produktbatchNr" type="text">
                     <button class="successbutton" type="button" name="button" onclick="findProduktBatch();">OK</button>
-
-                    <!-- Systemet sætter produktbatch nummerets status til ”Under produktion”. -->
-
-                    <!-- Run script to set pB with pB nr to: "Under Produktion" i Databasen. -->
-
-                    <!-- Antallet af råvare materialer skal definere hvor mange gange steps der skal gentages. -->
-
-                    <!-- JS skal læse antallet af materialer i recepten. Tallet skal bruges senere i proceduren. -->
                 </form>
             </div>
 
@@ -67,23 +57,19 @@ Github: simonsoeborg
             <div id="repeatButtonContainer" class="small_Container_borderless">
                 <label>Tilføj flere afvejninger:</label> <br>
                 <button id="repeatButton" type="button" name="button" onclick="repeatObject();" ><i class="material-icons">add_circle_outline</i></button>
-                <button id="runAllBatchesButton" class="successbutton" style="float: right; display: none;" type="button" name="button" onclick="executeAllUpdateCommands();" >Run All</button>
+                <button id="runAllBatchesButton" class="successbutton" type="button" name="button" onclick="executeAllUpdateCommands();" >Run All</button>
             </div>
 
             <div id="repeatableObjectZero" class="small_Container">
                 <form>
-                    <!-- Indtast første tara beholder. -->
                     <label>Indtast tara-belastningen:</label> <br />
                     <input id="taraBelastningZero" type="text" placeholder="Vægt">
-                    <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
                 </form>
                 <form>
-                    <!-- System beder om raavarebatch nummer på første råvare. -->
                     <label>Indtast Råvarebatch: </label> <br>
                     <input id="raavareZero" type="text" placeholder="Råvarebatch nummer"> <br>
                 </form>
                 <form>
-                    <!-- Laboranten afvejer op til den ønskede mængde og indtaster værdierne i systemet. -->
                     <label>Indtast Mængde: </label> <br>
                     <input id="maengdeZero" type="text" placeholder="Mængde">
 
@@ -96,18 +82,14 @@ Github: simonsoeborg
 
             <div id="repeatableObjectOne" class="small_Container">
                 <form>
-                    <!-- Indtast første tara beholder. -->
                     <label>Indtast tara-belastningen:</label> <br />
                     <input id="taraBelastningOne" type="text" placeholder="Vægt">
-                    <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
                 </form>
                 <form>
-                    <!-- System beder om raavarebatch nummer på første råvare. -->
                     <label>Indtast Råvarebatch: </label> <br>
                     <input id="raavareOne" type="text" placeholder="Råvarebatch nummer"> <br>
                 </form>
                 <form>
-                    <!-- Laboranten afvejer op til den ønskede mængde og indtaster værdierne i systemet. -->
                     <label>Indtast Mængde: </label> <br>
                     <input id="maengdeOne" type="text" placeholder="Mængde">
 
@@ -120,18 +102,14 @@ Github: simonsoeborg
 
             <div id="repeatableObjectTwo" class="small_Container">
                 <form>
-                    <!-- Indtast første tara beholder. -->
                     <label>Indtast tara-belastningen:</label> <br />
                     <input id="taraBelastningTwo" type="text" placeholder="Vægt">
-                    <!-- Laborant placerer første tarabeholder og registerer tara-belastningen (0,100) i produktbatchkomponenten. -->
                 </form>
                 <form>
-                    <!-- System beder om raavarebatch nummer på første råvare. -->
                     <label>Indtast Råvarebatch: </label> <br>
                     <input id="raavareTwo" type="text" placeholder="Råvarebatch nummer"> <br>
                 </form>
                 <form>
-                    <!-- Laboranten afvejer op til den ønskede mængde og indtaster værdierne i systemet. -->
                     <label>Indtast Mængde: </label> <br>
                     <input id="maengdeTwo" type="text" placeholder="Mængde">
                     <button class="warningbutton" type="button" name="button" onclick="executeUpdateCommands(2);" ><i style="color: white;" class="material-icons">chevron_right</i></button>
