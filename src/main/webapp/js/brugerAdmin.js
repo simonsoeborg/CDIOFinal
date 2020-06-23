@@ -33,6 +33,19 @@ async function loadActiveUserList() {
      document.getElementsByClassName("loader")[0].className="loader-disabled";
  }
 
+async function loadDeactivatedUserList() {
+    let getAllDeactivatedUsersURL = hostUserURL+'deactivated';
+    console.log("Loading deactivated Users");
+    await $.get(getAllDeactivatedUsersURL, function (data, textStatus, req) {
+        $("#loadDeactivatedUserList").empty();
+        $.each(data, function (i, user) {
+            $("#loadDeactivatedUserList").append(genTableHTMLForDeactivatedUserList((user)));
+        });
+    });
+    document.getElementsByClassName("loader")[0].className="loader-disabled";
+}
+
+
 // Functionality to deactivate and reactivate users.
  function deactivate (id) {
      event.preventDefault();

@@ -25,13 +25,6 @@ public class User {
         this.status=status;
     }
 
-    // Is implemented somewhere else as of now. .
-    public void setInitial (String firstname, String lastname) {
-        Character first = Character.toUpperCase(firstname.charAt(0));
-        Character second = Character.toUpperCase(lastname.charAt(0));
-        initial= String.valueOf(first+second);
-    }
-
     public String getInitial() { return initial; }
 
     public int getId() {

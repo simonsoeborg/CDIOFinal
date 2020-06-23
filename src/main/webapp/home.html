@@ -10,10 +10,23 @@
   </div>
 
   <div class="grid-contentBody">
+    <div id="speceficUsertable" class="container" style=" align-content: start;">
+      <h2 id="role"> <script>role();</script> </h2>
+      <table>
+        <thead id="t-users">
+        <tr>
+          <td>Medlems ID</td>
+          <td>Fornavn</td>
+          <td>Efternavn</td>
+        </tr>
+        </thead>
+        <tbody id="loadUsersList"><script>loadUserList();</script></tbody>
+      </table>
+      <div class="loader"/>
+    </div>
   </div>
 
 
-    <!-- Attach global footer -->
+  <!-- Attach global footer -->
   <div class="grid-contentFooter"><script>includeFooter();</script></div>
-
 </div>
