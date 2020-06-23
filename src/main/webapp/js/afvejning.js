@@ -5,6 +5,7 @@ Github: simonsoeborg
 
 var IndexRepeat = 0;
 var produktbatchNr = 0;
+let afvejningHostURL = HostURL + 'afvejning/';
 
 function repeatObject() {
   if(IndexRepeat < 2) {
@@ -27,9 +28,7 @@ function repeatObject() {
 }
 
 function executeUpdateCommands(number) {
-  let afvejningHostURL = '/CDIOFinal_war_exploded/test/afvejning/';
   let postfix;
-
   if(produktbatchNr !== 0) {
     if(number === 0) {
       // Run only stuff from inputs in repeatableObjectZero
@@ -96,7 +95,6 @@ function executeUpdateCommands(number) {
 }
 
 function executeAllUpdateCommands() {
-  let afvejningHostURL = '/CDIOFinal_war_exploded/test/afvejning/';
   var postfix;
   // Run all. For loop.
   if(produktbatchNr !== 0) {
@@ -159,7 +157,7 @@ function showRunAllBatchesButton() {
 }
 
 function findLaborant() {
-  var hostLabURL = '/CDIOFinal_war_exploded/test/afvejning/lab?labNr=';
+  var hostLabURL = afvejningHostURL + 'lab?labNr=';
   var labNr = document.getElementById('labNr').value;
   $.ajax({
     type: 'GET',
@@ -171,7 +169,7 @@ function findLaborant() {
       } else {
         document.getElementById('labNameResponse').innerHTML = "Laborant: " + result;
         document.getElementById('wrapper').style.display = "block";
-        document.getElementById('afvejningStep1').style.display = "none";
+        document.getElementById('indtastLabNrContainer').style.display = "none";
       }
     },
     error: function (jqXHR, textStatus, errorThrown) {
@@ -181,7 +179,7 @@ function findLaborant() {
 }
 
 function findProduktBatch() {
-  var hostPBURL = '/CDIOFinal_war_exploded/test/afvejning/pb?pbNr=';
+  var hostPBURL = afvejningHostURL + 'pb?pbNr=';
   produktbatchNr = document.getElementById('produktbatchNr').value;
   $.ajax({
     type: 'GET',
@@ -205,7 +203,7 @@ function findProduktBatch() {
 }
 
 function getProduktBatchStatus(id) {
-  var hostPBStatusURL = '/CDIOFinal_war_exploded/test/afvejning/status/';
+  var hostPBStatusURL = afvejningHostURL + 'status/';
   $.ajax({
     type: 'GET',
     url: hostPBStatusURL + id,
@@ -225,7 +223,7 @@ function getProduktBatchStatus(id) {
 }
 
 function updateProduktBatchStatus(id) {
-  var hostPBUpdateStatusURL = '/CDIOFinal_war_exploded/test/afvejning/status/update/';
+  var hostPBUpdateStatusURL = afvejningHostURL + 'status/update/';
   $.ajax({
     type: 'PUT',
     url: hostPBUpdateStatusURL + id,
@@ -240,7 +238,7 @@ function updateProduktBatchStatus(id) {
 }
 
 function getIngredients(pbId) {
-  let hostURLGetIngredients = "/CDIOFinal_war_exploded/test/afvejning/" + pbId;
+  let hostURLGetIngredients = afvejningHostURL + pbId;
   $.ajax({
     type: 'GET',
     contentType: 'application/json',
@@ -259,10 +257,10 @@ function getIngredients(pbId) {
 
 function genTableHTMLForAfvejningTable(value) {
   let data = '<tr>' +
-              '<td>'+ value.rkraavareid +'</td>' +
-              '<td>' + value.rkraavarenavn +'</td>' +
-              '<td>'+ value.rkmaengde + ' kg</td>' +
-              '<td>'+ value.rktolerance + ' %</td>' +
-            '</tr>';
+      '<td>'+ value.rkraavareid +'</td>' +
+      '<td>' + value.rkraavarenavn +'</td>' +
+      '<td>'+ value.rkmaengde + ' kg</td>' +
+      '<td>'+ value.rktolerance + ' %</td>' +
+      '</tr>';
   return data;
 }

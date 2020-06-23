@@ -1,3 +1,7 @@
+/*
+    Author: Simon Søborg
+    Github: simonsoeborg
+*/
 package Data.DTO;
 
 public class AfvejningReceptKomponent {

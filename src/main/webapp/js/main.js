@@ -25,5 +25,8 @@ function includeFooter() {
     $(".grid-contentFooter").load("globalFooter.html");
 }
 
+// Global variable system path
+let HostURL = '/CDIOFinal_war_exploded/test/';
+
 /* End of Site functionality */
 /* *********************************************************************** */

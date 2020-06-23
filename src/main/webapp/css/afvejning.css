@@ -24,9 +24,8 @@ Github: simonsoeborg
   visibility: hidden;
 }
 
-#afvejningStep1 {
-    display: block;
-
+#indtastLabNrContainer {
+  display: block;
 }
 
 label {
@@ -53,6 +52,8 @@ label {
 
 #runAllBatchesButton {
   margin-right: 25%;
+  float: right;
+  display: none;
 }
 
 #wrapper {
@@ -84,5 +85,21 @@ label {
   display: inline-block;
   float: right;
   visibility: hidden;
+  padding: 16px;
+}
+
+#afvejningsTitel {
+  text-align: left;
+}
+
+#labNameResponse {
+  text-align: center;
+}
+
+#produktionStatus {
+  text-align: right;
+}
+
+#receptNameResponse {
   padding: 16px;
 }

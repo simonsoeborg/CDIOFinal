@@ -3,7 +3,7 @@ Author: Karl Emil Hansen
 Github: KEHansen
 */
 
-let rbHostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
+let rbHostURL = HostURL + 'raavarebatch/';
 
 function loadRaavareBatchList() {
     console.log("Loading Råvare Batches");
@@ -18,26 +18,13 @@ function loadRaavareBatchList() {
 
 function genTableHTMLForRaavareBatch(raavareBatch) {
     return  '<tr><td>' + raavareBatch.rbId + '</td>' +
-            '<td>' + raavareBatch.raavareId +'</td>' +
-            '<td>' + raavareBatch.raavareNavn + '</td>' +
-            '<td>' + raavareBatch.maengde + ' kg</td>' +
-            '<td>' + raavareBatch.leverandoer + '</td>' +
-            '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
-            '</tr>'
+        '<td>' + raavareBatch.raavareId +'</td>' +
+        '<td>' + raavareBatch.raavareNavn + '</td>' +
+        '<td>' + raavareBatch.maengde + ' kg</td>' +
+        '<td>' + raavareBatch.leverandoer + '</td>' +
+        '<td><button class="btn-alert" type="submit" onclick="deleteRaavareBatch(' + raavareBatch.rbId + ');">Slet</button></td>' +
+        '</tr>'
 }
-
-/*function getRaavareNavn(raavareId) {
-    let hostGetNameURL = hostURL + 'raavare/' + raavareId;
-    event.preventDefault();
-    $.ajax({
-        url: hostGetNameURL,
-        type: 'GET',
-        dataType: "text",
-        success: function (res) {
-            raavareNavn = res;
-        },
-    });
-}*/
 
 function deleteRaavareBatch(rbId) {
     event.preventDefault();
