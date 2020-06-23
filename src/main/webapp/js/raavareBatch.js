@@ -1,4 +1,7 @@
-/* Author: Karl Emil */
+/*
+Author: Karl Emil Hansen
+Github: KEHansen
+*/
 
 let rbHostURL = '/CDIOFinal_war_exploded/test/raavarebatch/';
 
