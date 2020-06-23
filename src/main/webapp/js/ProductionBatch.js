@@ -22,15 +22,15 @@ function genTableHTMLForProduktBatch(produktBatch) {
         '<td>' + produktBatch.rbid + '</td>' +
         '<td>' + produktBatch.afvejetmaengde + '</td>' +
         '<td>' + produktBatch.tara + '</td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + produktBatch.pbid +',);">Slet</button></td>' +
+        '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + produktBatch.pbid +','+ produktBatch.rbid +');">Slet</button></td>' +
         '</td>'
 }
 
-function deleteProduktBatch(pbid) {
-    let obHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/' + pbid;
+function deleteProduktBatch(pbid,rbid) {
+    let pbHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/' + pbid + "/" + rbid;
     event.preventDefault();
     $.ajax({
-        url: obHostURL,
+        url: pbHostURL,
         method: 'DELETE',
         success: function () {
             alert(' Produkt Batch med id: ' + pbid + ' er blevet slettet!');
