@@ -41,7 +41,8 @@ function deleteProduktBatch(pbid,rbid) {
 
 function createProduktBatch() {
 
-    let hostCreateURL = obHostURL + 'create';
+    let obHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/';
+    let hostCreateURL = obHostURL;
     console.log('Opretter ny ProduktBatch');
     $.ajax({
         type: 'POST',
@@ -62,13 +63,13 @@ function createProduktBatch() {
 
 function pbCreateToJSON() {
     return JSON.stringify({
-        "pbId": $('#pbId').val(),
+        "pbid": $('#pbid').val(),
         "receptid": $('#receptid').val(),
         "status": $('#status').val(),
         "userid": $('#userid').val(),
         "rbid": $('#rbid').val(),
         "tara": $('#tara').val(),
-        "afvejningsmaengde": $('#afvejningsmaengde').val(),
+        "afvejetmaengde": $('#afvejningsmaengde').val(),
 
 
 
