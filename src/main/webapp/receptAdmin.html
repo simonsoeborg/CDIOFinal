@@ -7,17 +7,69 @@
     <div class="grid-sideMenu"><script>includeSideMenu();</script></div>
 
     <div class="grid-contentHeader">
-        <!-- Titel på siden såsom Afvejning -->
-        <h1 id="afvejningsTitel">Afvejning</h1>
+        <!-- Titel-->
+        <h1 id="receptTitel">RECEPTER</h1>
     </div>
 
     <div class="grid-contentBody">
 
-        <!-- Inputs, labels, paragrapher CONTENT -->
+        <!---------------------------------------------------------------------------------->
 
+        <h2 id="createReceptTxt">Opret recept</h2>
+        <div class="Container-borderless" style="width: 100%;">
+            <input type="text" style="width: 16%;" id="receptid" name="receptid" placeholder="ReceptID">
+            <input type="text" style="width: 16%;" id="receptnavn" name="receptnavn" placeholder="ReceptNavn"><br>
+
+
+            <select type="text" style="width: 16%;" id="raavareid" name="raavareid">
+                <option value="" disabled selected hidden>Vælg råvare</option>
+            </select>
+            <br>
+            <input type="text" style="width: 16%;" id="maengde" name="maengde" placeholder="Mængde">
+            <input type="text" style="width: 16%;" id="tolerance" name="tolerance" placeholder="Tolerance">
+            <button class="btn-create" onclick="createRecept()">Opret</button><br><br>
+
+        </div>
+
+        <!---------------------------------------------------------------------------------->
+
+        <div class="containerborderless">
+
+            <form>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td>ReceptId</td>
+                        <td>ReceptNavn</td>
+                        <td>RaavareId</td>
+                        <td>RåvareNavn</td>
+                        <td>Mængde</td>
+                        <td>Tolerance</td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody id="loadAllRecepts"><script>loadRecepts();</script></tbody>
+                </table>
+            </form>
+            <br>
+            <form>
+            <table class="table">
+                <thead>
+                <tr>
+                    <td>ReceptOversigt</td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody id="loadAllReceptsId"><script>loadReceptId();</script></tbody>
+            </table>
+            </form>
+        </div>
+    <!---------------------------------------------------------------------------------->
     </div>
+
+        <!---------------------------------------------------------------------------------->
 
     <!-- Attach global footer -->
     <div class="grid-contentFooter"><script>includeFooter();</script></div>
-
 </div>
+</body>

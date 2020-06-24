@@ -1,0 +1,25 @@
+/*Author:
+Freja Nørgaard Jensen*/
+
+.btn-create {
+    background-color: #275c31;
+    color: white;
+    margin: 20px;
+}
+.btn-create:hover {
+    background-color: #c1c3c6;
+    color: #397e3f;
+}
+
+#createReceptTxt{
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.containerborderless {
+    border: 1px;
+    margin-bottom: 10px;
+    align-content: center;
+    float: left;
+}

@@ -41,7 +41,7 @@ function deleteRaavareBatch(rbId) {
 function createRaavareBatch() {
     let hostCreateURL = rbHostURL + 'create';
     console.log('Opretter ny RåvareBatch');
-    if (control()) {
+    if (controlRBID($('#rbId').val())) {
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
@@ -53,29 +53,23 @@ function createRaavareBatch() {
                 loadRaavareBatchList();
             },
             error: function (jqXHR, textStatus) {
-                alert("fejl ved oprettelsen af råvaren: " + textStatus);
+                alert('Fejl ved oprettelsen af RåvareBatch: ' + textStatus);
             }
         });
     }
 }
 
-function control() {
-    var rbID = document.getElementById('rbId').value;
-    var leverandoer = document.getElementById('leverandoer').value;
-    if (rbID.length !== 5) {
-        alert("RåvareBatchID skal indholde fem cifre!");
+function controlRBID(id) {
+    if (id.length !== 5) {
+        alert("RåvareBatchID skal indholde fem cifre");
         return false;
-    } else if (leverandoer.length < 5) {
-        alert("Der skal indtastes en gyldig leverandør!");
-        return false;
-    } else {
-        return true;
     }
+    return true
 }
 
 function showRaavareNavn() {
     var raavareId = document.getElementById('raavareId').value;
-    let hostShowURL = rbHostURL + 'raavare/' + raavareId
+    let hostShowURL = rbHostURL + 'raavare/' + raavareId;
     $.ajax({
         url: hostShowURL,
         type: 'GET',

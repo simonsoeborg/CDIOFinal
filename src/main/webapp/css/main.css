@@ -148,9 +148,11 @@ select {
 }
 
 .Container_borderless {
-  border: 0px;
+  border: 5px;
   padding: 16px;
   width: 100%;
   margin-bottom: 10px;
+  align-content: center;
 }
+
 /* ******************************************************************** */
