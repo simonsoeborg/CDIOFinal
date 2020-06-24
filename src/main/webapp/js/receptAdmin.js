@@ -1,7 +1,7 @@
 /*Author:
 Freja Nørgaard Jensen*/
 
-let ReceptUrl = '/CDIOFinal_war_exploded/test/recepts/';
+let ReceptUrl = HostURL + 'recepts/';
 
 // ---------------------Den første tabel---------------------------
 
@@ -113,7 +113,7 @@ function deleteReceptId(id) {
 
 function loadRaavareId() {
     console.log("Loading Raavare");
-    let RaavareURL = "/CDIOFinal_war_exploded/test/raavare/load/";
+    let RaavareURL = HostURL + "raavare/load/";
     $.get(RaavareURL, function (raavareData, textStatus, req) {
         $("#raavareid").empty();
         $.each(raavareData, function (i, raavare) {
@@ -122,12 +122,8 @@ function loadRaavareId() {
     });
 }
 
-$(document).ready(function(){
-    loadRaavareId()
-});
-
 function genTableRaavareId(raavarenavn, raavareid) {
-    return '<option value="'+ raavareid + '">'+ raavarenavn +'</option>'
+    return '<option value="'+ raavareid + '">' + raavarenavn +'</option>'
 
 }
 
