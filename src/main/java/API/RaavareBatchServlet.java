@@ -7,6 +7,7 @@ import Data.DTO.RaavareBatch;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("raavarebatch")
@@ -19,7 +20,7 @@ public class RaavareBatchServlet {
     @GET
     @Path("load")
     public List<RaavareBatch> GetRaavareBatch() {
-        return DBrb.listAllRaavareBatch();
+        return DBrb.getAllRaavareBatch();
     }
 
     @DELETE

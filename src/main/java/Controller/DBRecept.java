@@ -1,97 +1,82 @@
+/*Author:
+Freja Nørgaard Jensen*/
+
 package Controller;
+
+import Data.DTO.Recept;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DBRecept {
 
-    private int receptId;
-    private String receptNavn;
-    private int raavareId;
-    private double nonNetto;
-    private double tolerance;
     private Connection SQLConn;
     private String sqlQuery;
     private PreparedStatement pstm;
-    private ResultSet ResultSet;
-    private ArrayList<DBRecept> recepts;
+    private ResultSet resultSet;
+
+    private List<Recept> recepts;
 
     private DBConnector SQLConnector = new DBConnector();
 
-    public DBRecept(){}
+    //-------------------------------Get all Recepts------------------------------------------
 
-    public DBRecept(int receptId, String receptNavn, int raavareID, double nonNetto, double tolerance) {
-        this.receptId = receptId;
-        this.receptNavn = receptNavn;
-        this.raavareId = raavareID;
-        this.nonNetto = nonNetto;
-        this.tolerance = tolerance;
-    }
-
-    //-----------------------FETCH ALL RECEPTS------------------------------------------
-
-    // Fetch user list from MySQL database
-    public void fetchAllRecepts() {
-        try {
-            recepts = new ArrayList<>();
-            recepts = addReceptsFromResultSet();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-    }
-
-    public ArrayList<DBRecept> getRecepts() {
-        return recepts;
-    }
-
-    public ArrayList<DBRecept> addReceptsFromResultSet() throws SQLException {
-        SQLConnector.createConnection();
-        ArrayList<DBRecept> data = new ArrayList<>();
+    public List<Recept> GetAllRecepts() {
+        ArrayList<Recept> data = new ArrayList<>();
+        SQLConn = SQLConnector.createConnection();
         if (SQLConn != null) {
-            ResultSet = SQLConn.prepareStatement("SELECT * FROM Recept").executeQuery();
-            while (ResultSet.next()) {
-                data.add(new DBRecept(ResultSet.getInt("receptId"), ResultSet.getString("receptNavn"),
-                        ResultSet.getInt("raavareID"), ResultSet.getDouble("nonNetto"),
-                        ResultSet.getDouble("tolerance")));
+            try {
+                sqlQuery = "SELECT * FROM ReceptView ORDER BY receptId";
+                //prepared statement
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                ResultSet resultSet = pstm.executeQuery();
+
+                while (resultSet.next()) {
+                    data.add(new Recept(resultSet.getInt("receptid"),
+                            resultSet.getString("receptnavn"),
+                            resultSet.getInt("raavareid"),
+                            resultSet.getString("raavarenavn"),
+                            resultSet.getDouble("maengde"),
+                            resultSet.getDouble("tolerance")));
+                }
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
             }
-            SQLConn.close();
         }
         return data;
     }
 
-    //-----------------------FETCH ALL RECEPTS------------------------------------------
+    //-------------------------------------------------------------------------------------
 
 
-    public void createRecept(int receptId, String receptNavn, int raavareID, double nonNetto, double tolerance) {
+    public void createRecept(int receptId, String receptNavn, int raavareId, double maengde, double tolerance) {
 
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("INSERT INTO Recept (receptId, receptNavn, raavareID, nonNetto, tolerance)" +
-                        "VALUES (?, ?, ?, ?, ?)");
-                ResultSet = pstm.executeQuery();
+                pstm = SQLConn.prepareStatement("INSERT INTO Recept (receptid, receptnavn) VALUES (?, ?)");
                 pstm.setInt(1, receptId);
                 pstm.setString(2, receptNavn);
-                pstm.setInt(3, raavareID);
-                pstm.setDouble(4, nonNetto);
-                pstm.setDouble(5, tolerance);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
-    }
-
-    public void deleteRecept(int receptId) {
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("DELETE FROM Recept WHERE receptId = ?");
+                pstm = SQLConn.prepareStatement(
+                        "INSERT INTO ReceptKomponent (receptid, raavareid, maengde, tolerance) VALUES (?, ?, ?, ?)");
                 pstm.setInt(1, receptId);
+                pstm.setInt(2, raavareId);
+                pstm.setDouble(3, maengde);
+                pstm.setDouble(4, tolerance);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -100,18 +85,16 @@ public class DBRecept {
         }
     }
 
-    public void UpdateRecept(int receptId, String receptNavn, int raavareID, double nonNetto, double tolerance) {
+    //-------------------------------------------------------------------------------------
+
+    public void deleteReceptKomponent(int raavareid, int receptid) {
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("UPDATE Recept " + "SET receptId=?, " + "receptNavn=?, " +
-                        "raavareID=?, " + "nonNetto=? " + "tolerance=? " + "WHERE receptId = ?");
-                pstm.setInt(1, receptId);
-                pstm.setString(2, receptNavn);
-                pstm.setInt(3, raavareID);
-                pstm.setDouble(4, nonNetto);
-                pstm.setDouble(5, tolerance);
-
+                sqlQuery = "DELETE FROM ReceptKomponent WHERE raavareid = ? AND receptid = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, raavareid);
+                pstm.setInt(2, receptid);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -120,14 +103,27 @@ public class DBRecept {
         }
     }
 
-    //Dette skal indgå, når man har trykket på knappen 'rediger
+    //-------------------------------------------------------------------------------------
 
-    public void deleteReceptComponent(int raavareId) {
+    public void deleteReceptId(int receptid) {
         try {
             SQLConn = SQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("DELETE FROM Recept WHERE raavareID = ?");
-                pstm.setInt(1, raavareId);
+                sqlQuery = "DELETE FROM ReceptKomponent WHERE receptid = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, receptid);
+                pstm.executeUpdate();
+                SQLConn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        try {
+            SQLConn = SQLConnector.createConnection();
+            if (SQLConn != null) {
+                sqlQuery = "DELETE FROM Recept WHERE receptid = ?";
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                pstm.setInt(1, receptid);
                 pstm.executeUpdate();
                 SQLConn.close();
             }
@@ -135,4 +131,34 @@ public class DBRecept {
             System.out.println(e);
         }
     }
-}
+
+    //-------------------------------------------------------------------------------------
+
+    public List<Recept> GetAllReceptsFromRecept() {
+        ArrayList<Recept> receptIdData = new ArrayList<>();
+        SQLConn = SQLConnector.createConnection();
+        if (SQLConn != null) {
+            try {
+                sqlQuery = "SELECT * FROM Recept ORDER BY receptId";
+                //prepared statement
+                PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
+                ResultSet resultSet = pstm.executeQuery();
+
+                while (resultSet.next()) {
+                    receptIdData.add(new Recept(resultSet.getInt("receptid"),
+                            resultSet.getString("receptnavn")));
+                }
+                SQLConn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return receptIdData;
+    }
+
+
+    //-------------------------------------------------------------------------------------
+    }
+
+
+
