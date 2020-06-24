@@ -36,7 +36,6 @@ function access() {
         document.getElementById('afvejningMenu').style.display = "block";
     }
     if (sessionStorage.getItem('role') === "Udvikler") {
-        document.getElementById('speceficUsertable').style.display = 'none';
         document.getElementById('brugerAdminMenu').style.display = "block";
         document.getElementById('raavareAdminMenu').style.display = "block";
         document.getElementById('receptAdminMenu').style.display = "block";
