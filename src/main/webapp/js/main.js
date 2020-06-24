@@ -26,7 +26,7 @@ function includeFooter() {
 }
 
 // Global variable system path
-let HostURL = '/CDIOFinal_war_exploded/test/';
+let HostURL = '/20CDIOFinal/release/';
 
 /* End of Site functionality */
 /* *********************************************************************** */
