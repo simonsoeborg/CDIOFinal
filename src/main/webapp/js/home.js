@@ -2,7 +2,6 @@
 Author:Kristoffer Baumgarten & Simon Fridolf
 Github: Jackktis & IceMonk3y
 */
-// Test
 hostUserURL = HostURL + 'users/';
 
 function welcome() {
