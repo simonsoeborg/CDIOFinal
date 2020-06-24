@@ -54,6 +54,10 @@ public class DBProductionBatch {
                 PreparedStatement pstm = SQLConn.prepareStatement(sqlQuery);
                 pstm.setInt(1, pbid);
                 pstm.executeUpdate();
+                sqlQuery = "DELETE FROM ProduktBatchKomponent WHERE pbid=?";
+                PreparedStatement pstm2 = SQLConn.prepareStatement(sqlQuery);
+                pstm2.setInt(1, pbid);
+                pstm2.executeUpdate();
                 SQLConn.close();
             }
         } catch (SQLException e) {
@@ -61,16 +65,25 @@ public class DBProductionBatch {
         }
     }
 
-    public void createProductionBatch(int pbid, int receptid, String status) {
+    public void createProductionBatch(int pbid, int receptid, String status, int userid, int rbid, double tara, double afvejetmaengde) {
         try {
             PreparedStatement pstm;
+            PreparedStatement pstm2;
             SQLConn = MySQLConnector.createConnection();
             if (SQLConn != null) {
-                pstm = SQLConn.prepareStatement("INSERT INTO ProduktBatch VALUES (?, ?, ?)");
+                pstm = SQLConn.prepareStatement("INSERT INTO ProduktBatch VALUES (?, ?, ?, ?)");
                 pstm.setInt(1, pbid);
                 pstm.setInt(2, receptid);
                 pstm.setString(3, status);
+                pstm.setInt(4, userid);
                 pstm.executeUpdate();
+                pstm2 = SQLConn.prepareStatement("INSERT INTO ProduktBatchKomponent VALUES (?, ?, ?, ?, ?)");
+                pstm2.setInt(1, 0);
+                pstm2.setInt(2, pbid);
+                pstm2.setInt(3, rbid);
+                pstm2.setDouble(4, afvejetmaengde);
+                pstm2.setDouble(5, tara);
+                pstm2.executeUpdate();
                 SQLConn.close();
             }
         } catch (SQLException e) {
