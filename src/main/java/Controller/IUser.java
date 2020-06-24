@@ -1,7 +1,10 @@
+/*
+Author: Simon Fridolf
+Github: IceMonk3y
+*/
 package Controller;
 
 import Data.DTO.User;
-
 import java.util.List;
 
 public interface IUser {
