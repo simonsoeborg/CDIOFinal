@@ -6,7 +6,7 @@ hostUserURL = HostURL + 'users/';
 
 function welcome() {
     let role = sessionStorage.getItem("role");
-    document.getElementById('scriptName').innerHTML="Velkommen - Du er logget ind som " + role;
+       document.getElementById('scriptName').innerHTML="Velkommen - Du er logget ind som " + role;
 }
 
 function userLayout(obj) {
