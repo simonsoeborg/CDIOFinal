@@ -9,11 +9,17 @@ function welcome() {
        document.getElementById('scriptName').innerHTML="Velkommen - Du er logget ind som " + role;
 }
 
-function userLayout(obj) {
+ function userLayout(obj) {
     let role = obj.id;
     sessionStorage.setItem('role', role);
 
     displayContent('home.html');
+}
+
+function home() {
+    if (sessionStorage.getItem('role')==="Udvikler"){
+        document.getElementById('speceficUsertable').style.display = "none";
+    }
 }
 
 function access() {
