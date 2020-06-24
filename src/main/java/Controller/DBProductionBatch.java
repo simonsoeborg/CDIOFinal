@@ -92,6 +92,8 @@ public class DBProductionBatch {
         }
     }
 
+
+
     public void createProductionBatchComponent(int userid, int rbid, double afvejetmaengde, double tara) {
         try {
             PreparedStatement pstm;

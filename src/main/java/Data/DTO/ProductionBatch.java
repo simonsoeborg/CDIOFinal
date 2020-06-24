@@ -13,6 +13,7 @@ public class ProductionBatch {
 
     public ProductionBatch() {}
 
+
     public ProductionBatch(int pbid, int receptid, String status, int userid, int rbid, double tara, double afvejetmaengde) {
         this.pbid = pbid;
         this.receptid = receptid;
