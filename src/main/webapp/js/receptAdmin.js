@@ -1,4 +1,10 @@
+/*Author:
+Freja Nørgaard Jensen*/
+
 let ReceptUrl = '/CDIOFinal_war_exploded/test/recepts/';
+
+// ---------------------Den første tabel---------------------------
+
 
 function genTableHTMLForRecepts(recept) {
     return '<tr>' + '<td>' + recept.receptid + '</td>' +
@@ -32,6 +38,9 @@ function receptDataCreateToJSON() {
     })
 }
 
+// ---------------------Oprette recept---------------------------
+
+
 function createRecept() {
     $.ajax({
         type: 'POST',
@@ -51,6 +60,8 @@ function createRecept() {
 
 }
 
+// ---------------------Slette recept---------------------------
+
 function deleteReceptKomponent(raavareid, receptid) {
     let deleteReceptUrl = '/CDIOFinal_war_exploded/test/recepts/komponent/' + raavareid + "/" + receptid;
     event.preventDefault();
@@ -58,13 +69,13 @@ function deleteReceptKomponent(raavareid, receptid) {
         url: deleteReceptUrl,
         method: 'DELETE',
         success: function () {
-            alert('Recept/Receptkomponent' + raavareid + 'er slettet');
+            alert('Recept/Receptkomponent ' + raavareid + ' er slettet');
             loadRecepts();
         }
     });
 }
 
-// Den anden tabel ------------------------------------------------
+// ---------------------Loader receptid og receptnavn ind i nr 2 tabel---------------------------
 
 
 function genTableHTMLForReceptId(receptid) {
@@ -97,13 +108,16 @@ function deleteReceptId(id) {
     });
 }
 
+//---------------------Loader råvare fra RaavareAdmin---------------------------
+
+
 function loadRaavareId() {
     console.log("Loading Raavare");
     let RaavareURL = "/CDIOFinal_war_exploded/test/raavare/load/";
     $.get(RaavareURL, function (raavareData, textStatus, req) {
         $("#raavareid").empty();
         $.each(raavareData, function (i, raavare) {
-            $("#raavareid").append(genTableRaavareId(raavare.raavarenavn));
+            $("#raavareid").append(genTableRaavareId(raavare.raavarenavn, raavare.raavareid));
         });
     });
 }
@@ -112,8 +126,8 @@ $(document).ready(function(){
     loadRaavareId()
 });
 
-function genTableRaavareId(raavarenavn) {
-    return '<option value="">'+ raavarenavn +'</option>'
+function genTableRaavareId(raavarenavn, raavareid) {
+    return '<option value="'+ raavareid + '">'+ raavarenavn +'</option>'
 
 }
 

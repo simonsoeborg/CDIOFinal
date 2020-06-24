@@ -1,5 +1,8 @@
+<!-----------Author:---------->
+<!---Freja Nørgaard Jensen---->
+
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+< lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -33,11 +36,9 @@
                 <option value="" disabled selected hidden>Vælg råvare</option>
             </select>
             <br>
-
-
             <input type="text" style="width: 16%;" id="maengde" name="maengde" placeholder="Mængde">
             <input type="text" style="width: 16%;" id="tolerance" name="tolerance" placeholder="Tolerance">
-            <button id="btn-create" onclick="createRecept()">Opret</button><br><br>
+            <button class="btn-create" onclick="createRecept()">Opret</button><br><br>
 
         </div>
 
@@ -46,7 +47,7 @@
         <div class="containerborderless">
 
             <form>
-                <table id="tableleft">
+                <table class="table">
                     <thead>
                     <tr>
                         <td>ReceptId</td>
@@ -60,28 +61,26 @@
                     </thead>
                     <tbody id="loadAllRecepts"><script>loadRecepts();</script></tbody>
                 </table>
-                <br>
-                <table id="tableright">
-                    <thead>
-                    <tr>
-                        <td>ReceptOversigt</td>
-                        <td></td>
-                    </tr>
-                    </thead>
-                    <tbody id="loadAllReceptsId"><script>loadReceptId();</script></tbody>
-                </table>
             </form>
-        </br>
-
+            <br>
+            <form>
+            <table class="table">
+                <thead>
+                <tr>
+                    <td>ReceptOversigt</td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody id="loadAllReceptsId"><script>loadReceptId();</script></tbody>
+            </table>
+            </form>
+        </div>
     <!---------------------------------------------------------------------------------->
-
+    </div>
 
         <!---------------------------------------------------------------------------------->
 
     <!-- Attach global footer -->
     <div class="grid-contentFooter"><script>includeFooter();</script></div>
-
 </div>
-
 </body>
-</html>

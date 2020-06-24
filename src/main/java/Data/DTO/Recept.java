@@ -1,3 +1,6 @@
+/*Author:
+Freja Nørgaard Jensen*/
+
 package Data.DTO;
 
 public class Recept {

@@ -1,3 +1,6 @@
+/*Author:
+Freja Nørgaard Jensen*/
+
 package API;
 
 import Controller.DBRecept;

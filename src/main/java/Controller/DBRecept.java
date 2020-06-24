@@ -1,3 +1,6 @@
+/*Author:
+Freja Nørgaard Jensen*/
+
 package Controller;
 
 import Data.DTO.Recept;

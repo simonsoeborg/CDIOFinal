@@ -1,28 +1,12 @@
+/*Author:
+Freja Nørgaard Jensen*/
 
-
-@media screen and (max-width: 600px) {
-    .containerborderless.recept-content{
-        width: 100%;
-        display: block;
-        margin-bottom: 20px;
-    }
-}
-
-.recept-content {
-    float: left;
-    padding: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
-    text-align: center;
-    background-color: #f1f1f1;
-}
-
-#btn-create {
+.btn-create {
     background-color: #275c31;
     color: white;
     margin: 20px;
 }
-#btn-create:hover {
+.btn-create:hover {
     background-color: #c1c3c6;
     color: #397e3f;
 }
@@ -33,24 +17,9 @@
     font-style: italic;
 }
 
-#containerborderless {
-    border: 5px;
-    padding: 16px;
+.containerborderless {
+    border: 1px;
     margin-bottom: 10px;
     align-content: center;
-    display: inline-block;
-
-}
-
-#tableleft{
-    padding: 30px;
-    width: 50%;
     float: left;
-}
-
-#tableright{
-    padding: 30px;
-    width: 50%;
-    float: left;
-
 }
