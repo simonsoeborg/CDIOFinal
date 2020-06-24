@@ -83,7 +83,7 @@ function showRaavareNavn() {
 function rbCreateToJSON() {
     return JSON.stringify({
         "rbId": $('#rbId').val(),
-        "raavareId": $('#raavareId').val(),
+        "raavareId": $('#raavareid').val(),
         "maengde": $('#maengde').val(),
         "leverandoer": $('#leverandoer').val()
     });
