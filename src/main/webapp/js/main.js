@@ -28,5 +28,6 @@ function includeFooter() {
 // Global variable system path
 let HostURL = '/20CDIOFinal/release/';
 
+
 /* End of Site functionality */
 /* *********************************************************************** */

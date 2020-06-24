@@ -21,7 +21,7 @@ public class DBAfvejning {
     private String findLaborantQuery = "SELECT * FROM Brugere WHERE UserId = ? AND Role = ? AND Status = ?";
     private String findReceptQuery = "SELECT receptNavn FROM ProduktBatchAfvejning WHERE pbId = ?";
     private String getProduktionStatusQuery = "SELECT status FROM ProduktBatch WHERE pbId = ?";
-    private String getReceptRaavareQuery = "SELECT raavareid, raavarenavn, maengde, tolerance FROM AfvejningReceptKomponent2 WHERE pbId = ?";
+    private String getReceptRaavareQuery = "SELECT raavareid, raavarenavn, maengde, tolerance FROM ARK WHERE pbId = ?";
     private String updateAfvejetDataQuery = "INSERT INTO ProduktBatchKomponent (pbid, rbid, afvejetmaengde, tara)" +
             "VALUES (?, ?, ?, ?)";
     private String updateProduktionStatusQuery = "UPDATE ProduktBatch SET status = ? WHERE pbId = ?";
