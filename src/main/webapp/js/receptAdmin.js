@@ -63,7 +63,7 @@ function createRecept() {
 // ---------------------Slette recept---------------------------
 
 function deleteReceptKomponent(raavareid, receptid) {
-    let deleteReceptUrl = '/CDIOFinal_war_exploded/test/recepts/komponent/' + raavareid + "/" + receptid;
+    let deleteReceptUrl = ReceptUrl + 'komponent/' + raavareid + "/" + receptid;
     event.preventDefault();
     $.ajax({
         url: deleteReceptUrl,
