@@ -27,7 +27,6 @@ function receptDataCreateToJSON() {
         "receptid": $('#receptid').val(),
         "receptnavn": $('#receptnavn').val(),
         "raavareid": $('#raavareid').val(),
-        "raavarenavn": $('#raavarenavn').html(),
         "maengde": $('#maengde').val(),
         "tolerance": $('#tolerance').val()
     })
@@ -97,5 +96,27 @@ function deleteReceptId(id) {
         }
     });
 }
+
+function loadRaavareId() {
+    console.log("Loading Raavare");
+    let RaavareURL = "/CDIOFinal_war_exploded/test/raavare/load/";
+    $.get(RaavareURL, function (raavareData, textStatus, req) {
+        $("#raavareid").empty();
+        $.each(raavareData, function (i, raavare) {
+            $("#raavareid").append(genTableRaavareId(raavare.raavarenavn));
+        });
+    });
+}
+
+$(document).ready(function(){
+    loadRaavareId()
+});
+
+function genTableRaavareId(raavarenavn) {
+    return '<option value="">'+ raavarenavn +'</option>'
+
+}
+
+
 
 //-----------------------------------------------------------------

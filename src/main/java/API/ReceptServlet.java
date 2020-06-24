@@ -44,32 +44,3 @@ public class ReceptServlet {
 
     }
 }
-/*
-    @PUT
-    @Path("{id}")
-    public void updateRecept(@PathParam("id") int id, Recept recept) {
-        dbr.UpdateRecept(id, recept.getReceptNavn(), recept.getRaavareNavn(),
-                recept.getMaengde(), recept.getTolerance());
-    }
-*/
-
-/*
-    @DELETE
-    @Path("{id}")
-    public void deleteRecept(@PathParam("id") int id) {
-        dbr.deleteRecept(id);
-    }
-
-
-    @PUT
-    @Path("component/{id}")
-    public void updateReceptComponent(@PathParam("id") int id, Recept recept) {
-        dbr.UpdateReceptComponent(recept.getRaavareId(), recept.getNonNetto(), recept.getTolerance());
-    }
-
-    @DELETE
-    @Path("component/{id}")
-    public void deleteReceptComponent(@PathParam("id") int id) {
-        dbr.deleteReceptComponent(id);
-    }*/
-
