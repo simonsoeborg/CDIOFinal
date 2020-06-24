@@ -3,52 +3,52 @@ package Data.DTO;
 
 public class ProductionBatch {
 
-    private int pbID;
-    private int receptID;
-    private int status;
-    private int userID;
-    private int rbID;
+    private int pbid;
+    private int receptid;
+    private String status;
+    private int userid;
+    private int rbid;
     private double tara;
-    private double netto;
+    private double afvejetmaengde;
 
 
-    public ProductionBatch(int pbID, int receptID, int status, int userID, int rbID, double tara, double netto) {
-        this.pbID = pbID;
+    public ProductionBatch(int pbid, int receptid, String status, int userid, int rbid, double tara, double afvejetmaengde) {
+        this.pbid = pbid;
+        this.receptid = receptid;
         this.status = status;
-        this.receptID = receptID;
-        this.userID = userID;
-        this.rbID = rbID;
+        this.userid = userid;
+        this.rbid = rbid;
         this.tara = tara;
-        this.netto = netto;
+        this.afvejetmaengde = afvejetmaengde;
     }
 
-    public int getpbId() {return pbID;}
+    public int getpbid() {return pbid;}
 
-    public void setPbID(int pbID) { this.pbID = pbID; }
+    public void setPbid(int pbid) { this.pbid = pbid; }
 
-    public int getReceptID(){return receptID; }
+    public int getreceptid(){return receptid; }
 
-    public void setReceptID(int receptId) {this.receptID = receptID; }
+    public void setReceptid(int receptid) {this.receptid = receptid; }
 
-    public int getstatus() {return status;}
+    public String getstatus() {return status;}
 
-    public void setstatus(int status) {this.status = status;}
+    public void setstatus(String status) {this.status = status;}
 
-    public int getuserId(){return userID; }
+    public int getuserid(){return userid; }
 
-    public void setuserId (int userId) { this.userID = userId; }
+    public void setuserid (int userid) { this.userid = userid; }
 
-    public int getrbid() {return rbID; }
+    public int getrbid() {return rbid; }
 
-    public void setrbId(int rbId) { this.rbID = rbId; }
+    public void setrbid(int rbId) { this.rbid = rbid; }
 
     public double gettara() {return tara; }
 
     public void settara(double tara) { this.tara = tara; }
 
-    public double getnetto() {return netto; }
+    public double getafvejetmaengde() {return afvejetmaengde; }
 
-    public void setnetto (double netto) { this.netto = netto; }
+    public void setAfvejetmaengde (double afvejetmaengde) { this.afvejetmaengde = afvejetmaengde; }
 
     }
 

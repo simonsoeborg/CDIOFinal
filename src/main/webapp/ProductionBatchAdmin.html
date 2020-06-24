@@ -8,10 +8,26 @@
 
     <div class="grid-contentHeader">
         <h1 id="RaavareAdminTitel">ProduktBatch Admin</h1>
-
     </div>
 
     <div class="grid-contentBody">
+        <h2>Opret et Produkt Batch</h2>
+
+        <div class="Container_borderless" style="width: 100%;">
+            <label><input id="pbid" style="width: 17%;" type="text" placeholder="ProduktBatch ID"></label>
+            <label><input id="receptid" onblur="showReceptid();" style="width: 10%;" type="text" placeholder="Recept ID"></label>
+            <label><input id="status" style="width: 7%;" type="text" placeholder="Status"></label>
+            <label><input id="userid" style="width: 10%;" type="text" placeholder="User ID"></label>
+            <label><input id="rbid" style="width: 12%;" type="text" placeholder="Raavare ID"></label>
+            <label><input id="afvejningsmaengde" style="width: 19%;" type="text" placeholder="Afvejningsmaengde"></label>
+            <label><input id="tara" style="width: 7%;" type="text" placeholder="Tara"></label>
+            <button class="successbutton" type="button" onclick="createProduktBatch();" style="align-content: center;" >Opret</button>
+            <row>
+                <label style="padding-left: 21%" id="ProduktNavn"></label>
+            </row>
+        </div>
+
+
 
         <!-- Alt som skal vises  -->
 
@@ -23,12 +39,14 @@
                 <table>
                     <thead>
                     <tr>
-                        <td>ProduktBatch ID</td>
-                        <td>Recept ID</td>
+                        <td>Pb ID</td>
+                        <td>ReceptID</td>
                         <td>Status</td>
-                        <td>id</td>
-                        <td>afvejetmaengde</td>
-                        <td>tara</td>
+                        <td>UserID</td>
+                        <td>RbID</td>
+                        <td>Afvejningsmaengde</td>
+                        <td>Tara</td>
+                        <td></td>
                     </tr>
                     </thead>
                     <tbody id="loadAllProduktBatchList"><script>loadProduktBatchList();</script></tbody>

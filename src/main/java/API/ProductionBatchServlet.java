@@ -14,18 +14,20 @@ public class ProductionBatchServlet {
 
      DBProductionBatch DBProductionBatch = new DBProductionBatch();
 
-     @GET
-     @Path("/productionBatch")
-     public List<ProductionBatch> GetProductionBatch() { return DBProductionBatch.GetAllProductionBatch(); }
+    @GET
+    @Path("load")
+    public List<ProductionBatch> getProductionBatch() {
+        return DBProductionBatch.GetAllProductionBatch();
+    }
 
      @POST
     public void createProductionBatch(ProductionBatch productionBatch) {
-         DBProductionBatch.createProductionBatch(productionBatch.getpbId(), productionBatch.getReceptID(),productionBatch.getstatus());
+         DBProductionBatch.createProductionBatch(productionBatch.getpbid(), productionBatch.getreceptid(),productionBatch.getstatus());
      }
 
-
     @DELETE
-    @Path("{pbId}")
-    public void deleteProductionBatch(@PathParam("pbId") int pbId) {  DBProductionBatch.deleteProductionBatch(pbId);  }
+    @Path("{pbid}/{rbid}")
+    public void deleteProductionBatch(@PathParam("pbid") int pbid, @PathParam("rbid") int rbid) {
+        DBProductionBatch.deleteProductionBatch(pbid,rbid);  }
     
     }

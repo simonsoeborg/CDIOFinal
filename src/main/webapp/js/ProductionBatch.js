@@ -1,36 +1,41 @@
+//let pbHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/';
 
 let pbHostURL = HostURL + 'Produktbatch/';
 
 function loadProduktBatchList() {
+    let pbHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/load/';
     console.log("Loading Produkt Batches");
     let hostGetURL = pbHostURL + 'load';
     $.get(hostGetURL, function (data) {
         $("#loadAllProduktBatchList").empty();
-        $.each(data, function (i, ProduktBatch) {
-            $("#loadAllProduktBatchList").append(genTableHTMLForProduktBatch(ProduktBatch));
+        console.log("test2");
+        $.each(data, function (i, produktBatch) {
+            console.log(produktBatch);
+            $("#loadAllProduktBatchList").append(genTableHTMLForProduktBatch(produktBatch));
         });
     });
 }
 
-function genTableHTMLForProduktBatch(ProduktBatch) {
-    return  '<tr><td>' + ProduktBatch.pbId + '</td>' +
-        '<td>' + ProduktBatch.receptId +'</td>' +
-        '<td>' + ProduktBatch.status + '</td>' +
-        '<td>' + ProduktBatch.id+ ' kg</td>' +
-        '<td>' + ProduktBatch.rbid+ '</td>' +
-        '<td>' + ProduktBatch.afvejetmaengde+ '</td>' +
-        '<td>' + ProduktBatch.tara+ '</td>' +
-        '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + ProduktBatch.pbId + ');">Slet</button></td>' +
-        '</tr>'
+function genTableHTMLForProduktBatch(produktBatch) {
+    return '<tr>' + '<td>' + produktBatch.pbid +'</td>' +
+        '<td>' + produktBatch.receptid + '</td>' +
+        '<td>' + produktBatch.status + '</td>' +
+        '<td>' + produktBatch.userid+ '</td>' +
+        '<td>' + produktBatch.rbid + '</td>' +
+        '<td>' + produktBatch.afvejetmaengde + '</td>' +
+        '<td>' + produktBatch.tara + '</td>' +
+        '<td><button class="btn-alert" type="submit" onclick="deleteProduktBatch(' + produktBatch.pbid +','+ produktBatch.rbid +');">Slet</button></td>' +
+        '</td>'
 }
 
-function deleteProduktBatch(pbId) {
+function deleteProduktBatch(pbid,rbid) {
+    let obHostURL = '/CDIOFinal_war_exploded/test/ProductionBatch/' + pbid + "/" + rbid;
     event.preventDefault();
     $.ajax({
-        url: pbHostURL + pbId,
+        url: obHostURL,
         method: 'DELETE',
         success: function () {
-            alert(' Produkt Batch med id: ' + pbId + ' er blevet slettet!');
+            alert(' Produkt Batch med id: ' + pbid + ' er blevet slettet!');
             loadProduktBatchList();
         }
     });
@@ -38,14 +43,14 @@ function deleteProduktBatch(pbId) {
 
 function createProduktBatch() {
 
-    let hostCreateURL = pbHostURL + 'create';
+    let hostCreateURL = obHostURL + 'create';
     console.log('Opretter ny ProduktBatch');
     $.ajax({
         type: 'POST',
         contentType: 'application/json',
         url: hostCreateURL,
         dataType: "json",
-        data: rbCreateToJSON(),
+        data: pbCreateToJSON(),
         success: function () {
             alert('Succes! ProduktBatch oprettet');
             loadProduktBatchList();
@@ -56,24 +61,18 @@ function createProduktBatch() {
     });
 }
 
-function showProduktNavn() {
-    var produktId = document.getElementById('pbId').value;
-    let hostShowURL = pbHostURL + 'produkt/' + pbid;
-    $.ajax({
-        url: hostShowURL,
-        type: 'GET',
-        dataType: "text",
-        success: function (res) {
-            document.getElementById('ProduktNavn').innerHTML = res;
-        },
-    });
-}
 
-function rbCreateToJSON() {
+function pbCreateToJSON() {
     return JSON.stringify({
         "pbId": $('#pbId').val(),
-        "receptId": $('#receptId').val(),
+        "receptid": $('#receptid').val(),
         "status": $('#status').val(),
-        "userId": $('#UserId').val()
+        "userid": $('#userid').val(),
+        "rbid": $('#rbid').val(),
+        "tara": $('#tara').val(),
+        "afvejningsmaengde": $('#afvejningsmaengde').val(),
+
+
+
     });
 }
