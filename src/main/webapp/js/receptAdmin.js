@@ -11,7 +11,7 @@ function genTableHTMLForRecepts(recept) {
         '<td>' + recept.receptnavn + '</td>' +
         '<td>' + recept.raavareid + '</td>' +
         '<td>' + recept.raavarenavn + '</td>' +
-        '<td>' + recept.maengde + ' g</td>' +
+        '<td>' + recept.maengde + ' kg</td>' +
         '<td>' + recept.tolerance + ' %</td>' +
         '<td><button class="btn-alert" type="submit" onclick="deleteReceptKomponent(' + recept.raavareid + ', ' + recept.receptid +');">Slet</button></td>'+
     '</tr>';
